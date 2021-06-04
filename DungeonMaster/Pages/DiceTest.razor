@@ -1,0 +1,97 @@
+﻿@page "/DiceTest"
+
+@using DungeonMaster.Data
+@using Microsoft.AspNetCore.Components
+
+<hr />
+<br />
+
+<div class="row" id="DiceDisplay">
+    <label class="col-2">Dice Total: </label>
+    <input class="col-1" readonly value="@diceTotal" />
+</div>
+
+<hr />
+<br />
+<div id="MultiDiceRoller">
+    <label for="dieSides">Sides on Die: </label>
+    <select @bind="dieSides" name="dieSides" id="dieSides">
+        <option value="4">4</option>
+        <option value="6">6</option>
+        <option value="8">8</option>
+        <option value="12">12</option>
+        <option value="20">20</option>
+    </select>
+    <label for="dieToRoll">Number of Die: </label>
+    <select @bind="dieToRoll" name="dieToRoll" id="dieToRoll">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <div>
+        <button class="btn btn-primary" @onclick="@RollMultipleDice">ROLL!</button>
+        <button class="btn btn-primary" @onclick="Roll">QUICK D20 ROLL!</button>
+    </div>
+</div>
+<hr />
+<br />
+<h5>Single D20 With Modifier Test:</h5>
+<div id="rollDieWithModifier">
+    <label for="modifier">Modifier: </label>
+    <select @bind="modifier" name="modifier" id="modifier">
+        <option value="">No Modifier</option>
+        <option value="a">Advantage</option>
+        <option value="d">Disadvantage</option>
+    </select>
+</div>
+<div>
+    <button class="btn btn-primary" @onclick="RollModifier">ROLL D20 WITH MODIFIER!</button>
+</div>
+
+
+@code {
+
+    private int? diceTotal = null;
+
+    public int DieSides { get; set; }
+    protected int dieSides = 4;
+    protected int dieToRoll = 1;
+    private string modifier = "";
+
+    private void Roll()
+    {
+        diceTotal = Die.RollD20();
+    }
+
+    private void RollMultipleDice()
+    {
+        try
+        {
+            diceTotal = Die.Roll(dieSides, dieToRoll);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
+
+    private void RollModifier()
+    {
+        if (modifier == "a")
+        {
+            diceTotal = Die.RollD20Advantage();
+        }
+
+        else if (modifier == "d")
+        {
+            diceTotal = Die.RollD20Disadvantage();
+        }
+
+        else
+        {
+            diceTotal = Die.RollD20();
+        }
+    }
+}
