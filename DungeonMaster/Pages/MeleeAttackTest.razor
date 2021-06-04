@@ -1,46 +1,53 @@
 ﻿@page "/MeleeAttackTest"
 
 @using DungeonMaster.Data
-<h3>Testing Attacking</h3>
+<h3>Testing Melee Attacks</h3>
+<hr />
+<br />
 
-    <div class="row">
-        <button @onclick="SetupGame">Restart Game</button>
+<div class="row">
+    <button class="btn btn-primary" @onclick="SetupGame">Start or Restart Game</button>
+</div>
+<br />
+@*Column representing Player 1's information.*@
+<div class="row">
+    <div class="col-3">
+        <ul>
+            <li>
+                Character Name: @player1.Name
+            </li>
+            <li>
+                Weapon: @player1.MeleeWeapon.Name
+            </li>
+            <li>
+                Health: @player1.Health
+            </li>
+        </ul>
+
     </div>
-    <div class="row">
-        <div class="col-3">
-            <ul>
-                <li>
-                    Character Name: @player1Name
-                </li>
-                <li>
-                    Weapon: @player1Weapon
-                </li>
-                <li>
-                    Health: @player1Health
-                </li>
-            </ul>
-            
-        </div>
-        <div class="col-3">
-            @attackResult
-        </div>
-        <div class="col-3">
-            <ul>
-                <li>
-                    Character Name: @player2Name
-                </li>
-                <li>
-                    Weapon: @player2Weapon
-                </li>
-                <li>
-                    Health: @player2Health
-                </li>
-            </ul>
-        </div>
+    @*Column representing attack information.*@
+    <div class="col-3">
+        @attackResult
     </div>
-    <div class="row">
-        <button @onclick="AttackExample">Attack the Enemy!</button>
+    @*Column representing Player 2's information.*@
+    <div class="col-3">
+        <ul>
+            <li>
+                Character Name: @player2.Name
+            </li>
+            <li>
+                Weapon: @player2.MeleeWeapon.Name
+            </li>
+            <li>
+                Health: @player2.Health
+            </li>
+        </ul>
     </div>
+</div>
+<br />
+<div class="row">
+    <button class="btn btn-danger" @onclick="AttackExample">Attack the Enemy!</button>
+</div>
 
 
 @code {
@@ -53,15 +60,8 @@
     public Game testGame { get; set; } = new Game();
 
     /// <summary>
-    ///  Strings representing Player information, to be displayed to the user.
+    /// String message with the result of the attack.
     /// </summary>
-    private string player1Name;
-    private string player1Weapon;
-    private double player1Health;
-
-    private string player2Name;
-    private string player2Weapon;
-    private double player2Health;
     private string attackResult = "";
 
     /// <summary>
@@ -74,7 +74,6 @@
         testGame = new Game(player1, player2);
         attackResult = "";
 
-        UpdatePlayerInfo();
 
         StateHasChanged();
     }
@@ -85,22 +84,7 @@
     public void AttackExample()
     {
         attackResult = testGame.MeleeAttack(player1, player2);
-        
-        UpdatePlayerInfo();
 
-    }
-    /// <summary>
-    /// Method to update Player information on the screen.
-    /// </summary>
-    public void UpdatePlayerInfo()
-    {
-        player1Name = player1.Name;
-        player1Weapon = player1.MeleeWeapon.Name;
-        player1Health = player1.Health;
-
-        player2Name = player2.Name;
-        player2Weapon = player2.MeleeWeapon.Name;
-        player2Health = player2.Health;
     }
 
 

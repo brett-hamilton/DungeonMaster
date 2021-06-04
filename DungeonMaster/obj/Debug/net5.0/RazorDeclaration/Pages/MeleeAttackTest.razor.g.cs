@@ -13,77 +13,77 @@ namespace DungeonMaster.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 1 "C:\Users\ZJAD35\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 2 "C:\Users\ZJAD35\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 3 "C:\Users\ZJAD35\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 4 "C:\Users\ZJAD35\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 5 "C:\Users\ZJAD35\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 6 "C:\Users\ZJAD35\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 7 "C:\Users\ZJAD35\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 8 "C:\Users\ZJAD35\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 9 "C:\Users\ZJAD35\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using DungeonMaster;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 10 "C:\Users\ZJAD35\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using DungeonMaster.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\MeleeAttackTest.razor"
+#line 3 "C:\Users\ZJAD35\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\MeleeAttackTest.razor"
 using DungeonMaster.Data;
 
 #line default
@@ -98,7 +98,7 @@ using DungeonMaster.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 46 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\MeleeAttackTest.razor"
+#line 50 "C:\Users\ZJAD35\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\MeleeAttackTest.razor"
        
     /// <summary>
     /// Two players and game board, to simulate the combat section of our game.
@@ -108,16 +108,7 @@ using DungeonMaster.Data;
 
     public Game testGame { get; set; } = new Game();
 
-    /// <summary>
-    ///  Strings representing Player information, to be displayed to the user.
-    /// </summary>
-    private string player1Name;
-    private string player1Weapon;
-    private double player1Health;
 
-    private string player2Name;
-    private string player2Weapon;
-    private double player2Health;
     private string attackResult = "";
 
     /// <summary>
@@ -130,7 +121,6 @@ using DungeonMaster.Data;
         testGame = new Game(player1, player2);
         attackResult = "";
 
-        UpdatePlayerInfo();
 
         StateHasChanged();
     }
@@ -142,21 +132,7 @@ using DungeonMaster.Data;
     {
         attackResult = testGame.MeleeAttack(player1, player2);
         
-        UpdatePlayerInfo();
 
-    }
-    /// <summary>
-    /// Method to update Player information on the screen.
-    /// </summary>
-    public void UpdatePlayerInfo()
-    {
-        player1Name = player1.Name;
-        player1Weapon = player1.MeleeWeapon.Name;
-        player1Health = player1.Health;
-
-        player2Name = player2.Name;
-        player2Weapon = player2.MeleeWeapon.Name;
-        player2Health = player2.Health;
     }
 
 
