@@ -70,7 +70,7 @@ namespace DungeonMaster.Data
 		/// take health from the player
 		/// </summary>
 		/// <param name="damage"></param>
-		public void damagePlayer(double damage)
+		public void DamagePlayer(double damage)
 		{
 			Health -= damage;
 

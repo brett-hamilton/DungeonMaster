@@ -82,6 +82,14 @@ using DungeonMaster.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\JD\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\DiceModalTest.razor"
+using DungeonMaster.Data;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/DiceModalTest")]
     public partial class DiceModalTest : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -89,6 +97,16 @@ using DungeonMaster.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 17 "C:\Users\JD\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\DiceModalTest.razor"
+       
+    private DungeonMaster.Pages.Components.DiceModal DiceModal { get; set; }
+
+    private int diceTotal;
+
+#line default
+#line hidden
+#nullable disable
     }
 }
 #pragma warning restore 1591

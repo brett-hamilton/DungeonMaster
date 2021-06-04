@@ -25,7 +25,7 @@ namespace DungeonMaster.Data
 		public void MeleeAttack (Character attacker, Character defender)
 		{
 			// Roll the attack dice for a value to compare to defender's armor rating
-			double attackValue = AttackRoll (attacker);
+			double attackValue = Die.RollD20();
 
 			// Determine if the attack value is enough to hit
 			bool hit = defender.CheckArmor (attackValue);
@@ -33,7 +33,7 @@ namespace DungeonMaster.Data
 			if (hit)
 			{
 				// Decrease defender's health by the attacker's weapon stat
-				defender.DmgPlayer (Attack.Weapon.Stat);
+				defender.DamagePlayer (attacker.MeleeWeapon.GetDamage());
 			}
 
 		}

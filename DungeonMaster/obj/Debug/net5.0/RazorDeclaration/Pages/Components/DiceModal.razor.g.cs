@@ -89,6 +89,28 @@ using DungeonMaster.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 45 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\Components\DiceModal.razor"
+      
+
+    public int DieSides { get; set; }
+    public int DieToRoll { get; set; }
+    public string modalShowStyling { get; set; } = "display:none";
+    public void OpenModal()
+    {
+        modalShowStyling = "display:block";
+        StateHasChanged();
+    }
+
+    public void CloseModal()
+    {
+        modalShowStyling = "display:none";
+        StateHasChanged();
+    }
+
+#line default
+#line hidden
+#nullable disable
     }
 }
 #pragma warning restore 1591

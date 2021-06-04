@@ -26,9 +26,9 @@ namespace DungeonMaster.Data
 		public int BaseDamage {get; set;}
 
 		/// <summary>
-		/// What dice the weapon uses
+		/// What dice the weapon uses, default is set to D4.
 		/// </summary>
-		public Dice diceUsed { get; set; }
+		public Dice diceUsed { get; set; } = Dice.D4;
 
 		/// <summary>
 		/// How far the weapon can reach
@@ -49,6 +49,22 @@ namespace DungeonMaster.Data
 			this.BaseDamage = baseDamage;
 			this.diceUsed = dice;
 			this.Range = range;
+		}
+
+		/// <summary>
+		/// Method to get the total damage done by this weapon.
+		/// Author: Jordan DeBord
+		/// </summary>
+		/// <returns>An int representing the total damage done.</returns>
+		public int GetDamage()
+		{
+			var dieToUse = diceUsed.ToString();
+
+			if (int.TryParse(dieToUse[1..], out int dieSides))
+			{
+				return BaseDamage + Die.Roll(dieSides, 1);
+			}
+			return BaseDamage;
 		}
 
 
