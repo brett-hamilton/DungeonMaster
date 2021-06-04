@@ -1,0 +1,21 @@
+﻿@page "/DiceModalTest"
+
+@using DungeonMaster.Data
+
+
+<h3>Dice Modal Test</h3>
+<hr />
+<br />
+<div class="row">
+    <label class="col-2">Dice Total: </label>
+    <input class="col-1" readonly value="@diceTotal" />
+</div>
+
+<TestBlazorApp.Pages.Components.DiceModal @ref="DiceModal"></TestBlazorApp.Pages.Components.DiceModal>
+<button class="btn btn-primary" @onclick="() => DiceModal.OpenModal()"> Roll Dice</button>
+
+@code {
+    private DungeonMaster.Pages.Components.DiceModal DiceModal { get; set; }
+
+    private int diceTotal;
+}

@@ -1,0 +1,62 @@
+﻿@*
+    Based upon the Modals provided by Dr. Roach
+    Implementation to hide and show based upon:
+    https://stackoverflow.com/questions/59256798/how-to-use-bootstrap-modal-in-blazor-client-app
+*@
+<div class="modal" id="rollDiceModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true" style="@modalShowStyling">
+    <div class="modal-dialog modal-dialog-centered modal">
+        <div id="mainContent" class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modalTitle" id="rollDiceModalTitle">Dice Roller</h5>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <label for="dieSides" class="col-4">Sides on Die: </label>
+                    <select @bind="DieSides" name="dieSides" id="dieSides" class="col-3">
+                        <option value="4">4</option>
+                        <option value="6">6</option>
+                        <option value="8">8</option>
+                        <option value="12">12</option>
+                        <option value="20" selected>20</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <label for="dieToRoll" class="col-4">Number of Die: </label>
+                    <select @bind="DieToRoll" name="dieToRoll" id="dieToRoll" class="col-3">
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary">Roll!</button>
+                <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code{
+
+    public int DieSides { get; set; }
+    public int DieToRoll { get; set; }
+    public string modalShowStyling { get; set; } = "display:none";
+    public void OpenModal()
+    {
+        modalShowStyling = "display:block";
+        StateHasChanged();
+    }
+
+    public void CloseModal()
+    {
+        modalShowStyling = "display:none";
+        StateHasChanged();
+    }
+}
+
