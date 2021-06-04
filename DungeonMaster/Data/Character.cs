@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PageHunter_SE1_Project.Data
+namespace DungeonMaster.Data
 {
 	public class Character
 	{
@@ -45,13 +45,13 @@ namespace PageHunter_SE1_Project.Data
 		public double ActionPoints { get; set; }
 
 		public Character()
-        {
+		{
 			Weapon sword = new Weapon("sword", 10, Dice.D6, 5.0);
 			this.Name = "Geralt";
 			this.Health = 100;
 			this.MeleeWeapon = sword;
 			this.ActionPoints = 120;
-        }
+		}
 
 		/// <summary>
 		/// Constructor for the Character to be initialized
@@ -71,14 +71,14 @@ namespace PageHunter_SE1_Project.Data
 		/// </summary>
 		/// <param name="damage"></param>
 		public void damagePlayer(double damage)
-        {
+		{
 			Health -= damage;
 
 			if(Health <= 0)
-            {
+			{
 				IsDead = true;
-            }
-        }
+			}
+		}
 
 		/// <summary>
 		/// check the armor status with an attack value to see if the attack will hit or miss
@@ -87,15 +87,15 @@ namespace PageHunter_SE1_Project.Data
 		/// <param name="attackValue"></param>
 		/// <returns>true if armor is too weak, false otherwise</returns>
 		public bool CheckArmor(double attackValue)
-        {
+		{
 			if(attackValue >= Armor.ProtectionPoints)
-            {
+			{
 				return true;
-            }
+			}
 
 			return false;
 
-        }
+		}
 
 	}
 }

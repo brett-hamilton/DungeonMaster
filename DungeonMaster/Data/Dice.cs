@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PageHunter_SE1_Project.Data
+namespace DungeonMaster.Data
 {
 	public enum Dice
 	{

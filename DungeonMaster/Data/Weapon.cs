@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PageHunter_SE1_Project.Data
+namespace DungeonMaster.Data
 {
 	public class Weapon
 	{
@@ -44,12 +44,12 @@ namespace PageHunter_SE1_Project.Data
 		/// <param name="dice">dice it uses</param>
 		/// <param name="range">what effective range the weapon has</param>
 		public Weapon(string name, int baseDamage, Dice dice, double range)
-        {
+		{
 			this.Name = name;
 			this.BaseDamage = baseDamage;
 			this.diceUsed = dice;
 			this.Range = range;
-        }
+		}
 
 
 		
