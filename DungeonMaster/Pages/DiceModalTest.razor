@@ -15,7 +15,13 @@
 <button class="btn btn-primary" @onclick="() => DiceModal.OpenModal()"> Roll Dice</button>
 
 @code {
+    /// <summary>
+    /// Modal that is to be displayed on the page.
+    /// </summary>
     private DungeonMaster.Pages.Components.DiceModal DiceModal { get; set; }
 
+    /// <summary>
+    /// Int representing the result of the dice roll.
+    /// </summary>
     private int diceTotal;
 }

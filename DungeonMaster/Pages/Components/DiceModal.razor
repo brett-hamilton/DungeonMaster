@@ -36,7 +36,7 @@
 
             <div class="modal-footer">
                 <button class="btn btn-primary">Roll!</button>
-                <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-secondary" @onclick="CloseModal" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>
@@ -44,15 +44,30 @@
 
 @code{
 
+    /// <summary>
+    /// DieSides and DieToRoll will eventually be communicated to the page the modal is on using SignalR.
+    /// </summary>
     public int DieSides { get; set; }
     public int DieToRoll { get; set; }
+
+    /// <summary>
+    /// String that represents whether the modal should be displayed or not. Modified by the open and close
+    /// modal buttons.
+    /// </summary>
     public string modalShowStyling { get; set; } = "display:none";
+
+    /// <summary>
+    /// Method to change styling to display the Modal.
+    /// </summary>
     public void OpenModal()
     {
         modalShowStyling = "display:block";
         StateHasChanged();
     }
 
+    /// <summary>
+    /// Method to change the styling to hide the Modal.
+    /// </summary>
     public void CloseModal()
     {
         modalShowStyling = "display:none";

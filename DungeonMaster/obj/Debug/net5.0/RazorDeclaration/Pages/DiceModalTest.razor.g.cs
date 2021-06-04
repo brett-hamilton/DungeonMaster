@@ -100,8 +100,14 @@ using DungeonMaster.Data;
 #nullable restore
 #line 17 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\DiceModalTest.razor"
        
+    /// <summary>
+    /// Modal that is to be displayed on the page.
+    /// </summary>
     private DungeonMaster.Pages.Components.DiceModal DiceModal { get; set; }
 
+    /// <summary>
+    /// Int representing the result of the dice roll.
+    /// </summary>
     private int diceTotal;
 
 #line default

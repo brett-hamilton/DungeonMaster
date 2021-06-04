@@ -39,12 +39,28 @@ namespace DungeonMaster.Data
             Columns = columns;
         }
 
+        /// <summary>
+        /// Default constructor to build a generic game.
+        /// </summary>
         public Game() 
         {
             Rows = 5;
             Columns = 5;
             GameBoard = new Character[Rows, Columns];
             GameName = "Test Game";
+        }
+
+        /// <summary>
+        /// Default constructor to build a generic game.
+        /// </summary>
+        public Game(Character char1, Character char2)
+        {
+            Rows = 5;
+            Columns = 5;
+            GameBoard = new Character[Rows, Columns];
+            GameName = "Test Game";
+            GameBoard[2, 2] = char1;
+            GameBoard[2, 3] = char2;
         }
 
         /// <summary>
@@ -99,7 +115,7 @@ namespace DungeonMaster.Data
 
             for (int i = 0; i < Rows; i++)
             {
-                for (int j = 0; i < Columns; i++)
+                for (int j = 0; j < Columns; j++)
                 {
                     if (character == GameBoard[i, j])
                     {
@@ -111,6 +127,12 @@ namespace DungeonMaster.Data
             return coordinateToReturn;
         }
 
+        /// <summary>
+        /// Melee Attack method, which will check range, then call the attack class's melee attack.
+        /// </summary>
+        /// <param name="attacker">Attacking character.</param>
+        /// <param name="defender">Defending character.</param>
+        /// <returns>String explaining result if needed.</returns>
         public string MeleeAttack(Character attacker, Character defender) 
         {
             var rangeCheck = MeleeRangeCheck(attacker, defender);

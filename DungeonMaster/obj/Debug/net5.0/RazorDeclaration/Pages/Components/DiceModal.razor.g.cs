@@ -93,15 +93,30 @@ using DungeonMaster.Shared;
 #line 45 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\Components\DiceModal.razor"
       
 
+    /// <summary>
+    /// DieSides and DieToRoll will eventually be communicated to the page the modal is on using SignalR.
+    /// </summary>
     public int DieSides { get; set; }
     public int DieToRoll { get; set; }
+
+    /// <summary>
+    /// String that represents whether the modal should be displayed or not. Modified by the open and close
+    /// modal buttons.
+    /// </summary>
     public string modalShowStyling { get; set; } = "display:none";
+
+    /// <summary>
+    /// Method to change styling to display the Modal.
+    /// </summary>
     public void OpenModal()
     {
         modalShowStyling = "display:block";
         StateHasChanged();
     }
 
+    /// <summary>
+    /// Method to change the styling to hide the Modal.
+    /// </summary>
     public void CloseModal()
     {
         modalShowStyling = "display:none";

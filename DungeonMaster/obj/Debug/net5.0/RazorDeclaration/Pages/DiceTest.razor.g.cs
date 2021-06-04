@@ -106,19 +106,34 @@ using Microsoft.AspNetCore.Components;
 #nullable restore
 #line 54 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\DiceTest.razor"
        
-
+    /// <summary>
+    /// Total from dice roll, displayed to user.
+    /// </summary>
     private int? diceTotal = null;
 
-    public int DieSides { get; set; }
+    /// <summary>
+    /// dieSides and dieToRoll chosen from dropdoby box by user.
+    /// </summary>
     protected int dieSides = 4;
     protected int dieToRoll = 1;
+
+    /// <summary>
+    /// Modifier chosen from drop down box, to adjust D20 roll.
+    /// </summary>
     private string modifier = "";
 
+    /// <summary>
+    /// Method to roll a single D20 die without modifiers.
+    /// </summary>
     private void Roll()
     {
         diceTotal = Die.RollD20();
     }
 
+    /// <summary>
+    /// Method to roll multiple multi-sided dice. The player chooses the number of dice and
+    /// sides of dice via a dropdown menu.
+    /// </summary>
     private void RollMultipleDice()
     {
         try
@@ -128,9 +143,14 @@ using Microsoft.AspNetCore.Components;
         catch (Exception e)
         {
             Console.WriteLine(e);
+            diceTotal = null;
         }
     }
 
+    /// <summary>
+    /// Method to roll a 20 sided die with advantage, disadvantage, or with no modifier.
+    /// Method will update the dice total value.
+    /// </summary>
     private void RollModifier()
     {
         if (modifier == "a")

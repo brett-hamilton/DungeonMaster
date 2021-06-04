@@ -90,7 +90,7 @@ using DungeonMaster.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Shared\NavMenu.razor"
+#line 33 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 
