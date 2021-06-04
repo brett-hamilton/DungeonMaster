@@ -135,6 +135,10 @@ namespace DungeonMaster.Data
         /// <returns>String explaining result if needed.</returns>
         public string MeleeAttack(Character attacker, Character defender) 
         {
+            if (defender.IsDead) 
+            {
+                return ($"{defender.Name} is already dead.");
+            }
             var rangeCheck = MeleeRangeCheck(attacker, defender);
             if (!rangeCheck) 
             {

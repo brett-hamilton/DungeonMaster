@@ -100,37 +100,54 @@ using DungeonMaster.Data;
 #nullable restore
 #line 46 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\MeleeAttackTest.razor"
        
-
+    /// <summary>
+    /// Two players and game board, to simulate the combat section of our game.
+    /// </summary>
     public Character player1 { get; set; } = new Character("Player 1", 50, 1);
     public Character player2 { get; set; } = new Character("Player 2", 50, 1);
 
     public Game testGame { get; set; } = new Game();
 
-    public string player1Name;
-    public string player1Weapon;
-    public double player1Health;
+    /// <summary>
+    ///  Strings representing Player information, to be displayed to the user.
+    /// </summary>
+    private string player1Name;
+    private string player1Weapon;
+    private double player1Health;
 
-    public string player2Name;
-    public string player2Weapon;
-    public double player2Health;
+    private string player2Name;
+    private string player2Weapon;
+    private double player2Health;
+    private string attackResult = "";
 
+    /// <summary>
+    /// Method to restart or setup the game.
+    /// </summary>
     public void SetupGame()
     {
         player1 = new Character("Player 1", 50, 1);
         player2 = new Character("Player 2", 50, 1);
         testGame = new Game(player1, player2);
+        attackResult = "";
 
         UpdatePlayerInfo();
 
         StateHasChanged();
     }
 
+    /// <summary>
+    /// Method to show that our attack method works.
+    /// </summary>
     public void AttackExample()
     {
-        testGame.MeleeAttack(player1, player2);
+        attackResult = testGame.MeleeAttack(player1, player2);
+        
         UpdatePlayerInfo();
 
     }
+    /// <summary>
+    /// Method to update Player information on the screen.
+    /// </summary>
     public void UpdatePlayerInfo()
     {
         player1Name = player1.Name;
