@@ -8,19 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\brett\\.nuget\\packages\\": {}
+    "C:\\Users\\ZJAD35\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\brett\\OneDrive - East Tennessee State University\\CSCI-4250 SE1\\Team Project\\DungeonMaster\\DungeonMaster\\DungeonMaster.csproj",
+      "projectUniqueName": "C:\\Users\\ZJAD35\\Source\\Repos\\su21-4250-skynet-dungeonmaster\\DungeonMaster\\DungeonMaster.csproj",
       "projectName": "DungeonMaster",
-      "projectPath": "C:\\Users\\brett\\OneDrive - East Tennessee State University\\CSCI-4250 SE1\\Team Project\\DungeonMaster\\DungeonMaster\\DungeonMaster.csproj",
-      "packagesPath": "C:\\Users\\brett\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\brett\\OneDrive - East Tennessee State University\\CSCI-4250 SE1\\Team Project\\DungeonMaster\\DungeonMaster\\obj\\",
+      "projectPath": "C:\\Users\\ZJAD35\\Source\\Repos\\su21-4250-skynet-dungeonmaster\\DungeonMaster\\DungeonMaster.csproj",
+      "packagesPath": "C:\\Users\\ZJAD35\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ZJAD35\\Source\\Repos\\su21-4250-skynet-dungeonmaster\\DungeonMaster\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\brett\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ZJAD35\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -63,7 +63,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -60,6 +60,10 @@ namespace DungeonMaster.Data
 		/// <param name="health"></param>
 		public Character(string name, double health, double actionPoints)
 		{
+			Weapon sword = new Weapon("sword", 10, Dice.D6, 5.0);
+			this.MeleeWeapon = sword;
+			Armor armor = new Armor("Leather", 6);
+			Armor = armor;
 			this.Name = name;
 			this.Health = health;
 			IsDead = false;
@@ -70,7 +74,7 @@ namespace DungeonMaster.Data
 		/// take health from the player
 		/// </summary>
 		/// <param name="damage"></param>
-		public void damagePlayer(double damage)
+		public void DamagePlayer(double damage)
 		{
 			Health -= damage;
 
