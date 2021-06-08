@@ -22,7 +22,8 @@ namespace DungeonMaster.Data
 		/// </summary>
 		/// <param name="attacker">The character attacking.</param>
 		/// <param name="defender">The character being attacked.</param>
-		public void MeleeAttack (Character attacker, Character defender)
+		/// <returns>Amount of damage attacker does to defender; 0 if miss.</returns>
+		public int MeleeAttack (Character attacker, Character defender)
 		{
 			// Roll the attack dice for a value to compare to defender's armor rating
 			double attackValue = Die.RollD20();
@@ -33,8 +34,12 @@ namespace DungeonMaster.Data
 			if (hit)
 			{
 				// Decrease defender's health by the attacker's weapon stat
-				defender.DamagePlayer (attacker.MeleeWeapon.GetDamage());
+				int damageAmount = attacker.MeleeWeapon.GetDamage ( );
+				defender.DamagePlayer (damageAmount);
+				return damageAmount;
 			}
+
+			return 0;
 
 		}
 	}
