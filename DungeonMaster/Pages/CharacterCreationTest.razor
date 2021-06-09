@@ -2,6 +2,8 @@
 
 @using DungeonMaster.Data
 @using Microsoft.AspNetCore.Components
+@using System.IO;
+@using System.Text.Json;
 <h3>Character Creation Test</h3>
 <hr />
 <br />
@@ -11,18 +13,45 @@
 <div id="CharacterCreator">
 	<label for="characterName">Name: </label>
 	<input placeholder="enter character name" @bind="characterName"/>
-	
+	<br />
 	<button class="btn btn-primary" @onclick="CreateCharacter">Create and Save Character</button>
+	<p>@errorMessage</p>
 </div>
 
 @code {
-	/// <summary>
-	/// Name of the character bring created
-	/// </summary>
+		/// <summary>
+		/// Name of the character bring created
+		/// </summary>
 	private string characterName = string.Empty;
 
+	/// <summary>
+	/// Contains error message if error has occurred.
+	/// </summary>
+	private string errorMessage = string.Empty;
+
+	/// <summary>
+	/// Creates a character with the provided information from form and saves it to JSON file.
+	/// 
+	/// Created by: Brett Hamilton
+	/// Created on: 6/9/2021
+	/// </summary>
 	public void CreateCharacter ( )
 	{
+		// Create new character and serialize it as a JSON string
 		Character newCharacter = new Character (characterName, 50, 1);
+		string jsonString = JsonSerializer.Serialize (newCharacter);
+
+		// Write the JSON string to a file for storage
+		string fileName = "characters.json";
+		string path = "Saves/" + fileName;
+
+		try
+		{
+			File.WriteAllText (path, jsonString);
+		}
+		catch (IOException e)
+		{
+			errorMessage = "Error: " + e.Message;
+		}
 	}
 }
