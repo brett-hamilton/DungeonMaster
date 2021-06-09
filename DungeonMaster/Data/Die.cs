@@ -21,9 +21,9 @@ namespace DungeonMaster.Data
         /// <param name="dieSides">Number of sides on the die to roll.</param>
         /// <param name="numberOfDie">Number of die to roll.</param>
         /// <returns>An int representing the total after rolling the die.</returns>
-        public static int Roll(int dieSides, int numberOfDie)
+        public static DiceRollReport Roll(int dieSides, int numberOfDie)
         {
-            if (dieSides < 2 || dieSides > 20)
+            if (dieSides < 2 || dieSides > 100)
             {
                 throw new Exception("Invalid Die Sides.");
             }
@@ -32,13 +32,18 @@ namespace DungeonMaster.Data
             {
                 throw new Exception("Invalid Number of Die.");
             }
-            var numberToReturn = 0;
-
+            var listOfDiceRolls = new List<int>();
             for (int i = 1; i <= numberOfDie; i++)
             {
-                numberToReturn += Rand.Next(1, (dieSides + 1));
+                listOfDiceRolls.Add(Rand.Next(1, (dieSides + 1)));
             }
-            return numberToReturn;
+
+            var rollReport = new DiceRollReport
+            {
+                DiceRolled = listOfDiceRolls
+            };
+
+            return rollReport;
         }
 
         /// <summary>

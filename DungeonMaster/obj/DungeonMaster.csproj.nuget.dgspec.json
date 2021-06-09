@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\brett\\source\\repos\\su21-4250-skynet-dungeonmaster\\DungeonMaster\\DungeonMaster.csproj": {}
+    "C:\\Users\\JD\\Source\\Repos\\su21-4250-skynet-dungeonmaster\\DungeonMaster\\DungeonMaster.csproj": {}
   },
   "projects": {
-    "C:\\Users\\brett\\source\\repos\\su21-4250-skynet-dungeonmaster\\DungeonMaster\\DungeonMaster.csproj": {
+    "C:\\Users\\JD\\Source\\Repos\\su21-4250-skynet-dungeonmaster\\DungeonMaster\\DungeonMaster.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\brett\\source\\repos\\su21-4250-skynet-dungeonmaster\\DungeonMaster\\DungeonMaster.csproj",
+        "projectUniqueName": "C:\\Users\\JD\\Source\\Repos\\su21-4250-skynet-dungeonmaster\\DungeonMaster\\DungeonMaster.csproj",
         "projectName": "DungeonMaster",
-        "projectPath": "C:\\Users\\brett\\source\\repos\\su21-4250-skynet-dungeonmaster\\DungeonMaster\\DungeonMaster.csproj",
-        "packagesPath": "C:\\Users\\brett\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\brett\\source\\repos\\su21-4250-skynet-dungeonmaster\\DungeonMaster\\obj\\",
+        "projectPath": "C:\\Users\\JD\\Source\\Repos\\su21-4250-skynet-dungeonmaster\\DungeonMaster\\DungeonMaster.csproj",
+        "packagesPath": "C:\\Users\\JD\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\JD\\Source\\Repos\\su21-4250-skynet-dungeonmaster\\DungeonMaster\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\brett\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\JD\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,7 +57,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }
