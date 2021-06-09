@@ -67,7 +67,7 @@ namespace DungeonMaster.Data
 			this.Name = name;
 			this.Health = health;
 			IsDead = false;
-			this.ActionPoints = ActionPoints;
+			this.ActionPoints = actionPoints;
 		}
 
 		/// <summary>

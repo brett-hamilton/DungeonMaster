@@ -146,17 +146,27 @@ namespace DungeonMaster.Data
 			}
 
 			var attack = new Attack();
-			int damage = attack.MeleeAttack(attacker, defender);
+			var attackReport = attack.MeleeAttack(attacker, defender);
 
-			if (damage != 0)
+			return attackReport.GetAttackReport();
+
+		}
+
+		public string RangedAttackAttempt(Character attacker, Character defender) 
+		{
+			if (defender.IsDead)
 			{
-				return ($"{attacker.Name} hit {defender.Name} for {damage} damage.");
-			}
-			else
-			{
-				return ($"{attacker.Name} missed {defender.Name}, dealing {damage} damage.");
+				return ($"{defender.Name} is already dead.");
 			}
 
+			var rangeCheck = false;
+
+			// check melee range
+
+			// Ranged attack
+
+
+			return "";
 		}
 	}
 }

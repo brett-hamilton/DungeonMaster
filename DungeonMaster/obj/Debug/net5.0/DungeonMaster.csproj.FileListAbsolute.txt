@@ -184,9 +184,3 @@ C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\obj\Deb
 C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\obj\Debug\net5.0\DungeonMaster.Views.pdb
 C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\obj\Debug\net5.0\DungeonMaster.genruntimeconfig.cache
 C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\obj\Debug\net5.0\DungeonMaster.csproj.CopyComplete
-C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\bin\Debug\net5.0\AngleSharp.dll
-C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\bin\Debug\net5.0\AngleSharp.Css.dll
-C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\bin\Debug\net5.0\AngleSharp.Diffing.dll
-C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\bin\Debug\net5.0\AngleSharpWrappers.dll
-C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\bin\Debug\net5.0\Bunit.Core.dll
-C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\bin\Debug\net5.0\Bunit.Web.dll

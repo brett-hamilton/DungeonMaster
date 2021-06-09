@@ -56,14 +56,14 @@ namespace DungeonMaster.Data
 		/// Author: Jordan DeBord
 		/// </summary>
 		/// <returns>An int representing the total damage done.</returns>
-		public int GetDamage()
+		public AttackReport GetDamage()
 		{
 			var dieToUse = DiceUsed.ToString();
 
 			// Try to parse out how many sides the Die is, then Roll it.
 			if (int.TryParse(dieToUse[1..], out int dieSides))
 			{
-				DiceRollReport dieRollReport;
+				DiceRollReport dieRollReport = null;
 				int dieRoll;
 
 				// If the die had a non-allowed number of sides, return 0 for the result.
@@ -76,9 +76,25 @@ namespace DungeonMaster.Data
 				{
 					dieRoll = 0;
 				}
-				return BaseDamage + dieRoll;
+
+				if (dieRollReport != null)
+				{
+					return new AttackReport
+					{
+						DiceRollReport = dieRollReport,
+						TotalDamageDealt = BaseDamage + dieRoll,
+						WeaponBaseDamage = BaseDamage,
+						DieUsed = DiceUsed
+					};
+				}
 			}
-			return BaseDamage;
+
+			return new AttackReport 
+			{ 
+				TotalDamageDealt = BaseDamage, 
+				WeaponBaseDamage = BaseDamage, 
+				DieUsed = DiceUsed 
+			};
 		}
 
 
