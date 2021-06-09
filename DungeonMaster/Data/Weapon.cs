@@ -28,7 +28,7 @@ namespace DungeonMaster.Data
 		/// <summary>
 		/// What dice the weapon uses, default is set to D4.
 		/// </summary>
-		public Dice diceUsed { get; set; } = Dice.D4;
+		public Dice DiceUsed { get; set; } = Dice.D4;
 
 		/// <summary>
 		/// How far the weapon can reach
@@ -47,7 +47,7 @@ namespace DungeonMaster.Data
 		{
 			this.Name = name;
 			this.BaseDamage = baseDamage;
-			this.diceUsed = dice;
+			this.DiceUsed = dice;
 			this.Range = range;
 		}
 
@@ -58,7 +58,7 @@ namespace DungeonMaster.Data
 		/// <returns>An int representing the total damage done.</returns>
 		public int GetDamage()
 		{
-			var dieToUse = diceUsed.ToString();
+			var dieToUse = DiceUsed.ToString();
 
 			// Try to parse out how many sides the Die is, then Roll it.
 			if (int.TryParse(dieToUse[1..], out int dieSides))
