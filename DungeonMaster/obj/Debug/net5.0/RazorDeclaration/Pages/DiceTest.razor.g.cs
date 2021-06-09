@@ -138,7 +138,8 @@ using Microsoft.AspNetCore.Components;
     {
         try
         {
-            diceTotal = Die.Roll(dieSides, dieToRoll);
+            var rollReport = Die.Roll(dieSides, dieToRoll);
+            diceTotal = rollReport.GetDiceTotal();
         }
         catch (Exception e)
         {

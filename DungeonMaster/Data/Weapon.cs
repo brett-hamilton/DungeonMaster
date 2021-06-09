@@ -63,12 +63,14 @@ namespace DungeonMaster.Data
 			// Try to parse out how many sides the Die is, then Roll it.
 			if (int.TryParse(dieToUse[1..], out int dieSides))
 			{
+				DiceRollReport dieRollReport;
 				int dieRoll;
 
 				// If the die had a non-allowed number of sides, return 0 for the result.
 				try 
 				{
-					dieRoll = Die.Roll(dieSides, 1);
+					dieRollReport = Die.Roll(dieSides, 1);
+					dieRoll = dieRollReport.GetDiceTotal();
 				} 
 				catch (Exception) 
 				{

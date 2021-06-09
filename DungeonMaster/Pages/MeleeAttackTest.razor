@@ -44,11 +44,24 @@
         </ul>
     </div>
 </div>
-<br />
 <div class="row">
     <button class="btn btn-danger" @onclick="AttackExample">Attack the Enemy!</button>
 </div>
-
+<br />
+<br />
+<div>
+    <div>
+        <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
+    </div>
+    <div>
+        <ul id="gameLog">
+            @foreach (string logMessage in GameLog)
+            {
+                <li>@logMessage</li>
+            }
+        </ul>
+    </div>
+</div>
 
 @code {
     /// <summary>
@@ -56,6 +69,8 @@
     /// </summary>
     public Character player1 { get; set; } = new Character("Player 1", 50, 1);
     public Character player2 { get; set; } = new Character("Player 2", 50, 1);
+
+    public List<string> GameLog { get; set; } = new List<string>();
 
     public Game testGame { get; set; } = new Game();
 
@@ -73,6 +88,7 @@
         player2 = new Character("Player 2", 50, 1);
         testGame = new Game(player1, player2);
         attackResult = "";
+        GameLog = new List<string>();
 
 
         StateHasChanged();
@@ -84,8 +100,16 @@
     public void AttackExample()
     {
         attackResult = testGame.MeleeAttackAttempt(player1, player2);
+        GameLog.Add(attackResult);
 
     }
 
+    /// <summary>
+    /// Method to clear the game log.
+    /// </summary>
+    public void ClearLog()
+    {
+        GameLog = new List<string>();
+    }
 
 }
