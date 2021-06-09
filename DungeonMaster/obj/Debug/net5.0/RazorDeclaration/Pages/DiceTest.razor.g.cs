@@ -104,7 +104,7 @@ using Microsoft.AspNetCore.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 54 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\DiceTest.razor"
+#line 74 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\DiceTest.razor"
        
     /// <summary>
     /// Total from dice roll, displayed to user.
@@ -121,6 +121,11 @@ using Microsoft.AspNetCore.Components;
     /// Modifier chosen from drop down box, to adjust D20 roll.
     /// </summary>
     private string modifier = "";
+
+    /// <summary>
+    /// List of previous actions taken.
+    /// </summary>
+    public List<string> GameLog { get; set; } = new List<string>();
 
     /// <summary>
     /// Method to roll a single D20 die without modifiers.
@@ -140,6 +145,7 @@ using Microsoft.AspNetCore.Components;
         {
             var rollReport = Die.Roll(dieSides, dieToRoll);
             diceTotal = rollReport.GetDiceTotal();
+            GameLog.Add($"Player rolled {rollReport.GetDiceReport()}");
         }
         catch (Exception e)
         {
@@ -168,6 +174,11 @@ using Microsoft.AspNetCore.Components;
         {
             diceTotal = Die.RollD20();
         }
+    }
+
+    private void ClearLog()
+    {
+        GameLog = new List<string>();
     }
 
 #line default

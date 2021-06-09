@@ -52,7 +52,7 @@ namespace DungeonMaster.Data
             {
                 if (i == (DiceRolled.Count - 1))
                 {
-                    diceReport += $"{DiceRolled[i]} = ${GetDiceTotal()}";
+                    diceReport += $"{DiceRolled[i]} = {GetDiceTotal()}";
                 }
                 else 
                 {
