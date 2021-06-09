@@ -1,0 +1,28 @@
+﻿@page "/CharacterCreationTest"
+
+@using DungeonMaster.Data
+@using Microsoft.AspNetCore.Components
+<h3>Character Creation Test</h3>
+<hr />
+<br />
+
+<p>Current Name: @characterName</p>
+
+<div id="CharacterCreator">
+	<label for="characterName">Name: </label>
+	<input placeholder="enter character name" @bind="characterName"/>
+	
+	<button class="btn btn-primary" @onclick="CreateCharacter">Create and Save Character</button>
+</div>
+
+@code {
+	/// <summary>
+	/// Name of the character bring created
+	/// </summary>
+	private string characterName = string.Empty;
+
+	public void CreateCharacter ( )
+	{
+		Character newCharacter = new Character (characterName, 50, 1);
+	}
+}
