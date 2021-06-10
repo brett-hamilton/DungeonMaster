@@ -1,0 +1,91 @@
+﻿@page "/MeleeAttackTest"
+
+@using DungeonMaster.Data
+<h3>Testing Melee Attacks</h3>
+<hr />
+<br />
+
+<div class="row">
+    <button class="btn btn-primary" @onclick="SetupGame">Start or Restart Game</button>
+</div>
+<br />
+@*Column representing Player 1's information.*@
+<div class="row">
+    <div class="col-3">
+        <ul>
+            <li>
+                Character Name: @player1.Name
+            </li>
+            <li>
+                Weapon: @player1.MeleeWeapon.Name
+            </li>
+            <li>
+                Health: @player1.Health
+            </li>
+        </ul>
+
+    </div>
+    @*Column representing attack information.*@
+    <div class="col-3">
+        @attackResult
+    </div>
+    @*Column representing Player 2's information.*@
+    <div class="col-3">
+        <ul>
+            <li>
+                Character Name: @player2.Name
+            </li>
+            <li>
+                Weapon: @player2.MeleeWeapon.Name
+            </li>
+            <li>
+                Health: @player2.Health
+            </li>
+        </ul>
+    </div>
+</div>
+<br />
+<div class="row">
+    <button class="btn btn-danger" @onclick="AttackExample">Attack the Enemy!</button>
+</div>
+
+
+@code {
+    /// <summary>
+    /// Two players and game board, to simulate the combat section of our game.
+    /// </summary>
+    public Character player1 { get; set; } = new Character("Player 1", 50, 1);
+    public Character player2 { get; set; } = new Character("Player 2", 50, 1);
+
+    public Game testGame { get; set; } = new Game();
+
+    /// <summary>
+    /// String message with the result of the attack.
+    /// </summary>
+    private string attackResult = "";
+
+    /// <summary>
+    /// Method to restart or setup the game.
+    /// </summary>
+    public void SetupGame()
+    {
+        player1 = new Character("Player 1", 50, 1);
+        player2 = new Character("Player 2", 50, 1);
+        testGame = new Game(player1, player2);
+        attackResult = "";
+
+
+        StateHasChanged();
+    }
+
+    /// <summary>
+    /// Method to show that our attack method works.
+    /// </summary>
+    public void AttackExample()
+    {
+        attackResult = testGame.MeleeAttackAttempt(player1, player2);
+
+    }
+
+
+}

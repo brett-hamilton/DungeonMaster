@@ -1,0 +1,117 @@
+﻿@page "/DiceTest"
+
+@using DungeonMaster.Data
+@using Microsoft.AspNetCore.Components
+<h3>Dice Test</h3>
+<hr />
+<br />
+
+<div class="row" id="DiceDisplay">
+    <label class="col-2">Dice Total: </label>
+    <input class="col-1" readonly value="@diceTotal" />
+</div>
+
+<hr />
+<br />
+<div id="MultiDiceRoller">
+    <label for="dieSides">Sides on Die: </label>
+    <select @bind="dieSides" name="dieSides" id="dieSides">
+        <option value="4">4</option>
+        <option value="6">6</option>
+        <option value="8">8</option>
+        <option value="12">12</option>
+        <option value="20">20</option>
+    </select>
+    <label for="dieToRoll">Number of Die: </label>
+    <select @bind="dieToRoll" name="dieToRoll" id="dieToRoll">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <div>
+        <button class="btn btn-primary" @onclick="@RollMultipleDice">ROLL!</button>
+        <button class="btn btn-primary" @onclick="Roll">QUICK D20 ROLL!</button>
+    </div>
+</div>
+<hr />
+<br />
+<h5>Single D20 With Modifier Test:</h5>
+<div id="rollDieWithModifier">
+    <label for="modifier">Modifier: </label>
+    <select @bind="modifier" name="modifier" id="modifier">
+        <option value="">No Modifier</option>
+        <option value="a">Advantage</option>
+        <option value="d">Disadvantage</option>
+    </select>
+</div>
+<div>
+    <button class="btn btn-primary" @onclick="RollModifier">ROLL D20 WITH MODIFIER!</button>
+</div>
+
+
+@code {
+    /// <summary>
+    /// Total from dice roll, displayed to user.
+    /// </summary>
+    private int? diceTotal = null;
+
+    /// <summary>
+    /// dieSides and dieToRoll chosen from dropdoby box by user.
+    /// </summary>
+    protected int dieSides = 4;
+    protected int dieToRoll = 1;
+
+    /// <summary>
+    /// Modifier chosen from drop down box, to adjust D20 roll.
+    /// </summary>
+    private string modifier = "";
+
+    /// <summary>
+    /// Method to roll a single D20 die without modifiers.
+    /// </summary>
+    private void Roll()
+    {
+        diceTotal = Die.RollD20();
+    }
+
+    /// <summary>
+    /// Method to roll multiple multi-sided dice. The player chooses the number of dice and
+    /// sides of dice via a dropdown menu.
+    /// </summary>
+    private void RollMultipleDice()
+    {
+        try
+        {
+            diceTotal = Die.Roll(dieSides, dieToRoll);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            diceTotal = null;
+        }
+    }
+
+    /// <summary>
+    /// Method to roll a 20 sided die with advantage, disadvantage, or with no modifier.
+    /// Method will update the dice total value.
+    /// </summary>
+    private void RollModifier()
+    {
+        if (modifier == "a")
+        {
+            diceTotal = Die.RollD20Advantage();
+        }
+
+        else if (modifier == "d")
+        {
+            diceTotal = Die.RollD20Disadvantage();
+        }
+
+        else
+        {
+            diceTotal = Die.RollD20();
+        }
+    }
+}
