@@ -1,0 +1,93 @@
+﻿@page "/RangedAttackTest"
+@using DungeonMaster.Data
+
+<h3>RangedAttackTest</h3>
+<button class="btn btn-primary" @onclick="SetupGame">Start or Restart Game</button>
+
+<div>
+    @Attacker.Name
+</div>
+<div>
+    @Defender1.Name
+</div>
+
+<button class="btn btn-warning" @onclick="Attack">Attack</button>
+
+<br />
+<br />
+<div class="row" style="outline: 1px solid blue; outline-offset: 8px">
+    <div style="border-right: 1px solid blue" class="col-2">
+        <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
+    </div>
+    <div class="col-10">
+        <ul class="list-group" id="gameLog">
+            @for (int i = (GameLog.Count - 1); i >= 0; i--)
+            {
+                if (i == (GameLog.Count - 1))
+                {
+                    <li class="list-group-item list-group-item-primary">@GameLog[i]</li>
+                }
+
+                else
+                {
+                    <li class="list-group-item list-group-item-secondary">@GameLog[i]</li>
+                }
+            }
+
+        </ul>
+    </div>
+</div>
+
+
+
+@code {
+    public Character Attacker { get; set; } = new Character()
+    {
+        Name = "Robin Hood",
+        Weapon = new Weapon("Bow", 4, Dice.D6, 100)
+        {
+            rangedWeapon = true,
+
+        }
+    };
+
+    public Character Defender1 { get; set; } = new Character();
+
+    //public Character Defender2 { get; set; }
+
+    public Game Game { get; set; }
+
+    public List<string> GameLog { get; set; } = new List<string>();
+
+    public void SetupGame()
+    {
+        Attacker = new Character()
+        {
+            Name = "Robin Hood",
+            Weapon = new Weapon("Bow", 4, Dice.D6, 100)
+            {
+                rangedWeapon = true,
+
+            }
+        };
+
+        Defender1 = new Character();
+
+        Game = new Game(Attacker, Defender1);
+
+    }
+
+    public void Attack()
+    {
+        var message = Game.RangedAttackAttempt(Attacker, Defender1);
+
+        GameLog.Add(message);
+    }
+
+    public void ClearLog()
+    {
+        GameLog = new List<string>();
+    }
+
+}
+
