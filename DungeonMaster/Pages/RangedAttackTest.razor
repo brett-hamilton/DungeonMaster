@@ -3,14 +3,33 @@
 
 <h3>RangedAttackTest</h3>
 <button class="btn btn-primary" @onclick="SetupGame">Start or Restart Game</button>
-
-<div>
-    @Attacker.Name
+<div class="row">
+    <div class="col-5">
+        <div>
+            Name: @Attacker.Name
+        </div>
+        <div>
+            Health: @Attacker.Health
+        </div>
+        <div>
+            Weapon: @Attacker.Weapon.Name
+        </div>
+    </div>
+    <div class="col-5">
+        <div>
+            Name: @Defender1.Name
+        </div>
+        <div>
+            Health: @Defender1.Health
+        </div>
+        <div>
+            Armor Name: @Defender1.Armor.Name
+        </div>
+        <div>
+            Armor Points: @Defender1.Armor.ProtectionPoints
+        </div>
+    </div>
 </div>
-<div>
-    @Defender1.Name
-</div>
-
 <button class="btn btn-warning" @onclick="Attack">Attack</button>
 
 <br />
