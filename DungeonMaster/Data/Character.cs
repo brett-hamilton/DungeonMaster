@@ -32,7 +32,7 @@ namespace DungeonMaster.Data
 		/// <summary>
 		/// They armor object they are wearing
 		/// </summary>
-		public Armor Armor { get; set; } 
+		public Armor Armor { get; set; } = new Armor("Leather Armor", 6);
 
 		/// <summary>
 		/// determines if the player is dead or not for future actions
