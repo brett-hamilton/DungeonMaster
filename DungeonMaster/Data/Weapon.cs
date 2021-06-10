@@ -38,7 +38,7 @@ namespace DungeonMaster.Data
 		///
 		//determines whether the weapon is used for range
 		///
-		public bool rangedWeapon { get; set; } 
+		public bool rangedWeapon { get; set; } = false;
 
 		///
 		//the type of damage the weapon uses

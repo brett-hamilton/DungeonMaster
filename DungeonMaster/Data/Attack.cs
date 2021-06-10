@@ -35,7 +35,7 @@ namespace DungeonMaster.Data
 			{
 				// Decrease defender's health by the attacker's weapon stat
 				
-				var attackReport = attacker.MeleeWeapon.GetDamage ( );
+				var attackReport = attacker.Weapon.GetDamage ( );
 				int damageAmount = attackReport.TotalDamageDealt;
 				defender.DamagePlayer (damageAmount);
 				attackReport.AttackRoll = attackValue;
@@ -54,6 +54,48 @@ namespace DungeonMaster.Data
 				DefenderName = defender.Name
 			};
 
+		}
+
+		/// <summary>
+		/// Perform a ranged attack against the defending character. If the defender is within melee range
+		/// then the attack roll is with disadvantage.
+		/// </summary>
+		/// <param name="attacker">Character attacking the other.</param>
+		/// <param name="defender">Character defending against the attack.</param>
+		/// <param name="disadvantage">If the defending character is in melee range.</param>
+		/// <returns>An attack report containing information about the attack.</returns>
+		public AttackReport RangedAttack(Character attacker, Character defender, bool disadvantage) 
+		{
+			double attackValue;
+			if (disadvantage)
+			{
+				attackValue = Die.RollD20Disadvantage();
+			}
+			else 
+			{
+				attackValue = Die.RollD20();
+			}
+
+			bool hit = defender.CheckArmor(attackValue);
+
+			if (hit) 
+			{
+				var attackReport = attacker.Weapon.GetDamage();
+				defender.DamagePlayer(attackReport.TotalDamageDealt); attackReport.AttackRoll = attackValue;
+				attackReport.HitCheck = hit;
+				attackReport.AttackerName = attacker.Name;
+				attackReport.DefenderName = defender.Name;
+
+				return attackReport;
+			}
+
+			return new AttackReport
+			{
+				AttackRoll = attackValue,
+				HitCheck = hit,
+				AttackerName = attacker.Name,
+				DefenderName = defender.Name
+			};
 		}
 	}
 }

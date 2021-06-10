@@ -152,6 +152,12 @@ namespace DungeonMaster.Data
 
 		}
 
+		/// <summary>
+		/// Ranged attack method, which will verify target is not dead and attempt to attack them.
+		/// </summary>
+		/// <param name="attacker">Character attempting to attack the other.</param>
+		/// <param name="defender">Character being attacked.</param>
+		/// <returns>A string containing information about the result.</returns>
 		public string RangedAttackAttempt(Character attacker, Character defender) 
 		{
 			if (defender.IsDead)
@@ -159,14 +165,19 @@ namespace DungeonMaster.Data
 				return ($"{defender.Name} is already dead.");
 			}
 
-			var rangeCheck = false;
+			var rangeCheck = RangedRangeCheck(attacker, defender);
+			if (!rangeCheck)
+			{
+				return ($"{defender.Name} is too far away to range attack.");
+			}
 
-			// check melee range
+			// If the defender is in melee range, attacker has disadvantage.
+			var disadvantageCheck = MeleeRangeCheck(defender, attacker);
 
-			// Ranged attack
+			var attack = new Attack();
+			var attackReport = attack.RangedAttack(attacker, defender, disadvantageCheck);
 
-
-			return "";
+			return attackReport.GetAttackReport();
 		}
 	}
 }
