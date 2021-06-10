@@ -12,84 +12,84 @@ namespace DungeonMaster.Pages
     using System.Linq;
     using System.Threading.Tasks;
 #nullable restore
-#line 1 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 1 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 2 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 3 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 4 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 5 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 6 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 7 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 8 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 9 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using DungeonMaster;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 10 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using DungeonMaster.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\DiceTest.razor"
+#line 3 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\DiceTest.razor"
 using DungeonMaster.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\DiceTest.razor"
+#line 4 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\DiceTest.razor"
 using Microsoft.AspNetCore.Components;
 
 #line default
@@ -104,7 +104,7 @@ using Microsoft.AspNetCore.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 54 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\DiceTest.razor"
+#line 83 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\DiceTest.razor"
        
     /// <summary>
     /// Total from dice roll, displayed to user.
@@ -123,6 +123,11 @@ using Microsoft.AspNetCore.Components;
     private string modifier = "";
 
     /// <summary>
+    /// List of previous actions taken.
+    /// </summary>
+    public List<string> GameLog { get; set; } = new List<string>();
+
+    /// <summary>
     /// Method to roll a single D20 die without modifiers.
     /// </summary>
     private void Roll()
@@ -138,7 +143,9 @@ using Microsoft.AspNetCore.Components;
     {
         try
         {
-            diceTotal = Die.Roll(dieSides, dieToRoll);
+            var rollReport = Die.Roll(dieSides, dieToRoll);
+            diceTotal = rollReport.GetDiceTotal();
+            GameLog.Add($"Player rolled {rollReport.GetDiceReport()}");
         }
         catch (Exception e)
         {
@@ -167,6 +174,11 @@ using Microsoft.AspNetCore.Components;
         {
             diceTotal = Die.RollD20();
         }
+    }
+
+    private void ClearLog()
+    {
+        GameLog = new List<string>();
     }
 
 #line default

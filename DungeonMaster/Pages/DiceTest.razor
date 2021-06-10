@@ -16,11 +16,14 @@
 <div id="MultiDiceRoller">
     <label for="dieSides">Sides on Die: </label>
     <select @bind="dieSides" name="dieSides" id="dieSides">
+        <option value="2">2</option>
         <option value="4">4</option>
         <option value="6">6</option>
         <option value="8">8</option>
+        <option value="10">10</option>
         <option value="12">12</option>
         <option value="20">20</option>
+        <option value="100">100</option>
     </select>
     <label for="dieToRoll">Number of Die: </label>
     <select @bind="dieToRoll" name="dieToRoll" id="dieToRoll">
@@ -46,8 +49,35 @@
         <option value="d">Disadvantage</option>
     </select>
 </div>
+<br />
+
 <div>
     <button class="btn btn-primary" @onclick="RollModifier">ROLL D20 WITH MODIFIER!</button>
+</div>
+<br />
+<br />
+
+<div class="row" style="outline: 1px solid blue; outline-offset: 8px">
+    <div style="border-right: 1px solid blue" class="col-2">
+        <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
+    </div>
+    <div class="col-10">
+        <ul class="list-group" id="gameLog">
+            @for (int i = (GameLog.Count - 1); i >= 0; i--)
+            {
+                if (i == (GameLog.Count - 1))
+                {
+                    <li class="list-group-item list-group-item-primary">@GameLog[i]</li>
+                }
+
+                else
+                {
+                    <li class="list-group-item list-group-item-secondary">@GameLog[i]</li>
+                }
+            }
+
+        </ul>
+    </div>
 </div>
 
 
@@ -69,6 +99,11 @@
     private string modifier = "";
 
     /// <summary>
+    /// List of previous actions taken.
+    /// </summary>
+    public List<string> GameLog { get; set; } = new List<string>();
+
+    /// <summary>
     /// Method to roll a single D20 die without modifiers.
     /// </summary>
     private void Roll()
@@ -84,7 +119,9 @@
     {
         try
         {
-            diceTotal = Die.Roll(dieSides, dieToRoll);
+            var rollReport = Die.Roll(dieSides, dieToRoll);
+            diceTotal = rollReport.GetDiceTotal();
+            GameLog.Add($"Player rolled {rollReport.GetDiceReport()}");
         }
         catch (Exception e)
         {
@@ -113,5 +150,10 @@
         {
             diceTotal = Die.RollD20();
         }
+    }
+
+    private void ClearLog()
+    {
+        GameLog = new List<string>();
     }
 }

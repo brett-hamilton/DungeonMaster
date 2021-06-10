@@ -13,70 +13,70 @@ namespace DungeonMaster.Pages.Components
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\JD\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 1 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\JD\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 2 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\JD\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 3 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\JD\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 4 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\JD\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 5 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\JD\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 6 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\JD\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 7 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\JD\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 8 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\JD\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 9 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using DungeonMaster;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\JD\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 10 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
 using DungeonMaster.Shared;
 
 #line default
@@ -90,18 +90,33 @@ using DungeonMaster.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 45 "C:\Users\JD\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\Components\DiceModal.razor"
+#line 47 "C:\Users\JD\Source\Repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\Components\DiceModal.razor"
       
 
+    /// <summary>
+    /// DieSides and DieToRoll will eventually be communicated to the page the modal is on using SignalR.
+    /// </summary>
     public int DieSides { get; set; }
     public int DieToRoll { get; set; }
+
+    /// <summary>
+    /// String that represents whether the modal should be displayed or not. Modified by the open and close
+    /// modal buttons.
+    /// </summary>
     public string modalShowStyling { get; set; } = "display:none";
+
+    /// <summary>
+    /// Method to change styling to display the Modal.
+    /// </summary>
     public void OpenModal()
     {
         modalShowStyling = "display:block";
         StateHasChanged();
     }
 
+    /// <summary>
+    /// Method to change the styling to hide the Modal.
+    /// </summary>
     public void CloseModal()
     {
         modalShowStyling = "display:none";
