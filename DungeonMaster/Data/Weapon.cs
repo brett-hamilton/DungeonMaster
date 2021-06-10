@@ -35,6 +35,16 @@ namespace DungeonMaster.Data
 		/// </summary>
 		public double Range { get; set; } //not necessary for the time being
 
+		///
+		//determines whether the weapon is used for range
+		///
+		public bool rangedWeapon { get; set; } 
+
+		///
+		//the type of damage the weapon uses
+		///
+		public DamageTypes DamageType { get; set; }
+
 		/// <summary>
 		/// Loaded constructor for making a new weapon
 		/// </summary>
@@ -49,6 +59,31 @@ namespace DungeonMaster.Data
 			this.BaseDamage = baseDamage;
 			this.DiceUsed = dice;
 			this.Range = range;
+		}
+
+		/// <summary>
+		/// Loaded constructor for making a new weapon
+		/// </summary>
+		/// Author: Hunter Page
+		/// <param name="name">name of the weapon</param>
+		/// <param name="baseDamage">damage of the weapon</param>
+		/// <param name="dice">dice it uses</param>
+		/// <param name="range">what effective range the weapon has</param>
+		/// <param name="damageTypes">what type of damage the weapon does</param>
+		public Weapon(string name, int baseDamage, Dice dice, double range, DamageTypes damageTypes)
+		{
+			this.Name = name;
+			this.BaseDamage = baseDamage;
+			this.diceUsed = dice;
+			this.Range = range;
+			this.DamageType = damageTypes;
+
+			//sets value of rangedWeapon to false if a melee weapon
+			if(range <= 1)
+            {
+				this.rangedWeapon = false;
+            }
+			
 		}
 
 		/// <summary>
