@@ -6,6 +6,7 @@
  *************************************************/
 
 using System;
+using DungeonMaster.Data;
 
 public class Spell
 {

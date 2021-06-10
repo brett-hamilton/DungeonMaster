@@ -7,14 +7,15 @@
 
 using System;
 
-public class HealingSpell : Spell
+namespace DungeonMaster.Data
 {
-	public double HealingFactor { get; set; }
-
-	public HealingSpell(string spellName, SpellTypes spellType, double healingFactor)
+	public class HealingSpell : Spell
 	{
-		this.SpellName = spellName;
-		this.SpellType = spellType;
-		this.HealingFactor = HealingFactor;
+		public double HealingFactor { get; set; }
+
+		public HealingSpell(string spellName, SpellTypes spellType, double healingFactor) : base(spellName, spellType)
+		{
+			this.HealingFactor = HealingFactor;
+		}
 	}
 }

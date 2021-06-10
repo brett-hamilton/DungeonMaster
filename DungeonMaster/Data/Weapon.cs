@@ -43,7 +43,7 @@ namespace DungeonMaster.Data
 		///
 		//the type of damage the weapon uses
 		///
-		public DamageTypes DamageType { get; set; }
+		public Effect DamageType { get; set; }
 
 		/// <summary>
 		/// Loaded constructor for making a new weapon
@@ -70,11 +70,11 @@ namespace DungeonMaster.Data
 		/// <param name="dice">dice it uses</param>
 		/// <param name="range">what effective range the weapon has</param>
 		/// <param name="damageTypes">what type of damage the weapon does</param>
-		public Weapon(string name, int baseDamage, Dice dice, double range, DamageTypes damageTypes)
+		public Weapon(string name, int baseDamage, Dice dice, double range, Effect damageTypes)
 		{
 			this.Name = name;
 			this.BaseDamage = baseDamage;
-			this.diceUsed = dice;
+			this.DiceUsed = dice;
 			this.Range = range;
 			this.DamageType = damageTypes;
 

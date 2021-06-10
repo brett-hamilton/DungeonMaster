@@ -47,11 +47,6 @@ namespace DungeonMaster.Data
 		///represents the current status of the player
 		public Status Status { get; set; }
 
-		/// <summary>
-		/// The number of points they have to perform an attack or action
-		/// </summary>
-		public double ActionPoints { get; set; }
-
 		public Character()
 		{
 			Weapon sword = new Weapon("sword", 10, Dice.D6, 5.0);

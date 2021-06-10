@@ -7,16 +7,17 @@
 
 using System;
 
-public class DamageSpell : Spell
+namespace DungeonMaster.Data
 {
-
-	public double Damage { get; set; }
-
-
-	public DamageSpell(string spellName, SpellTypes spellType, double damage)
+	public class DamageSpell : Spell
 	{
-		this.SpellName = spellName;
-		this.SpellType = spellType;
-		this.Damage = damage;
+
+		public double Damage { get; set; }
+
+
+		public DamageSpell(string spellName, SpellTypes spellType, double damage) : base(spellName, spellType)
+		{
+			this.Damage = damage;
+		}
 	}
 }
