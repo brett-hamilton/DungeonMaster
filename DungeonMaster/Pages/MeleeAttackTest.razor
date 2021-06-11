@@ -11,45 +11,38 @@
 <br />
 @*Column representing Player 1's information.*@
 <div class="row">
-    <div class="col-3">
-        <ul>
-            <li>
-                Character Name: @player1.Name
-            </li>
-            <li>
-                Weapon: @player1.Weapon.Name
-            </li>
-            <li>
-                Health: @player1.Health
-            </li>
-            <li>
-                Armor: @player1.Armor.ProtectionPoints
-            </li>
-        </ul>
-
+    <div class="col-3 card" style="margin-right: 10px">
+        <div class="card-body">
+            <h5 class="card-title">
+                @player1.Name
+            </h5>
+            <p class="card-text">
+                Health: @player1.Health <br />
+                Weapon: @player1.Weapon.Name <br />
+                Armor: @player1.Armor.ProtectionPoints <br />
+            </p>
+        </div>
     </div>
+    
     @*Column representing attack information.*@
     <div class="col-3">
         @attackResult
     </div>
     @*Column representing Player 2's information.*@
-    <div class="col-3">
-        <ul>
-            <li>
-                Character Name: @player2.Name
-            </li>
-            <li>
-                Weapon: @player2.Weapon.Name
-            </li>
-            <li>
-                Health: @player2.Health
-            </li>
-            <li>
-                Armor: @player2.Armor.ProtectionPoints
-            </li>
-        </ul>
+    <div class="col-3 card" style="margin-right: 10px">
+        <div class="card-body">
+            <h5 class="card-title">
+                @player2.Name
+            </h5>
+            <p class="card-text">
+                Health: @player2.Health <br />
+                Weapon: @player2.Weapon.Name <br />
+                Armor: @player2.Armor.ProtectionPoints <br />
+            </p>
+        </div>
     </div>
 </div>
+<br />
 <div class="row">
     <button class="btn btn-danger" @onclick="AttackExample">Attack the Enemy!</button>
 </div>
