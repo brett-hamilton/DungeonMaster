@@ -183,5 +183,31 @@ namespace DungeonMaster.Data
 
 			return attackReport.GetAttackReport();
 		}
+
+		/// <summary>
+		/// Check if the provided row and column are valid in the game board,
+		/// if so check if that space is occupied. If not, place character there.
+		/// </summary>
+		/// <param name="character">Character to be placed in the gameboard.</param>
+		/// <param name="row">Row to place character in.</param>
+		/// <param name="col">Column to place character in.</param>
+		/// <returns>Boolean representing if character was placed into the gameboard.</returns>
+		public bool AddCharacter(Character character, int row, int col) 
+		{
+			var currentOccupant = GameBoard[row, col];
+
+			if (row >= Rows || col >= Columns || row < 0 || col < 0)
+			{
+				return false;
+			}
+
+			if (currentOccupant != null)
+			{
+				return false;
+			}
+
+			GameBoard[row, col] = character;
+			return true;
+		}
 	}
 }

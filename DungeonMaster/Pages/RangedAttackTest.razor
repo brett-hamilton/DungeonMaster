@@ -5,8 +5,9 @@
 <br />
 <button class="btn btn-primary" @onclick="SetupGame">Start or Restart Game</button>
 <br />
+<br />
 <div class="row">
-    <div class="col-5">
+    <div class="col-4">
         <div>
             Name: @Attacker.Name
         </div>
@@ -17,7 +18,7 @@
             Weapon: @Attacker.Weapon.Name
         </div>
     </div>
-    <div class="col-5">
+    <div class="col-4">
         <div>
             Name: @Defender1.Name
         </div>
@@ -31,9 +32,32 @@
             Armor Points: @Defender1.Armor.ProtectionPoints
         </div>
     </div>
+    <div class="col-4">
+        <div>
+            Name: @Defender2.Name
+        </div>
+        <div>
+            Health: @Defender2.Health
+        </div>
+        <div>
+            Armor Name: @Defender2.Armor.Name
+        </div>
+        <div>
+            Armor Points: @Defender2.Armor.ProtectionPoints
+        </div>
+    </div>
 </div>
-<button class="btn btn-warning" @onclick="Attack">Attack</button>
-
+<button class="btn btn-danger" @onclick="ShowAttackOptions">Attack</button>
+<br />
+@* Got help for this implementation from: https://github.com/dotnet/aspnetcore/issues/15956 *@
+@if (showTargets)
+{
+    <div>
+        <br />
+        <button class="btn btn-warning" @onclick="() => Attack(Defender1)">@Defender1.Name</button>
+        <button class="btn btn-warning" @onclick="() => Attack(Defender2)">@Defender2.Name</button>
+    </div>
+}
 <br />
 <br />
 <div class="row" style="outline: 1px solid blue; outline-offset: 8px; max-height: 200px; min-height: 200px">
@@ -62,6 +86,9 @@
 
 
 @code {
+    /// <summary>
+    /// Attacker who is carrying out the attacks with a ranged weapon.
+    /// </summary>
     public Character Attacker { get; set; } = new Character()
     {
         Name = "Robin Hood",
@@ -72,14 +99,31 @@
         }
     };
 
+    /// <summary>
+    /// Defenders being attacked by the attacker.
+    /// </summary>
     public Character Defender1 { get; set; } = new Character();
 
-    //public Character Defender2 { get; set; }
+    public Character Defender2 { get; set; } = new Character() { Name = "Sheriff" };
 
-    public Game Game { get; set; }
+    /// <summary>
+    /// Game representing the current state of the game.
+    /// </summary>
+    public Game Game { get; set; } = new Game();
 
+    /// <summary>
+    /// List of strings of all attacks carried out.
+    /// </summary>
     public List<string> GameLog { get; set; } = new List<string>();
 
+    /// <summary>
+    /// Boolean representing if we are displaying the div containing the potential targets.
+    /// </summary>
+    public bool showTargets = false;
+
+    /// <summary>
+    /// Method to set up the characters and place them into the game.
+    /// </summary>
     public void SetupGame()
     {
         Attacker = new Character()
@@ -93,21 +137,40 @@
         };
 
         Defender1 = new Character();
+        Defender2 = new Character() { Name = "Sheriff" };
 
         Game = new Game(Attacker, Defender1);
+        Game.AddCharacter(Defender2, 4, 4);
 
     }
 
-    public void Attack()
+    /// <summary>
+    /// Method to attack the chosen character, adding the result to the game log.
+    /// </summary>
+    /// <param name="defender"></param>
+    public void Attack(Character defender)
     {
-        var message = Game.RangedAttackAttempt(Attacker, Defender1);
+        var message = Game.RangedAttackAttempt(Attacker, defender);
 
         GameLog.Add(message);
+
+        showTargets = false;
     }
 
+    /// <summary>
+    /// Method to clear the game log.
+    /// </summary>
     public void ClearLog()
     {
         GameLog = new List<string>();
+    }
+
+    /// <summary>
+    /// Method to show potential targets.
+    /// </summary>
+    public void ShowAttackOptions()
+    {
+        showTargets = true;
     }
 
 }
