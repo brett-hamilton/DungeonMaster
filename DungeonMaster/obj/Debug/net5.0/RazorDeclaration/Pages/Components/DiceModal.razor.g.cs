@@ -90,7 +90,7 @@ using DungeonMaster.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 45 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\Components\DiceModal.razor"
+#line 48 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\Components\DiceModal.razor"
       
 
     /// <summary>

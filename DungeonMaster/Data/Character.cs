@@ -44,6 +44,9 @@ namespace DungeonMaster.Data
 		/// </summary>
 		public double ActionPoints { get; set; }
 
+		///represents the current status of the player
+		public Status Status { get; set; }
+
 		public Character()
 		{
 			Weapon sword = new Weapon("sword", 10, Dice.D6, 5.0);
@@ -67,7 +70,7 @@ namespace DungeonMaster.Data
 			this.Name = name;
 			this.Health = health;
 			IsDead = false;
-			this.ActionPoints = ActionPoints;
+			this.ActionPoints = actionPoints;
 		}
 
 		/// <summary>

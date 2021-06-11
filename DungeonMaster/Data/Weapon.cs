@@ -28,12 +28,22 @@ namespace DungeonMaster.Data
 		/// <summary>
 		/// What dice the weapon uses, default is set to D4.
 		/// </summary>
-		public Dice diceUsed { get; set; } = Dice.D4;
+		public Dice DiceUsed { get; set; } = Dice.D4;
 
 		/// <summary>
 		/// How far the weapon can reach
 		/// </summary>
 		public double Range { get; set; } //not necessary for the time being
+
+		///
+		//determines whether the weapon is used for range
+		///
+		public bool rangedWeapon { get; set; } 
+
+		///
+		//the type of damage the weapon uses
+		///
+		public Effect DamageType { get; set; }
 
 		/// <summary>
 		/// Loaded constructor for making a new weapon
@@ -47,8 +57,33 @@ namespace DungeonMaster.Data
 		{
 			this.Name = name;
 			this.BaseDamage = baseDamage;
-			this.diceUsed = dice;
+			this.DiceUsed = dice;
 			this.Range = range;
+		}
+
+		/// <summary>
+		/// Loaded constructor for making a new weapon
+		/// </summary>
+		/// Author: Hunter Page
+		/// <param name="name">name of the weapon</param>
+		/// <param name="baseDamage">damage of the weapon</param>
+		/// <param name="dice">dice it uses</param>
+		/// <param name="range">what effective range the weapon has</param>
+		/// <param name="damageTypes">what type of damage the weapon does</param>
+		public Weapon(string name, int baseDamage, Dice dice, double range, Effect damageTypes)
+		{
+			this.Name = name;
+			this.BaseDamage = baseDamage;
+			this.DiceUsed = dice;
+			this.Range = range;
+			this.DamageType = damageTypes;
+
+			//sets value of rangedWeapon to false if a melee weapon
+			if(range <= 1)
+            {
+				this.rangedWeapon = false;
+            }
+			
 		}
 
 		/// <summary>
@@ -56,27 +91,45 @@ namespace DungeonMaster.Data
 		/// Author: Jordan DeBord
 		/// </summary>
 		/// <returns>An int representing the total damage done.</returns>
-		public int GetDamage()
+		public AttackReport GetDamage()
 		{
-			var dieToUse = diceUsed.ToString();
+			var dieToUse = DiceUsed.ToString();
 
 			// Try to parse out how many sides the Die is, then Roll it.
 			if (int.TryParse(dieToUse[1..], out int dieSides))
 			{
+				DiceRollReport dieRollReport = null;
 				int dieRoll;
 
 				// If the die had a non-allowed number of sides, return 0 for the result.
 				try 
 				{
-					dieRoll = Die.Roll(dieSides, 1);
+					dieRollReport = Die.Roll(dieSides, 1);
+					dieRoll = dieRollReport.GetDiceTotal();
 				} 
 				catch (Exception) 
 				{
 					dieRoll = 0;
 				}
-				return BaseDamage + dieRoll;
+
+				if (dieRollReport != null)
+				{
+					return new AttackReport
+					{
+						DiceRollReport = dieRollReport,
+						TotalDamageDealt = BaseDamage + dieRoll,
+						WeaponBaseDamage = BaseDamage,
+						DieUsed = DiceUsed
+					};
+				}
 			}
-			return BaseDamage;
+
+			return new AttackReport 
+			{ 
+				TotalDamageDealt = BaseDamage, 
+				WeaponBaseDamage = BaseDamage, 
+				DieUsed = DiceUsed 
+			};
 		}
 
 
