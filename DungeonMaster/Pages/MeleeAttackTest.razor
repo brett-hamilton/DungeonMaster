@@ -1,143 +1,187 @@
 ﻿@page "/MeleeAttackTest"
 
 @using DungeonMaster.Data
+@using System.IO;
+@using System.Text.Json;
 <h3>Testing Melee Attacks</h3>
 <hr />
 <br />
 
-<div class="row">
-    <label for="dieSides">Load Character from File: </label>
-    <select @bind="doLoadCharacter" name="doLoadCharacter" id="doLoadCharacter">
-        <option value="yes">2</option>
-        <option value="no">4</option>
-    </select>
+<div>
+	<label for="doLoadCharacter">Load Character from File: </label>
+	<select @bind="doLoadCharacter" name="doLoadCharacter" id="doLoadCharacter">
+		<option value="no">No</option>
+		<option value="yes">Yes</option>
+	</select>
+	<br />
+	<label>@status</label>
 </div>
+<br />
 
 <div class="row">
-    <button class="btn btn-primary" @onclick="SetupGame">Start or Restart Game</button>
+	<button class="btn btn-primary" @onclick="SetupGame">Start or Restart Game</button>
 </div>
 <br />
 @*Column representing Player 1's information.*@
 <div class="row">
-    <div class="col-3">
-        <ul>
-            <li>
-                Character Name: @player1.Name
-            </li>
-            <li>
-                Weapon: @player1.MeleeWeapon.Name
-            </li>
-            <li>
-                Health: @player1.Health
-            </li>
-            <li>
-                Armor: @player1.Armor.ProtectionPoints
-            </li>
-        </ul>
+	<div class="col-3">
+		<ul>
+			<li>
+				Character Name: @player1.Name
+			</li>
+			<li>
+				Weapon: @player1.MeleeWeapon.Name
+			</li>
+			<li>
+				Health: @player1.Health
+			</li>
+			<li>
+				Armor: @player1.Armor.ProtectionPoints
+			</li>
+		</ul>
 
-    </div>
-    @*Column representing attack information.*@
-    <div class="col-3">
-        @attackResult
-    </div>
-    @*Column representing Player 2's information.*@
-    <div class="col-3">
-        <ul>
-            <li>
-                Character Name: @player2.Name
-            </li>
-            <li>
-                Weapon: @player2.MeleeWeapon.Name
-            </li>
-            <li>
-                Health: @player2.Health
-            </li>
-            <li>
-                Armor: @player2.Armor.ProtectionPoints
-            </li>
-        </ul>
-    </div>
+	</div>
+	@*Column representing attack information.*@
+	<div class="col-3">
+		@attackResult
+	</div>
+	@*Column representing Player 2's information.*@
+	<div class="col-3">
+		<ul>
+			<li>
+				Character Name: @player2.Name
+			</li>
+			<li>
+				Weapon: @player2.MeleeWeapon.Name
+			</li>
+			<li>
+				Health: @player2.Health
+			</li>
+			<li>
+				Armor: @player2.Armor.ProtectionPoints
+			</li>
+		</ul>
+	</div>
 </div>
 <div class="row">
-    <button class="btn btn-danger" @onclick="AttackExample">Attack the Enemy!</button>
+	<button class="btn btn-danger" @onclick="AttackExample">Attack the Enemy!</button>
 </div>
 <br />
 <br />
 <div class="row" style="outline: 1px solid blue; outline-offset: 8px">
-    <div style="border-right: 1px solid blue" class="col-2">
-        <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
-    </div>
-    <div class="col-10">
-        <ul class="list-group" id="gameLog">
-            @for (int i = (GameLog.Count - 1); i >= 0; i--)
-            {
-                if (i == (GameLog.Count - 1))
-                {
-                    <li class="list-group-item list-group-item-primary">@GameLog[i]</li>
-                }
+	<div style="border-right: 1px solid blue" class="col-2">
+		<button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
+	</div>
+	<div class="col-10">
+		<ul class="list-group" id="gameLog">
+			@for (int i = (GameLog.Count - 1); i >= 0; i--)
+			{
+				if (i == (GameLog.Count - 1))
+				{
+					<li class="list-group-item list-group-item-primary">@GameLog[i]</li>
+				}
 
-                else
-                {
-                    <li class="list-group-item list-group-item-secondary">@GameLog[i]</li>
-                }
-            }
+				else
+				{
+					<li class="list-group-item list-group-item-secondary">@GameLog[i]</li>
+				}
+			}
 
-        </ul>
-    </div>
+		</ul>
+	</div>
 </div>
 
 @code {
-    /// <summary>
-    /// If true, indicates we should load character from file.
-    /// </summary>
-    public bool doLoadCharacter = false;
+	/// <summary>
+	/// If yes, indicates we should load character from file.
+	/// </summary>
+	protected string doLoadCharacter = "no";
 
-    /// <summary>
-    /// Two players and game board, to simulate the combat section of our game.
-    /// </summary>
-    public Character player1 { get; set; } = new Character("Player 1", 50, 1);
-    public Character player2 { get; set; } = new Character("Player 2", 50, 1);
+	/// <summary>
+	/// Path to characters file.
+	/// </summary>
+	public string path = "Saves/characters.json";
 
-    public List<string> GameLog { get; set; } = new List<string>();
+	/// <summary>
+	/// Display string for status of loading character
+	/// </summary>
+	public string status = "Status: No character loaded.";
 
-    public Game testGame { get; set; } = new Game();
+	/// <summary>
+	/// Two players and game board, to simulate the combat section of our game.
+	/// </summary>
+	public Character player1 { get; set; } = new Character("Player 1", 50, 1);
+	public Character player2 { get; set; } = new Character("Player 2", 50, 1);
 
-    /// <summary>
-    /// String message with the result of the attack.
-    /// </summary>
-    private string attackResult = "";
+	public List<string> GameLog { get; set; } = new List<string>();
 
-    /// <summary>
-    /// Method to restart or setup the game.
-    /// </summary>
-    public void SetupGame()
-    {
-        player1 = new Character("Player 1", 50, 1);
-        player2 = new Character("Player 2", 50, 1);
-        testGame = new Game(player1, player2);
-        attackResult = "";
-        GameLog = new List<string>();
+	public Game testGame { get; set; } = new Game();
+
+	/// <summary>
+	/// String message with the result of the attack.
+	/// </summary>
+	private string attackResult = "";
+
+	/// <summary>
+	/// Method to restart or setup the game.
+	/// </summary>
+	public void SetupGame()
+	{
+		if (doLoadCharacter == "yes")
+		{
+			// Check if we are using a player from the characters file
+			try
+			{
+				string jsonString = File.ReadAllText (path);
+				player1 = JsonSerializer.Deserialize<Character> (jsonString);
+			}
+			catch (FileNotFoundException)
+			{
+				status = "Status: Character file not found. Please create a character using the character creation page.";
+			}
+			catch (IOException)
+			{
+				status = "Status: Error reading character file. Please create another character using the character creation page";
+			}
+			catch (Exception e)
+			{
+				status = "ERROR: " + e.Message;
+			}
+
+			// Use default for opponent
+			player2 = new Character ("Player 2", 50, 1);
+
+		}
+		else
+		{
+			player1 = new Character ("Player 1", 50, 1);
+			player2 = new Character ("Player 2", 50, 1);
+		}
+
+		testGame = new Game(player1, player2);
+		attackResult = "";
+		GameLog = new List<string>();
 
 
-        StateHasChanged();
-    }
+		StateHasChanged();
+	}
 
-    /// <summary>
-    /// Method to show that our attack method works.
-    /// </summary>
-    public void AttackExample()
-    {
-        attackResult = testGame.MeleeAttackAttempt(player1, player2);
-        GameLog.Add(attackResult);
+	/// <summary>
+	/// Method to show that our attack method works.
+	/// </summary>
+	public void AttackExample()
+	{
+		attackResult = testGame.MeleeAttackAttempt(player1, player2);
+		GameLog.Add(attackResult);
 
-    }
+	}
 
-    /// <summary>
-    /// Method to clear the game log.
-    /// </summary>
-    public void ClearLog()
-    {
-        GameLog = new List<string>();
-    }
+	/// <summary>
+	/// Method to clear the game log.
+	/// </summary>
+	public void ClearLog()
+	{
+		GameLog = new List<string>();
+	}
 
 }

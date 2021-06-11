@@ -2,7 +2,7 @@
  * Name: Weapon.cs
  * Author: Hunter Page
  * Date Created: 6/2/21
- * Last Modified: 6/2/21
+ * Last Modified: 6/11/21
  *************************************************/
 
 
@@ -46,6 +46,20 @@ namespace DungeonMaster.Data
 		public Effect DamageType { get; set; }
 
 		/// <summary>
+		/// Default constructor that takes no parameters
+		/// 
+		/// Created by: Brett Hamilton
+		/// Created on: 6/11/2021
+		/// </summary>
+		public Weapon ( )
+		{
+			this.Name = "sword";
+			this.BaseDamage = 10;
+			this.DiceUsed = Dice.D6;
+			this.Range = 5.0;
+		}
+
+		/// <summary>
 		/// Loaded constructor for making a new weapon
 		/// </summary>
 		/// Author: Hunter Page
@@ -80,9 +94,9 @@ namespace DungeonMaster.Data
 
 			//sets value of rangedWeapon to false if a melee weapon
 			if(range <= 1)
-            {
+			{
 				this.rangedWeapon = false;
-            }
+			}
 			
 		}
 

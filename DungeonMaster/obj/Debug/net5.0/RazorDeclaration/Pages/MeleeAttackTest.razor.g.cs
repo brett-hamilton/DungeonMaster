@@ -89,6 +89,20 @@ using DungeonMaster.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\MeleeAttackTest.razor"
+using System.IO;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\MeleeAttackTest.razor"
+using System.Text.Json;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/MeleeAttackTest")]
     public partial class MeleeAttackTest : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -98,55 +112,99 @@ using DungeonMaster.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 89 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\MeleeAttackTest.razor"
+#line 94 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\MeleeAttackTest.razor"
        
-    /// <summary>
-    /// Two players and game board, to simulate the combat section of our game.
-    /// </summary>
-    public Character player1 { get; set; } = new Character("Player 1", 50, 1);
-    public Character player2 { get; set; } = new Character("Player 2", 50, 1);
+	/// <summary>
+	/// If yes, indicates we should load character from file.
+	/// </summary>
+	protected string doLoadCharacter = "no";
 
-    public List<string> GameLog { get; set; } = new List<string>();
+	/// <summary>
+	/// Path to characters file.
+	/// </summary>
+	public string path = "Saves/characters.json";
 
-    public Game testGame { get; set; } = new Game();
+	/// <summary>
+	/// Display string for status of loading character
+	/// </summary>
+	public string status = "Status: No character loaded.";
 
-    /// <summary>
-    /// String message with the result of the attack.
-    /// </summary>
-    private string attackResult = "";
+	/// <summary>
+	/// Two players and game board, to simulate the combat section of our game.
+	/// </summary>
+	public Character player1 { get; set; } = new Character("Player 1", 50, 1);
+	public Character player2 { get; set; } = new Character("Player 2", 50, 1);
 
-    /// <summary>
-    /// Method to restart or setup the game.
-    /// </summary>
-    public void SetupGame()
-    {
-        player1 = new Character("Player 1", 50, 1);
-        player2 = new Character("Player 2", 50, 1);
-        testGame = new Game(player1, player2);
-        attackResult = "";
-        GameLog = new List<string>();
+	public List<string> GameLog { get; set; } = new List<string>();
+
+	public Game testGame { get; set; } = new Game();
+
+	/// <summary>
+	/// String message with the result of the attack.
+	/// </summary>
+	private string attackResult = "";
+
+	/// <summary>
+	/// Method to restart or setup the game.
+	/// </summary>
+	public void SetupGame()
+	{
+		if (doLoadCharacter == "yes")
+		{
+			// Check if we are using a player from the characters file
+			try
+			{
+				string jsonString = File.ReadAllText (path);
+				player1 = JsonSerializer.Deserialize<Character> (jsonString);
+			}
+			catch (FileNotFoundException)
+			{
+				status = "Status: Character file not found. Please create a character using the character creation page.";
+			}
+			catch (IOException)
+			{
+				status = "Status: Error reading character file. Please create another character using the character creation page";
+			}
+			catch (Exception e)
+			{
+				status = "ERROR: " + e.Message;
+			}
+
+			// Use default for opponent
+			player2 = new Character ("Player 2", 50, 1);
+
+		}
+		else
+		{
+			player1 = new Character ("Player 1", 50, 1);
+			player2 = new Character ("Player 2", 50, 1);
+		}
+
+		testGame = new Game(player1, player2);
+		attackResult = "";
+		GameLog = new List<string>();
 
 
-        StateHasChanged();
-    }
+		StateHasChanged();
+	}
 
-    /// <summary>
-    /// Method to show that our attack method works.
-    /// </summary>
-    public void AttackExample()
-    {
-        attackResult = testGame.MeleeAttackAttempt(player1, player2);
-        GameLog.Add(attackResult);
+	/// <summary>
+	/// Method to show that our attack method works.
+	/// </summary>
+	public void AttackExample()
+	{
+		attackResult = testGame.MeleeAttackAttempt(player1, player2);
+		GameLog.Add(attackResult);
 
-    }
+	}
 
-    /// <summary>
-    /// Method to clear the game log.
-    /// </summary>
-    public void ClearLog()
-    {
-        GameLog = new List<string>();
-    }
+	/// <summary>
+	/// Method to clear the game log.
+	/// </summary>
+	public void ClearLog()
+	{
+		GameLog = new List<string>();
+	}
 
 
 #line default
