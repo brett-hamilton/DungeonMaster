@@ -1,8 +1,10 @@
 ﻿@page "/RangedAttackTest"
 @using DungeonMaster.Data
 
-<h3>RangedAttackTest</h3>
+<h3>Ranged Attack Test</h3>
+<br />
 <button class="btn btn-primary" @onclick="SetupGame">Start or Restart Game</button>
+<br />
 <div class="row">
     <div class="col-5">
         <div>
@@ -34,11 +36,11 @@
 
 <br />
 <br />
-<div class="row" style="outline: 1px solid blue; outline-offset: 8px">
+<div class="row" style="outline: 1px solid blue; outline-offset: 8px; max-height: 200px; min-height: 200px">
     <div style="border-right: 1px solid blue" class="col-2">
         <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
     </div>
-    <div class="col-10">
+    <div class="col-10 overflow-auto" style="max-height: 200px; min-height: 200px">
         <ul class="list-group" id="gameLog">
             @for (int i = (GameLog.Count - 1); i >= 0; i--)
             {
