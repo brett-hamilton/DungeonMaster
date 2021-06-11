@@ -22,7 +22,7 @@ namespace DungeonMaster.Data
 		/// <summary>
 		/// melee weapon they have equipped
 		/// </summary>
-		public Weapon MeleeWeapon { get; set; } 
+		public Weapon Weapon { get; set; } 
 
 		/// <summary>
 		/// The amount of Health points they have
@@ -32,7 +32,7 @@ namespace DungeonMaster.Data
 		/// <summary>
 		/// They armor object they are wearing
 		/// </summary>
-		public Armor Armor { get; set; } 
+		public Armor Armor { get; set; } = new Armor("Leather Armor", 6);
 
 		/// <summary>
 		/// determines if the player is dead or not for future actions
@@ -52,7 +52,7 @@ namespace DungeonMaster.Data
 			Weapon sword = new Weapon("sword", 10, Dice.D6, 5.0);
 			this.Name = "Geralt";
 			this.Health = 100;
-			this.MeleeWeapon = sword;
+			this.Weapon = sword;
 			this.ActionPoints = 120;
 		}
 
@@ -63,8 +63,8 @@ namespace DungeonMaster.Data
 		/// <param name="health"></param>
 		public Character(string name, double health, double actionPoints)
 		{
-			Weapon sword = new Weapon("sword", 10, Dice.D6, 5.0);
-			this.MeleeWeapon = sword;
+			Weapon sword = new Weapon("Sword", 10, Dice.D6, 5.0);
+			this.Weapon = sword;
 			Armor armor = new Armor("Leather", 6);
 			Armor = armor;
 			this.Name = name;
