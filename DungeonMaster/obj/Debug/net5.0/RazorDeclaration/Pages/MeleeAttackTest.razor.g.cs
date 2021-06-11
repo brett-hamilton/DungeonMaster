@@ -98,7 +98,7 @@ using DungeonMaster.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 81 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\MeleeAttackTest.razor"
+#line 89 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\MeleeAttackTest.razor"
        
     /// <summary>
     /// Two players and game board, to simulate the combat section of our game.

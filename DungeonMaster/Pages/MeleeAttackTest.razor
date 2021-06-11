@@ -6,6 +6,14 @@
 <br />
 
 <div class="row">
+    <label for="dieSides">Load Character from File: </label>
+    <select @bind="doLoadCharacter" name="doLoadCharacter" id="doLoadCharacter">
+        <option value="yes">2</option>
+        <option value="no">4</option>
+    </select>
+</div>
+
+<div class="row">
     <button class="btn btn-primary" @onclick="SetupGame">Start or Restart Game</button>
 </div>
 <br />
@@ -79,6 +87,11 @@
 </div>
 
 @code {
+    /// <summary>
+    /// If true, indicates we should load character from file.
+    /// </summary>
+    public bool doLoadCharacter = false;
+
     /// <summary>
     /// Two players and game board, to simulate the combat section of our game.
     /// </summary>
