@@ -109,6 +109,7 @@
     private void Roll()
     {
         diceTotal = Die.RollD20();
+        GameLog.Add($"Player rolled 1 D20 for {diceTotal}");
     }
 
     /// <summary>
@@ -139,16 +140,19 @@
         if (modifier == "a")
         {
             diceTotal = Die.RollD20Advantage();
+            GameLog.Add($"Player rolled 1 D20 for {diceTotal}");
         }
 
         else if (modifier == "d")
         {
             diceTotal = Die.RollD20Disadvantage();
+            GameLog.Add($"Player rolled 1 D20 for {diceTotal}");
         }
 
         else
         {
             diceTotal = Die.RollD20();
+            GameLog.Add($"Player rolled 1 D20 for {diceTotal}");
         }
     }
 
