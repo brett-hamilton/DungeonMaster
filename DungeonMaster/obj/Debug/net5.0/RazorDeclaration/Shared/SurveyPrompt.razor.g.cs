@@ -13,70 +13,70 @@ namespace DungeonMaster.Shared
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 1 "C:\Users\Jacob\Documents\Software project\DungeonMaster\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 2 "C:\Users\Jacob\Documents\Software project\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 3 "C:\Users\Jacob\Documents\Software project\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 4 "C:\Users\Jacob\Documents\Software project\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 5 "C:\Users\Jacob\Documents\Software project\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 6 "C:\Users\Jacob\Documents\Software project\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 7 "C:\Users\Jacob\Documents\Software project\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 8 "C:\Users\Jacob\Documents\Software project\DungeonMaster\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 9 "C:\Users\Jacob\Documents\Software project\DungeonMaster\_Imports.razor"
 using DungeonMaster;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 10 "C:\Users\Jacob\Documents\Software project\DungeonMaster\_Imports.razor"
 using DungeonMaster.Shared;
 
 #line default
@@ -90,7 +90,7 @@ using DungeonMaster.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 12 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Shared\SurveyPrompt.razor"
+#line 12 "C:\Users\Jacob\Documents\Software project\DungeonMaster\Shared\SurveyPrompt.razor"
        
     // Demonstrates how a parent component can supply parameters
     [Parameter]
