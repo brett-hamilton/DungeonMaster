@@ -35,7 +35,11 @@ namespace DungeonMaster.Data
 			{
 				// Decrease defender's health by the attacker's weapon stat
 				
+<<<<<<< HEAD
 				var attackReport = attacker.Weapon.GetDamage ( );
+=======
+				var attackReport = attacker.MeleeWeapon.GetDamage ( );
+>>>>>>> feature/characterCreation
 				int damageAmount = attackReport.TotalDamageDealt;
 				defender.DamagePlayer (damageAmount);
 				attackReport.AttackRoll = attackValue;
@@ -53,8 +57,11 @@ namespace DungeonMaster.Data
 				AttackerName = attacker.Name,
 				DefenderName = defender.Name
 			};
+<<<<<<< HEAD
 
 		}
+=======
+>>>>>>> feature/characterCreation
 
 		/// <summary>
 		/// Perform a ranged attack against the defending character. If the defender is within melee range

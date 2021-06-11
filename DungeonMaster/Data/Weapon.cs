@@ -2,7 +2,7 @@
  * Name: Weapon.cs
  * Author: Hunter Page
  * Date Created: 6/2/21
- * Last Modified: 6/2/21
+ * Last Modified: 6/11/21
  *************************************************/
 
 
@@ -38,13 +38,34 @@ namespace DungeonMaster.Data
 		///
 		//determines whether the weapon is used for range
 		///
+<<<<<<< HEAD
 		public bool rangedWeapon { get; set; } = false;
+=======
+		public bool rangedWeapon { get; set; } 
+>>>>>>> feature/characterCreation
 
 		///
 		//the type of damage the weapon uses
 		///
 		public Effect DamageType { get; set; }
 
+<<<<<<< HEAD
+=======
+		/// <summary>
+		/// Default constructor that takes no parameters
+		/// 
+		/// Created by: Brett Hamilton
+		/// Created on: 6/11/2021
+		/// </summary>
+		public Weapon ( )
+		{
+			this.Name = "sword";
+			this.BaseDamage = 10;
+			this.DiceUsed = Dice.D6;
+			this.Range = 5.0;
+		}
+
+>>>>>>> feature/characterCreation
 		/// <summary>
 		/// Loaded constructor for making a new weapon
 		/// </summary>
@@ -58,7 +79,35 @@ namespace DungeonMaster.Data
 			this.Name = name;
 			this.BaseDamage = baseDamage;
 			this.DiceUsed = dice;
+<<<<<<< HEAD
+=======
 			this.Range = range;
+		}
+
+		/// <summary>
+		/// Loaded constructor for making a new weapon
+		/// </summary>
+		/// Author: Hunter Page
+		/// <param name="name">name of the weapon</param>
+		/// <param name="baseDamage">damage of the weapon</param>
+		/// <param name="dice">dice it uses</param>
+		/// <param name="range">what effective range the weapon has</param>
+		/// <param name="damageTypes">what type of damage the weapon does</param>
+		public Weapon(string name, int baseDamage, Dice dice, double range, Effect damageTypes)
+		{
+			this.Name = name;
+			this.BaseDamage = baseDamage;
+			this.DiceUsed = dice;
+>>>>>>> feature/characterCreation
+			this.Range = range;
+			this.DamageType = damageTypes;
+
+			//sets value of rangedWeapon to false if a melee weapon
+			if(range <= 1)
+			{
+				this.rangedWeapon = false;
+			}
+			
 		}
 
 		/// <summary>

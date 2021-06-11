@@ -152,6 +152,7 @@ namespace DungeonMaster.Data
 
 		}
 
+<<<<<<< HEAD
 		/// <summary>
 		/// Ranged attack method, which will verify target is not dead and attempt to attack them.
 		/// </summary>
@@ -208,6 +209,23 @@ namespace DungeonMaster.Data
 
 			GameBoard[row, col] = character;
 			return true;
+=======
+		public string RangedAttackAttempt(Character attacker, Character defender) 
+		{
+			if (defender.IsDead)
+			{
+				return ($"{defender.Name} is already dead.");
+			}
+
+			var rangeCheck = false;
+
+			// check melee range
+
+			// Ranged attack
+
+
+			return "";
+>>>>>>> feature/characterCreation
 		}
 	}
 }

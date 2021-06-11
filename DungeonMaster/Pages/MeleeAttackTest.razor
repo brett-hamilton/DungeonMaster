@@ -1,50 +1,70 @@
 ﻿@page "/MeleeAttackTest"
 
 @using DungeonMaster.Data
+@using System.IO;
+@using System.Text.Json;
 <h3>Testing Melee Attacks</h3>
 <hr />
 <br />
 
+<div>
+	<label for="doLoadCharacter">Load Character from File: </label>
+	<select @bind="doLoadCharacter" name="doLoadCharacter" id="doLoadCharacter">
+		<option value="no">No</option>
+		<option value="yes">Yes</option>
+	</select>
+	<br />
+	<label>@status</label>
+</div>
+<br />
+
 <div class="row">
-    <button class="btn btn-primary" @onclick="SetupGame">Start or Restart Game</button>
+	<button class="btn btn-primary" @onclick="SetupGame">Start or Restart Game</button>
 </div>
 <br />
 @*Column representing Player 1's information.*@
 <div class="row">
-    <div class="col-3 card" style="margin-right: 10px">
-        <div class="card-body">
-            <h5 class="card-title">
-                @player1.Name
-            </h5>
-            <p class="card-text">
-                Health: @player1.Health <br />
-                Weapon: @player1.Weapon.Name <br />
-                Armor: @player1.Armor.ProtectionPoints <br />
-            </p>
-        </div>
-    </div>
-    
-    @*Column representing attack information.*@
-    <div class="col-3">
-        @attackResult
-    </div>
-    @*Column representing Player 2's information.*@
-    <div class="col-3 card" style="margin-right: 10px">
-        <div class="card-body">
-            <h5 class="card-title">
-                @player2.Name
-            </h5>
-            <p class="card-text">
-                Health: @player2.Health <br />
-                Weapon: @player2.Weapon.Name <br />
-                Armor: @player2.Armor.ProtectionPoints <br />
-            </p>
-        </div>
-    </div>
+	<div class="col-3">
+		<ul>
+			<li>
+				Character Name: @player1.Name
+			</li>
+			<li>
+				Weapon: @player1.MeleeWeapon.Name
+			</li>
+			<li>
+				Health: @player1.Health
+			</li>
+			<li>
+				Armor: @player1.Armor.ProtectionPoints
+			</li>
+		</ul>
+
+	</div>
+	@*Column representing attack information.*@
+	<div class="col-3">
+		@attackResult
+	</div>
+	@*Column representing Player 2's information.*@
+	<div class="col-3">
+		<ul>
+			<li>
+				Character Name: @player2.Name
+			</li>
+			<li>
+				Weapon: @player2.MeleeWeapon.Name
+			</li>
+			<li>
+				Health: @player2.Health
+			</li>
+			<li>
+				Armor: @player2.Armor.ProtectionPoints
+			</li>
+		</ul>
+	</div>
 </div>
-<br />
 <div class="row">
-    <button class="btn btn-danger" @onclick="AttackExample">Attack the Enemy!</button>
+	<button class="btn btn-danger" @onclick="AttackExample">Attack the Enemy!</button>
 </div>
 <br />
 <br />
@@ -69,25 +89,46 @@
                 }
             }
 
-        </ul>
-    </div>
+				else
+				{
+					<li class="list-group-item list-group-item-secondary">@GameLog[i]</li>
+				}
+			}
+
+		</ul>
+	</div>
 </div>
 
 @code {
-    /// <summary>
-    /// Two players and game board, to simulate the combat section of our game.
-    /// </summary>
-    public Character player1 { get; set; } = new Character("Player 1", 50, 1);
-    public Character player2 { get; set; } = new Character("Player 2", 50, 1);
+	/// <summary>
+	/// If yes, indicates we should load character from file.
+	/// </summary>
+	protected string doLoadCharacter = "no";
+
+	/// <summary>
+	/// Path to characters file.
+	/// </summary>
+	public string path = "Saves/characters.json";
+
+	/// <summary>
+	/// Display string for status of loading character
+	/// </summary>
+	public string status = "Status: No character loaded.";
+
+	/// <summary>
+	/// Two players and game board, to simulate the combat section of our game.
+	/// </summary>
+	public Character player1 { get; set; } = new Character("Player 1", 50, 1);
+	public Character player2 { get; set; } = new Character("Player 2", 50, 1);
 
     public List<string> GameLog { get; set; } = new List<string>();
 
     public Game testGame { get; set; } = new Game();
 
-    /// <summary>
-    /// String message with the result of the attack.
-    /// </summary>
-    private string attackResult = "";
+	/// <summary>
+	/// String message with the result of the attack.
+	/// </summary>
+	private string attackResult = "";
 
     /// <summary>
     /// Method to restart or setup the game.
@@ -101,8 +142,8 @@
         GameLog = new List<string>();
 
 
-        StateHasChanged();
-    }
+		StateHasChanged();
+	}
 
     /// <summary>
     /// Method to show that our attack method works.
@@ -112,7 +153,7 @@
         attackResult = testGame.MeleeAttackAttempt(player1, player2);
         GameLog.Add(attackResult);
 
-    }
+	}
 
     /// <summary>
     /// Method to clear the game log.
