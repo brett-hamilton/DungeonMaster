@@ -104,7 +104,7 @@ using DungeonMaster.Pages.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\Shared\NavMenu.razor"
+#line 38 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

@@ -11,44 +11,67 @@
 <br />
 @*Column representing Player 1's information.*@
 <div class="row">
-    <div class="col-3">
-        <ul>
-            <li>
-                Character Name: @player1.Name
-            </li>
-            <li>
-                Weapon: @player1.MeleeWeapon.Name
-            </li>
-            <li>
-                Health: @player1.Health
-            </li>
-        </ul>
-
+    <div class="col-3 card" style="margin-right: 10px">
+        <div class="card-body">
+            <h5 class="card-title">
+                @player1.Name
+            </h5>
+            <p class="card-text">
+                Health: @player1.Health <br />
+                Weapon: @player1.Weapon.Name <br />
+                Armor: @player1.Armor.ProtectionPoints <br />
+            </p>
+        </div>
     </div>
+    
     @*Column representing attack information.*@
     <div class="col-3">
         @attackResult
     </div>
     @*Column representing Player 2's information.*@
-    <div class="col-3">
-        <ul>
-            <li>
-                Character Name: @player2.Name
-            </li>
-            <li>
-                Weapon: @player2.MeleeWeapon.Name
-            </li>
-            <li>
-                Health: @player2.Health
-            </li>
-        </ul>
+    <div class="col-3 card" style="margin-right: 10px">
+        <div class="card-body">
+            <h5 class="card-title">
+                @player2.Name
+            </h5>
+            <p class="card-text">
+                Health: @player2.Health <br />
+                Weapon: @player2.Weapon.Name <br />
+                Armor: @player2.Armor.ProtectionPoints <br />
+            </p>
+        </div>
     </div>
 </div>
 <br />
 <div class="row">
     <button class="btn btn-danger" @onclick="AttackExample">Attack the Enemy!</button>
 </div>
+<br />
+<br />
+<div class="row" style="outline: 1px solid blue; outline-offset: 8px; max-height: 200px; min-height: 200px">
+    <div style="border-right: 1px solid blue" class="col-2">
+        <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
+    </div>
+    @* Use overflow-auto and max/min height to force game log to be scrollable and at set size. *@
+    <div class="col-10 overflow-auto" style="max-height: 200px; min-height: 200px">
+        <ul class="list-group " id="gameLog">
+            @* Iterate through the list of strings in reverse order, so newest message is at top. Based on Microsoft SignalR example. *@
+            @for (int i = (GameLog.Count - 1); i >= 0; i--)
+            {
+                if (i == (GameLog.Count - 1))
+                {
+                    <li class="list-group-item list-group-item-primary">@GameLog[i]</li>
+                }
 
+                else
+                {
+                    <li class="list-group-item list-group-item-secondary">@GameLog[i]</li>
+                }
+            }
+
+        </ul>
+    </div>
+</div>
 
 @code {
     /// <summary>
@@ -56,6 +79,8 @@
     /// </summary>
     public Character player1 { get; set; } = new Character("Player 1", 50, 1);
     public Character player2 { get; set; } = new Character("Player 2", 50, 1);
+
+    public List<string> GameLog { get; set; } = new List<string>();
 
     public Game testGame { get; set; } = new Game();
 
@@ -73,6 +98,7 @@
         player2 = new Character("Player 2", 50, 1);
         testGame = new Game(player1, player2);
         attackResult = "";
+        GameLog = new List<string>();
 
 
         StateHasChanged();
@@ -84,8 +110,16 @@
     public void AttackExample()
     {
         attackResult = testGame.MeleeAttackAttempt(player1, player2);
+        GameLog.Add(attackResult);
 
     }
 
+    /// <summary>
+    /// Method to clear the game log.
+    /// </summary>
+    public void ClearLog()
+    {
+        GameLog = new List<string>();
+    }
 
 }

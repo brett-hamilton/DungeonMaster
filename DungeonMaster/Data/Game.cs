@@ -146,17 +146,68 @@ namespace DungeonMaster.Data
 			}
 
 			var attack = new Attack();
-			int damage = attack.MeleeAttack(attacker, defender);
+			var attackReport = attack.MeleeAttack(attacker, defender);
 
-			if (damage != 0)
+			return attackReport.GetAttackReport();
+
+		}
+
+		/// <summary>
+		/// Ranged attack method, which will verify target is not dead and attempt to attack them.
+		/// </summary>
+		/// <param name="attacker">Character attempting to attack the other.</param>
+		/// <param name="defender">Character being attacked.</param>
+		/// <returns>A string containing information about the result.</returns>
+		public string RangedAttackAttempt(Character attacker, Character defender) 
+		{
+			if (!attacker.Weapon.rangedWeapon) 
 			{
-				return ($"{attacker.Name} hit {defender.Name} for {damage} damage.");
+				return ($"{attacker.Name} does not have a ranged weapon to attack with.");
 			}
-			else
+			if (defender.IsDead)
 			{
-				return ($"{attacker.Name} missed {defender.Name}, dealing {damage} damage.");
+				return ($"{defender.Name} is already dead.");
 			}
 
+			var rangeCheck = RangedRangeCheck(attacker, defender);
+			if (!rangeCheck)
+			{
+				return ($"{defender.Name} is too far away to range attack.");
+			}
+
+			// If the defender is in melee range, attacker has disadvantage.
+			var disadvantageCheck = MeleeRangeCheck(defender, attacker);
+
+			var attack = new Attack();
+			var attackReport = attack.RangedAttack(attacker, defender, disadvantageCheck);
+
+			return attackReport.GetAttackReport();
+		}
+
+		/// <summary>
+		/// Check if the provided row and column are valid in the game board,
+		/// if so check if that space is occupied. If not, place character there.
+		/// </summary>
+		/// <param name="character">Character to be placed in the gameboard.</param>
+		/// <param name="row">Row to place character in.</param>
+		/// <param name="col">Column to place character in.</param>
+		/// <returns>Boolean representing if character was placed into the gameboard.</returns>
+		public bool AddCharacter(Character character, int row, int col) 
+		{
+			var currentOccupant = GameBoard[row, col];
+
+			if (row >= Rows || col >= Columns || row < 0 || col < 0)
+			{
+				return false;
+			}
+
+			if (currentOccupant != null)
+			{
+				return false;
+			}
+
+			GameBoard[row, col] = character;
+			return true;
 		}
 	}
 }

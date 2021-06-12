@@ -248,3 +248,5 @@ C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\obj\Debug\net5.0\Dungeon
 C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\obj\Debug\net5.0\DungeonMaster.csproj.CopyComplete
 C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\obj\Debug\net5.0\RazorDeclaration\Pages\Components\GameMapContainer.razor.g.cs
 C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\obj\Debug\net5.0\Razor\Pages\Components\GameMapContainer.razor.g.cs
+C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\obj\Debug\net5.0\RazorDeclaration\Pages\RangedAttackTest.razor.g.cs
+C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\obj\Debug\net5.0\Razor\Pages\RangedAttackTest.razor.g.cs

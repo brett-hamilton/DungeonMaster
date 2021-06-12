@@ -104,7 +104,7 @@ using DungeonMaster.Pages.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 45 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\Pages\Components\DiceModal.razor"
+#line 48 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\Pages\Components\DiceModal.razor"
       
 
     /// <summary>

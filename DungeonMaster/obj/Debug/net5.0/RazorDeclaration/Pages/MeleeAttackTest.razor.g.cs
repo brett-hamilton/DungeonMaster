@@ -112,13 +112,15 @@ using DungeonMaster.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 53 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\Pages\MeleeAttackTest.razor"
+#line 76 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\Pages\MeleeAttackTest.razor"
        
     /// <summary>
     /// Two players and game board, to simulate the combat section of our game.
     /// </summary>
     public Character player1 { get; set; } = new Character("Player 1", 50, 1);
     public Character player2 { get; set; } = new Character("Player 2", 50, 1);
+
+    public List<string> GameLog { get; set; } = new List<string>();
 
     public Game testGame { get; set; } = new Game();
 
@@ -136,6 +138,7 @@ using DungeonMaster.Data;
         player2 = new Character("Player 2", 50, 1);
         testGame = new Game(player1, player2);
         attackResult = "";
+        GameLog = new List<string>();
 
 
         StateHasChanged();
@@ -147,9 +150,17 @@ using DungeonMaster.Data;
     public void AttackExample()
     {
         attackResult = testGame.MeleeAttackAttempt(player1, player2);
+        GameLog.Add(attackResult);
 
     }
 
+    /// <summary>
+    /// Method to clear the game log.
+    /// </summary>
+    public void ClearLog()
+    {
+        GameLog = new List<string>();
+    }
 
 
 #line default
