@@ -12,84 +12,98 @@ namespace DungeonMaster.Pages
     using System.Linq;
     using System.Threading.Tasks;
 #nullable restore
-#line 1 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 1 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 2 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 3 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 4 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 5 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 6 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 7 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 8 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 9 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\_Imports.razor"
 using DungeonMaster;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\_Imports.razor"
+#line 10 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\_Imports.razor"
 using DungeonMaster.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\DiceTest.razor"
+#line 11 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\_Imports.razor"
+using DungeonMaster.Pages.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\_Imports.razor"
+using DungeonMaster.Pages.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\Pages\DiceTest.razor"
 using DungeonMaster.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\DiceTest.razor"
+#line 4 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\Pages\DiceTest.razor"
 using Microsoft.AspNetCore.Components;
 
 #line default
@@ -104,7 +118,7 @@ using Microsoft.AspNetCore.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 54 "C:\Users\brett\source\repos\su21-4250-skynet-dungeonmaster\DungeonMaster\Pages\DiceTest.razor"
+#line 54 "C:\Users\pokel\Source\Repos\DungeonMaster\DungeonMaster\Pages\DiceTest.razor"
        
     /// <summary>
     /// Total from dice roll, displayed to user.

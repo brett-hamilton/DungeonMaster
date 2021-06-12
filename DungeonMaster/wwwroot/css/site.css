@@ -14,6 +14,28 @@ a, .btn-link {
     border-color: #1861ac;
 }
 
+.map {
+    background-color: forestgreen;
+    width: 1000px;
+    height: 800px;
+    position: absolute;
+    top: 85px;
+}
+
+.game-container{
+    width: 500px;
+    height: 730px;
+    position: absolute;
+
+}
+
+.player{
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
+
 .content {
     padding-top: 1.1rem;
 }
