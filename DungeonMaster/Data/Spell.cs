@@ -6,18 +6,25 @@
  *************************************************/
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using DungeonMaster.Data;
 
-public class Spell
+namespace DungeonMaster.Data
 {
-
-	public string SpellName { get; set; }
-
-	public SpellTypes SpellType { get; set; }
-
-	public Spell(string spellName, SpellTypes spellType)
+	public class Spell
 	{
-		this.SpellName = spellName;
-		this.SpellType = spellType;
+
+		public string SpellName { get; set; }
+
+		public SpellTypes SpellType { get; set; }
+
+		public Spell(string spellName, SpellTypes spellType)
+		{
+			this.SpellName = spellName;
+			this.SpellType = spellType;
+		}
 	}
 }
+

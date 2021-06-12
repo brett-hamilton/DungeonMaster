@@ -6,13 +6,21 @@
  *************************************************/
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using DungeonMaster.Data;
 
-public enum EffectTypes
+namespace DungeonMaster.Data
 {
-	Frost,
-	Fire,
-	Piercing,
-	Bludgeoning,
-	Poisoning
+	public enum EffectTypes
+	{
+		Frost,
+		Fire,
+		Piercing,
+		Bludgeoning,
+		Poisoning
 
+	}
 }
+

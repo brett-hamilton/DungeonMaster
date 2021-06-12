@@ -13,78 +13,92 @@ namespace DungeonMaster.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\Jacob\Documents\project1\DungeonMaster\_Imports.razor"
+#line 1 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Jacob\Documents\project1\DungeonMaster\_Imports.razor"
+#line 2 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Jacob\Documents\project1\DungeonMaster\_Imports.razor"
+#line 3 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\Jacob\Documents\project1\DungeonMaster\_Imports.razor"
+#line 4 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\Jacob\Documents\project1\DungeonMaster\_Imports.razor"
+#line 5 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\Jacob\Documents\project1\DungeonMaster\_Imports.razor"
+#line 6 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\Jacob\Documents\project1\DungeonMaster\_Imports.razor"
+#line 7 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\Jacob\Documents\project1\DungeonMaster\_Imports.razor"
+#line 8 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\Jacob\Documents\project1\DungeonMaster\_Imports.razor"
+#line 9 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\_Imports.razor"
 using DungeonMaster;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\Jacob\Documents\project1\DungeonMaster\_Imports.razor"
+#line 10 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\_Imports.razor"
 using DungeonMaster.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Jacob\Documents\project1\DungeonMaster\Pages\MeleeAttackTest.razor"
+#line 3 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\MeleeAttackTest.razor"
 using DungeonMaster.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\MeleeAttackTest.razor"
+using System.IO;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\MeleeAttackTest.razor"
+using System.Text.Json;
 
 #line default
 #line hidden
@@ -98,22 +112,37 @@ using DungeonMaster.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 76 "C:\Users\Jacob\Documents\project1\DungeonMaster\Pages\MeleeAttackTest.razor"
+#line 102 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\MeleeAttackTest.razor"
        
-    /// <summary>
-    /// Two players and game board, to simulate the combat section of our game.
-    /// </summary>
-    public Character player1 { get; set; } = new Character("Player 1", 50, 1);
-    public Character player2 { get; set; } = new Character("Player 2", 50, 1);
+	/// <summary>
+	/// If yes, indicates we should load character from file.
+	/// </summary>
+	protected string doLoadCharacter = "no";
+
+	/// <summary>
+	/// Path to characters file.
+	/// </summary>
+	public string path = "Saves/characters.json";
+
+	/// <summary>
+	/// Display string for status of loading character
+	/// </summary>
+	public string status = "Status: No character loaded.";
+
+	/// <summary>
+	/// Two players and game board, to simulate the combat section of our game.
+	/// </summary>
+	public Character player1 { get; set; } = new Character("Player 1", 50, 1);
+	public Character player2 { get; set; } = new Character("Player 2", 50, 1);
 
     public List<string> GameLog { get; set; } = new List<string>();
 
     public Game testGame { get; set; } = new Game();
 
-    /// <summary>
-    /// String message with the result of the attack.
-    /// </summary>
-    private string attackResult = "";
+	/// <summary>
+	/// String message with the result of the attack.
+	/// </summary>
+	private string attackResult = "";
 
     /// <summary>
     /// Method to restart or setup the game.
@@ -127,8 +156,8 @@ using DungeonMaster.Data;
         GameLog = new List<string>();
 
 
-        StateHasChanged();
-    }
+		StateHasChanged();
+	}
 
     /// <summary>
     /// Method to show that our attack method works.
@@ -138,7 +167,7 @@ using DungeonMaster.Data;
         attackResult = testGame.MeleeAttackAttempt(player1, player2);
         GameLog.Add(attackResult);
 
-    }
+	}
 
     /// <summary>
     /// Method to clear the game log.
