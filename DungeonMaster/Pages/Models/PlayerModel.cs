@@ -7,6 +7,8 @@ namespace DungeonMaster.Pages.Models
 {
     public class PlayerModel
     {
-        public int DistanceFromSide { get; set; } = 100;
+        public int DistanceFromTop { get; set; } = 100;
+
+        
     }
 }
