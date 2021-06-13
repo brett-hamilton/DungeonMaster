@@ -38,9 +38,9 @@
 </div>
 
 @code {
-        /// <summary>
-        /// Hub connection to send and receive messages.
-        /// </summary>
+    /// <summary>
+    /// Hub connection to send and receive messages.
+    /// </summary>
     private HubConnection hubConnection;
 
     /// <summary>
@@ -71,11 +71,15 @@
         hubConnection = new HubConnectionBuilder()
                 .WithUrl(NavigationManager.ToAbsoluteUri("/dungeonmasterhub"))
                 .Build();
-
+        
+        // If the messaged received is for this page, add the new message to the game log.
         hubConnection.On<string, string>("MessageReceived", (message, page) =>
         {
-            GameLog.Add(message);
-            StateHasChanged();
+            if (page == "DiceModalTest")
+            {
+                GameLog.Add(message);
+                StateHasChanged();
+            }
         });
 
         await hubConnection.StartAsync();

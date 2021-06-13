@@ -5,6 +5,8 @@
     Based upon the Modals provided by Dr. Roach
     Implementation to hide and show based upon:
     https://stackoverflow.com/questions/59256798/how-to-use-bootstrap-modal-in-blazor-client-app
+    SignalR Aspect is based on the Microsoft Tutorial:
+    https://docs.microsoft.com/en-us/aspnet/core/tutorials/signalr-blazor?view=aspnetcore-5.0&tabs=visual-studio&pivots=server
 *@
 <div class="modal" id="rollDiceModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true" style="@modalShowStyling">
     <div class="modal-dialog modal-dialog-centered modal">
@@ -76,6 +78,7 @@
     /// <summary>
     /// Method to initialize our hub connection used to send and receive messages.
     /// When a message is received, it is added to the game log.
+    /// This is based on the Microsoft SignalR tutorial.
     /// </summary>
     /// <returns></returns>
     protected override async Task OnInitializedAsync()
@@ -84,10 +87,13 @@
                 .WithUrl(NavigationManager.ToAbsoluteUri("/dungeonmasterhub"))
                 .Build();
 
+        // As the modal doesn't need to listen, we only start it to send messages.
         await hubConnection.StartAsync();
     }
+
     /// <summary>
     /// Method to report the result to the page holding the modal to display.
+    /// This is based on the Microsoft SignalR tutorial.
     /// </summary>
     /// <returns></returns>
     async Task Send() =>
