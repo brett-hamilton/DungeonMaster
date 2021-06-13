@@ -100,7 +100,20 @@ namespace DungeonMaster.Data
 
 		public void SpellAttack (Character attacker, Character defender, Spell spell)
         {
-			double attackValue = 6;
+			int attackValue = Die.RollD20();
+
+			bool hit = defender.CheckArmor(attackValue);
+
+			if(hit)
+            {
+				var attackReport = attacker.PlayersSpell.GetSpellDamage();
+				defender.DamagePlayer(attackReport.TotalDamageDealt); attackReport.AttackRoll = attackValue;
+				attackReport.HitCheck = hit;
+				attackReport.AttackerName = attacker.Name;
+				attackReport.DefenderName = defender.Name;
+
+				return attackReport;
+            }
 
 
         }

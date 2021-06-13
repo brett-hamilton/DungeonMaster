@@ -50,7 +50,7 @@ namespace DungeonMaster.Data
 		///Inventory of the Spells and Weapons of the Player
 		public Inventory PlayersInventory { get; set; }
 
-		///temporary spell attribute to create the attack method in Attack.cs
+		///temporary spell attribute to create the attack method in Attack.cs for proof of concept
 		public Spell PlayersSpell { get; set; }
 
 		public Character()
@@ -109,6 +109,27 @@ namespace DungeonMaster.Data
 			return false;
 
 		}
+
+		/// <summary>
+		/// add a weapon to the Player's Inventory
+		/// 
+		/// </summary>
+		/// <param name="weapon">a weapon to be added to the list</param>
+		/// <returns>true if armor is too weak, false otherwise</returns>
+		public void addWeaponInventory(Weapon weapon)
+        {
+			PlayersInventory.Weapons.Add(weapon);
+        }
+
+		/// <summary>
+		/// add a spell to the Player's Inventory
+		/// 
+		/// </summary>
+		/// <param name="weapon">a spell to be added to the list</param>public void addSpellInventory(Spell spell)
+		public void addSpellInventory(Spell spell)
+        {
+			PlayersInventory.Spells.Add(spell);
+        }
 
 	}
 }

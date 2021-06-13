@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace DungeonMaster.Data
 {
@@ -15,6 +16,26 @@ namespace DungeonMaster.Data
 			Weapons = new List<Weapon>();
 			Spells = new List<Spell>();
 		}
-	}
+
+		///Provides an inventory listing
+        public override string ToString()
+        {
+			StringBuilder inventoryList = new StringBuilder();
+
+			inventoryList.Append("Weapons\n-------------");
+
+            foreach(Weapon w in Weapons)
+            {
+				inventoryList.Append(w.ToString() + "\n");
+            }
+
+			inventoryList.Append("Spells\n-------------");
+
+            foreach(Spell s in Spells)
+            {
+				inventoryList.Append(s.ToString() + "\n");
+            }
+        }
+    }
 }
 
