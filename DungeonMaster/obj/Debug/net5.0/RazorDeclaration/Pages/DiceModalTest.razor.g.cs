@@ -83,6 +83,20 @@ using DungeonMaster.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 11 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\_Imports.razor"
+using DungeonMaster.Pages.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\_Imports.razor"
+using DungeonMaster.Pages.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 3 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\DiceModalTest.razor"
 using DungeonMaster.Data;
 

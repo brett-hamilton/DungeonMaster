@@ -83,22 +83,22 @@ using DungeonMaster.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 11 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\_Imports.razor"
+using DungeonMaster.Pages.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\_Imports.razor"
+using DungeonMaster.Pages.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 3 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\MeleeAttackTest.razor"
 using DungeonMaster.Data;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 4 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\MeleeAttackTest.razor"
-using System.IO;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 5 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\MeleeAttackTest.razor"
-using System.Text.Json;
 
 #line default
 #line hidden
@@ -112,37 +112,22 @@ using System.Text.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 102 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\MeleeAttackTest.razor"
+#line 76 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\MeleeAttackTest.razor"
        
-	/// <summary>
-	/// If yes, indicates we should load character from file.
-	/// </summary>
-	protected string doLoadCharacter = "no";
-
-	/// <summary>
-	/// Path to characters file.
-	/// </summary>
-	public string path = "Saves/characters.json";
-
-	/// <summary>
-	/// Display string for status of loading character
-	/// </summary>
-	public string status = "Status: No character loaded.";
-
-	/// <summary>
-	/// Two players and game board, to simulate the combat section of our game.
-	/// </summary>
-	public Character player1 { get; set; } = new Character("Player 1", 50, 1);
-	public Character player2 { get; set; } = new Character("Player 2", 50, 1);
+    /// <summary>
+    /// Two players and game board, to simulate the combat section of our game.
+    /// </summary>
+    public Character player1 { get; set; } = new Character("Player 1", 50, 1);
+    public Character player2 { get; set; } = new Character("Player 2", 50, 1);
 
     public List<string> GameLog { get; set; } = new List<string>();
 
     public Game testGame { get; set; } = new Game();
 
-	/// <summary>
-	/// String message with the result of the attack.
-	/// </summary>
-	private string attackResult = "";
+    /// <summary>
+    /// String message with the result of the attack.
+    /// </summary>
+    private string attackResult = "";
 
     /// <summary>
     /// Method to restart or setup the game.
@@ -156,8 +141,8 @@ using System.Text.Json;
         GameLog = new List<string>();
 
 
-		StateHasChanged();
-	}
+        StateHasChanged();
+    }
 
     /// <summary>
     /// Method to show that our attack method works.
@@ -167,7 +152,7 @@ using System.Text.Json;
         attackResult = testGame.MeleeAttackAttempt(player1, player2);
         GameLog.Add(attackResult);
 
-	}
+    }
 
     /// <summary>
     /// Method to clear the game log.
