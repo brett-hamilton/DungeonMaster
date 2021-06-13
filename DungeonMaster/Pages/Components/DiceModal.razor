@@ -136,7 +136,7 @@
     public async Task Roll()
     {
         var diceTotal = Die.RollD20();
-        string message = $"Player rolled 1 D20 for {diceTotal}";
+        diceResult = $"Player rolled 1 D20 for {diceTotal}";
         await Send();
     }
 }
