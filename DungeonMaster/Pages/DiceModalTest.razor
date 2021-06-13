@@ -9,7 +9,11 @@
 <br />
 
 <DungeonMaster.Pages.Components.DiceModal @ref="DiceModal"></DungeonMaster.Pages.Components.DiceModal>
-<button class="btn btn-primary" @onclick="() => DiceModal.OpenModal()"> Roll Dice</button>
+<DungeonMaster.Pages.Components.D20ModifierModal @ref="D20ModifierModal"></DungeonMaster.Pages.Components.D20ModifierModal>
+<div>
+    <button class="btn btn-primary" @onclick="() => DiceModal.OpenModal()"> Roll Dice</button>
+    <button class="btn btn-primary" @onclick="() => D20ModifierModal.OpenModal()"> Roll D20 With Modifier</button>
+</div>
 <br />
 <br />
 <div class="row" style="outline: 1px solid blue; outline-offset: 8px; max-height: 200px; min-height: 200px">
@@ -44,9 +48,14 @@
     private HubConnection hubConnection;
 
     /// <summary>
-    /// Modal that is to be displayed on the page.
+    /// Modal that is to be displayed on the page to roll multiple dice.
     /// </summary>
     private DungeonMaster.Pages.Components.DiceModal DiceModal { get; set; }
+
+    /// <summary>
+    /// Modal that is to be displayed on the page, to roll a D20 with modifier.
+    /// </summary>
+    private DungeonMaster.Pages.Components.D20ModifierModal D20ModifierModal { get; set; }
 
     /// <summary>
     /// List of strings representing the game log.
@@ -71,7 +80,7 @@
         hubConnection = new HubConnectionBuilder()
                 .WithUrl(NavigationManager.ToAbsoluteUri("/dungeonmasterhub"))
                 .Build();
-        
+
         // If the messaged received is for this page, add the new message to the game log.
         hubConnection.On<string, string>("MessageReceived", (message, page) =>
         {
