@@ -104,5 +104,12 @@ namespace DungeonMaster.Data
 				DefenderName = defender.Name
 			};
 		}
+
+		public AttackReport SpellAttack (Character attacker, Character defender, Spell spell)
+        {
+			double attackValue = spell.DiceUsed * 
+
+
+        }
 	}
 }

@@ -20,10 +20,15 @@ namespace DungeonMaster.Data
 
 		public SpellTypes SpellType { get; set; }
 
-		public Spell(string spellName, SpellTypes spellType)
+		public Dice DiceUsed { get; set; }
+
+		public int NumberOfRolls { get; set; }
+
+		public Spell(string spellName, SpellTypes spellType, Dice diceUsed)
 		{
 			this.SpellName = spellName;
 			this.SpellType = spellType;
+			this.DiceUsed = diceUsed;
 		}
 	}
 }

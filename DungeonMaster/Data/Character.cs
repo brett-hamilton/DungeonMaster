@@ -47,6 +47,12 @@ namespace DungeonMaster.Data
 		///represents the current status of the player
 		public Status Status { get; set; }
 
+		///Inventory of the Spells and Weapons of the Player
+		public Inventory PlayersInventory { get; set; }
+
+		///temporary spell attribute to create the attack method in Attack.cs
+		public Spell PlayersSpell { get; set; }
+
 		public Character()
 		{
 			Weapon sword = new Weapon("sword", 10, Dice.D6, 5.0);
