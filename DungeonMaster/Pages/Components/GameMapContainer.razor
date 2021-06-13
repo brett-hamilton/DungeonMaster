@@ -1,0 +1,22 @@
+﻿<div class="game-continer" @onclick="StartGame">
+    <div class="map">
+        <div class="player" style="@_playerCss"></div>
+    </div>
+
+</div>
+
+@code {
+
+    GameManager _gameManager;
+    string _playerCss => $"side: { _gameManager.Player.DistanceFromSide }px";
+
+    protected override void OnInitialized()
+    {
+        _gameManager = new GameManager();
+    }
+
+    void StartGame()
+    {
+        _gameManager.MainLoop();
+    }
+}

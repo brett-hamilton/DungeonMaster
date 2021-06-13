@@ -10,7 +10,6 @@ namespace DungeonMaster.Data
     /// </summary>
     public class AttackReport
     {
-<<<<<<< HEAD
         /// <summary>
         /// Report about the result of the dice rolled.
         /// </summary>
@@ -56,27 +55,6 @@ namespace DungeonMaster.Data
         /// in the game log for the players.
         /// </summary>
         /// <returns></returns>
-=======
-        public DiceRollReport DiceRollReport { get; set; }
-
-        public double AttackRoll { get; set; }
-
-        public double ArmorValue { get; set; }
-
-        public int WeaponBaseDamage { get; set; }
-
-        public int TotalDamageDealt { get; set; }
-
-        public bool HitCheck { get; set; }
-
-        public string AttackerName { get; set; }
-
-        public string DefenderName { get; set; }
-
-        public Dice DieUsed { get; set; }
-
-
->>>>>>> feature/characterCreation
         public string GetAttackReport()
         {
             if (!HitCheck)
