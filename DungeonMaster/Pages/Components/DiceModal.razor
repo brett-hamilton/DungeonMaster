@@ -1,4 +1,7 @@
-﻿@*
+﻿@using Microsoft.AspNetCore.SignalR.Client
+@using DungeonMaster.Data
+@inject NavigationManager NavigationManager;
+@*
     Based upon the Modals provided by Dr. Roach
     Implementation to hide and show based upon:
     https://stackoverflow.com/questions/59256798/how-to-use-bootstrap-modal-in-blazor-client-app
@@ -38,7 +41,8 @@
             </div>
 
             <div class="modal-footer">
-                <button class="btn btn-primary">Roll!</button>
+                <button class="btn btn-primary" @onclick="RollMultipleDice">Roll!</button>
+                <button class="btn btn-primary" @onclick="Roll">QUICK D20 ROLL!</button>
                 <button class="btn btn-secondary" @onclick="CloseModal" data-dismiss="modal">Cancel</button>
             </div>
         </div>
@@ -54,10 +58,40 @@
     public int DieToRoll { get; set; }
 
     /// <summary>
+    /// Result to be displayed showing the result of the dice roll.
+    /// </summary>
+    private string diceResult;
+
+    /// <summary>
     /// String that represents whether the modal should be displayed or not. Modified by the open and close
     /// modal buttons.
     /// </summary>
     public string modalShowStyling { get; set; } = "display:none";
+
+    /// <summary>
+    /// Hub connection used to send and receive messages.
+    /// </summary>
+    private HubConnection hubConnection;
+
+    /// <summary>
+    /// Method to initialize our hub connection used to send and receive messages.
+    /// When a message is received, it is added to the game log.
+    /// </summary>
+    /// <returns></returns>
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+                .WithUrl(NavigationManager.ToAbsoluteUri("/dungeonmasterhub"))
+                .Build();
+
+        await hubConnection.StartAsync();
+    }
+    /// <summary>
+    /// Method to report the result to the page holding the modal to display.
+    /// </summary>
+    /// <returns></returns>
+    async Task Send() =>
+        await hubConnection.SendAsync("SendMessage", diceResult, "DiceModalTest");
 
     /// <summary>
     /// Method to change styling to display the Modal.
@@ -75,6 +109,35 @@
     {
         modalShowStyling = "display:none";
         StateHasChanged();
+    }
+
+    /// <summary>
+    /// Method to roll multiple dice and report the result to the user.
+    /// </summary>
+    /// <returns></returns>
+    public async Task RollMultipleDice()
+    {
+        // If the roll is successful, report it to the main page.
+        try
+        {
+            var rollReport = Die.Roll(DieSides, DieToRoll);
+            diceResult = $"Player rolled {rollReport.GetDiceReport()}";
+            CloseModal();
+            await Send();
+        }
+        // If not, null out the result, and output the error to the console.
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            diceResult = null;
+        }
+    }
+
+    public async Task Roll()
+    {
+        var diceTotal = Die.RollD20();
+        string message = $"Player rolled 1 D20 for {diceTotal}";
+        await Send();
     }
 }
 

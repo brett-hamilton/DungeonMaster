@@ -1,27 +1,83 @@
 ﻿@page "/DiceModalTest"
 
 @using DungeonMaster.Data
-
+@using Microsoft.AspNetCore.SignalR.Client 
+@inject NavigationManager NavigationManager;
 
 <h3>Dice Modal Test</h3>
 <hr />
 <br />
-<div class="row">
-    <label class="col-2">Dice Total: </label>
-    <input class="col-1" readonly value="@diceTotal" />
-</div>
 
 <DungeonMaster.Pages.Components.DiceModal @ref="DiceModal"></DungeonMaster.Pages.Components.DiceModal>
 <button class="btn btn-primary" @onclick="() => DiceModal.OpenModal()"> Roll Dice</button>
+<br />
+<br />
+<div class="row" style="outline: 1px solid blue; outline-offset: 8px; max-height: 200px; min-height: 200px">
+    <div style="border-right: 1px solid blue" class="col-2">
+        <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
+    </div>
+    @* Use overflow-auto and max/min height to force game log to be scrollable and at set size. *@
+    <div class="col-10 overflow-auto" style="max-height: 200px; min-height: 200px">
+        <ul class="list-group" id="gameLog">
+            @* Iterate through the list of strings in reverse order, so newest message is at top. Based on Microsoft SignalR example. *@
+            @for (int i = (GameLog.Count - 1); i >= 0; i--)
+            {
+                if (i == (GameLog.Count - 1))
+                {
+                    <li class="list-group-item list-group-item-primary">@GameLog[i]</li>
+                }
+
+                else
+                {
+                    <li class="list-group-item list-group-item-secondary">@GameLog[i]</li>
+                }
+            }
+
+        </ul>
+    </div>
+</div>
 
 @code {
+        /// <summary>
+        /// Hub connection to send and receive messages.
+        /// </summary>
+    private HubConnection hubConnection;
+
     /// <summary>
     /// Modal that is to be displayed on the page.
     /// </summary>
     private DungeonMaster.Pages.Components.DiceModal DiceModal { get; set; }
 
     /// <summary>
-    /// Int representing the result of the dice roll.
+    /// List of strings representing the game log.
     /// </summary>
-    private int diceTotal;
+    public List<string> GameLog { get; set; } = new List<string>();
+
+    /// <summary>
+    /// Method to clear out the gamelog. Replaces list with a new empty list.
+    /// </summary>
+    public void ClearLog()
+    {
+        GameLog = new List<string>();
+    }
+
+    /// <summary>
+    /// Method to initialize our hub connection used to send and receive messages.
+    /// When a message is received, it is added to the game log.
+    /// </summary>
+    /// <returns></returns>
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+                .WithUrl(NavigationManager.ToAbsoluteUri("/dungeonmasterhub"))
+                .Build();
+
+        hubConnection.On<string, string>("MessageReceived", (message, page) =>
+        {
+            GameLog.Add(message);
+            StateHasChanged();
+        });
+
+        await hubConnection.StartAsync();
+    }
 }
