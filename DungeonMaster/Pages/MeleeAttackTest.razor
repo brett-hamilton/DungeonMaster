@@ -1,8 +1,22 @@
 ﻿@page "/MeleeAttackTest"
 
 @using DungeonMaster.Data
+@using System.IO;
+@using System.Text.Json;
 <h3>Testing Melee Attacks</h3>
 <hr />
+<br />
+
+
+<div>
+    <label for="doLoadCharacter">Load Character from File: </label>
+    <select @bind="doLoadCharacter" name="doLoadCharacter" id="doLoadCharacter">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+    </select>
+    <br />
+    <label>@status</label>
+</div>
 <br />
 
 <div class="row">
@@ -23,7 +37,7 @@
             </p>
         </div>
     </div>
-    
+
     @*Column representing attack information.*@
     <div class="col-3">
         @attackResult
@@ -74,6 +88,21 @@
 </div>
 
 @code {
+        /// <summary>
+        /// If yes, indicates we should load character from file.
+        /// </summary>
+    protected string doLoadCharacter = "no";
+
+    /// <summary>
+    /// Path to characters file.
+    /// </summary>
+    public string path = "Saves/characters.json";
+
+    /// <summary>
+    /// Display string for status of loading character
+    /// </summary>
+    public string status = "Status: No character loaded.";
+
     /// <summary>
     /// Two players and game board, to simulate the combat section of our game.
     /// </summary>
@@ -94,8 +123,37 @@
     /// </summary>
     public void SetupGame()
     {
-        player1 = new Character("Player 1", 50, 1);
-        player2 = new Character("Player 2", 50, 1);
+        if (doLoadCharacter == "yes")
+        {
+            // Check if we are using a player from the characters file
+            try
+            {
+                string jsonString = File.ReadAllText(path);
+                player1 = JsonSerializer.Deserialize<Character>(jsonString);
+            }
+            catch (FileNotFoundException)
+            {
+                status = "Status: Character file not found. Please create a character using the character creation page.";
+            }
+            catch (IOException)
+            {
+                status = "Status: Error reading character file. Please create another character using the character creation page";
+            }
+            catch (Exception e)
+            {
+                status = "ERROR: " + e.Message;
+            }
+
+            // Use default for opponent
+            player2 = new Character("Player 2", 50, 1);
+
+        }
+        else
+        {
+            player1 = new Character("Player 1", 50, 1);
+            player2 = new Character("Player 2", 50, 1);
+        }
+
         testGame = new Game(player1, player2);
         attackResult = "";
         GameLog = new List<string>();

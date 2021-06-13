@@ -59,6 +59,8 @@ namespace DungeonMaster.Data
 		/// <summary>
 		/// Perform a ranged attack against the defending character. If the defender is within melee range
 		/// then the attack roll is with disadvantage.
+		/// Created by: Jordan DeBord
+		/// Last Updated: 06/12/2021
 		/// </summary>
 		/// <param name="attacker">Character attacking the other.</param>
 		/// <param name="defender">Character defending against the attack.</param>

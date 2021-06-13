@@ -66,6 +66,8 @@ namespace DungeonMaster.Data
 		/// <summary>
 		/// Method to determine if the player is within melee range. As of now we assume all melee
 		/// ranges are 1 block.
+		/// Created by: Jordan DeBord
+		/// Last Updated: 06/12/2021
 		/// </summary>
 		/// <param name="attacker">Character attempting to attack the other. </param>
 		/// <param name="defender">Character defending against the other.</param>
@@ -95,6 +97,8 @@ namespace DungeonMaster.Data
 
 		/// <summary>
 		/// As of now, we assume all ranged attacks are within range.
+		/// Created by: Jordan DeBord
+		/// Last Updated: 06/12/2021
 		/// </summary>
 		/// <param name="attacker">Attacking Character.</param>
 		/// <param name="defender">Defending Character</param>
@@ -106,6 +110,8 @@ namespace DungeonMaster.Data
 
 		/// <summary>
 		/// Returns the Coordinate representing the Character's location in the game.
+		/// Created by: Jordan DeBord
+		/// Last Updated: 06/12/2021
 		/// </summary>
 		/// <param name="character">Character to get coordinates from.</param>
 		/// <returns>The coordinates of the character.</returns>
@@ -154,6 +160,8 @@ namespace DungeonMaster.Data
 
 		/// <summary>
 		/// Ranged attack method, which will verify target is not dead and attempt to attack them.
+		/// Created by: Jordan DeBord
+		/// Last Updated: 06/12/2021
 		/// </summary>
 		/// <param name="attacker">Character attempting to attack the other.</param>
 		/// <param name="defender">Character being attacked.</param>
@@ -187,6 +195,8 @@ namespace DungeonMaster.Data
 		/// <summary>
 		/// Check if the provided row and column are valid in the game board,
 		/// if so check if that space is occupied. If not, place character there.
+		/// Created by: Jordan DeBord
+		/// Last Updated: 06/12/2021
 		/// </summary>
 		/// <param name="character">Character to be placed in the gameboard.</param>
 		/// <param name="row">Row to place character in.</param>
