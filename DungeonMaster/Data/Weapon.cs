@@ -83,19 +83,14 @@ namespace DungeonMaster.Data
 		/// <param name="dice">dice it uses</param>
 		/// <param name="range">what effective range the weapon has</param>
 		/// <param name="damageTypes">what type of damage the weapon does</param>
-		public Weapon(string name, int baseDamage, Dice dice, double range, Effect damageTypes)
+		public Weapon(string name, int baseDamage, Dice dice, double range, Effect damageTypes, bool rangedWeapon)
 		{
 			this.Name = name;
 			this.BaseDamage = baseDamage;
 			this.DiceUsed = dice;
 			this.Range = range;
 			this.DamageType = damageTypes;
-
-			//sets value of rangedWeapon to false if a melee weapon
-			if(range <= 1)
-            {
-				this.rangedWeapon = false;
-            }
+			this.rangedWeapon = rangedWeapon;
 			
 		}
 
@@ -136,7 +131,7 @@ namespace DungeonMaster.Data
 					};
 				}
 			}
-
+			// If we could not parse the Die, or the Die was invalid, return just base damage.
 			return new AttackReport 
 			{ 
 				TotalDamageDealt = BaseDamage, 
