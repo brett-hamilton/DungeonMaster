@@ -13,7 +13,7 @@ namespace DungeonMaster.Data
 	{
 		public double HealingFactor { get; set; }
 
-		public HealingSpell(string spellName, SpellTypes spellType, double healingFactor) : base(spellName, spellType)
+		public HealingSpell(string spellName, SpellTypes spellType, double healingFactor, Dice diceUsed) : base(spellName, spellType, diceUsed)
 		{
 			this.HealingFactor = HealingFactor;
 		}

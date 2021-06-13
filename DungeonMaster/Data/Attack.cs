@@ -98,9 +98,9 @@ namespace DungeonMaster.Data
 			};
 		}
 
-		public AttackReport SpellAttack (Character attacker, Character defender, Spell spell)
+		public void SpellAttack (Character attacker, Character defender, Spell spell)
         {
-			double attackValue = spell.DiceUsed * 
+			double attackValue = 6;
 
 
         }
