@@ -45,15 +45,28 @@ namespace DungeonMaster.Data
 		///
 		public Effect DamageType { get; set; }
 
-		/// <summary>
-		/// Loaded constructor for making a new weapon
+		/// Default constructor that takes no parameters
+		/// 
+		/// Created by: Brett Hamilton
+		/// Created on: 6/11/2021
 		/// </summary>
-		/// Author: Hunter Page
-		/// <param name="name">name of the weapon</param>
-		/// <param name="baseDamage">damage of the weapon</param>
-		/// <param name="dice">dice it uses</param>
-		/// <param name="range">what effective range the weapon has</param>
-		public Weapon(string name, int baseDamage, Dice dice, double range)
+		public Weapon()
+		{
+			this.Name = "sword";
+			this.BaseDamage = 10;
+			this.DiceUsed = Dice.D6;
+			this.Range = 5.0;
+		}
+
+	/// <summary>
+	/// Loaded constructor for making a new weapon
+	/// </summary>
+	/// Author: Hunter Page
+	/// <param name="name">name of the weapon</param>
+	/// <param name="baseDamage">damage of the weapon</param>
+	/// <param name="dice">dice it uses</param>
+	/// <param name="range">what effective range the weapon has</param>
+	public Weapon(string name, int baseDamage, Dice dice, double range)
 		{
 			this.Name = name;
 			this.BaseDamage = baseDamage;
