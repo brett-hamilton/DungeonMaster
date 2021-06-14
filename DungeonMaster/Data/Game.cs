@@ -12,20 +12,7 @@ namespace DungeonMaster.Data
 		/// </summary>
 		public string GameName { get; set; }
 
-		/// <summary>
-		/// Gameboard, representing a two dimensional array of potential Character locations.
-		/// </summary>
-		public Character[,] GameBoard { get; set; }
-
-		/// <summary>
-		/// Number of rows in the game board.
-		/// </summary>
-		public int Rows { get; private set; }
-
-		/// <summary>
-		/// Number of columns in the game board.
-		/// </summary>
-		public int Columns { get; private set; }
+		public Gameboard Gameboard { get; set; }
 
 		/// <summary>
 		/// Constructor to create a game with a set gameboard size. the game.
@@ -34,9 +21,7 @@ namespace DungeonMaster.Data
 		/// <param name="columns"></param>
 		public Game(int rows, int columns)
 		{
-			GameBoard = new Character[rows, columns];
-			Rows = rows;
-			Columns = columns;
+			Gameboard = new Gameboard(rows, columns);
 		}
 
 		/// <summary>
@@ -44,9 +29,7 @@ namespace DungeonMaster.Data
 		/// </summary>
 		public Game() 
 		{
-			Rows = 5;
-			Columns = 5;
-			GameBoard = new Character[Rows, Columns];
+			Gameboard = new Gameboard(5, 5);
 			GameName = "Test Game";
 		}
 
@@ -55,12 +38,10 @@ namespace DungeonMaster.Data
 		/// </summary>
 		public Game(Character char1, Character char2)
 		{
-			Rows = 5;
-			Columns = 5;
-			GameBoard = new Character[Rows, Columns];
+			Gameboard = new Gameboard(5, 5);
 			GameName = "Test Game";
-			GameBoard[2, 2] = char1;
-			GameBoard[2, 3] = char2;
+			Gameboard.AddDrawable(char1, 2, 2);
+			Gameboard.AddDrawable(char2, 2, 3);
 		}
 
 		/// <summary>
@@ -74,8 +55,8 @@ namespace DungeonMaster.Data
 		/// <returns>Boolean representing if character is within range.</returns>
 		public bool MeleeRangeCheck(Character attacker, Character defender)
 		{
-			Coordinate attackerCoord = GetCoordinate(attacker);
-			Coordinate defenderCoord = GetCoordinate(defender);
+			Coordinate attackerCoord = Gameboard.GetCoordinate(attacker);
+			Coordinate defenderCoord = Gameboard.GetCoordinate(defender);
 
 			if (attackerCoord == null || defenderCoord == null)
 			{
@@ -106,31 +87,6 @@ namespace DungeonMaster.Data
 		public bool RangedRangeCheck(Character attacker, Character defender)
 		{
 			return true;
-		}
-
-		/// <summary>
-		/// Returns the Coordinate representing the Character's location in the game.
-		/// Created by: Jordan DeBord
-		/// Last Updated: 06/12/2021
-		/// </summary>
-		/// <param name="character">Character to get coordinates from.</param>
-		/// <returns>The coordinates of the character.</returns>
-		public Coordinate GetCoordinate(Character character)
-		{
-			Coordinate coordinateToReturn = null;
-
-			for (int i = 0; i < Rows; i++)
-			{
-				for (int j = 0; j < Columns; j++)
-				{
-					if (character == GameBoard[i, j])
-					{
-						coordinateToReturn = new Coordinate() { Row = i, Column = j };
-						return coordinateToReturn;
-					}
-				}
-			}
-			return coordinateToReturn;
 		}
 
 		/// <summary>
@@ -204,20 +160,7 @@ namespace DungeonMaster.Data
 		/// <returns>Boolean representing if character was placed into the gameboard.</returns>
 		public bool AddCharacter(Character character, int row, int col) 
 		{
-			var currentOccupant = GameBoard[row, col];
-
-			if (row >= Rows || col >= Columns || row < 0 || col < 0)
-			{
-				return false;
-			}
-
-			if (currentOccupant != null)
-			{
-				return false;
-			}
-
-			GameBoard[row, col] = character;
-			return true;
+			return Gameboard.AddDrawable(character, row, col);
 		}
 	}
 }
