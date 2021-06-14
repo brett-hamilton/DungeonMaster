@@ -117,71 +117,6 @@ namespace DungeonMaster.Data
         }
 
 		/// <summary>
-		/// Method to determine if the player is within melee range. As of now we assume all melee
-		/// ranges are 1 block.
-		/// Created by: Jordan DeBord
-		/// Last Updated: 06/12/2021
-		/// </summary>
-		/// <param name="attacker">Character attempting to attack the other. </param>
-		/// <param name="defender">Character defending against the other.</param>
-		/// <returns>Boolean representing if character is within range.</returns>
-		public bool MeleeRangeCheck(Character attacker, Character defender)
-		{
-			Coordinate attackerCoord = Gameboard.GetCoordinate(attacker);
-			Coordinate defenderCoord = Gameboard.GetCoordinate(defender);
-
-			if (attackerCoord == null || defenderCoord == null)
-			{
-				return false;
-			}
-
-			var verticalDistance = attackerCoord.Row - defenderCoord.Row;
-			var horizontalDistance = attackerCoord.Column - defenderCoord.Column;
-
-			// If the unit is within one vertical or horizontal block. This would also include
-			//      diagonal locations.
-			if (Math.Abs(verticalDistance) == 1 || Math.Abs(horizontalDistance) == 1)
-			{
-				return true;
-			}
-
-			return false;
-		}
-
-		/// <summary>
-		/// Method to determine if the defender is within range of the attacker's
-		/// ranged weapon.
-		/// Created by: Jordan DeBord
-		/// Last Updated: 06/14/2021
-		/// </summary>
-		/// <param name="attacker">Attacking Character.</param>
-		/// <param name="defender">Defending Character</param>
-		/// <returns>Boolean representing if attack is in range.</returns>
-		public bool RangedRangeCheck(Character attacker, Character defender)
-		{ 
-			var attackerCoordinates = GetCoordinate(attacker);
-			var defenderCoordinates = GetCoordinate(defender);
-
-			// If either character is not in the gameboard, return null;
-			if (attackerCoordinates == null || defenderCoordinates == null) 
-			{
-				return false;
-			}
-
-			double distanceBetween = GetDistance(attackerCoordinates, defenderCoordinates);
-
-			// In order to allow diagonal attacks, we will round the value down to the previous whole number.
-			var roundedDistance = Math.Round(distanceBetween, 0, MidpointRounding.ToZero);
-
-			if (attacker.Weapon.Range < roundedDistance) 
-			{
-				return false;
-			}
-
-			return true;
-		}
-
-		/// <summary>
 		/// Melee Attack method, which will check range, then call the attack class's melee attack.
 		/// </summary>
 		/// <param name="attacker">Attacking character.</param>
@@ -193,7 +128,7 @@ namespace DungeonMaster.Data
 			{
 				return ($"{defender.Name} is already dead.");
 			}
-			var rangeCheck = MeleeRangeCheck(attacker, defender);
+			var rangeCheck = Gameboard.MeleeRangeCheck(attacker, defender);
 			if (!rangeCheck) 
 			{
 				return ($"{defender.Name} is too far away to melee attack.");
@@ -225,14 +160,14 @@ namespace DungeonMaster.Data
 				return ($"{defender.Name} is already dead.");
 			}
 
-			var rangeCheck = RangedRangeCheck(attacker, defender);
+			var rangeCheck = Gameboard.RangedRangeCheck(attacker, defender);
 			if (!rangeCheck)
 			{
 				return ($"{defender.Name} is too far away to range attack.");
 			}
 
 			// If the defender is in melee range, attacker has disadvantage.
-			var disadvantageCheck = MeleeRangeCheck(defender, attacker);
+			var disadvantageCheck = Gameboard.MeleeRangeCheck(defender, attacker);
 
 			var attack = new Attack();
 			var attackReport = attack.RangedAttack(attacker, defender, disadvantageCheck);
@@ -257,23 +192,6 @@ namespace DungeonMaster.Data
 			else
 				outputString = "No Characters In Game";
 			return outputString;
-		}
-
-		/// <summary>
-		/// Method to calculate the distance between two characters.
-		/// </summary>
-		/// <param name="character1">First character in the gameboard.</param>
-		/// <param name="character2">Second character to calculate distance to.</param>
-		/// <returns>distance between two characters.</returns>
-		public double GetDistance(Coordinate character1, Coordinate character2)
-		{
-			double rowDifference = character1.Row - character2.Row;
-			double colDifference = character1.Column - character2.Column;
-
-			// Calculate distance using A^2 + B^2 = C^2
-			double distance = Math.Sqrt(((rowDifference * rowDifference) + (colDifference * colDifference)));
-
-			return distance;
 		}
 	}
 }
