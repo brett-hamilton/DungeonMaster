@@ -115,9 +115,12 @@ namespace DungeonMaster.Data
 				return false;
 			}
 
-			var distanceBetween = GetDistance(attackerCoordinates, defenderCoordinates);
+			double distanceBetween = GetDistance(attackerCoordinates, defenderCoordinates);
 
-			if (attacker.Weapon.Range < distanceBetween) 
+			// In order to allow diagonal attacks, we will round the value down to the previous whole number.
+			var roundedDistance = Math.Round(distanceBetween, 0, MidpointRounding.ToZero);
+
+			if (attacker.Weapon.Range < roundedDistance) 
 			{
 				return false;
 			}
