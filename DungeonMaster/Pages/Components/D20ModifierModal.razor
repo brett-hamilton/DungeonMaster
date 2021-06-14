@@ -2,7 +2,9 @@
 @using DungeonMaster.Data
 @inject NavigationManager NavigationManager;
 @*
-    Based upon the Modals provided by Dr. Roach
+    D20 With Modifiers Dice Modal
+    Created by: Jordan DeBord
+    Based upon the Modals provided by Dr. Roach in Advanced Web.
     Implementation to hide and show based upon:
     https://stackoverflow.com/questions/59256798/how-to-use-bootstrap-modal-in-blazor-client-app
     SignalR Aspect is based on the Microsoft Tutorial:
@@ -60,7 +62,7 @@
     /// <summary>
     /// Method to initialize our hub connection used to send and receive messages.
     /// When a message is received, it is added to the game log.
-    /// This is based on the Microsoft SignalR tutorial.
+    /// This is modified from the Microsoft SignalR tutorial.
     /// </summary>
     /// <returns></returns>
     protected override async Task OnInitializedAsync()

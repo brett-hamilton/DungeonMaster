@@ -15,6 +15,10 @@ using DungeonMaster.Hubs;
 
 namespace DungeonMaster
 {
+	/// <summary>
+	/// Startup method for application.
+	/// Added SignalR aspects based upon Microsoft tutorial.
+	/// </summary>
 	public class Startup
 	{
 		public Startup (IConfiguration configuration)

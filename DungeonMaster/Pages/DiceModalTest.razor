@@ -4,6 +4,12 @@
 @using Microsoft.AspNetCore.SignalR.Client 
 @inject NavigationManager NavigationManager;
 
+@* 
+    Dice Modal Test Page
+    Created by: Jordan DeBord
+    SignalR Aspects based upon Microsoft Blazor SignalR Tutorial
+*@
+
 <h3>Dice Modal Test</h3>
 <hr />
 <br />
@@ -73,6 +79,7 @@
     /// <summary>
     /// Method to initialize our hub connection used to send and receive messages.
     /// When a message is received, it is added to the game log.
+    /// Modified from the Microsoft SignalR Blazor tutorial.
     /// </summary>
     /// <returns></returns>
     protected override async Task OnInitializedAsync()
