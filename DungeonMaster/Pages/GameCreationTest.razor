@@ -12,15 +12,28 @@
 
 <p>Game Information:</p>
 <p>Status: @gameStatus</p>
-<p>Current Name: @gameName</p>
-<p>Rows:    @rows</p>
-<p>Columns: @columns</p>
+<p>Current Name: @runningGameName</p>
+<p>Rows:    @gameRows</p>
+<p>Columns: @gameColumns</p>
 <br />
 <p>Character List:</p>
-@characterList
+<div class="row" style="outline: 0px solid blue; outline-offset: 8px; max-height: 200px; min-height: 100px; width: 500px">
+    @* Use overflow-auto and max/min height to force game log to be scrollable and at set size. *@
+    <div class="col-10 overflow-auto" style="max-height: 200px; min-height: 100px; width: fit-content">
+        <ul class="list-group " id="charList">
+            @* Iterate through the list of strings in reverse order, so newest message is at top. Based on Microsoft SignalR example. *@
+            @for (int i = (characterList.Count - 1); i >= 0; i--)
+            {
+                <li class="list-group-item list-group-item-primary">@characterList[i].Name</li>
+            }
 
+        </ul>
+    </div>
+</div>
 
-
+<br />
+<br />
+<br />
 
 
 <div id="GameStarter">
@@ -56,18 +69,28 @@
     private int rows = 5;
     private int columns = 5;
     private Game game = null;
-    private string characterList = string.Empty;
+    private List<Character> characterList = new List<Character>();
     private string gameStatus = "Not Started";
     private int charRow = 5;
     private int charColumn = 5;
-
+    private int gameRows = 0;
+    private int gameColumns = 0;
+    private string runningGameName = string.Empty;
 
 
     public void StartGame()
     {
-        game = new Game(rows, columns);
-        game.GameName = gameName;
-        gameStatus = "Created. Awaiting Characters";
+        if (game == null)
+        {
+            game = new Game(rows, columns);
+            game.GameName = gameName;
+            gameStatus = "Created. Awaiting Characters";
+            runningGameName = gameName;
+            gameRows = rows;
+            gameColumns = columns;
+        }
+        else
+            gameStatus = "Can not start new game, game in progress.";
     }
 
 
@@ -93,7 +116,7 @@
             if (game.AddCharacter(newCharacter, charRow, charColumn))
             {
                 gameStatus = newCharacter.Name + " was added to the game at location (" + charRow + ", " + charColumn + ")";
-                updateCharacterList();
+                characterList.Add(newCharacter);
             }
             else
                 gameStatus = newCharacter.Name + " could not be added to the game...";
@@ -102,12 +125,4 @@
             gameStatus = "Characters can not be added until the game is started.";
     }
 
-    /// <summary>
-    /// It just updates the displayed character list on the page.
-    /// </summary>
-    public void updateCharacterList()
-    {
-        if (game != null)
-            characterList = game.GetFormattedCharacterList();
-    }
 }
