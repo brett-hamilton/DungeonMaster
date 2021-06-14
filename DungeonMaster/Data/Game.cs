@@ -220,7 +220,11 @@ namespace DungeonMaster.Data
 			return attackReport.GetAttackReport();
 		}
 
-		public string GetFormattedCharacterList()
+        /// <summary>
+        /// Gets the formatted character list.
+        /// </summary>
+        /// <returns> String with all character names in the game</returns>
+        public string GetFormattedCharacterList()
         {
 			string outputString = string.Empty;
 			if (CharacterList.Count > 0)

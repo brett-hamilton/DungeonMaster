@@ -16,15 +16,21 @@ namespace DungeonMaster.Data
         public Drawable[,] Drawables { get; set; }
 
         /// <summary>
-        /// Gets or sets the numbere of rows.
+        /// Gets or sets the number of rows.
         /// </summary>
         /// <value>
         /// The rows.
         /// </value>
         public int Rows { get; protected set; }
 
+        /// <summary>
+        /// Gets or sets the number of columns.
+        /// </summary>
         public int Columns { get; protected set; }
 
+        /// <summary>
+        /// Default constructor, gives a 40x40 board.
+        /// </summary>
         public Gameboard()
         {
             Rows = 40;
@@ -32,6 +38,11 @@ namespace DungeonMaster.Data
             Drawables = new Drawable[Rows, Columns];
         }
 
+        /// <summary>
+        /// Contstructor that generates a gameboard of the given size.
+        /// </summary>
+        /// <param name="rows"></param>
+        /// <param name="columns"></param>
         public Gameboard(int rows, int columns)
         {
             Rows = rows;
