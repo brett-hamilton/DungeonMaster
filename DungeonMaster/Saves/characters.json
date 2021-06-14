@@ -1,1 +1,1 @@
-{"Weapon":{"Name":"Sword","BaseDamage":10,"DiceUsed":2,"Range":5,"rangedWeapon":false,"DamageType":null},"Health":50,"Armor":{"Name":"Leather","ProtectionPoints":6},"IsDead":false,"ActionPoints":1,"Status":0,"Name":"Steve","Direction":0}
+{"Weapon":{"Name":"Sword","BaseDamage":10,"DiceUsed":2,"Range":5,"RangedWeapon":false,"DamageType":null},"Health":50,"Armor":{"Name":"Leather","ProtectionPoints":6},"IsDead":false,"ActionPoints":1,"Status":0,"Name":"Jacob Frazier","Direction":0}
