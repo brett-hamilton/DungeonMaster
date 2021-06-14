@@ -151,7 +151,7 @@ namespace DungeonMaster.Data
 		/// <returns>A string containing information about the result.</returns>
 		public string RangedAttackAttempt(Character attacker, Character defender) 
 		{
-			if (!attacker.Weapon.rangedWeapon) 
+			if (!attacker.Weapon.RangedWeapon) 
 			{
 				return ($"{attacker.Name} does not have a ranged weapon to attack with.");
 			}
