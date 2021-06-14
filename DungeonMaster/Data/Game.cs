@@ -96,15 +96,32 @@ namespace DungeonMaster.Data
 		}
 
 		/// <summary>
-		/// As of now, we assume all ranged attacks are within range.
+		/// Method to determine if the defender is within range of the attacker's
+		/// ranged weapon.
 		/// Created by: Jordan DeBord
-		/// Last Updated: 06/12/2021
+		/// Last Updated: 06/14/2021
 		/// </summary>
 		/// <param name="attacker">Attacking Character.</param>
 		/// <param name="defender">Defending Character</param>
 		/// <returns>Boolean representing if attack is in range.</returns>
 		public bool RangedRangeCheck(Character attacker, Character defender)
-		{
+		{ 
+			var attackerCoordinates = GetCoordinate(attacker);
+			var defenderCoordinates = GetCoordinate(defender);
+
+			// If either character is not in the gameboard, return null;
+			if (attackerCoordinates == null || defenderCoordinates == null) 
+			{
+				return false;
+			}
+
+			var distanceBetween = GetDistance(attackerCoordinates, defenderCoordinates);
+
+			if (attacker.Weapon.Range < distanceBetween) 
+			{
+				return false;
+			}
+
 			return true;
 		}
 
@@ -218,6 +235,23 @@ namespace DungeonMaster.Data
 
 			GameBoard[row, col] = character;
 			return true;
+		}
+
+		/// <summary>
+		/// Method to calculate the distance between two characters.
+		/// </summary>
+		/// <param name="character1">First character in the gameboard.</param>
+		/// <param name="character2">Second character to calculate distance to.</param>
+		/// <returns>distance between two characters.</returns>
+		public double GetDistance(Coordinate character1, Coordinate character2)
+		{
+			double rowDifference = character1.Row - character2.Row;
+			double colDifference = character1.Column - character2.Column;
+
+			// Calculate distance using A^2 + B^2 = C^2
+			double distance = Math.Sqrt(((rowDifference * rowDifference) + (colDifference * colDifference)));
+
+			return distance;
 		}
 	}
 }
