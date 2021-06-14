@@ -38,7 +38,7 @@ namespace DungeonMaster.Data
 		///
 		//determines whether the weapon is used for range
 		///
-		public bool rangedWeapon { get; set; } = false;
+		public bool RangedWeapon { get; set; } = false;
 
 		///
 		//the type of damage the weapon uses
@@ -90,7 +90,7 @@ namespace DungeonMaster.Data
 			this.DiceUsed = dice;
 			this.Range = range;
 			this.DamageType = damageTypes;
-			this.rangedWeapon = rangedWeapon;
+			this.RangedWeapon = rangedWeapon;
 			
 		}
 
