@@ -15,6 +15,12 @@ namespace DungeonMaster.Data
         /// </value>
         public Drawable[,] Drawables { get; set; }
 
+        /// <summary>
+        /// Gets or sets the numbere of rows.
+        /// </summary>
+        /// <value>
+        /// The rows.
+        /// </value>
         public int Rows { get; protected set; }
 
         public int Columns { get; protected set; }
@@ -106,12 +112,14 @@ namespace DungeonMaster.Data
         }
 
         /// <summary>
-        /// Attempts to add the drawable to the 
+        /// Attempts to add the drawable to the game board. 
         /// </summary>
         /// <param name="drawable">The drawable.</param>
         /// <param name="row">The row.</param>
         /// <param name="column">The column.</param>
-        /// <returns></returns>
+        /// <returns>
+        ///     <c>true</c> if the item is added; otherwise, <c>false</c>.
+        /// </returns>
         public Boolean AddDrawable(Drawable drawable, int row, int column)
         {
             if (row < Rows && column < Columns && row > -1 && column > -1)

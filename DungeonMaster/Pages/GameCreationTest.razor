@@ -8,50 +8,106 @@
 <hr />
 <br />
 
-<p>Current Name: @characterName</p>
 
-<div id="CharacterCreator">
-    <label for="characterName">Name: </label>
+
+<p>Game Information:</p>
+<p>Status: @gameStatus</p>
+<p>Current Name: @gameName</p>
+<p>Rows:    @rows</p>
+<p>Columns: @columns</p>
+<br />
+<p>Character List:</p>
+@characterList
+
+
+
+
+
+<div id="GameStarter">
+    <label for="gameName">Name: </label>
+    <input placeholder="enter game name" @bind="gameName" />
+    <br>
+    <label for="rows">Rows: </label>
+    <input placeholder="enter number of rows" @bind="rows" />
+    <br>
+    <label for="columns">Columns: </label>
+    <input placeholder="enter number of columns" @bind="columns" />
+    <br>
+    <button class="btn btn-primary" @onclick="StartGame">Create Game</button>;
+</div>
+
+<br />
+<br />
+
+
+<div id="CharacterCreator" >
+    <label for="characterName">Name:</label>
     <input placeholder="enter character name" @bind="characterName" />
+    <label for="characterName">Row:</label>
+    <input placeholder="enter character row" @bind="charRow" />
+    <label for="characterName">Column:</label>
+    <input placeholder="enter character column" @bind="charColumn" />
     <br />
-    <button class="btn btn-primary" @onclick="CreateCharacter">Create and Save Character</button>
-    <p>@errorMessage</p>
+    <button class="btn btn-primary" @onclick="CreateCharacter">Create Character and add to game</button>
 </div>
 
 @code {
+    private string gameName = string.Empty;
+    private int rows = 5;
+    private int columns = 5;
+    private Game game = null;
+    private string characterList = string.Empty;
+    private string gameStatus = "Not Started";
+    private int charRow = 5;
+    private int charColumn = 5;
+
+
+
+    public void StartGame()
+    {
+        game = new Game(rows, columns);
+        game.GameName = gameName;
+        gameStatus = "Created. Awaiting Characters";
+    }
+
+
+
+
     /// <summary>
     /// Name of the character bring created
     /// </summary>
     private string characterName = string.Empty;
 
-    /// <summary>
-    /// Contains error message if error has occurred.
-    /// </summary>
-    private string errorMessage = string.Empty;
 
     /// <summary>
-    /// Creates a character with the provided information from form and saves it to JSON file.
+    /// Creates a character with the provided information from form and adds it to the game.
     ///
     /// Created by: Brett Hamilton
     /// Created on: 6/9/2021
     /// </summary>
     public void CreateCharacter()
     {
-        // Create new character and serialize it as a JSON string
         Character newCharacter = new Character(characterName, 50, 1);
-        string jsonString = JsonSerializer.Serialize(newCharacter);
-
-        // Write the JSON string to a file for storage
-        string fileName = "characters.json";
-        string path = "Saves/" + fileName;
-
-        try
+        if (game != null)
         {
-            File.WriteAllText(path, jsonString);
+            if (game.AddCharacter(newCharacter, charRow, charColumn))
+            {
+                gameStatus = newCharacter.Name + " was added to the game at location (" + charRow + ", " + charColumn + ")";
+                updateCharacterList();
+            }
+            else
+                gameStatus = newCharacter.Name + " could not be added to the game...";
         }
-        catch (IOException e)
-        {
-            errorMessage = "Error: " + e.Message;
-        }
+        else
+            gameStatus = "Characters can not be added until the game is started.";
+    }
+
+    /// <summary>
+    /// It just updates the displayed character list on the page.
+    /// </summary>
+    public void updateCharacterList()
+    {
+        if (game != null)
+            characterList = game.GetFormattedCharacterList();
     }
 }

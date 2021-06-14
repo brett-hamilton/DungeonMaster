@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,20 +13,24 @@ namespace DungeonMaster.Data
 		/// </summary>
 		public string GameName { get; set; }
 
-		public Gameboard Gameboard { get; set; }
+        /// <summary>
+        /// Gets or sets the gameboard.
+        /// </summary>
+        /// <value>
+        /// The gameboard.
+        /// </value>
+        public Gameboard Gameboard { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the character list.
+        /// </summary>
+        /// <value>
+        /// The character list of characters in the game.
+        /// </value>
+        public ArrayList CharacterList { get; private set; } = new ArrayList(); 
 
 		/// <summary>
-		/// Constructor to create a game with a set gameboard size. the game.
-		/// </summary>
-		/// <param name="rows"></param>
-		/// <param name="columns"></param>
-		public Game(int rows, int columns)
-		{
-			Gameboard = new Gameboard(rows, columns);
-		}
-
-		/// <summary>
-		/// Default constructor to build a generic game.
+		/// Default constructor to build a generic game with no entities.
 		/// </summary>
 		public Game() 
 		{
@@ -34,15 +39,82 @@ namespace DungeonMaster.Data
 		}
 
 		/// <summary>
-		/// Default constructor to build a generic game.
+		/// Constructor to create a game with a set gameboard size.
+		/// </summary>
+		/// <param name="rows">Number of rows for the game board</param>
+		/// <param name="columns">Number of columns for the game board</param>
+		public Game(int rows, int columns)
+		{
+			Gameboard = new Gameboard(rows, columns);
+		}
+
+		/// <summary>
+		/// Constructor to build a generic game with two characters..
 		/// </summary>
 		public Game(Character char1, Character char2)
 		{
 			Gameboard = new Gameboard(5, 5);
 			GameName = "Test Game";
-			Gameboard.AddDrawable(char1, 2, 2);
-			Gameboard.AddDrawable(char2, 2, 3);
+			AddCharacter(char1, 2, 3);
+			AddCharacter(char2, 2, 4);
 		}
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Game"/> class.
+        /// </summary>
+        /// <param name="name">The name of the game.</param>
+        /// <param name="gameboard">The gameboard to use.</param>
+        /// <param name="characterList">The character list.</param>
+        public Game(string name, Gameboard gameboard, ArrayList characterList)
+		{
+			this.GameName = name;
+			this.Gameboard = gameboard;
+			this.CharacterList = characterList;
+		}
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Game"/> class based on an already existing game.
+        /// </summary>
+        /// <param name="gameToCopy">The game to copy.</param>
+        public Game(Game gameToCopy)
+        {
+			this.GameName = gameToCopy.GameName;
+			this.Gameboard = gameToCopy.Gameboard;
+			this.CharacterList = gameToCopy.CharacterList;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Game"/> class based on an already existing game.
+        /// </summary>
+        /// <param name="gameToCopy">The game to copy.</param>
+        /// <param name="newGameName">The new game's name.</param>
+        public Game(Game gameToCopy, string newGameName)
+        {
+			this.GameName = newGameName;
+			this.Gameboard = gameToCopy.Gameboard;
+			this.CharacterList = gameToCopy.CharacterList;
+		}
+
+		/// <summary>
+		/// Check if the provided row and column are valid in the game board,
+		/// if so check if that space is occupied. If not, place character there.
+		/// Created by: Jordan DeBord
+		/// Last Updated: 06/12/2021
+		/// </summary>
+		/// <param name="character">Character to be placed in the gameboard.</param>
+		/// <param name="row">Row to place character in.</param>
+		/// <param name="col">Column to place character in.</param>
+		/// <returns>Boolean representing if character was placed into the gameboard.</returns>
+		public Boolean AddCharacter(Character character, int row, int column)
+        {
+			if (Gameboard.AddDrawable(character, row, column))
+			{
+				CharacterList.Add(character);
+				return true;
+			}
+			else
+				return false;
+        }
 
 		/// <summary>
 		/// Method to determine if the player is within melee range. As of now we assume all melee
@@ -148,19 +220,19 @@ namespace DungeonMaster.Data
 			return attackReport.GetAttackReport();
 		}
 
-		/// <summary>
-		/// Check if the provided row and column are valid in the game board,
-		/// if so check if that space is occupied. If not, place character there.
-		/// Created by: Jordan DeBord
-		/// Last Updated: 06/12/2021
-		/// </summary>
-		/// <param name="character">Character to be placed in the gameboard.</param>
-		/// <param name="row">Row to place character in.</param>
-		/// <param name="col">Column to place character in.</param>
-		/// <returns>Boolean representing if character was placed into the gameboard.</returns>
-		public bool AddCharacter(Character character, int row, int col) 
-		{
-			return Gameboard.AddDrawable(character, row, col);
+		public string GetFormattedCharacterList()
+        {
+			string outputString = string.Empty;
+			if (CharacterList.Count > 0)
+			{
+				foreach (Character character in CharacterList)
+				{
+					outputString += character.Name + "\n";
+				}
+			}
+			else
+				outputString = "No Characters In Game";
+			return outputString;
 		}
 	}
 }
