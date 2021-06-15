@@ -55,7 +55,7 @@ namespace DungeonMaster.Data
 			this.Weapon = sword;
 			this.ActionPoints = 120;
 			this.IsCollidable = true;
-			this.BackupColorCode = "FF00FF";
+			this.BackupColorCode = "#FF00FF";
 		}
 
 		/// <summary>

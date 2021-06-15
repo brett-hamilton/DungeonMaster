@@ -43,7 +43,7 @@ namespace DungeonMaster.Data
         /// <value>
         /// The backup color code.
         /// </value>
-            protected string BackupColorCode { get; set; }
+            public string BackupColorCode { get; set; }
 
         /// <summary>
         /// Gets or sets the direction the character will be facing when drawn.

@@ -1,0 +1,53 @@
+﻿@page "/CanvasTest"
+
+@using DungeonMaster.Data
+@using Microsoft.AspNetCore.Components
+@using System.IO;
+@using System.Text.Json;
+@using Blazor.Extensions;
+@using Blazor.Extensions.Canvas
+@using Blazor.Extensions.Canvas.Canvas2D;
+
+<h3>Canvas Creation Test</h3>
+<hr />
+<br />
+
+<BECanvas Width="800" Height="800" @ref="_canvasReference"></BECanvas>
+
+@code {
+    private Canvas2DContext _context;
+
+    protected BECanvasComponent _canvasReference;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        this._context = await this._canvasReference.CreateCanvas2DAsync();
+
+        Game game = new Game(50, 50);
+        Character character1 = new Character();
+        game.AddCharacter(character1,10,10);
+        game.AddCharacter(character1, 20,20);
+        game.AddCharacter(character1,49,49);
+        game.AddCharacter(character1, 25,20);
+        await this._context.SetFillStyleAsync("#00FF00");
+        double scaleFactor = 10;
+        double scaledRows = scaleFactor * game.Gameboard.Rows;
+        double scaledColumns = scaleFactor * game.Gameboard.Columns;
+        await this._context.FillRectAsync(0, 0, scaledRows, scaledColumns);
+
+        for (int i = 0; i < game.Gameboard.Rows; i++)
+        {
+            for (int j = 0; j < game.Gameboard.Columns; j++)
+            {
+                Drawable drawable = game.Gameboard.Drawables[i,j];
+                if (drawable != null)
+                {
+                    double scaledRow = i * scaleFactor;
+                    double scaledColumn = j * scaleFactor;
+                    await this._context.SetFillStyleAsync(drawable.BackupColorCode);
+                    await this._context.FillRectAsync(scaledRow, scaledColumn, scaleFactor, scaleFactor);
+                }
+            }
+        }
+    }
+}
