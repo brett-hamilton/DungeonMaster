@@ -12,40 +12,71 @@
 <hr />
 <br />
 
-<BECanvas Width="800" Height="800" @ref="_canvasReference"></BECanvas>
+<div><BECanvas Width="500" Height="500" @ref="_canvasReference"></BECanvas></div>
+
+<br />
+<p>Character List:</p>
+<div class="row" style="outline: 0px solid blue; outline-offset: 8px; max-height: 200px; min-height: 100px; width: 500px">
+    @* Use overflow-auto and max/min height to force game log to be scrollable and at set size. *@
+    <div class="col-10 overflow-auto" style="max-height: 200px; min-height: 100px; width: 500px">
+        <ul class="list-group " id="charList">
+            @* Iterate through the list of strings in reverse order, so newest message is at top. Based on Microsoft SignalR example. *@
+            @for (int i = (characterList.Count - 1); i >= 0; i--)
+            {
+                <li class="list-group-item list-group-item-primary">@characterList[i].Name</li>
+            }
+        </ul>
+    </div>
+</div>
 
 @code {
+    private List<Character> characterList = new List<Character>();
     private Canvas2DContext _context;
+    public string playerlist = string.Empty;
+    public Game game = null;
+    private Character character1 = new Character();
+    private Character character2 = new Character();
+    private Character character3 = new Character();
+    private Character character4 = new Character();
+    public void startGame()
+    {
+        game = new Game(50, 50);
+        game.AddCharacter(character1, 10, 10);
+        game.AddCharacter(character2, 20, 20);
+        game.AddCharacter(character3, 49, 49);
+        game.AddCharacter(character4, 25, 20);
+        characterList = game.CharacterList;
+        base.StateHasChanged();
+    }
+
 
     protected BECanvasComponent _canvasReference;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        this._context = await this._canvasReference.CreateCanvas2DAsync();
-
-        Game game = new Game(50, 50);
-        Character character1 = new Character();
-        game.AddCharacter(character1,10,10);
-        game.AddCharacter(character1, 20,20);
-        game.AddCharacter(character1,49,49);
-        game.AddCharacter(character1, 25,20);
-        await this._context.SetFillStyleAsync("#00FF00");
-        double scaleFactor = 10;
-        double scaledRows = scaleFactor * game.Gameboard.Rows;
-        double scaledColumns = scaleFactor * game.Gameboard.Columns;
-        await this._context.FillRectAsync(0, 0, scaledRows, scaledColumns);
-
-        for (int i = 0; i < game.Gameboard.Rows; i++)
+        if (firstRender)
         {
-            for (int j = 0; j < game.Gameboard.Columns; j++)
+            startGame();
+            this._context = await this._canvasReference.CreateCanvas2DAsync();
+
+            await this._context.SetFillStyleAsync("#00FF00");
+            double scaleFactor = 10;
+            double scaledRows = scaleFactor * game.Gameboard.Rows;
+            double scaledColumns = scaleFactor * game.Gameboard.Columns;
+            await this._context.FillRectAsync(0, 0, scaledRows, scaledColumns);
+
+            for (int i = 0; i < game.Gameboard.Rows; i++)
             {
-                Drawable drawable = game.Gameboard.Drawables[i,j];
-                if (drawable != null)
+                for (int j = 0; j < game.Gameboard.Columns; j++)
                 {
-                    double scaledRow = i * scaleFactor;
-                    double scaledColumn = j * scaleFactor;
-                    await this._context.SetFillStyleAsync(drawable.BackupColorCode);
-                    await this._context.FillRectAsync(scaledRow, scaledColumn, scaleFactor, scaleFactor);
+                    Drawable drawable = game.Gameboard.Drawables[i, j];
+                    if (drawable != null)
+                    {
+                        double scaledRow = i * scaleFactor;
+                        double scaledColumn = j * scaleFactor;
+                        await this._context.SetFillStyleAsync(drawable.BackupColorCode);
+                        await this._context.FillRectAsync(scaledRow, scaledColumn, scaleFactor, scaleFactor);
+                    }
                 }
             }
         }

@@ -50,7 +50,7 @@ namespace DungeonMaster.Data
 		public Character()
 		{
 			Weapon sword = new Weapon("sword", 10, Dice.D6, 5.0);
-			this.Name = "Geralt";
+			Name = "Geralt";
 			this.Health = 100;
 			this.Weapon = sword;
 			this.ActionPoints = 120;
