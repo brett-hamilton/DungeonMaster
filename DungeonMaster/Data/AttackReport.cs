@@ -7,6 +7,8 @@ namespace DungeonMaster.Data
 {
     /// <summary>
     /// Report used to transmit information to View about attack, for the log.
+    /// Created by: Jordan DeBord
+    /// Last Updated: 06/12/2021
     /// </summary>
     public class AttackReport
     {

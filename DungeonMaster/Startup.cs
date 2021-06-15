@@ -10,9 +10,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.ResponseCompression;
+using DungeonMaster.Hubs;
 
 namespace DungeonMaster
 {
+	/// <summary>
+	/// Startup method for application.
+	/// Added SignalR aspects based upon Microsoft tutorial.
+	/// </summary>
 	public class Startup
 	{
 		public Startup (IConfiguration configuration)
@@ -28,11 +34,18 @@ namespace DungeonMaster
 		{
 			services.AddRazorPages ( );
 			services.AddServerSideBlazor ( );
+			services.AddResponseCompression(opts =>
+			{
+				opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+					new[] { "application/octet-stream" });
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure (IApplicationBuilder app, IWebHostEnvironment env)
 		{
+			app.UseResponseCompression();
+
 			if (env.IsDevelopment ( ))
 			{
 				app.UseDeveloperExceptionPage ( );
@@ -52,6 +65,7 @@ namespace DungeonMaster
 			app.UseEndpoints (endpoints =>
 			 {
 				 endpoints.MapBlazorHub ( );
+				 endpoints.MapHub<DungeonMasterHub>("/dungeonmasterhub");
 				 endpoints.MapFallbackToPage ("/_Host");
 			 });
 		}
