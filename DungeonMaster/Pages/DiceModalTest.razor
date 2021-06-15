@@ -1,0 +1,104 @@
+﻿@page "/DiceModalTest"
+
+@using DungeonMaster.Data
+@using DungeonMaster.Pages.Components
+@using Microsoft.AspNetCore.SignalR.Client 
+@inject NavigationManager NavigationManager;
+
+@* 
+    Dice Modal Test Page
+    Created by: Jordan DeBord
+    SignalR Aspects based upon Microsoft Blazor SignalR Tutorial
+*@
+
+<h3>Dice Modal Test</h3>
+<hr />
+<br />
+
+<DungeonMaster.Pages.Components.DiceModal @ref="DiceModal"></DungeonMaster.Pages.Components.DiceModal>
+<DungeonMaster.Pages.Components.D20ModifierModal @ref="D20ModifierModal"></DungeonMaster.Pages.Components.D20ModifierModal>
+<div>
+    <button class="btn btn-primary" @onclick="() => DiceModal.OpenModal()"> Roll Dice</button>
+    <button class="btn btn-primary" @onclick="() => D20ModifierModal.OpenModal()"> Roll D20 With Modifier</button>
+</div>
+<br />
+<br />
+<div class="row" style="outline: 1px solid blue; outline-offset: 8px; max-height: 200px; min-height: 200px">
+    <div style="border-right: 1px solid blue" class="col-2">
+        <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
+    </div>
+    @* Use overflow-auto and max/min height to force game log to be scrollable and at set size. *@
+    <div class="col-10 overflow-auto" style="max-height: 200px; min-height: 200px">
+        <ul class="list-group" id="gameLog">
+            @* Iterate through the list of strings in reverse order, so newest message is at top. Based on Microsoft SignalR example. *@
+            @for (int i = (GameLog.Count - 1); i >= 0; i--)
+            {
+                if (i == (GameLog.Count - 1))
+                {
+                    <li class="list-group-item list-group-item-primary">@GameLog[i]</li>
+                }
+
+                else
+                {
+                    <li class="list-group-item list-group-item-secondary">@GameLog[i]</li>
+                }
+            }
+
+        </ul>
+    </div>
+</div>
+
+@code {
+    /// <summary>
+    /// Hub connection to send and receive messages.
+    /// </summary>
+    private HubConnection hubConnection;
+
+    /// <summary>
+    /// Modal that is to be displayed on the page to roll multiple dice.
+    /// </summary>
+    private DungeonMaster.Pages.Components.DiceModal DiceModal { get; set; }
+
+    /// <summary>
+    /// Modal that is to be displayed on the page, to roll a D20 with modifier.
+    /// </summary>
+    private DungeonMaster.Pages.Components.D20ModifierModal D20ModifierModal { get; set; }
+
+    /// <summary>
+    /// List of strings representing the game log.
+    /// </summary>
+    public List<string> GameLog { get; set; } = new List<string>();
+
+    /// <summary>
+    /// Method to clear out the gamelog. Replaces list with a new empty list.
+    /// </summary>
+    public void ClearLog()
+    {
+        GameLog = new List<string>();
+    }
+
+    /// <summary>
+    /// Method to initialize our hub connection used to send and receive messages.
+    /// When a message is received, it is added to the game log.
+    /// Modified from the Microsoft SignalR Blazor tutorial.
+    /// </summary>
+    /// <returns></returns>
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+                .WithUrl(NavigationManager.ToAbsoluteUri("/dungeonmasterhub"))
+                .Build();
+
+        // If the messaged received is for this page, add the new message to the game log.
+        hubConnection.On<string, string>("MessageReceived", (message, page) =>
+        {
+            if (page == "DiceModalTest")
+            {
+                GameLog.Add(message);
+                StateHasChanged();
+            }
+        });
+
+        await hubConnection.StartAsync();
+    }
+}

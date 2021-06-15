@@ -1,0 +1,177 @@
+﻿@page "/RangedAttackTest"
+@using DungeonMaster.Data
+
+<h3>Ranged Attack Test</h3>
+<br />
+<button class="btn btn-primary" @onclick="SetupGame">Start or Restart Game</button>
+<br />
+<br />
+<div class="row">
+    <div class="col-3 card" style="margin-right: 10px">
+        <div class="card-body">
+            <h5 class="card-title">
+                @Attacker.Name
+            </h5>
+            <p class="card-text">
+                Health: @Attacker.Health
+                <br />
+                Weapon: @Attacker.Weapon.Name
+            </p>
+        </div>
+    </div>
+    <div class="col-3 card" style="margin-right: 10px">
+        <div class="card-body">
+            <h5 class="card-title">
+                @Defender1.Name
+            </h5>
+            <p class="card-text">
+                Health: @Defender1.Health <br />
+                Armor Name: @Defender1.Armor.Name <br />
+                Armor Points: @Defender1.Armor.ProtectionPoints <br />
+            </p>
+        </div>
+    </div>
+    <div class="col-3 card">
+        <div class="card-body">
+            <h5 class="card-title">
+                @Defender2.Name
+            </h5>
+            <p class="card-text">
+                Health: @Defender2.Health <br />
+                Armor Name: @Defender2.Armor.Name <br />
+                Armor Points: @Defender2.Armor.ProtectionPoints <br />
+            </p>
+        </div>
+    </div>
+</div>
+<br />
+<button class="btn btn-danger" @onclick="ShowAttackOptions">Attack</button>
+<br />
+@* Got help for this implementation from: https://github.com/dotnet/aspnetcore/issues/15956 *@
+@if (showTargets)
+{
+    <div>
+        <br />
+        <button class="btn btn-warning" @onclick="() => Attack(Defender1)">@Defender1.Name</button>
+        <button class="btn btn-warning" @onclick="() => Attack(Defender2)">@Defender2.Name</button>
+    </div>
+}
+<br />
+<br />
+<div class="row" style="outline: 1px solid blue; outline-offset: 8px; max-height: 200px; min-height: 200px">
+    <div style="border-right: 1px solid blue" class="col-2">
+        <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
+    </div>
+    @* Use overflow-auto and max/min height to force game log to be scrollable and at set size. Based on Microsoft SignalR example. *@
+    <div class="col-10 overflow-auto" style="max-height: 200px; min-height: 200px">
+        <ul class="list-group" id="gameLog">
+            @* Iterate through the list of strings in reverse order, so newest message is at top. *@
+            @for (int i = (GameLog.Count - 1); i >= 0; i--)
+            {
+                if (i == (GameLog.Count - 1))
+                {
+                    <li class="list-group-item list-group-item-primary">@GameLog[i]</li>
+                }
+
+                else
+                {
+                    <li class="list-group-item list-group-item-secondary">@GameLog[i]</li>
+                }
+            }
+
+        </ul>
+    </div>
+</div>
+
+
+
+@code {
+    /// <summary>
+    /// Attacker who is carrying out the attacks with a ranged weapon.
+    /// </summary>
+    public Character Attacker { get; set; } = new Character()
+    {
+        Name = "Robin Hood",
+        Weapon = new Weapon("Bow", 4, Dice.D6, 100)
+        {
+            RangedWeapon = true,
+
+        }
+    };
+
+    /// <summary>
+    /// Defenders being attacked by the attacker.
+    /// </summary>
+    public Character Defender1 { get; set; } = new Character();
+
+    public Character Defender2 { get; set; } = new Character() { Name = "Sheriff" };
+
+    /// <summary>
+    /// Game representing the current state of the game.
+    /// </summary>
+    public Game Game { get; set; } = new Game();
+
+    /// <summary>
+    /// List of strings of all attacks carried out.
+    /// </summary>
+    public List<string> GameLog { get; set; } = new List<string>();
+
+    /// <summary>
+    /// Boolean representing if we are displaying the div containing the potential targets.
+    /// </summary>
+    public bool showTargets = false;
+
+    /// <summary>
+    /// Method to set up the characters and place them into the game.
+    /// </summary>
+    public void SetupGame()
+    {
+        Attacker = new Character()
+        {
+            Name = "Robin Hood",
+            Weapon = new Weapon("Bow", 4, Dice.D6, 100)
+            {
+                RangedWeapon = true,
+
+            }
+        };
+
+        Defender1 = new Character();
+        Defender2 = new Character() { Name = "Sheriff" };
+
+        Game = new Game(Attacker, Defender1);
+        Game.AddCharacter(Defender2, 4, 4);
+
+    }
+
+    /// <summary>
+    /// Method to attack the chosen character, adding the result to the game log.
+    /// </summary>
+    /// <param name="defender"></param>
+    public void Attack(Character defender)
+    {
+        var message = Game.RangedAttackAttempt(Attacker, defender);
+
+        GameLog.Add(message);
+
+        showTargets = false;
+    }
+
+    /// <summary>
+    /// Method to clear the game log.
+    /// </summary>
+    public void ClearLog()
+    {
+        GameLog = new List<string>();
+    }
+
+    /// <summary>
+    /// Method to show potential targets.
+    /// </summary>
+    public void ShowAttackOptions()
+    {
+        showTargets = true;
+    }
+
+}
+

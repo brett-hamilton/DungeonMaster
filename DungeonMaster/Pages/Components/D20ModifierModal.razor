@@ -1,0 +1,134 @@
+﻿@using Microsoft.AspNetCore.SignalR.Client
+@using DungeonMaster.Data
+@inject NavigationManager NavigationManager;
+@*
+    D20 With Modifiers Dice Modal
+    Created by: Jordan DeBord
+    Based upon the Modals provided by Dr. Roach in Advanced Web.
+    Implementation to hide and show based upon:
+    https://stackoverflow.com/questions/59256798/how-to-use-bootstrap-modal-in-blazor-client-app
+    SignalR Aspect is based on the Microsoft Tutorial:
+    https://docs.microsoft.com/en-us/aspnet/core/tutorials/signalr-blazor?view=aspnetcore-5.0&tabs=visual-studio&pivots=server
+*@
+<div class="modal" id="rollModifiedD20Modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true" style="@modalShowStyling">
+    <div class="modal-dialog modal-dialog-centered modal">
+        <div id="mainContent" class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modalTitle" id="rollModifiedD20ModalTitle">Roll D20 With Modifier</h5>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <label for="modifier" class="col-4">Modifier: </label>
+                    <select @bind="modifier" name="modifier" id="modifier">
+                        <option value="">No Modifier</option>
+                        <option value="a">Advantage</option>
+                        <option value="d">Disadvantage</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" @onclick="RollWithModifier">ROLL!</button>
+                <button class="btn btn-secondary" @onclick="CloseModal" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    /// <summary>
+    /// Result to be displayed showing the result of the dice roll.
+    /// </summary>
+    private string diceResult;
+
+    /// <summary>
+    /// Modifier to be applied to the D20 Roll
+    /// </summary>
+    private string modifier;
+
+    /// <summary>
+    /// String that represents whether the modal should be displayed or not. Modified by the open and close
+    /// modal buttons.
+    /// </summary>
+    public string modalShowStyling { get; set; } = "display:none";
+
+    /// <summary>
+    /// Hub connection used to send and receive messages.
+    /// </summary>
+    private HubConnection hubConnection;
+
+    /// <summary>
+    /// Method to initialize our hub connection used to send and receive messages.
+    /// When a message is received, it is added to the game log.
+    /// This is modified from the Microsoft SignalR tutorial.
+    /// </summary>
+    /// <returns></returns>
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+                .WithUrl(NavigationManager.ToAbsoluteUri("/dungeonmasterhub"))
+                .Build();
+
+        // As the modal doesn't need to listen, we only start it to send messages.
+        await hubConnection.StartAsync();
+    }
+
+    /// <summary>
+    /// Method to report the result to the page holding the modal to display.
+    /// This is based on the Microsoft SignalR tutorial.
+    /// </summary>
+    /// <returns></returns>
+    async Task Send() =>
+        await hubConnection.SendAsync("SendMessage", diceResult, "DiceModalTest");
+
+    /// <summary>
+    /// Method to change styling to display the Modal.
+    /// </summary>
+    public void OpenModal()
+    {
+        modalShowStyling = "display:block";
+        StateHasChanged();
+    }
+
+    /// <summary>
+    /// Method to change the styling to hide the Modal.
+    /// </summary>
+    public void CloseModal()
+    {
+        modalShowStyling = "display:none";
+        StateHasChanged();
+    }
+
+    /// <summary>
+    /// Method to roll a single D20 with a modifer. If advantage,
+    /// two dice are rolled and the larger is returned. If disadvantage,
+    /// the smaller is returned. Result is reported to the holding page.
+    /// </summary>
+    /// <returns></returns>
+    public async Task RollWithModifier()
+    {
+        int diceTotal;
+
+        if (modifier == "a")
+        {
+            diceTotal = Die.RollD20Advantage();
+            diceResult = $"Player rolled 1 D20 with advantage for {diceTotal}";
+        }
+
+        else if (modifier == "d")
+        {
+            diceTotal = Die.RollD20Disadvantage();
+            diceResult = $"Player rolled 1 D20 with disadvantage for {diceTotal}";
+        }
+
+        else
+        {
+            diceTotal = Die.RollD20();
+            diceResult = $"Player rolled 1 D20 for {diceTotal}";
+        }
+        CloseModal();
+        await Send();
+    }
+}
