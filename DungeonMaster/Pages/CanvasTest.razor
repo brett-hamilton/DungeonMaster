@@ -30,40 +30,48 @@
 </div>
 
 @code {
-    private List<Character> characterList = new List<Character>();
-    private Canvas2DContext _context;
-    public string playerlist = string.Empty;
-    public Game game = null;
-    private Character character1 = new Character();
+    private List<Character> characterList = new List<Character>();  //local character list for the display list
+    private Canvas2DContext _context;                               //Blazor version of javascript _context
+    protected BECanvasComponent _canvasReference;                   //Canvas reference for actually calling functions against;
+    public Game game = null;                                        //Give the page a game to display. Null until startGame();
+    private Character character1 = new Character();                 //Generate characters to display. This step will be changed when a real game is generated or loaded.
     private Character character2 = new Character();
     private Character character3 = new Character();
     private Character character4 = new Character();
+    private static double scaleFactor = 10;                         //For smaller maps, this scales every object by this factor.
+    private string backgroundColor = "#009900";                     //Sets the background for the entire canvas. Ideally we would draw the background sprites above this.
+
+    /// <summary>
+    ///     Generates and fills a game object for testing. This should be changed to load game for production
+    /// </summary>
     public void startGame()
     {
-        game = new Game(50, 50);
-        game.AddCharacter(character1, 10, 10);
+        game = new Game(50, 50);                                     //Set our game to a new game
+        game.AddCharacter(character1, 0, 0);                         //Add characters at locations
         game.AddCharacter(character2, 20, 20);
         game.AddCharacter(character3, 49, 49);
         game.AddCharacter(character4, 25, 20);
-        characterList = game.CharacterList;
-        base.StateHasChanged();
+        characterList = game.CharacterList;                          //Give the list the updated list from the newly filled game.
+        base.StateHasChanged();                                      //Tell the page that it must update. Using async renders on canvas will stall the non-canvas items.
     }
 
 
-    protected BECanvasComponent _canvasReference;
-
+    /// <summary>
+    /// OVerride. Called after the page loads. draws the canvas off of the primary process.
+    /// </summary>
+    /// <param name="firstRender"></param>
+    /// <returns></returns>
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            startGame();
-            this._context = await this._canvasReference.CreateCanvas2DAsync();
+            startGame();                                                                                    //Initialize the game prior to trying to draw it
+            this._context = await this._canvasReference.CreateCanvas2DAsync(); 
 
-            await this._context.SetFillStyleAsync("#00FF00");
-            double scaleFactor = 10;
-            double scaledRows = scaleFactor * game.Gameboard.Rows;
-            double scaledColumns = scaleFactor * game.Gameboard.Columns;
-            await this._context.FillRectAsync(0, 0, scaledRows, scaledColumns);
+            await this._context.SetFillStyleAsync(backgroundColor);                                         //Set the "filled" color
+            double scaledRows = scaleFactor * game.Gameboard.Rows;                                          //Scale the row count by our scale factor
+            double scaledColumns = scaleFactor * game.Gameboard.Columns;                                    //Scale the column count by our scale factor
+            await this._context.FillRectAsync(0, 0, scaledRows, scaledColumns);                             //Fill the canvas from 0, 0 to scaledrow by scaled column
 
             for (int i = 0; i < game.Gameboard.Rows; i++)
             {
