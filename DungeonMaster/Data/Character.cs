@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 
 namespace DungeonMaster.Data
 {
-	public class Character
+	public class Character : Drawable
 	{
 		/// <summary>
 		/// Name of the character
 		/// </summary>
-		public string Name { get; set; }
+		//public string Name { get; set; }
 
 		/// <summary>
 		/// melee weapon they have equipped
@@ -60,6 +60,8 @@ namespace DungeonMaster.Data
 			this.Health = 100;
 			this.Weapon = sword;
 			this.ActionPoints = 120;
+			this.IsCollidable = true;
+			this.BackupColorCode = "FF00FF";
 		}
 
 		/// <summary>
@@ -77,6 +79,28 @@ namespace DungeonMaster.Data
 			this.Health = health;
 			IsDead = false;
 			this.ActionPoints = actionPoints;
+		}
+
+
+
+		/// <summary>
+		/// Constructor for the Character to be initialized
+		/// </summary>
+		/// <param name="name"></param>
+		/// <param name="health"></param>
+		public Character(string name, double health, double actionPoints, string playerImage)
+		{
+			Weapon sword = new Weapon("Sword", 10, Dice.D6, 5.0);
+			this.Weapon = sword;
+			Armor armor = new Armor("Leather", 6);
+			Armor = armor;
+			this.Name = name;
+			this.Health = health;
+			IsDead = false;
+			this.ActionPoints = actionPoints;
+			IsCollidable = true;
+			ImageLocation = playerImage;
+			BackupColorCode = "FF00FF";
 		}
 
 		/// <summary>
