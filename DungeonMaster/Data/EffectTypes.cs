@@ -15,7 +15,7 @@ namespace DungeonMaster.Data
 	public enum EffectTypes
 	{
 		Frost,
-		Fire,
+		Flood,
 		Piercing,
 		Bludgeoning,
 		Poisoning

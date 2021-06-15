@@ -100,7 +100,17 @@ namespace DungeonMaster.Data
 			};
 		}
 
-		public void SpellAttack (Character attacker, Character defender, Spell spell)
+		/// <summary>
+		/// Perform a spell attack against a defending character. Depends on dice rolling to calculate
+		/// whether or not the attack hits or misses.
+		/// 
+		/// Created by: Hunter Page
+		/// Created on: 6/13/21
+		/// </summary>
+		/// <param name="attacker">The character attacking.</param>
+		/// <param name="defender">The character being attacked.</param>
+        /// <returns>An attack report containing information about the attack.</returns>
+		public AttackReport SpellAttack (Character attacker, Character defender)
         {
 			int attackValue = Die.RollD20();
 
@@ -117,7 +127,13 @@ namespace DungeonMaster.Data
 				return attackReport;
             }
 
-
+			return new AttackReport
+			{
+				AttackRoll = attackValue,
+				HitCheck = hit,
+				AttackerName = attacker.Name,
+				DefenderName = defender.Name
+			};
         }
 	}
 }

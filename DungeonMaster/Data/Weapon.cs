@@ -40,6 +40,11 @@ namespace DungeonMaster.Data
 		///
 		public bool RangedWeapon { get; set; } = false;
 
+		/// <summary>
+		/// What type of weapon it is. Will get rid of range bool
+		/// </summary>
+		public WeaponType WeaponType { get; set; }
+
 		///
 		//the type of damage the weapon uses
 		///

@@ -53,6 +53,9 @@ namespace DungeonMaster.Data
 		///temporary spell attribute to create the attack method in Attack.cs for proof of concept
 		public Spell PlayersSpell { get; set; }
 
+		///holds all of the stats of the player
+		public CharacterStats characterStats { get; set; }
+
 		public Character()
 		{
 			Weapon sword = new Weapon("sword", 10, Dice.D6, 5.0);

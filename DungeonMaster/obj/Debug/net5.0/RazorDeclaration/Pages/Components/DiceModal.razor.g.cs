@@ -96,6 +96,20 @@ using DungeonMaster.Pages.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 1 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\Components\DiceModal.razor"
+using Microsoft.AspNetCore.SignalR.Client;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\Components\DiceModal.razor"
+using DungeonMaster.Data;
+
+#line default
+#line hidden
+#nullable disable
     public partial class DiceModal : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -104,7 +118,7 @@ using DungeonMaster.Pages.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 48 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\Components\DiceModal.razor"
+#line 56 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\Components\DiceModal.razor"
       
 
     /// <summary>
@@ -114,10 +128,44 @@ using DungeonMaster.Pages.Models;
     public int DieToRoll { get; set; }
 
     /// <summary>
+    /// Result to be displayed showing the result of the dice roll.
+    /// </summary>
+    private string diceResult;
+
+    /// <summary>
     /// String that represents whether the modal should be displayed or not. Modified by the open and close
     /// modal buttons.
     /// </summary>
     public string modalShowStyling { get; set; } = "display:none";
+
+    /// <summary>
+    /// Hub connection used to send and receive messages.
+    /// </summary>
+    private HubConnection hubConnection;
+
+    /// <summary>
+    /// Method to initialize our hub connection used to send and receive messages.
+    /// When a message is received, it is added to the game log.
+    /// This is modified from the Microsoft SignalR tutorial.
+    /// </summary>
+    /// <returns></returns>
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+                .WithUrl(NavigationManager.ToAbsoluteUri("/dungeonmasterhub"))
+                .Build();
+
+        // As the modal doesn't need to listen, we only start it to send messages.
+        await hubConnection.StartAsync();
+    }
+
+    /// <summary>
+    /// Method to report the result to the page holding the modal to display.
+    /// This is based on the Microsoft SignalR tutorial.
+    /// </summary>
+    /// <returns></returns>
+    async Task Send() =>
+        await hubConnection.SendAsync("SendMessage", diceResult, "DiceModalTest");
 
     /// <summary>
     /// Method to change styling to display the Modal.
@@ -137,9 +185,44 @@ using DungeonMaster.Pages.Models;
         StateHasChanged();
     }
 
+    /// <summary>
+    /// Method to roll multiple dice and report the result to the user.
+    /// </summary>
+    /// <returns></returns>
+    public async Task RollMultipleDice()
+    {
+        // If the roll is successful, report it to the main page.
+        try
+        {
+            var rollReport = Die.Roll(DieSides, DieToRoll);
+            diceResult = $"Player rolled {rollReport.GetDiceReport()}";
+            CloseModal();
+            await Send();
+        }
+        // If not, null out the result, and output the error to the console.
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            diceResult = null;
+        }
+    }
+
+    /// <summary>
+    /// Method to roll a single D20, and report the result to the page holding the modal.
+    /// </summary>
+    /// <returns></returns>
+    public async Task Roll()
+    {
+        var diceTotal = Die.RollD20();
+        diceResult = $"Player rolled 1 D20 for {diceTotal}";
+        CloseModal();
+        await Send();
+    }
+
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

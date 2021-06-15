@@ -103,6 +103,20 @@ using DungeonMaster.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\MeleeAttackTest.razor"
+using System.IO;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\MeleeAttackTest.razor"
+using System.Text.Json;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/MeleeAttackTest")]
     public partial class MeleeAttackTest : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -112,8 +126,23 @@ using DungeonMaster.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 76 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\MeleeAttackTest.razor"
+#line 90 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\MeleeAttackTest.razor"
        
+        /// <summary>
+        /// If yes, indicates we should load character from file.
+        /// </summary>
+    protected string doLoadCharacter = "no";
+
+    /// <summary>
+    /// Path to characters file.
+    /// </summary>
+    public string path = "Saves/characters.json";
+
+    /// <summary>
+    /// Display string for status of loading character
+    /// </summary>
+    public string status = "Status: No character loaded.";
+
     /// <summary>
     /// Two players and game board, to simulate the combat section of our game.
     /// </summary>
@@ -134,8 +163,37 @@ using DungeonMaster.Data;
     /// </summary>
     public void SetupGame()
     {
-        player1 = new Character("Player 1", 50, 1);
-        player2 = new Character("Player 2", 50, 1);
+        if (doLoadCharacter == "yes")
+        {
+            // Check if we are using a player from the characters file
+            try
+            {
+                string jsonString = File.ReadAllText(path);
+                player1 = JsonSerializer.Deserialize<Character>(jsonString);
+            }
+            catch (FileNotFoundException)
+            {
+                status = "Status: Character file not found. Please create a character using the character creation page.";
+            }
+            catch (IOException)
+            {
+                status = "Status: Error reading character file. Please create another character using the character creation page";
+            }
+            catch (Exception e)
+            {
+                status = "ERROR: " + e.Message;
+            }
+
+            // Use default for opponent
+            player2 = new Character("Player 2", 50, 1);
+
+        }
+        else
+        {
+            player1 = new Character("Player 1", 50, 1);
+            player2 = new Character("Player 2", 50, 1);
+        }
+
         testGame = new Game(player1, player2);
         attackResult = "";
         GameLog = new List<string>();

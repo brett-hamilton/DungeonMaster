@@ -83,13 +83,6 @@ using DungeonMaster.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\_Imports.razor"
-using DungeonMaster.Pages.Components;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 12 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\_Imports.razor"
 using DungeonMaster.Pages.Models;
 
@@ -103,6 +96,20 @@ using DungeonMaster.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\DiceModalTest.razor"
+using DungeonMaster.Pages.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\DiceModalTest.razor"
+using Microsoft.AspNetCore.SignalR.Client;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/DiceModalTest")]
     public partial class DiceModalTest : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -112,21 +119,65 @@ using DungeonMaster.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 17 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\DiceModalTest.razor"
+#line 51 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\DiceModalTest.razor"
        
     /// <summary>
-    /// Modal that is to be displayed on the page.
+    /// Hub connection to send and receive messages.
+    /// </summary>
+    private HubConnection hubConnection;
+
+    /// <summary>
+    /// Modal that is to be displayed on the page to roll multiple dice.
     /// </summary>
     private DungeonMaster.Pages.Components.DiceModal DiceModal { get; set; }
 
     /// <summary>
-    /// Int representing the result of the dice roll.
+    /// Modal that is to be displayed on the page, to roll a D20 with modifier.
     /// </summary>
-    private int diceTotal;
+    private DungeonMaster.Pages.Components.D20ModifierModal D20ModifierModal { get; set; }
+
+    /// <summary>
+    /// List of strings representing the game log.
+    /// </summary>
+    public List<string> GameLog { get; set; } = new List<string>();
+
+    /// <summary>
+    /// Method to clear out the gamelog. Replaces list with a new empty list.
+    /// </summary>
+    public void ClearLog()
+    {
+        GameLog = new List<string>();
+    }
+
+    /// <summary>
+    /// Method to initialize our hub connection used to send and receive messages.
+    /// When a message is received, it is added to the game log.
+    /// Modified from the Microsoft SignalR Blazor tutorial.
+    /// </summary>
+    /// <returns></returns>
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+                .WithUrl(NavigationManager.ToAbsoluteUri("/dungeonmasterhub"))
+                .Build();
+
+        // If the messaged received is for this page, add the new message to the game log.
+        hubConnection.On<string, string>("MessageReceived", (message, page) =>
+        {
+            if (page == "DiceModalTest")
+            {
+                GameLog.Add(message);
+                StateHasChanged();
+            }
+        });
+
+        await hubConnection.StartAsync();
+    }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591
