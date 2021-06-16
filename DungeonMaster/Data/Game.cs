@@ -121,51 +121,6 @@ namespace DungeonMaster.Data
         }
 
 		/// <summary>
-		/// Method to determine if the player is within melee range. As of now we assume all melee
-		/// ranges are 1 block.
-		/// Created by: Jordan DeBord
-		/// Last Updated: 06/12/2021
-		/// </summary>
-		/// <param name="attacker">Character attempting to attack the other. </param>
-		/// <param name="defender">Character defending against the other.</param>
-		/// <returns>Boolean representing if character is within range.</returns>
-		public bool MeleeRangeCheck(Character attacker, Character defender)
-		{
-			Coordinate attackerCoord = Gameboard.GetCoordinate(attacker);
-			Coordinate defenderCoord = Gameboard.GetCoordinate(defender);
-
-			if (attackerCoord == null || defenderCoord == null)
-			{
-				return false;
-			}
-
-			var verticalDistance = attackerCoord.Row - defenderCoord.Row;
-			var horizontalDistance = attackerCoord.Column - defenderCoord.Column;
-
-			// If the unit is within one vertical or horizontal block. This would also include
-			//      diagonal locations.
-			if (Math.Abs(verticalDistance) == 1 || Math.Abs(horizontalDistance) == 1)
-			{
-				return true;
-			}
-
-			return false;
-		}
-
-		/// <summary>
-		/// As of now, we assume all ranged attacks are within range.
-		/// Created by: Jordan DeBord
-		/// Last Updated: 06/12/2021
-		/// </summary>
-		/// <param name="attacker">Attacking Character.</param>
-		/// <param name="defender">Defending Character</param>
-		/// <returns>Boolean representing if attack is in range.</returns>
-		public bool RangedRangeCheck(Character attacker, Character defender)
-		{
-			return true;
-		}
-
-		/// <summary>
 		/// Melee Attack method, which will check range, then call the attack class's melee attack.
 		/// </summary>
 		/// <param name="attacker">Attacking character.</param>
@@ -177,7 +132,7 @@ namespace DungeonMaster.Data
 			{
 				return ($"{defender.Name} is already dead.");
 			}
-			var rangeCheck = MeleeRangeCheck(attacker, defender);
+			var rangeCheck = Gameboard.MeleeRangeCheck(attacker, defender);
 			if (!rangeCheck) 
 			{
 				return ($"{defender.Name} is too far away to melee attack.");
@@ -200,7 +155,7 @@ namespace DungeonMaster.Data
 		/// <returns>A string containing information about the result.</returns>
 		public string RangedAttackAttempt(Character attacker, Character defender) 
 		{
-			if (!attacker.Weapon.rangedWeapon) 
+			if (!attacker.Weapon.RangedWeapon) 
 			{
 				return ($"{attacker.Name} does not have a ranged weapon to attack with.");
 			}
@@ -209,14 +164,14 @@ namespace DungeonMaster.Data
 				return ($"{defender.Name} is already dead.");
 			}
 
-			var rangeCheck = RangedRangeCheck(attacker, defender);
+			var rangeCheck = Gameboard.RangedRangeCheck(attacker, defender);
 			if (!rangeCheck)
 			{
 				return ($"{defender.Name} is too far away to range attack.");
 			}
 
 			// If the defender is in melee range, attacker has disadvantage.
-			var disadvantageCheck = MeleeRangeCheck(defender, attacker);
+			var disadvantageCheck = Gameboard.MeleeRangeCheck(defender, attacker);
 
 			var attack = new Attack();
 			var attackReport = attack.RangedAttack(attacker, defender, disadvantageCheck);
