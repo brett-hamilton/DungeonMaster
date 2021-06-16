@@ -35,7 +35,7 @@ namespace DungeonMaster.Data
 			{
 				// Decrease defender's health by the attacker's weapon stat
 				
-				var attackReport = attacker.Weapon.GetDamage ( );
+				var attackReport = attacker.ActiveWeapon.GetDamage ( );
 				int damageAmount = attackReport.TotalDamageDealt;
 				defender.DamagePlayer (damageAmount);
 				attackReport.AttackRoll = attackValue;
@@ -82,7 +82,7 @@ namespace DungeonMaster.Data
 
 			if (hit) 
 			{
-				var attackReport = attacker.Weapon.GetDamage();
+				var attackReport = attacker.ActiveWeapon.GetDamage();
 				defender.DamagePlayer(attackReport.TotalDamageDealt); attackReport.AttackRoll = attackValue;
 				attackReport.HitCheck = hit;
 				attackReport.AttackerName = attacker.Name;
@@ -118,7 +118,7 @@ namespace DungeonMaster.Data
 
 			if(hit)
             {
-				var attackReport = attacker.PlayersSpell.GetSpellDamage();
+				var attackReport = attacker.ActiveSpell.GetSpellDamage();
 				defender.DamagePlayer(attackReport.TotalDamageDealt); attackReport.AttackRoll = attackValue;
 				attackReport.HitCheck = hit;
 				attackReport.AttackerName = attacker.Name;

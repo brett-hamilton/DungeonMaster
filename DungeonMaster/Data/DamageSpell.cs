@@ -18,7 +18,7 @@ namespace DungeonMaster.Data
 		public double Damage { get; set; }
 
 
-		public DamageSpell(string spellName, SpellTypes spellType, double damage, Dice diceUsed) : base(spellName, spellType, diceUsed)
+		public DamageSpell(string spellName, SpellTypes spellType, double damage, Dice diceUsed, int numberOfRolls, int range) : base(spellName, spellType, diceUsed, numberOfRolls, range)
 		{
 			this.Damage = damage;
 		}

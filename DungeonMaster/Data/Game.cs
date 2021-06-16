@@ -124,7 +124,7 @@ namespace DungeonMaster.Data
 		/// <returns>String explaining result if needed.</returns>
 		public string MeleeAttackAttempt(Character attacker, Character defender) 
 		{
-			if (defender.IsDead) 
+			if (defender.Status == Status.Dead) 
 			{
 				return ($"{defender.Name} is already dead.");
 			}
@@ -151,11 +151,11 @@ namespace DungeonMaster.Data
 		/// <returns>A string containing information about the result.</returns>
 		public string RangedAttackAttempt(Character attacker, Character defender) 
 		{
-			if (!attacker.Weapon.RangedWeapon) 
+			if (!attacker.ActiveWeapon.RangedWeapon) 
 			{
 				return ($"{attacker.Name} does not have a ranged weapon to attack with.");
 			}
-			if (defender.IsDead)
+			if (defender.Status == Status.Dead)
 			{
 				return ($"{defender.Name} is already dead.");
 			}

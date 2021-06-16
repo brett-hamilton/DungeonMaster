@@ -22,7 +22,7 @@ namespace DungeonMaster.Data
 		/// <summary>
 		/// melee weapon they have equipped
 		/// </summary>
-		public Weapon Weapon { get; set; } 
+		public Weapon ActiveWeapon { get; set; } 
 
 		/// <summary>
 		/// The amount of Health points they have
@@ -33,11 +33,6 @@ namespace DungeonMaster.Data
 		/// They armor object they are wearing
 		/// </summary>
 		public Armor Armor { get; set; } = new Armor("Leather Armor", 6);
-
-		/// <summary>
-		/// determines if the player is dead or not for future actions
-		/// </summary>
-		public bool IsDead { get; set; } 
 
 		/// <summary>
 		/// The number of points they have to perform an attack or action
@@ -51,17 +46,17 @@ namespace DungeonMaster.Data
 		public Inventory PlayersInventory { get; set; }
 
 		///temporary spell attribute to create the attack method in Attack.cs for proof of concept
-		public Spell PlayersSpell { get; set; }
+		public Spell ActiveSpell { get; set; }
 
 		///holds all of the stats of the player
-		public CharacterStats characterStats { get; set; }
+		public CharacterStats CharacterStats { get; set; }
 
 		public Character()
 		{
 			Weapon sword = new Weapon("sword", 10, Dice.D6, 5.0);
 			this.Name = "Geralt";
 			this.Health = 100;
-			this.Weapon = sword;
+			this.ActiveWeapon = sword;
 			this.ActionPoints = 120;
 			this.IsCollidable = true;
 			this.BackupColorCode = "FF00FF";
@@ -74,17 +69,45 @@ namespace DungeonMaster.Data
 		/// <param name="health"></param>
 		public Character(string name, double health, double actionPoints)
 		{
-			Weapon sword = new Weapon("Sword", 10, Dice.D6, 5.0);
-			this.Weapon = sword;
-			Armor armor = new Armor("Leather", 6);
-			Armor = armor;
+			this.ActiveWeapon = new Weapon("Sword", 10, Dice.D6, 5.0);
+			Armor = new Armor("Leather", 6);
 			this.Name = name;
 			this.Health = health;
-			IsDead = false;
 			this.ActionPoints = actionPoints;
+			Status = Status.Alive;
 		}
 
+		public Character(string name, double health, int actionPoints, string characterClass)
+        {
+			Armor = new Armor("Leather", 6);
+			this.Name = name;
+			this.Health = health;
+			this.ActionPoints = actionPoints;
+			Status = Status.Alive;
 
+			switch(characterClass)
+            {
+				case "ranger" :
+					ActiveWeapon = new Weapon("long bow", 10, Dice.D6, 50)
+					{
+						RangedWeapon = true
+                    };
+					break;
+
+				case "fighter" :
+					ActiveWeapon = new Weapon("Battle Axe", 20, Dice.D6, 1);
+					break;
+
+				case "wizard" :
+					ActiveSpell = new DamageSpell("Fireball", SpellTypes.Fire, 20, Dice.D6, 1, 20);
+					break;
+
+				default :
+					ActiveWeapon = new Weapon("dagger", 2, Dice.D6, 1);
+					break;
+			}
+		}
+			
 
 		/// <summary>
 		/// Constructor for the Character to be initialized
@@ -93,17 +116,15 @@ namespace DungeonMaster.Data
 		/// <param name="health"></param>
 		public Character(string name, double health, double actionPoints, string playerImage)
 		{
-			Weapon sword = new Weapon("Sword", 10, Dice.D6, 5.0);
-			this.Weapon = sword;
-			Armor armor = new Armor("Leather", 6);
-			Armor = armor;
+			this.ActiveWeapon = new Weapon("Sword", 10, Dice.D6, 5.0);
+			Armor = new Armor("Leather", 6);
 			this.Name = name;
 			this.Health = health;
-			IsDead = false;
 			this.ActionPoints = actionPoints;
 			IsCollidable = true;
 			ImageLocation = playerImage;
 			BackupColorCode = "FF00FF";
+			Status = Status.Alive;
 		}
 
 		/// <summary>
@@ -116,7 +137,8 @@ namespace DungeonMaster.Data
 
 			if(Health <= 0)
 			{
-				IsDead = true;
+				Health = 0;
+				Status = Status.Dead;
 			}
 		}
 

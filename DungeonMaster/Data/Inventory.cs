@@ -35,6 +35,8 @@ namespace DungeonMaster.Data
             {
 				inventoryList.Append(s.ToString() + "\n");
             }
+
+			return inventoryList.ToString();
         }
     }
 }

@@ -13,8 +13,42 @@
 <div id="CharacterCreator">
     <label for="characterName">Name: </label>
     <input placeholder="enter character name" @bind="characterName" />
+    <label for="Character Class">Class: </label>
+    <select name="class" @bind="characterClass">
+        <option value="ranger">Ranger</option>
+        <option value="fighter">Fighter</option>
+        <option value="wizard">Wizard</option>
+    </select>
+    <br />
+    <select name="Stat" @bind="currentStatString">
+        <option value="default">[select stat]</option>
+
+        @foreach (string s in StatNames)
+        {
+            <option value="@s">@s</option>
+        }
+
+
+    </select>
+
+    <select name="StatNum" @bind="currentStatValue">
+        <option value="default">[select number]</option>
+        @foreach (int num in StatNumbers)
+        {
+            <option value="@num">@num</option>
+        }
+    </select>
+    <button class="btn btn-primary" @onclick="SaveStat">Save Current Stat Point</button>
     <br />
     <br />
+    <div>
+        Strength: @strength<br />
+        Dexterity: @dexterity<br />
+        Constitution: @constitution<br />
+        Intelligence: @intelligence<br />
+        Wisdom: @wisdom<br />
+        Charisma: @charisma<br />
+    </div>
     <button class="btn btn-primary" @onclick="CreateCharacter">Create and Save Character</button>
     <p>@errorMessage</p>
 </div>
@@ -31,6 +65,44 @@
     private string errorMessage = string.Empty;
 
     /// <summary>
+    /// Character's class 
+    /// </summary>
+    private string characterClass = string.Empty;
+
+    /// <summary>
+    /// the current value that the user selected
+    /// </summary>
+    private int currentStatValue = 0;
+
+    /// <summary>
+    /// the current string value of the stat the user selected
+    /// </summary>
+    private string currentStatString = string.Empty;
+
+    /* All the stats of the character*/
+    private int strength = 0;
+
+    private int dexterity = 0;
+
+    private int constitution = 0;
+
+    private int intelligence = 0;
+
+    private int wisdom = 0;
+
+    private int charisma = 0;
+
+    /// <summary>
+    /// List of the available numbers for the stats
+    /// </summary>
+    private List<int> StatNumbers = new List<int>() { 15, 14, 13, 12, 10, 8 };
+
+    /// <summary>
+    /// List of the names of the stats
+    /// </summary>
+    private List<string> StatNames = new List<string>() { "strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma" };
+
+    /// <summary>
     /// Creates a character with the provided information from form and saves it to JSON file.
     ///
     /// Created by: Brett Hamilton
@@ -39,7 +111,10 @@
     public void CreateCharacter()
     {
         // Create new character and serialize it as a JSON string
-        Character newCharacter = new Character(characterName, 50, 1);
+        Character newCharacter = new Character(characterName, 50, 1, characterClass);
+
+        //add the traits for the character
+        newCharacter.CharacterStats = new CharacterStats(strength, dexterity, constitution, intelligence, wisdom, charisma);
         string jsonString = JsonSerializer.Serialize(newCharacter);
 
         // Write the JSON string to a file for storage
@@ -54,5 +129,52 @@
         {
             errorMessage = "Error: " + e.Message;
         }
+    }
+
+    /// <summary>
+    /// Save the stats number entered in by the player to the appropriate attribute
+    /// </summary>
+    public void SaveStat()
+    {
+        //checks if the default value in the drop list was selected by accident
+        //will not add, refresh, or remove any variables if true
+        bool isDefault = false;
+
+        switch(currentStatString)
+        {
+            case "strength":
+                strength = currentStatValue;
+                break;
+            case "dexterity":
+                dexterity = currentStatValue;
+                break;
+            case "constitution":
+                constitution = currentStatValue;
+                break;
+            case "intelligence":
+                intelligence = currentStatValue;
+                break;
+            case "wisdom":
+                wisdom = currentStatValue;
+                break;
+            case "charisma":
+                charisma = currentStatValue;
+                break;
+            case "default":
+                isDefault = true;
+                break;
+        }
+
+        //
+        if(!isDefault)
+        {
+            //remove and refresh variables
+            StatNumbers.Remove(currentStatValue);
+            StatNames.Remove(currentStatString);
+            currentStatValue = 0;
+            currentStatString = string.Empty;
+        }
+
+
     }
 }

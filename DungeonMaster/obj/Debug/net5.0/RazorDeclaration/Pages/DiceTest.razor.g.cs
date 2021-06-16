@@ -96,6 +96,13 @@ using DungeonMaster.Pages.Models;
 #line hidden
 #nullable disable
 #nullable restore
+#line 13 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\_Imports.razor"
+using Microsoft.AspNetCore.SignalR.Client;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 3 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\DiceTest.razor"
 using DungeonMaster.Data;
 
