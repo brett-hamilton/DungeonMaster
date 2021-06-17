@@ -8,8 +8,6 @@
 <hr />
 <br />
 
-
-
 <p>Game Information:</p>
 <p>Status: @gameStatus</p>
 <p>Current Name: @runningGameName</p>
@@ -35,7 +33,6 @@
 <br />
 <br />
 
-
 <div id="GameStarter">
     <label for="gameName">Name: </label>
     <input placeholder="enter game name" @bind="gameName" />
@@ -51,7 +48,6 @@
 
 <br />
 <br />
-
 
 <div id="CharacterCreator" >
     <label for="characterName">Name:</label>
@@ -96,13 +92,10 @@
     }
 
 
-
-
     /// <summary>
     /// Name of the character bring created
     /// </summary>
     private string characterName = string.Empty;
-
 
     /// <summary>
     /// Creates a character with the provided information from form and adds it to the game.
@@ -126,5 +119,4 @@
         else
             gameStatus = "Characters can not be added until the game is started.";
     }
-
 }
