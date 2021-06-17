@@ -15,16 +15,16 @@
         <div id="mainContent" class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modalTitle" id="rollModifiedD20ModalTitle">Roll D20 With Modifier</h5>
+                <h5 class="modalTitle" id="rollModifiedD20ModalTitle">Roll D20 With Advantage/Disadvantage</h5>
             </div>
 
             <div class="modal-body">
                 <div class="row">
                     <label for="modifier" class="col-4">Modifier: </label>
                     <select @bind="modifier" name="modifier" id="modifier">
-                        <option value="">No Modifier</option>
-                        <option value="a">Advantage</option>
-                        <option value="d">Disadvantage</option>
+                        <option value="">Regular D20</option>
+                        <option value="a">D20 with Advantage</option>
+                        <option value="d">D20 with Disadvantage</option>
                     </select>
                 </div>
             </div>
