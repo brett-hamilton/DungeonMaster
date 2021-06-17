@@ -113,14 +113,16 @@
 
         if (modifier == "a")
         {
-            diceTotal = Die.RollD20Advantage();
-            diceResult = $"Player rolled 1 D20 with advantage for {diceTotal}";
+            var diceRollReport = Die.RollD20Advantage();
+            diceTotal = diceRollReport.GetDiceTotal();
+            diceResult = $"Player {diceRollReport.GetDiceReport()}";
         }
 
         else if (modifier == "d")
         {
-            diceTotal = Die.RollD20Disadvantage();
-            diceResult = $"Player rolled 1 D20 with disadvantage for {diceTotal}";
+            var diceRollReport = Die.RollD20Disadvantage();
+            diceTotal = diceRollReport.GetDiceTotal();
+            diceResult = $"Player {diceRollReport.GetDiceReport()}";
         }
 
         else

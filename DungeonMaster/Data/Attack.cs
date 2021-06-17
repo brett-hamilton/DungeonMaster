@@ -71,7 +71,7 @@ namespace DungeonMaster.Data
 			double attackValue;
 			if (disadvantage)
 			{
-				attackValue = Die.RollD20Disadvantage();
+				attackValue = Die.RollD20Disadvantage().GetDiceTotal();
 			}
 			else 
 			{
