@@ -66,8 +66,8 @@
 
 @code {
     private string gameName = string.Empty;
-    private int rows = 5;
-    private int columns = 5;
+    private int rows = 50;
+    private int columns = 50;
     private Game game = null;
     private List<Character> characterList = new List<Character>();
     private string gameStatus = "Not Started";
@@ -115,9 +115,9 @@
         Character newCharacter = new Character(characterName, 50, 1);
         if (game != null)
         {
-            if (game.AddCharacter(newCharacter, charRow, charColumn))
+            if (game.AddCharacter(newCharacter, charRow-1, charColumn-1))
             {
-                gameStatus = newCharacter.Name + " was added to the game at location (" + charRow + ", " + charColumn + ")";
+                gameStatus = newCharacter.Name + " was added to the game at location (" + (1 + charRow) + ", " + (1 + charColumn) + ")";
                 characterList.Add(newCharacter);
             }
             else

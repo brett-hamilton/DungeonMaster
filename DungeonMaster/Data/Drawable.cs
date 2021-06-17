@@ -43,7 +43,7 @@ namespace DungeonMaster.Data
         /// <value>
         /// The backup color code.
         /// </value>
-            protected string BackupColorCode { get; set; }
+        public string BackupColorCode { get; set; }
 
         /// <summary>
         /// Gets or sets the direction the character will be facing when drawn.
@@ -61,7 +61,8 @@ namespace DungeonMaster.Data
             Name = "Empty Drawable";
             IsCollidable = false;
             ImageLocation = null;
-            BackupColorCode = "FF0000";
+            BackupColorCode = "#FF0000";
+            Direction = CardinalDirection.N;
         }
 
         /// <summary>
@@ -73,7 +74,7 @@ namespace DungeonMaster.Data
         public Drawable(string name, Boolean isCollidable, string ImageLocation, string ColorCode)
         {
             this.Name = name;
-            this.IsCollidable = IsCollidable;
+            this.IsCollidable = isCollidable;
             this.ImageLocation = ImageLocation;
             this.BackupColorCode = ColorCode;
             this.Direction = CardinalDirection.N;
@@ -89,7 +90,7 @@ namespace DungeonMaster.Data
         public Drawable(string name, Boolean isCollidable, string ImageLocation, string ColorCode, CardinalDirection direction)
         {
             this.Name = name;
-            this.IsCollidable = IsCollidable;
+            this.IsCollidable = isCollidable;
             this.ImageLocation = ImageLocation;
             this.BackupColorCode = ColorCode;
             this.Direction = direction;

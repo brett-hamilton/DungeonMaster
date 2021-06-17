@@ -27,7 +27,7 @@ namespace DungeonMaster.Data
         /// <value>
         /// The character list of characters in the game.
         /// </value>
-        public ArrayList CharacterList { get; private set; } = new ArrayList(); 
+		public List<Character> CharacterList { get; set; } 
 
 		/// <summary>
 		/// Default constructor to build a generic game with no entities.
@@ -36,6 +36,7 @@ namespace DungeonMaster.Data
 		{
 			Gameboard = new Gameboard(5, 5);
 			GameName = "Test Game";
+			CharacterList = new List<Character>();
 		}
 
 		/// <summary>
@@ -46,6 +47,7 @@ namespace DungeonMaster.Data
 		public Game(int rows, int columns)
 		{
 			Gameboard = new Gameboard(rows, columns);
+			CharacterList = new List<Character>();
 		}
 
 		/// <summary>
@@ -55,8 +57,10 @@ namespace DungeonMaster.Data
 		{
 			Gameboard = new Gameboard(5, 5);
 			GameName = "Test Game";
+			CharacterList = new List<Character>();
 			AddCharacter(char1, 2, 3);
 			AddCharacter(char2, 2, 4);
+
 		}
 
         /// <summary>
@@ -65,7 +69,7 @@ namespace DungeonMaster.Data
         /// <param name="name">The name of the game.</param>
         /// <param name="gameboard">The gameboard to use.</param>
         /// <param name="characterList">The character list.</param>
-        public Game(string name, Gameboard gameboard, ArrayList characterList)
+        public Game(string name, Gameboard gameboard, List<Character> characterList)
 		{
 			this.GameName = name;
 			this.Gameboard = gameboard;
