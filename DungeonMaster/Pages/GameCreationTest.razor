@@ -117,7 +117,7 @@
         {
             if (game.AddCharacter(newCharacter, charRow-1, charColumn-1))
             {
-                gameStatus = newCharacter.Name + " was added to the game at location (" + (1 + charRow) + ", " + (1 + charColumn) + ")";
+                gameStatus = newCharacter.Name + " was added to the game at location (" + charRow + ", " + charColumn + ")";
                 characterList.Add(newCharacter);
             }
             else
