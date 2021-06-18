@@ -1,0 +1,92 @@
+﻿@page "/CanvasTest"
+
+@using DungeonMaster.Data
+@using Microsoft.AspNetCore.Components
+@using System.IO;
+@using System.Text.Json;
+@using Blazor.Extensions;
+@using Blazor.Extensions.Canvas
+@using Blazor.Extensions.Canvas.Canvas2D;
+
+<h3>Canvas Creation Test</h3>
+<hr />
+<br />
+
+<div><BECanvas Width="500" Height="500" @ref="_canvasReference"></BECanvas></div>
+
+<br />
+<p>Character List:</p>
+<div class="row" style="outline: 0px solid blue; outline-offset: 8px; max-height: 200px; min-height: 100px; width: 500px">
+    @* Use overflow-auto and max/min height to force game log to be scrollable and at set size. *@
+    <div class="col-10 overflow-auto" style="max-height: 200px; min-height: 100px; width: 500px">
+        <ul class="list-group " id="charList">
+            @* Iterate through the list of strings in reverse order, so newest message is at top. Based on Microsoft SignalR example. *@
+            @for (int i = (characterList.Count - 1); i >= 0; i--)
+            {
+                <li class="list-group-item list-group-item-primary">@characterList[i].Name</li>
+            }
+        </ul>
+    </div>
+</div>
+
+@code {
+    private List<Character> characterList = new List<Character>();  //local character list for the display list
+    private Canvas2DContext _context;                               //Blazor version of javascript _context
+    protected BECanvasComponent _canvasReference;                   //Canvas reference for actually calling functions against;
+    public Game game = null;                                        //Give the page a game to display. Null until startGame();
+    private Character character1 = new Character();                 //Generate characters to display. This step will be changed when a real game is generated or loaded.
+    private Character character2 = new Character();
+    private Character character3 = new Character();
+    private Character character4 = new Character();
+    private static double scaleFactor = 10;                         //For smaller maps, this scales every object by this factor.
+    private string backgroundColor = "#009900";                     //Sets the background for the entire canvas. Ideally we would draw the background sprites above this.
+
+    /// <summary>
+    ///     Generates and fills a game object for testing. This should be changed to load game for production
+    /// </summary>
+    public void startGame()
+    {
+        game = new Game(50, 50);                                     //Set our game to a new game
+        game.AddCharacter(character1, 0, 0);                         //Add characters at locations
+        game.AddCharacter(character2, 20, 20);
+        game.AddCharacter(character3, 49, 49);
+        game.AddCharacter(character4, 25, 20);
+        characterList = game.CharacterList;                          //Give the list the updated list from the newly filled game.
+        base.StateHasChanged();                                      //Tell the page that it must update. Using async renders on canvas will stall the non-canvas items.
+    }
+
+
+    /// <summary>
+    /// OVerride. Called after the page loads. draws the canvas off of the primary process.
+    /// </summary>
+    /// <param name="firstRender"></param>
+    /// <returns></returns>
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            startGame();                                                                                    //Initialize the game prior to trying to draw it
+            this._context = await this._canvasReference.CreateCanvas2DAsync(); 
+
+            await this._context.SetFillStyleAsync(backgroundColor);                                         //Set the "filled" color
+            double scaledRows = scaleFactor * game.Gameboard.Rows;                                          //Scale the row count by our scale factor
+            double scaledColumns = scaleFactor * game.Gameboard.Columns;                                    //Scale the column count by our scale factor
+            await this._context.FillRectAsync(0, 0, scaledRows, scaledColumns);                             //Fill the canvas from 0, 0 to scaledrow by scaled column
+
+            for (int i = 0; i < game.Gameboard.Rows; i++)
+            {
+                for (int j = 0; j < game.Gameboard.Columns; j++)
+                {
+                    Drawable drawable = game.Gameboard.Drawables[i, j];
+                    if (drawable != null)
+                    {
+                        double scaledRow = i * scaleFactor;
+                        double scaledColumn = j * scaleFactor;
+                        await this._context.SetFillStyleAsync(drawable.BackupColorCode);
+                        await this._context.FillRectAsync(scaledRow, scaledColumn, scaleFactor, scaleFactor);
+                    }
+                }
+            }
+        }
+    }
+}

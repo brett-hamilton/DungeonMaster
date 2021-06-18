@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace DungeonMaster.Pages.Models
 {
-    public class GameManager
+    public class GameManager : INotifyPropertyChanged
     {
+        private readonly int moveSpeed = 1;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public PlayerModel Player { get; set; }
 
@@ -23,8 +27,11 @@ namespace DungeonMaster.Pages.Models
             while(IsRunning)
             {
 
+               // Player.Move(2);
 
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Player)));
 
+                await Task.Delay(20);
             }
         }  
     }

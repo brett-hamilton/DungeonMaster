@@ -45,6 +45,10 @@ namespace DungeonMaster.Data
         /// <param name="columns"></param>
         public Gameboard(int rows, int columns)
         {
+            if (rows < 1)
+                rows = 5;
+            if (columns < 1)
+                columns = 5;
             Rows = rows;
             Columns = columns;
             Drawables = new Drawable[Rows, Columns];

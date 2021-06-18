@@ -54,12 +54,12 @@ namespace DungeonMaster.Data
 		public Character()
 		{
 			Weapon sword = new Weapon("sword", 10, Dice.D6, 5.0);
-			this.Name = "Geralt";
+			Name = "Geralt";
 			this.Health = 100;
 			this.ActiveWeapon = sword;
 			this.ActionPoints = 120;
 			this.IsCollidable = true;
-			this.BackupColorCode = "FF00FF";
+			this.BackupColorCode = "#FF00FF";
 		}
 
 		/// <summary>
