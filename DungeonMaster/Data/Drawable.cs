@@ -32,10 +32,10 @@ namespace DungeonMaster.Data
         /// <summary>
         /// Gets or sets the image location.
         /// </summary>
-        /// <value>
+        /// <v
         /// The image location.
         /// </value>
-        protected string ImageLocation { get; set; }
+        public string ImageLocation { get; set; }
 
         /// <summary>
         /// Gets or sets the backup color code. In hex format without he leading #, 6 digit.

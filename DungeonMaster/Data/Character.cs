@@ -56,6 +56,7 @@ namespace DungeonMaster.Data
 			this.ActionPoints = 120;
 			this.IsCollidable = true;
 			this.BackupColorCode = "#FF00FF";
+			this.ImageLocation = "/images/char1.png";
 		}
 
 		/// <summary>
