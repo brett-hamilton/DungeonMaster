@@ -1,0 +1,156 @@
+﻿@page "/CanvasTestWithImages"
+
+@using DungeonMaster.Data
+@using Microsoft.AspNetCore.Components
+@using System.IO;
+@using System.Text.Json;
+@using Blazor.Extensions;
+@using Blazor.Extensions.Canvas
+@using Blazor.Extensions.Canvas.Canvas2D;
+@using Microsoft.Extensions.Hosting;
+
+<img id="board" @ref="boardImg" width="1920" height="1080" style="display:none" src="@boardImage" />
+<img id="char1" @ref="character1img" width="22" height="22" style="display:none" src="@char1Image" />
+<img id="char2" @ref="character2img" width="22" height="22" style="display:none" src="@char2Image" />
+
+
+
+Render With Grid: <input type="checkbox" @onchange="eventArgs => { Render((bool)eventArgs.Value); }">
+<button @onclick="eventArgs => { Render(); }">REDRAW</button>
+
+
+
+<div><BECanvas Width="1500" Height="750" @ref="_canvasReference"></BECanvas></div>
+<br />
+<p>Character List:</p>
+<div class="row" style="outline: 0px solid blue; outline-offset: 8px; max-height: 200px; min-height: 100px; width: 500px">
+    @* Use overflow-auto and max/min height to force game log to be scrollable and at set size. *@
+    <div class="col-10 overflow-auto" style="max-height: 200px; min-height: 100px; width: 500px">
+        <ul class="list-group " id="charList">
+            @* Iterate through the list of strings in reverse order, so newest message is at top. Based on Microsoft SignalR example. *@
+            @for (int i = (characterList.Count - 1); i >= 0; i--)
+            {
+                <li class="list-group-item list-group-item-primary">@characterList[i].Name</li>
+            }
+        </ul>
+    </div>
+</div>
+
+@code {
+    private List<Character> characterList = new List<Character>();  //local character list for the display list
+    private Canvas2DContext _context;                               //Blazor version of javascript _context
+    protected BECanvasComponent _canvasReference;                   //Canvas reference for actually calling functions against;
+    public Game game = null;                                        //Give the page a game to display. Null until startGame();
+    private Character character1 = new Character();                 //Generate characters to display. This step will be changed when a real game is generated or loaded.
+    private Character character2 = new Character();
+    private Character character3 = new Character();
+    private Character character4 = new Character();
+    private static double scaleFactor = 30;                         //For smaller maps, this scales every object by this factor.
+    private string backgroundColor = "#009900";                     //Sets the background for the entire canvas. Ideally we would draw the background sprites above this.
+    private ElementReference boardImg;
+    private ElementReference character1img;
+    private ElementReference character2img;
+
+
+    private string boardImage = string.Empty;
+    private string char1Image = string.Empty;
+    private string char2Image = string.Empty;
+
+
+    public Boolean gridInput = false;
+    public string gridColor = "#FFFFFF";
+
+    /// <summary>
+    ///     Generates and fills a game object for testing. This should be changed to load game for production
+    /// </summary>
+    public void startGame()
+    {
+        game = new Game(50, 25);                                     //Set our game to a new game
+        game.AddCharacter(character1, 0, 0);                         //Add characters at locations
+        game.AddCharacter(character2, 20, 20);
+        game.AddCharacter(character3, 49, 24);
+        game.AddCharacter(character4, 25, 20);
+        characterList = game.CharacterList;
+        boardImage = game.Gameboard.ImageLocation;
+        char1Image = character1.ImageLocation;
+        character2.ImageLocation = "/images/char2.png";
+    }
+
+    /// <summary>
+    /// OVerride. Called after the page loads. draws the canvas off of the primary process.
+    /// </summary>
+    /// <param name="firstRender"></param>
+    /// <returns></returns>
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            startGame();                                                                                    //Initialize the game prior to trying to draw it
+            this._context = await this._canvasReference.CreateCanvas2DAsync();
+            await Render(gridInput);
+        }
+    }
+
+    public async Task Render()
+    {
+        await Render(gridInput);
+    }
+
+    protected async Task BackupRenderBoard(double scaledRows, double scaledColumns)
+    {
+        await this._context.SetFillStyleAsync(backgroundColor);
+        await this._context.FillRectAsync(0, 0, scaledRows, scaledColumns);
+    }
+
+    protected async Task RenderBoardWithImage(ElementReference elementReference, double scaledRows, double scaledColumns, double scaleFactor)
+    {
+        await this._context.DrawImageAsync(boardImg, 0, 0, scaledRows, scaledColumns);
+    }
+
+    protected async Task Render(Boolean grid)
+    {
+        base.StateHasChanged();
+        gridInput = grid;
+        double scaledRows = scaleFactor * game.Gameboard.Rows;                                          //Scale the row count by our scale factor
+        double scaledColumns = scaleFactor * game.Gameboard.Columns;                                    //Scale the column count by our scale factor
+        await BackupRenderBoard(scaledRows, scaledColumns);
+        await RenderBoardWithImage(boardImg, scaledRows, scaledColumns, scaleFactor);
+
+        await this._context.SetStrokeStyleAsync("#FFFFFF");
+
+        for (int i = 0; i < game.Gameboard.Rows; i++)
+        {
+            for (int j = 0; j < game.Gameboard.Columns; j++)
+            {
+                double scaledRow = i * scaleFactor;
+                double scaledColumn = j * scaleFactor;
+                Drawable drawable = game.Gameboard.Drawables[i, j];
+                if (drawable != null)
+                {
+                    char1Image = drawable.ImageLocation;
+                    await this._context.SetFillStyleAsync(drawable.BackupColorCode);
+                    base.StateHasChanged();
+                    await Task.Delay(10);
+
+                    try
+                    {
+                        await this._context.DrawImageAsync(character1img, scaledRow, scaledColumn, scaleFactor, scaleFactor);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        await Task.Delay(10);
+                        await this._context.FillRectAsync(scaledRow, scaledColumn, scaleFactor, scaleFactor);
+                    }
+                }
+                else
+                {
+                    if(grid)
+                    {
+                        await this._context.StrokeRectAsync(scaledRow, scaledColumn, scaleFactor, scaleFactor);
+                    }
+                }
+            }
+        }
+    }
+}
