@@ -68,10 +68,13 @@ namespace DungeonMaster.Data
 		/// <returns>An attack report containing information about the attack.</returns>
 		public AttackReport RangedAttack(Character attacker, Character defender, bool disadvantage) 
 		{
+			DiceRollReport disadvatageRollReport = null;
 			double attackValue;
 			if (disadvantage)
 			{
-				attackValue = Die.RollD20Disadvantage().GetDiceTotal();
+				disadvatageRollReport = Die.RollD20Disadvantage();
+				attackValue = disadvatageRollReport.GetDiceTotal();
+				
 			}
 			else 
 			{
@@ -83,10 +86,12 @@ namespace DungeonMaster.Data
 			if (hit) 
 			{
 				var attackReport = attacker.Weapon.GetDamage();
-				defender.DamagePlayer(attackReport.TotalDamageDealt); attackReport.AttackRoll = attackValue;
+				defender.DamagePlayer(attackReport.TotalDamageDealt); 
+				attackReport.AttackRoll = attackValue;
 				attackReport.HitCheck = hit;
 				attackReport.AttackerName = attacker.Name;
 				attackReport.DefenderName = defender.Name;
+				attackReport.DisadvantageRoll = disadvatageRollReport;
 
 				return attackReport;
 			}
