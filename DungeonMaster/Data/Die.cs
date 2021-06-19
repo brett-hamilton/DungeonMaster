@@ -38,7 +38,7 @@ namespace DungeonMaster.Data
                 listOfDiceRolls.Add(Rand.Next(1, (dieSides + 1)));
             }
 
-            var rollReport = new DiceRollReport
+            var rollReport = new MultipleDiceRollReport
             {
                 DiceRolled = listOfDiceRolls
             };
@@ -63,17 +63,16 @@ namespace DungeonMaster.Data
         /// Created on: 06/02/2021
         /// </summary>
         /// <returns> An int between 1 and 20, representing the larger of the two dice rolls. </returns>
-        public static int RollD20Advantage()
+        public static DiceRollReport RollD20Advantage()
         {
-            var roll1 = RollD20();
-            var roll2 = RollD20();
+            var listOfDiceRolls = new List<int>();
 
-            if (roll2 > roll1)
-            {
-                return roll2;
-            }
+            listOfDiceRolls.Add(RollD20());
+            listOfDiceRolls.Add(RollD20());
 
-            return roll1;
+            listOfDiceRolls.Sort();
+
+            return new AdvantageRollReport() { DiceRolled = listOfDiceRolls };
         }
 
         /// <summary>
@@ -82,17 +81,16 @@ namespace DungeonMaster.Data
         /// Created on: 06/02/2021
         /// </summary>
         /// <returns> An int between 1 and 20, representing the smaller of the two dice rolls.</returns>
-        public static int RollD20Disadvantage()
+        public static DiceRollReport RollD20Disadvantage()
         {
-            var roll1 = RollD20();
-            var roll2 = RollD20();
+            var listOfDiceRolls = new List<int>();
 
-            if (roll2 < roll1)
-            {
-                return roll2;
-            }
+            listOfDiceRolls.Add(RollD20());
+            listOfDiceRolls.Add(RollD20());
 
-            return roll1;
+            listOfDiceRolls.Sort();
+
+            return new DisadvantageRollReport() { DiceRolled = listOfDiceRolls };
         }
     }
 }

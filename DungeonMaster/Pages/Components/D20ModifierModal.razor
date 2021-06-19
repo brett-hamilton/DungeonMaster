@@ -15,16 +15,16 @@
         <div id="mainContent" class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modalTitle" id="rollModifiedD20ModalTitle">Roll D20 With Modifier</h5>
+                <h5 class="modalTitle" id="rollModifiedD20ModalTitle">Roll D20 With Advantage/Disadvantage</h5>
             </div>
 
             <div class="modal-body">
                 <div class="row">
                     <label for="modifier" class="col-4">Modifier: </label>
                     <select @bind="modifier" name="modifier" id="modifier">
-                        <option value="">No Modifier</option>
-                        <option value="a">Advantage</option>
-                        <option value="d">Disadvantage</option>
+                        <option value="">Regular D20</option>
+                        <option value="a">D20 with Advantage</option>
+                        <option value="d">D20 with Disadvantage</option>
                     </select>
                 </div>
             </div>
@@ -113,14 +113,16 @@
 
         if (modifier == "a")
         {
-            diceTotal = Die.RollD20Advantage();
-            diceResult = $"Player rolled 1 D20 with advantage for {diceTotal}";
+            var diceRollReport = Die.RollD20Advantage();
+            diceTotal = diceRollReport.GetDiceTotal();
+            diceResult = $"Player {diceRollReport.GetDiceReport()}";
         }
 
         else if (modifier == "d")
         {
-            diceTotal = Die.RollD20Disadvantage();
-            diceResult = $"Player rolled 1 D20 with disadvantage for {diceTotal}";
+            var diceRollReport = Die.RollD20Disadvantage();
+            diceTotal = diceRollReport.GetDiceTotal();
+            diceResult = $"Player {diceRollReport.GetDiceReport()}";
         }
 
         else
