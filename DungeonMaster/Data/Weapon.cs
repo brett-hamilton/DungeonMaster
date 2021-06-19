@@ -43,7 +43,7 @@ namespace DungeonMaster.Data
 		///
 		//the type of damage the weapon uses
 		///
-		public Effect DamageType { get; set; }
+		public Effect DamageType { get; set; } = new Effect("piercing", EffectTypes.Piercing, 0);
 
 		/// Default constructor that takes no parameters
 		/// 
@@ -120,6 +120,19 @@ namespace DungeonMaster.Data
 					dieRoll = 0;
 				}
 
+				// Set the weapon type. Default to piercing damage if none listed.
+				string damageType;
+
+				if (DamageType == null)
+				{
+					damageType = "piercing";
+				}
+				else 
+				{
+					damageType = DamageType.EffectType.ToString();
+				}
+
+				// If we were successful in getting damage, create a new attack report.
 				if (dieRollReport != null)
 				{
 					return new AttackReport
@@ -127,7 +140,8 @@ namespace DungeonMaster.Data
 						DiceRollReport = dieRollReport,
 						TotalDamageDealt = BaseDamage + dieRoll,
 						WeaponBaseDamage = BaseDamage,
-						DieUsed = DiceUsed
+						DieUsed = DiceUsed,
+						DamageType = damageType						
 					};
 				}
 			}
