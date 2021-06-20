@@ -22,22 +22,22 @@ namespace DungeonMaster.Data
 		/// </summary>
 		/// <param name="attacker">The character attacking.</param>
 		/// <param name="defender">The character being attacked.</param>
-		/// <returns>Amount of damage attacker does to defender; 0 if miss.</returns>
-		public AttackReport MeleeAttack (Character attacker, Character defender)
+		/// <returns>Attack Report detailing what happened in the attack.</returns>
+		public AttackReport MeleeAttack(Character attacker, Character defender)
 		{
 			// Roll the attack dice for a value to compare to defender's armor rating
 			double attackValue = Die.RollD20();
 
 			// Determine if the attack value is enough to hit
-			bool hit = defender.CheckArmor (attackValue);
+			bool hit = defender.CheckArmor(attackValue);
 
 			if (hit)
 			{
 				// Decrease defender's health by the attacker's weapon stat
 				
-				var attackReport = attacker.ActiveWeapon.GetDamage ( );
+				var attackReport = attacker.ActiveWeapon.GetDamage();
 				int damageAmount = attackReport.TotalDamageDealt;
-				defender.DamagePlayer (damageAmount);
+				defender.DamagePlayer(damageAmount);
 				attackReport.AttackRoll = attackValue;
 				attackReport.HitCheck = hit;
 				attackReport.AttackerName = attacker.Name;
