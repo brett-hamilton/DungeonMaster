@@ -192,12 +192,14 @@ namespace DungeonMaster.Data
                 return false;
             }
 
-            var verticalDistance = attackerCoord.Row - defenderCoord.Row;
-            var horizontalDistance = attackerCoord.Column - defenderCoord.Column;
+            double distanceBetween = GetDistance(attackerCoord, defenderCoord);
+
+            // In order to allow diagonal attacks, we will round the value down to the previous whole number.
+            var roundedDistance = Math.Round(distanceBetween, 0, MidpointRounding.ToZero);
 
             // If the unit is within one vertical or horizontal block. This would also include
             //      diagonal locations.
-            if (Math.Abs(verticalDistance) == 1 || Math.Abs(horizontalDistance) == 1)
+            if (roundedDistance <= 1)
             {
                 return true;
             }

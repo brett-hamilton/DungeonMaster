@@ -101,7 +101,8 @@ namespace DungeonMaster.Data
 				AttackRoll = attackValue,
 				HitCheck = hit,
 				AttackerName = attacker.Name,
-				DefenderName = defender.Name
+				DefenderName = defender.Name,
+				DisadvantageRoll = disadvatageRollReport
 			};
         }
 	}
