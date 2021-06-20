@@ -147,7 +147,7 @@
     /// <summary>
     /// Method to attack the chosen character, adding the result to the game log.
     /// </summary>
-    /// <param name="defender"></param>
+    /// <param name="defender">The defending character.</param>
     public void Attack(Character defender)
     {
         var message = Game.RangedAttackAttempt(Attacker, defender);
@@ -172,6 +172,5 @@
     {
         showTargets = true;
     }
-
 }
 

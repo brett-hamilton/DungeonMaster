@@ -13,12 +13,24 @@ namespace XunitTest
     /// </summary>
     public class DiceReportTests
     {
+        /// <summary>
+        /// Test roll values.
+        /// </summary>
         private List<int> listOfRollValues = new List<int> { 10, 15 };
 
+        /// <summary>
+        /// Sum of the dice in list of roll values.
+        /// </summary>
         private const int SUM_OF_DICE = 25;
 
+        /// <summary>
+        /// Value of the smaller die.
+        /// </summary>
         private const int SMALLER_DIE = 10;
 
+        /// <summary>
+        /// Value of the larger die.
+        /// </summary>
         private const int LARGER_DIE = 15;
 
         /// <summary>

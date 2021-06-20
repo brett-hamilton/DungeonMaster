@@ -77,42 +77,60 @@ Render With Grid: <input type="checkbox" @onchange="eventArgs => { Render((bool)
     }
 
     /// <summary>
-    /// OVerride. Called after the page loads. draws the canvas off of the primary process.
+    /// OVerride. Called after the page loads. Draws the canvas off of the primary process.
     /// </summary>
-    /// <param name="firstRender"></param>
-    /// <returns></returns>
+    /// <param name="firstRender">True if this is initial render, false otherwise.</param>
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            startGame();                                                                                    //Initialize the game prior to trying to draw it
+            startGame();                                                      //Initialize the game prior to trying to draw it
             this._context = await this._canvasReference.CreateCanvas2DAsync();
             await Render(gridInput);
         }
     }
 
+    /// <summary>
+    /// Renders graphics.
+    /// </summary>
     public async Task Render()
     {
         await Render(gridInput);
     }
 
+    /// <summary>
+    /// Backup the rendered board.
+    /// </summary>
+    /// <param name="scaledRows">Board rows.</param>
+    /// <param name="scaledColumns">Board columns.</param>
     protected async Task BackupRenderBoard(double scaledRows, double scaledColumns)
     {
         await this._context.SetFillStyleAsync(backgroundColor);
         await this._context.FillRectAsync(0, 0, scaledRows, scaledColumns);
     }
 
+    /// <summary>
+    /// Renders the board with images included.
+    /// </summary>
+    /// <param name="elementReference">Reference to element.</param>
+    /// <param name="scaledRows">Board rows.</param>
+    /// <param name="scaledColumns">Board columns.</param>
+    /// <param name="scaleFactor">Scale.</param>
     protected async Task RenderBoardWithImage(ElementReference elementReference, double scaledRows, double scaledColumns, double scaleFactor)
     {
         await this._context.DrawImageAsync(boardImg, 0, 0, scaledRows, scaledColumns);
     }
 
+    /// <summary>
+    /// Redner the grid to the screen.
+    /// </summary>
+    /// <param name="grid">True if there is a grid, false otherwise.</param>
     protected async Task Render(Boolean grid)
     {
         base.StateHasChanged();
         gridInput = grid;
-        double scaledRows = scaleFactor * game.Gameboard.Rows;                                          //Scale the row count by our scale factor
-        double scaledColumns = scaleFactor * game.Gameboard.Columns;                                    //Scale the column count by our scale factor
+        double scaledRows = scaleFactor * game.Gameboard.Rows;                          //Scale the row count by our scale factor
+        double scaledColumns = scaleFactor * game.Gameboard.Columns;                    //Scale the column count by our scale factor
         await BackupRenderBoard(scaledRows, scaledColumns);
         await RenderBoardWithImage(boardImg, scaledRows, scaledColumns, scaleFactor);
 

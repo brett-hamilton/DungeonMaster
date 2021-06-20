@@ -16,7 +16,7 @@ namespace DungeonMaster.Data
 		public int Dexterity { get; set; }
 
 		/// <summary>
-		/// endurance of the player
+		/// Endurance of the player
 		/// </summary>
 		public int Constitution { get; set; }
 
@@ -36,7 +36,7 @@ namespace DungeonMaster.Data
 		public int Charisma { get; set; }
 
 		/// <summary>
-        /// meant for initializing a variable
+        /// Default constructor
         /// </summary>
 		public CharacterStats()
 		{
@@ -49,15 +49,15 @@ namespace DungeonMaster.Data
 		}
 
 		/// <summary>
-        /// Loaded COnstructor to set the traits of the character.
+        /// Loaded Constructor to set the traits of the character.
         /// Descriptions are above
         /// </summary>
-        /// <param name="strength"></param>
-        /// <param name="dexterity"></param>
-        /// <param name="constitution"></param>
-        /// <param name="intelligence"></param>
-        /// <param name="wisdom"></param>
-        /// <param name="charisma"></param>
+        /// <param name="strength">Strength level.</param>
+        /// <param name="dexterity">Dexterity level.</param>
+        /// <param name="constitution">Constitution level.</param>
+        /// <param name="intelligence">Intelligence level.</param>
+        /// <param name="wisdom">Wisdom level.</param>
+        /// <param name="charisma">Charisma level.</param>
 		public CharacterStats(int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma)
 		{
 			Strength = strength;
@@ -67,8 +67,6 @@ namespace DungeonMaster.Data
 			Wisdom = wisdom;
 			Charisma = charisma;
 		}
-
-
 	}
 }
 

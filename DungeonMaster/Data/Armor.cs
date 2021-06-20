@@ -16,20 +16,20 @@ namespace DungeonMaster.Data
     public class Armor
     {
         /// <summary>
-        /// name of the armor
+        /// Name of the armor
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// number of points to represent the protection
+        /// Number of points to represent the protection
         /// </summary>
         public double ProtectionPoints { get; set; }
 
         /// <summary>
         /// Constructor to initialize the object
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="protectionPoints"></param>
+        /// <param name="name">Name of the armor to set up.</param>
+        /// <param name="protectionPoints">Represents the level of protection for armor.</param>
         public Armor(string name, double protectionPoints)
         {
             this.Name = name;

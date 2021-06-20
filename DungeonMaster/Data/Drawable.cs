@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace DungeonMaster.Data
 {
+    /// <summary>
+    /// Represents a class that can be drawn to a screen.
+    /// </summary>
     public class Drawable
     {
         /// <summary>
@@ -32,17 +35,13 @@ namespace DungeonMaster.Data
         /// <summary>
         /// Gets or sets the image location.
         /// </summary>
-        /// <v
-        /// The image location.
-        /// </value>
+        /// <value>The image location.</value>
         public string ImageLocation { get; set; }
 
         /// <summary>
         /// Gets or sets the backup color code. In hex format without he leading #, 6 digit.
         /// </summary>
-        /// <value>
-        /// The backup color code.
-        /// </value>
+        /// <value>The backup color code.</value>
         public string BackupColorCode { get; set; }
 
         /// <summary>
@@ -69,7 +68,7 @@ namespace DungeonMaster.Data
         /// Initializes a new instance of the <see cref="Drawable"/> class.
         /// </summary>
         /// <param name="name">The name of the object.</param>
-        /// <param name="isCollidable">if set to <c>true</c> [is collidable].</param>
+        /// <param name="isCollidable">If set to <c>true</c> [is collidable].</param>
         /// <param name="ImageLocation">The image location.</param>
         public Drawable(string name, Boolean isCollidable, string ImageLocation, string ColorCode)
         {

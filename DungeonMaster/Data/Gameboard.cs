@@ -10,17 +10,13 @@ namespace DungeonMaster.Data
         /// <summary>
         /// Contains the Drawables objects that make up the game board.
         /// </summary>
-        /// <value>
-        /// The drawables.
-        /// </value>
+        /// <value>The drawables.</value>
         public Drawable[,] Drawables { get; set; }
 
         /// <summary>
         /// Gets or sets the number of rows.
         /// </summary>
-        /// <value>
-        /// The rows.
-        /// </value>
+        /// <value>The rows.</value>
         public int Rows { get; protected set; }
 
         /// <summary>
@@ -31,9 +27,7 @@ namespace DungeonMaster.Data
         /// <summary>
         /// Gets or sets the image location.
         /// </summary>
-        /// <value>
-        /// The image location.
-        /// </value>
+        /// <value>The image location.</value>
         public string ImageLocation { get; set; }
 
         /// <summary>
@@ -47,16 +41,20 @@ namespace DungeonMaster.Data
         }
 
         /// <summary>
-        /// Contstructor that generates a gameboard of the given size.
+        /// Constructor that generates a gameboard of the given size.
         /// </summary>
-        /// <param name="rows"></param>
-        /// <param name="columns"></param>
+        /// <param name="rows">Number of rows for the gameboard.</param>
+        /// <param name="columns">Number of columns for the gameboard.</param>
         public Gameboard(int rows, int columns)
         {
             if (rows < 1)
+            {
                 rows = 5;
+            }
             if (columns < 1)
+            {
                 columns = 5;
+            }
             Rows = rows;
             Columns = columns;
             Drawables = new Drawable[Rows, Columns];
@@ -103,11 +101,17 @@ namespace DungeonMaster.Data
             if (row < Rows && column < Columns && row > -1 && column > -1)
             {
                 if (Drawables[row, column] != null)
+                {
                     return false;
+                }
                 else
+                {
                     Drawables[row, column] = drawable;
+                }
+
                 return true;
             }
+
             return false;
         }
 
@@ -124,10 +128,15 @@ namespace DungeonMaster.Data
             if (row < Rows && column < Columns && row > -1 && column > -1)
             {
                 if (Drawables[row, column] != null)
+                {
                     return true;
+                }
                 else
+                {
                     return false;
+                }
             }
+
             return false;
         }
 
@@ -183,12 +192,14 @@ namespace DungeonMaster.Data
                 return false;
             }
 
-            var verticalDistance = attackerCoord.Row - defenderCoord.Row;
-            var horizontalDistance = attackerCoord.Column - defenderCoord.Column;
+            double distanceBetween = GetDistance(attackerCoord, defenderCoord);
+
+            // In order to allow diagonal attacks, we will round the value down to the previous whole number.
+            var roundedDistance = Math.Round(distanceBetween, 0, MidpointRounding.ToZero);
 
             // If the unit is within one vertical or horizontal block. This would also include
             //      diagonal locations.
-            if (Math.Abs(verticalDistance) == 1 || Math.Abs(horizontalDistance) == 1)
+            if (roundedDistance <= 1)
             {
                 return true;
             }
@@ -201,7 +212,7 @@ namespace DungeonMaster.Data
         /// </summary>
         /// <param name="character1">First character in the gameboard.</param>
         /// <param name="character2">Second character to calculate distance to.</param>
-        /// <returns>distance between two characters.</returns>
+        /// <returns>Distance between two characters.</returns>
         public double GetDistance(Coordinate character1, Coordinate character2)
         {
             double rowDifference = character1.Row - character2.Row;
