@@ -16,9 +16,7 @@ namespace DungeonMaster.Data
         /// <summary>
         /// Gets or sets the gameboard.
         /// </summary>
-        /// <value>
-        /// The gameboard.
-        /// </value>
+        /// <value>The gameboard.</value>
         public Gameboard Gameboard { get; private set; }
 
         /// <summary>
@@ -42,8 +40,8 @@ namespace DungeonMaster.Data
 		/// <summary>
 		/// Constructor to create a game with a set gameboard size.
 		/// </summary>
-		/// <param name="rows">Number of rows for the game board</param>
-		/// <param name="columns">Number of columns for the game board</param>
+		/// <param name="rows">Number of rows for the game board.</param>
+		/// <param name="columns">Number of columns for the game board.</param>
 		public Game(int rows, int columns)
 		{
 			Gameboard = new Gameboard(rows, columns);
@@ -53,6 +51,8 @@ namespace DungeonMaster.Data
 		/// <summary>
 		/// Constructor to build a generic game with two characters..
 		/// </summary>
+		/// <param name="char1">The first character to add to the game.</param>
+		/// <param name="char2">The second character to add to the game.</param>
 		public Game(Character char1, Character char2)
 		{
 			Gameboard = new Gameboard(5, 5);

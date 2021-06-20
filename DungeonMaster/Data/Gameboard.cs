@@ -10,17 +10,13 @@ namespace DungeonMaster.Data
         /// <summary>
         /// Contains the Drawables objects that make up the game board.
         /// </summary>
-        /// <value>
-        /// The drawables.
-        /// </value>
+        /// <value>The drawables.</value>
         public Drawable[,] Drawables { get; set; }
 
         /// <summary>
         /// Gets or sets the number of rows.
         /// </summary>
-        /// <value>
-        /// The rows.
-        /// </value>
+        /// <value>The rows.</value>
         public int Rows { get; protected set; }
 
         /// <summary>
@@ -31,9 +27,7 @@ namespace DungeonMaster.Data
         /// <summary>
         /// Gets or sets the image location.
         /// </summary>
-        /// <value>
-        /// The image location.
-        /// </value>
+        /// <value>The image location.</value>
         public string ImageLocation { get; set; }
 
         /// <summary>
@@ -47,10 +41,10 @@ namespace DungeonMaster.Data
         }
 
         /// <summary>
-        /// Contstructor that generates a gameboard of the given size.
+        /// Constructor that generates a gameboard of the given size.
         /// </summary>
-        /// <param name="rows"></param>
-        /// <param name="columns"></param>
+        /// <param name="rows">Number of rows for the gameboard.</param>
+        /// <param name="columns">Number of columns for the gameboard.</param>
         public Gameboard(int rows, int columns)
         {
             if (rows < 1)
@@ -201,7 +195,7 @@ namespace DungeonMaster.Data
         /// </summary>
         /// <param name="character1">First character in the gameboard.</param>
         /// <param name="character2">Second character to calculate distance to.</param>
-        /// <returns>distance between two characters.</returns>
+        /// <returns>Distance between two characters.</returns>
         public double GetDistance(Coordinate character1, Coordinate character2)
         {
             double rowDifference = character1.Row - character2.Row;
