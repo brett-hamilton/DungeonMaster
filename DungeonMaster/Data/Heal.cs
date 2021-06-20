@@ -10,7 +10,7 @@ namespace DungeonMaster.Data
     {
         public int HealSelf(Character player)
         {
-
+            return 0;
         }
     }
 }

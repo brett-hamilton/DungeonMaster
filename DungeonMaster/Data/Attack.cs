@@ -85,7 +85,7 @@ namespace DungeonMaster.Data
 
 			if (hit) 
 			{
-				var attackReport = attacker.Weapon.GetDamage();
+				var attackReport = attacker.ActiveWeapon.GetDamage();
 				defender.DamagePlayer(attackReport.TotalDamageDealt); 
 				attackReport.AttackRoll = attackValue;
 				attackReport.HitCheck = hit;

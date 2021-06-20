@@ -135,9 +135,9 @@ using System.Text.Json;
 #nullable restore
 #line 90 "C:\Users\hunte\source\repos\su21-4250-skynet-dungeonmaster\DungeonMasterV2\DungeonMaster\Pages\MeleeAttackTest.razor"
        
-        /// <summary>
-        /// If yes, indicates we should load character from file.
-        /// </summary>
+    /// <summary>
+    /// If yes, indicates we should load character from file.
+    /// </summary>
     protected string doLoadCharacter = "no";
 
     /// <summary>
@@ -175,8 +175,9 @@ using System.Text.Json;
             // Check if we are using a player from the characters file
             try
             {
-                string jsonString = File.ReadAllText(path);
+                string jsonString = File.ReadAllLines(path).Skip(0).Take(1).First();
                 player1 = JsonSerializer.Deserialize<Character>(jsonString);
+               // player2= JsonSerializer.Deserialize<Character>(jsonString);
             }
             catch (FileNotFoundException)
             {

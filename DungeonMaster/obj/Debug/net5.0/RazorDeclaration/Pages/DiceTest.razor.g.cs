@@ -184,14 +184,16 @@ using Microsoft.AspNetCore.Components;
     {
         if (modifier == "a")
         {
-            diceTotal = Die.RollD20Advantage();
-            GameLog.Add($"Player rolled 1 D20 for {diceTotal}");
+            var diceRollReport = Die.RollD20Advantage();
+            diceTotal = diceRollReport.GetDiceTotal();
+            GameLog.Add($"Player {diceRollReport.GetDiceReport()}");
         }
 
         else if (modifier == "d")
         {
-            diceTotal = Die.RollD20Disadvantage();
-            GameLog.Add($"Player rolled 1 D20 for {diceTotal}");
+            var diceRollReport = Die.RollD20Disadvantage();
+            diceTotal = diceRollReport.GetDiceTotal();
+            GameLog.Add($"Player {diceRollReport.GetDiceReport()}");
         }
 
         else
