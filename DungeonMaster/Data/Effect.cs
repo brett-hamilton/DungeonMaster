@@ -12,31 +12,31 @@ using System.Threading.Tasks;
 namespace DungeonMaster.Data
 {
     /// <summary>
-    /// a modifier to a weapon that can add more damage to a weapon
+    /// A modifier to a weapon that can add more damage to a weapon
     /// </summary>
     public class Effect
     {
         /// <summary>
-        /// the type of effect it is
+        /// The type of effect it is
         /// </summary>
         public EffectTypes EffectType { get; set; }
 
         /// <summary>
-        /// name of the effect
+        /// Name of the effect
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// the amount of damage the effect will do
+        /// The amount of damage the effect will do
         /// </summary>
         public int Damage { get; set; }
 
         /// <summary>
-        /// overloaded constructor of the Effect class
+        /// Overloaded constructor of the Effect class
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="effectType"></param>
-        /// <param name="damage"></param>
+        /// <param name="name">Name of the effect.</param>
+        /// <param name="effectType">Type of effect.</param>
+        /// <param name="damage">Amount of damage effect can inflict.</param>
         public Effect(string name, EffectTypes effectType, int damage)
         {
             this.Name = name;
