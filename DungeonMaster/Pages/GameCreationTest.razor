@@ -80,7 +80,7 @@
     {
         if (game == null)
         {
-            game = new Game(rows, columns);
+            game = new Game (rows, columns);
             game.GameName = gameName;
             gameStatus = "Created. Awaiting Characters";
             runningGameName = gameName;
@@ -88,7 +88,9 @@
             gameColumns = columns;
         }
         else
+        {
             gameStatus = "Can not start new game, game in progress.";
+        }
     }
 
 
@@ -108,15 +110,17 @@
         Character newCharacter = new Character(characterName, 50, 1);
         if (game != null)
         {
-            if (game.AddCharacter(newCharacter, charRow-1, charColumn-1))
+            if (game.AddCharacter (newCharacter, charRow - 1, charColumn - 1))
             {
                 gameStatus = newCharacter.Name + " was added to the game at location (" + charRow + ", " + charColumn + ")";
-                characterList.Add(newCharacter);
+                characterList.Add (newCharacter);
             }
             else
                 gameStatus = newCharacter.Name + " could not be added to the game...";
         }
         else
+        {
             gameStatus = "Characters can not be added until the game is started.";
+        }
     }
 }
