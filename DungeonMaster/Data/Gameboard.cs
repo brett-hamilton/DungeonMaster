@@ -29,6 +29,14 @@ namespace DungeonMaster.Data
         public int Columns { get; protected set; }
 
         /// <summary>
+        /// Gets or sets the image location.
+        /// </summary>
+        /// <value>
+        /// The image location.
+        /// </value>
+        public string ImageLocation { get; set; }
+
+        /// <summary>
         /// Default constructor, gives a 40x40 board.
         /// </summary>
         public Gameboard()
@@ -52,6 +60,7 @@ namespace DungeonMaster.Data
             Rows = rows;
             Columns = columns;
             Drawables = new Drawable[Rows, Columns];
+            ImageLocation = "/images/tempmap.png";
         }
 
         /// <summary>

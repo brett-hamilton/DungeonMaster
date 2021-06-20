@@ -35,7 +35,7 @@ namespace DungeonMaster.Data
 			{
 				// Decrease defender's health by the attacker's weapon stat
 				
-				var attackReport = attacker.ActiveWeapon.GetDamage ( );
+				var attackReport = attacker.Weapon.GetDamage ( );
 				int damageAmount = attackReport.TotalDamageDealt;
 				defender.DamagePlayer (damageAmount);
 				attackReport.AttackRoll = attackValue;
@@ -68,10 +68,13 @@ namespace DungeonMaster.Data
 		/// <returns>An attack report containing information about the attack.</returns>
 		public AttackReport RangedAttack(Character attacker, Character defender, bool disadvantage) 
 		{
+			DiceRollReport disadvatageRollReport = null;
 			double attackValue;
 			if (disadvantage)
 			{
-				attackValue = Die.RollD20Disadvantage();
+				disadvatageRollReport = Die.RollD20Disadvantage();
+				attackValue = disadvatageRollReport.GetDiceTotal();
+				
 			}
 			else 
 			{
@@ -82,11 +85,13 @@ namespace DungeonMaster.Data
 
 			if (hit) 
 			{
-				var attackReport = attacker.ActiveWeapon.GetDamage();
-				defender.DamagePlayer(attackReport.TotalDamageDealt); attackReport.AttackRoll = attackValue;
+				var attackReport = attacker.Weapon.GetDamage();
+				defender.DamagePlayer(attackReport.TotalDamageDealt); 
+				attackReport.AttackRoll = attackValue;
 				attackReport.HitCheck = hit;
 				attackReport.AttackerName = attacker.Name;
 				attackReport.DefenderName = defender.Name;
+				attackReport.DisadvantageRoll = disadvatageRollReport;
 
 				return attackReport;
 			}
@@ -99,41 +104,5 @@ namespace DungeonMaster.Data
 				DefenderName = defender.Name
 			};
 		}
-
-		/// <summary>
-		/// Perform a spell attack against a defending character. Depends on dice rolling to calculate
-		/// whether or not the attack hits or misses.
-		/// 
-		/// Created by: Hunter Page
-		/// Created on: 6/13/21
-		/// </summary>
-		/// <param name="attacker">The character attacking.</param>
-		/// <param name="defender">The character being attacked.</param>
-        /// <returns>An attack report containing information about the attack.</returns>
-		public AttackReport SpellAttack (Character attacker, Character defender)
-        {
-			int attackValue = Die.RollD20();
-
-			bool hit = defender.CheckArmor(attackValue);
-
-			if(hit)
-            {
-				var attackReport = attacker.ActiveSpell.GetSpellDamage();
-				defender.DamagePlayer(attackReport.TotalDamageDealt); attackReport.AttackRoll = attackValue;
-				attackReport.HitCheck = hit;
-				attackReport.AttackerName = attacker.Name;
-				attackReport.DefenderName = defender.Name;
-
-				return attackReport;
-            }
-
-			return new AttackReport
-			{
-				AttackRoll = attackValue,
-				HitCheck = hit,
-				AttackerName = attacker.Name,
-				DefenderName = defender.Name
-			};
-        }
 	}
 }
