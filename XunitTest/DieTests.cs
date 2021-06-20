@@ -82,6 +82,7 @@ namespace DungeonMaster.XunitTest
         /// <summary>
         /// Method to test that when two D20s are rolled, the higher value is returned.
         /// </summary>
+        [Fact]
         public void RollD20WithAdvantageRightDieReturnedTest() 
         {
             var dieRoll = Die.RollD20Advantage();
