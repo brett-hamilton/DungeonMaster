@@ -15,7 +15,7 @@
             <p class="card-text">
                 Health: @Attacker.Health
                 <br />
-                Weapon: @Attacker.Weapon.Name
+                Weapon: @Attacker.ActiveWeapon.Name
             </p>
         </div>
     </div>
@@ -92,7 +92,7 @@
     public Character Attacker { get; set; } = new Character()
     {
         Name = "Robin Hood",
-        Weapon = new Weapon("Bow", 4, Dice.D6, 100)
+        ActiveWeapon = new Weapon("Bow", 4, Dice.D6, 100)
         {
             RangedWeapon = true,
 
@@ -129,7 +129,7 @@
         Attacker = new Character()
         {
             Name = "Robin Hood",
-            Weapon = new Weapon("Bow", 4, Dice.D6, 100)
+            ActiveWeapon = new Weapon("Bow", 4, Dice.D6, 100)
             {
                 RangedWeapon = true,
 

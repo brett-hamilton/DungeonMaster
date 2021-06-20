@@ -13,5 +13,6 @@ public enum Status
 	Dead,
 	Poisoned,
 	Bleeding,
-	Disoriented
+	Disoriented,
+	Incapacitated
 }

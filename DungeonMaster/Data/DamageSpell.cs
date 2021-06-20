@@ -6,6 +6,9 @@
  *************************************************/
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace DungeonMaster.Data
 {
@@ -15,7 +18,7 @@ namespace DungeonMaster.Data
 		public double Damage { get; set; }
 
 
-		public DamageSpell(string spellName, SpellTypes spellType, double damage) : base(spellName, spellType)
+		public DamageSpell(string spellName, SpellTypes spellType, double damage, Dice diceUsed, int numberOfRolls, int range) : base(spellName, spellType, diceUsed, numberOfRolls, range)
 		{
 			this.Damage = damage;
 		}
