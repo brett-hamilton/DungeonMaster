@@ -111,13 +111,15 @@ namespace DungeonMaster.Data
 		/// <returns>Boolean representing if character was placed into the gameboard.</returns>
 		public Boolean AddCharacter(Character character, int row, int column)
         {
-			if (Gameboard.AddDrawable(character, row, column))
+			if (Gameboard.AddDrawable (character, row, column))
 			{
-				CharacterList.Add(character);
+				CharacterList.Add (character);
 				return true;
 			}
 			else
+			{
 				return false;
+			}
         }
 
 		/// <summary>
@@ -194,7 +196,10 @@ namespace DungeonMaster.Data
 				}
 			}
 			else
+			{
 				outputString = "No Characters In Game";
+			}
+
 			return outputString;
 		}
 	}

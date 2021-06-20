@@ -48,9 +48,13 @@ namespace DungeonMaster.Data
         public Gameboard(int rows, int columns)
         {
             if (rows < 1)
+            {
                 rows = 5;
+            }
             if (columns < 1)
+            {
                 columns = 5;
+            }
             Rows = rows;
             Columns = columns;
             Drawables = new Drawable[Rows, Columns];
@@ -97,11 +101,17 @@ namespace DungeonMaster.Data
             if (row < Rows && column < Columns && row > -1 && column > -1)
             {
                 if (Drawables[row, column] != null)
+                {
                     return false;
+                }
                 else
+                {
                     Drawables[row, column] = drawable;
+                }
+
                 return true;
             }
+
             return false;
         }
 
@@ -118,10 +128,15 @@ namespace DungeonMaster.Data
             if (row < Rows && column < Columns && row > -1 && column > -1)
             {
                 if (Drawables[row, column] != null)
+                {
                     return true;
+                }
                 else
+                {
                     return false;
+                }
             }
+
             return false;
         }
 
