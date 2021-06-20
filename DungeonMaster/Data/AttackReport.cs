@@ -58,6 +58,11 @@ namespace DungeonMaster.Data
         public DiceRollReport DisadvantageRoll { get; set; }
 
         /// <summary>
+        /// Type of damage being applied.
+        /// </summary>
+        public string DamageType { get; set; }
+
+        /// <summary>
         /// Returns a string containing information about the attack attempt. This is then displayed
         /// in the game log for the players.
         /// </summary>
@@ -77,13 +82,13 @@ namespace DungeonMaster.Data
             if (DisadvantageRoll != null) 
             {
                 string attackReport = $"{AttackerName} attacked {DefenderName} from within melee distance. {AttackerName} {DisadvantageRoll.GetDiceReport()} This attack hit {DefenderName}.";
-                attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {WeaponBaseDamage} base damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total damage.";
+                attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {WeaponBaseDamage} base damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType} damage.";
                 return attackReport;
             }
             else
             {
                 string attackReport = $"{AttackerName} rolled an attack of {AttackRoll}. This attack hit {DefenderName}.";
-                attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {WeaponBaseDamage} base damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total damage.";
+                attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {WeaponBaseDamage} base damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType} damage.";
                 return attackReport;
             }
         }

@@ -42,12 +42,12 @@
     <br />
     <br />
     <div>
-        Strength: @strength<br />
-        Dexterity: @dexterity<br />
-        Constitution: @constitution<br />
-        Intelligence: @intelligence<br />
-        Wisdom: @wisdom<br />
-        Charisma: @charisma<br />
+        Strength: @statsForCharacter.Strength<br />
+        Dexterity: @statsForCharacter.Dexterity<br />
+        Constitution: @statsForCharacter.Constitution<br />
+        Intelligence: @statsForCharacter.Intelligence<br />
+        Wisdom: @statsForCharacter.Wisdom<br />
+        Charisma: @statsForCharacter.Charisma<br />
     </div>
     <button class="btn btn-primary" @onclick="CreateCharacter">Create and Save Character</button>
     <p>@errorMessage</p>
@@ -81,18 +81,8 @@
     /// </summary>
     private string currentStatString = string.Empty;
 
-    /* All the stats of the character*/
-    private int strength = 0;
-
-    private int dexterity = 0;
-
-    private int constitution = 0;
-
-    private int intelligence = 0;
-
-    private int wisdom = 0;
-
-    private int charisma = 0;
+    /* Stats for the character*/
+    private CharacterStats statsForCharacter = new CharacterStats();
 
     /// <summary>
     /// List of the available numbers for the stats
@@ -119,6 +109,7 @@
         characterName = characterName.Trim();
 
         Character newCharacter = new Character(characterName, 50, 1);
+        newCharacter.CharacterStats = statsForCharacter;
         string jsonString = JsonSerializer.Serialize(newCharacter);
         displayName = characterName;
         //clears TextBox
@@ -156,22 +147,22 @@
         switch(currentStatString)
         {
             case "strength":
-                strength = currentStatValue;
+                statsForCharacter.Strength = currentStatValue;
                 break;
             case "dexterity":
-                dexterity = currentStatValue;
+                statsForCharacter.Dexterity = currentStatValue;
                 break;
             case "constitution":
-                constitution = currentStatValue;
+                statsForCharacter.Constitution = currentStatValue;
                 break;
             case "intelligence":
-                intelligence = currentStatValue;
+                statsForCharacter.Intelligence = currentStatValue;
                 break;
             case "wisdom":
-                wisdom = currentStatValue;
+                statsForCharacter.Wisdom = currentStatValue;
                 break;
             case "charisma":
-                charisma = currentStatValue;
+                statsForCharacter.Charisma = currentStatValue;
                 break;
             case "default":
                 isDefault = true;
