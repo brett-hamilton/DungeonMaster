@@ -180,5 +180,16 @@ namespace DungeonMaster.Data
 			PlayersInventory.Spells.Add(spell);
         }
 
+		/// <summary>
+		/// Gets a number for the healing ppower of a spell
+		/// </summary>
+		/// <returns></returns>
+		public double GetHealingSpellPower()
+        {
+
+			int.TryParse(ActiveSpell.DiceUsed.ToString()[1..], out int dieSides);
+			var spellRollReport = Die.Roll(dieSides, ActiveSpell.NumberOfRolls);
+			return spellRollReport.GetDiceTotal() + CharacterStats.Intelligence;
+        }
 	}
 }

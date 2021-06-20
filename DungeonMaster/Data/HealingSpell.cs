@@ -17,5 +17,7 @@ namespace DungeonMaster.Data
 		{
 			this.HealingFactor = healingFactor;
 		}
+
+
 	}
 }
