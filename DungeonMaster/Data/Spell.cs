@@ -6,18 +6,107 @@
  *************************************************/
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using DungeonMaster.Data;
 
-public class Spell
+namespace DungeonMaster.Data
 {
-
-	public string SpellName { get; set; }
-
-	public SpellTypes SpellType { get; set; }
-
-	public Spell(string spellName, SpellTypes spellType)
+	public class Spell
 	{
-		this.SpellName = spellName;
-		this.SpellType = spellType;
-	}
+		///name of the spell
+		public string SpellName { get; set; }
+
+		///type of spell
+		public SpellTypes SpellType { get; set; }
+
+		///Die used to roll
+		public Dice DiceUsed { get; set; }
+
+		///number of time dice will be rolled
+		public int NumberOfRolls { get; set; }
+
+		///the range the spell can reach
+		public int Range { get; set; }
+
+
+		public Spell()
+        {
+			this.SpellName = "Fireball";
+			this.SpellType = SpellTypes.Fire;
+			this.DiceUsed = Dice.D6;
+			this.NumberOfRolls = 4;
+			this.Range = 10;
+        }
+
+		/// <summary>
+		/// Overloaded constructor of the Spell class
+		/// </summary>
+		/// Author: Hunter Page
+		/// <param name="spellName">name of the spell</param>
+		/// <param name="spellType">type of spell</param>
+		/// <param name="diceUsed">dice it uses</param>
+		/// <param name="range">what effective range the weapon has</param>
+        ///<param name="numberOfRolls">how many the die will be rolled when spell is being used</param>
+		public Spell(string spellName, SpellTypes spellType, Dice diceUsed, int numberOfRolls, int range)
+		{
+			this.SpellName = spellName;
+			this.SpellType = spellType;
+			this.DiceUsed = diceUsed;
+			this.NumberOfRolls = numberOfRolls;
+			this.Range = range;
+		}
+
+		/// <summary>
+		/// Gets the damage of the Spell based off of its number of rolls and the dice being used
+		/// </summary>
+		/// Author: Hunter Page
+		///<returns>Report representing the damage dealt by the spell<returns>
+		public AttackReport GetSpellDamage()
+        {
+			var dieToUse = DiceUsed.ToString();
+
+			// Try to parse out how many sides the Die is, then Roll it.
+			if (int.TryParse(dieToUse[1..], out int dieSides))
+			{
+				DiceRollReport dieRollReport = null;
+				int dieRoll;
+
+				// If the die had a non-allowed number of sides, return 0 for the result.
+				try 
+				{
+					dieRollReport = Die.Roll(dieSides, NumberOfRolls); //added number of rolls instead of 1
+					dieRoll = dieRollReport.GetDiceTotal();
+				} 
+				catch (Exception) 
+				{
+					dieRoll = 0;
+				}
+
+				if (dieRollReport != null)
+				{
+					return new AttackReport
+					{
+						DiceRollReport = dieRollReport,
+						TotalDamageDealt = dieRoll, //only will use dieRoll until proficiency is implemented
+						DieUsed = DiceUsed
+					};
+				}
+			}
+
+			return new AttackReport 
+			{ 
+				TotalDamageDealt = 1, 
+				//WeaponBaseDamage = BaseDamage, 
+				DieUsed = DiceUsed 
+			};
+        }
+
+        public override string ToString()
+        {
+            return SpellName;
+        }
+    }
 }
+
