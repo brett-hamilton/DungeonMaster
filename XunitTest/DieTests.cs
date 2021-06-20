@@ -169,6 +169,7 @@ namespace DungeonMaster.XunitTest
         /// <summary>
         /// Method to check that each value rolled is valid.
         /// </summary>
+        [Fact]
         public void RollMultipleDiceCheckMinValue() 
         {
             var diceRoll = Die.Roll(MULTI_DICE_VALID_SIDES, MULTI_DICE_VALID_NUM_DICE);
