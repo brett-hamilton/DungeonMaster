@@ -141,18 +141,31 @@ namespace DungeonMaster.XunitTest
         }
 
         /// <summary>
-        /// Method to test that our output of rolling three four sided vice is valid.
+        /// Method to test that our output of rolling three four sided dice total is not too large.
         /// </summary>
         [Fact]
-        public void RollMultipleDiceValidInputValidTotal() 
+        public void RollMultipleDiceValidInputValidTotalMaxTest() 
         {
-            var minPossibleOutcome = 1 * MULTI_DICE_VALID_NUM_DICE;
             var maxPossibleOutcome = MULTI_DICE_VALID_SIDES * MULTI_DICE_VALID_NUM_DICE;
 
             var diceRoll = Die.Roll(MULTI_DICE_VALID_SIDES, MULTI_DICE_VALID_NUM_DICE);
             var outcome = diceRoll.GetDiceTotal();
             
-            Assert.True(outcome >= minPossibleOutcome && outcome <= maxPossibleOutcome);
+            Assert.True(outcome <= maxPossibleOutcome);
+        }
+
+        /// <summary>
+        /// Method to test that our output of rolling three four sided dice total is not too large.
+        /// </summary>
+        [Fact]
+        public void RollMultipleDiceValidInputValidTotalMinTest()
+        {
+            var minPossibleOutcome = 1 * MULTI_DICE_VALID_NUM_DICE;
+
+            var diceRoll = Die.Roll(MULTI_DICE_VALID_SIDES, MULTI_DICE_VALID_NUM_DICE);
+            var outcome = diceRoll.GetDiceTotal();
+
+            Assert.True(outcome >= minPossibleOutcome);
         }
 
         /// <summary>
@@ -168,7 +181,7 @@ namespace DungeonMaster.XunitTest
         }
 
         /// <summary>
-        /// Method to check that each value rolled is valid.
+        /// Method to check that each value rolled not lower than valid minimum value.
         /// </summary>
         [Fact]
         public void RollMultipleDiceCheckMinValue() 
@@ -177,9 +190,23 @@ namespace DungeonMaster.XunitTest
 
             foreach (var roll in diceRoll.DiceRolled)
             {
-                Assert.True(roll >= 1 && roll <= MULTI_DICE_VALID_SIDES);
+                Assert.True(roll >= 1);
             }    
 
+        }
+
+        /// <summary>
+        /// Method to check that each value rolled is not larger than max value.
+        /// </summary>
+        [Fact]
+        public void RollMultipleDiceCheckMaxValue() 
+        {
+            var diceRoll = Die.Roll(MULTI_DICE_VALID_SIDES, MULTI_DICE_VALID_NUM_DICE);
+
+            foreach (var roll in diceRoll.DiceRolled)
+            {
+                Assert.True(roll <= MULTI_DICE_VALID_SIDES);
+            }
         }
 
         /// <summary>
@@ -188,7 +215,9 @@ namespace DungeonMaster.XunitTest
         [Fact]
         public void RollMultipleDiceTooFewSides() 
         {
-            Assert.Throws<Exception>(() => Die.Roll(-1, MULTI_DICE_VALID_NUM_DICE));
+            var exception = Assert.Throws<Exception>(() => Die.Roll(-1, MULTI_DICE_VALID_NUM_DICE));
+
+            Assert.Equal("Invalid Die Sides.", exception.Message);
         }
 
         /// <summary>
@@ -197,7 +226,9 @@ namespace DungeonMaster.XunitTest
         [Fact]
         public void RollMultipleDiceTooManySides() 
         {
-            Assert.Throws<Exception>(() => Die.Roll(10000, MULTI_DICE_VALID_NUM_DICE));
+            var exception = Assert.Throws<Exception>(() => Die.Roll(10000, MULTI_DICE_VALID_NUM_DICE));
+
+            Assert.Equal("Invalid Die Sides.", exception.Message);
         }
 
         /// <summary>
@@ -206,7 +237,9 @@ namespace DungeonMaster.XunitTest
         [Fact]
         public void RollMultipleDiceTooManyDice() 
         {
-            Assert.Throws<Exception>(() => Die.Roll(MULTI_DICE_VALID_SIDES, 1000));
+            var exception = Assert.Throws<Exception>(() => Die.Roll(MULTI_DICE_VALID_SIDES, 1000));
+
+            Assert.Equal("Invalid Number of Die.", exception.Message);
         }
 
         /// <summary>
@@ -215,7 +248,9 @@ namespace DungeonMaster.XunitTest
         [Fact]
         public void RollMultipleDiceTooFewDice() 
         {
-            Assert.Throws<Exception>(() => Die.Roll(MULTI_DICE_VALID_SIDES, -1));
+            var exception = Assert.Throws<Exception>(() => Die.Roll(MULTI_DICE_VALID_SIDES, -1));
+
+            Assert.Equal("Invalid Number of Die.", exception.Message);
         }
     }
 }
