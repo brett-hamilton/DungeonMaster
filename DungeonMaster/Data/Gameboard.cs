@@ -183,9 +183,7 @@ namespace DungeonMaster.Data
                 return false;
             }
 
-            var verticalDistance = attackerCoord.Row - defenderCoord.Row;
-            var horizontalDistance = attackerCoord.Column - defenderCoord.Column;
-
+            
             // If the unit is within one vertical or horizontal block. This would also include
             //      diagonal locations.
             if (Math.Abs(verticalDistance) == 1 || Math.Abs(horizontalDistance) == 1)
@@ -194,6 +192,36 @@ namespace DungeonMaster.Data
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Method determines if a receiver is within range to accept a healing spell
+        /// Author: Hunter Page
+        /// </summary>
+        /// <param name="caster">the person using the spell</param>
+        /// <param name="receiver">the person receiving the spell</param>
+        /// <returns>true if receiver is in range, false otherwise</returns>
+        public bool SpellRangeCheck(Character caster, Character receiver)
+        {
+            Coordinate attackerCoord = GetCoordinate(caster);
+            Coordinate defenderCoord = GetCoordinate(receiver);
+
+            if (attackerCoord == null || defenderCoord == null)
+            {
+                return false;
+            }
+
+            double distanceBetween = GetDistance(attackerCoord, defenderCoord);
+
+            // In order to allow diagonal attacks, we will round the value down to the previous whole number.
+            var roundedDistance = Math.Round(distanceBetween, 0, MidpointRounding.ToZero);
+
+            if (caster.ActiveSpell.Range < roundedDistance)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>

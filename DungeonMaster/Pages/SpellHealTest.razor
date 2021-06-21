@@ -1,5 +1,70 @@
-﻿<h3>Component</h3>
+﻿@page "/SpellHealTest"
+
+@using DungeonMaster.Data
+@using System.IO;
+@using System.Text.Json;
+
+<h3>Testing Spell Healing</h3>
+
+@*Not sure if needed yet*@
+<div class="row">
+    <button class="btn btn-primary" @onclick="SetupCharacters">Set Up Characters</button>
+</div>
+
+@*Column representing Player 1's information.*@
+<div class="row">
+    <div class="col-3 card" style="margin-right: 10px">
+        <div class="card-body">
+            <h5 class="card-title">
+                @character1.Name
+            </h5>
+            <p class="card-text">
+                Health: @character1.Health <br />
+                Weapon: @character1.ActiveWeapon.Name <br />
+            </p>
+        </div>
+    </div>
+</div>
+
+@*Column representing Player 2's information.*@
+<div class="row">
+    <div class="col-3 card" style="margin-right: 10px">
+        <div class="card-body">
+            <h5 class="card-title">
+                @character2.Name
+            </h5>
+            <p class="card-text">
+                Health: @character2.Health <br />
+                Spell: @character2.ActiveSpell.SpellName <br />
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <button class="btn btn-danger" @onclick="AttackExample">Heal your friend!</button>
+</div>
 
 @code {
 
+    Character character1 = new Character("Geralt", 10, 120, "fighter");
+
+
+    Character character2 = new Character("Yennefer", 10, 80, "wizard");
+
+    public void SetupCharacters()
+    {
+        character1.ActiveWeapon = new Weapon("Long sword", 20, Dice.D8, 2);
+
+        character2.ActiveSpell = new HealingSpell("invigoration", SpellTypes.Healing, 20, Dice.D6, 3, 20);
+
+        Game game = new Game(character1, character2);
+
+        StateHasChanged();
+    }
+
+    public void HealExample()
+        {
+        character2.
+        }
 }

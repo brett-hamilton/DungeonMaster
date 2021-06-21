@@ -57,6 +57,24 @@ namespace DungeonMaster.Data
         /// </summary>
         public DiceRollReport DisadvantageRoll { get; set; }
 
+
+        /* NEW ADDITIONS FOR HEALTH REPORT*/
+
+        /// <summary>
+        /// How much health was administered
+        /// </summary>
+        public int TotalHealthDealt { get; set; }
+
+        /// <summary>
+        /// number of times the die used was rolled
+        /// </summary>
+        public int NumberOfRolls { get; set; }
+
+        /// <summary>
+        /// the intelligence of the caster
+        /// </summary>
+        public int CasterIntelligence { get; set; }
+
         /// <summary>
         /// Returns a string containing information about the attack attempt. This is then displayed
         /// in the game log for the players.
@@ -86,6 +104,19 @@ namespace DungeonMaster.Data
                 attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {WeaponBaseDamage} base damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total damage.";
                 return attackReport;
             }
+        }
+
+
+        /// <summary>
+        /// returns a string with info on healing spell use
+        /// </summary>
+        /// <returns>detailed report on the move</returns>
+        public string GetHealingReport()
+        {
+            string attackReport = $"{AttackerName} rolled a heal spell of {AttackRoll}. This spell hit {DefenderName}.";
+
+            attackReport += $"\nTheir spell roll was {DieUsed} {DiceRollReport.GetDiceReport()}. It dealt {DiceRollReport.GetDiceTotal()} roll health + {CasterIntelligence} intelligence = {TotalHealthDealt} total health.";
+            return attackReport;
         }
     }
 }

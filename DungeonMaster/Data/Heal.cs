@@ -13,7 +13,7 @@ namespace DungeonMaster.Data
             player.Health += player.GetHealingSpellPower();
         }
 
-        public void HealPlayer(Character caster, Character injuredPlayer)
+        public AttackReport HealPlayer(Character caster, Character injuredPlayer)
         {
             injuredPlayer.Health += caster.GetHealingSpellPower();
         }
