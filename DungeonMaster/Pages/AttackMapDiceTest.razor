@@ -15,47 +15,67 @@
 
 @if (gameStarted)
 {
-    @* Map *@
-
-    @* Character Controls *@
 
 
-    @*Dice Modal Controls *@
-    <DungeonMaster.Pages.Components.DiceModal @ref="DiceModal" pageContainingModal="AttackMapDiceTest"></DungeonMaster.Pages.Components.DiceModal>
-    <DungeonMaster.Pages.Components.D20ModifierModal @ref="D20ModifierModal" pageContainingModal="AttackMapDiceTest"></DungeonMaster.Pages.Components.D20ModifierModal>
-    <div>
-        <button class="btn btn-primary" @onclick="() => DiceModal.OpenModal()"> Roll Dice</button>
-        <button class="btn btn-primary" @onclick="() => D20ModifierModal.OpenModal()"> Roll D20 With Advantage/Disadvantage</button>
+    @* Map *@@* Character Controls *@
+    <div class="row">
+        @if (attackValid)
+        {
+            <button class="btn btn-primary" style="margin-right:5px"> Attack </button>
+        }
+
+        @if (spellAttackValid)
+        {
+            <button class="btn btn-primary" style="margin-right:5px"> Damage Spell </button>
+        }
+
+        @if (moveValid)
+        {
+            <button class="btn btn-primary" style="margin-right:5px"> Move </button>
+        }
+
+        @if (spellHealValid)
+        {
+            <button class="btn btn-primary" style="margin-right:5px"> HealingSpell </button>
+        }
     </div>
 
-    <br />
-    <br />
+@*Dice Modal Controls *@
+<DungeonMaster.Pages.Components.DiceModal @ref="DiceModal" pageContainingModal="AttackMapDiceTest"></DungeonMaster.Pages.Components.DiceModal>
+<DungeonMaster.Pages.Components.D20ModifierModal @ref="D20ModifierModal" pageContainingModal="AttackMapDiceTest"></DungeonMaster.Pages.Components.D20ModifierModal>
+<div>
+    <button class="btn btn-primary" @onclick="() => DiceModal.OpenModal()"> Roll Dice</button>
+    <button class="btn btn-primary" @onclick="() => D20ModifierModal.OpenModal()"> Roll D20 With Advantage/Disadvantage</button>
+</div>
 
-    @* Combat Log *@
-    <div id="gameLog" class="row" style="outline: 1px solid blue; outline-offset: 8px; max-height: 200px; min-height: 200px">
-        <div style="border-right: 1px solid blue" class="col-2">
-            <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
-        </div>
-        @* Use overflow-auto and max/min height to force game log to be scrollable and at set size. Based on Microsoft SignalR example. *@
-        <div class="col-10 overflow-auto" style="max-height: 200px; min-height: 200px">
-            <ul class="list-group" id="gameLog">
-                @* Iterate through the list of strings in reverse order, so newest message is at top. *@
-                @for (int i = (GameLog.Count - 1); i >= 0; i--)
+<br />
+<br />
+
+@* Combat Log *@
+<div id="gameLog" class="row" style="outline: 1px solid blue; outline-offset: 8px; max-height: 200px; min-height: 200px">
+    <div style="border-right: 1px solid blue" class="col-2">
+        <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
+    </div>
+    @* Use overflow-auto and max/min height to force game log to be scrollable and at set size. Based on Microsoft SignalR example. *@
+    <div class="col-10 overflow-auto" style="max-height: 200px; min-height: 200px">
+        <ul class="list-group" id="gameLog">
+            @* Iterate through the list of strings in reverse order, so newest message is at top. *@
+            @for (int i = (GameLog.Count - 1); i >= 0; i--)
+            {
+                if (i == (GameLog.Count - 1))
                 {
-                    if (i == (GameLog.Count - 1))
-                    {
-                        <li class="list-group-item list-group-item-primary">@GameLog[i]</li>
-                    }
-
-                    else
-                    {
-                        <li class="list-group-item list-group-item-secondary">@GameLog[i]</li>
-                    }
+                    <li class="list-group-item list-group-item-primary">@GameLog[i]</li>
                 }
 
-            </ul>
-        </div>
+                else
+                {
+                    <li class="list-group-item list-group-item-secondary">@GameLog[i]</li>
+                }
+            }
+
+        </ul>
     </div>
+</div>
 }
 
 
@@ -83,7 +103,13 @@
     /// </summary>
     private DungeonMaster.Pages.Components.D20ModifierModal D20ModifierModal { get; set; }
 
-
+    /// <summary>
+    /// Variables used to represent if that action is currently possible for the current character.
+    /// </summary>
+    private bool attackValid = true;           // If The character can range or melee attack
+    private bool spellAttackValid = true;      // If the character can attack with a spell
+    private bool moveValid = true;             // If the character can move
+    private bool spellHealValid = true;        // If the character can cast a healing spell
 
 
     /// <summary>
