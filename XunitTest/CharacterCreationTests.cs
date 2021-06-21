@@ -23,7 +23,11 @@ namespace XunitTest
 		/// </summary>
 		private const string PATH = "Saves/characters.json";
 
+		/// <summary>
+		/// Test character instances.
+		/// </summary>
 		private Character char1 = new Character ("Hank Hill", 50, 1);
+		private Character char2 = new Character ("Dale Gribble", 50, 1);
 
 		/// <summary>
 		/// Tests that the correct path is set up for the characters file.
@@ -52,11 +56,28 @@ namespace XunitTest
 		[Fact]
 		public void ReadingTest()
 		{
-			string writeJson = JsonSerializer.Serialize(char1);
-			File.WriteAllText(PATH, writeJson);
+			string jsonString = JsonSerializer.Serialize(char1);
+			File.WriteAllText(PATH, jsonString);
 			List<Character> characters = CharacterFile.Read();
 			Assert.True(characters.Count == 1);
 			Assert.Equal(char1.Name, characters[0].Name);
+		}
+
+		/// <summary>
+		/// Tests that we can get multiple separate characters out of the characters file.
+		/// </summary>
+		[Fact]
+		public void ReadMultipleCharactersTest()
+		{
+			string jsonStringChar1 = JsonSerializer.Serialize(char1);
+			string jsonStringChar2 = JsonSerializer.Serialize(char2);
+
+			string combinedJson = jsonStringChar1 + Environment.NewLine + jsonStringChar2;
+			File.WriteAllText(PATH, combinedJson);
+			List<Character> characters = CharacterFile.Read();
+			Assert.True(characters.Count == 2);
+			Assert.Equal(char1.Name, characters[0].Name);
+			Assert.Equal(char2.Name, characters[1].Name);
 		}
 	}
 }
