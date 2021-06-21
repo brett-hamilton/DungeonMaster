@@ -34,22 +34,22 @@ Render With Grid:
 {
     @* Character Controls *@
     <div class="row" id="primaryButtonRow">
-        @if (attackValid)
+        @if (gameTurn.WeaponAttackPossible)
         {
             <button class="btn btn-primary" style="margin-right:5px"> Attack </button>
         }
 
-        @if (spellAttackValid)
+        @if (gameTurn.MagicAttackPossible)
         {
             <button class="btn btn-primary" style="margin-right:5px"> Damage Spell </button>
         }
 
-        @if (moveValid)
+        @if (gameTurn.MovePossible)
         {
             <button class="btn btn-primary" style="margin-right:5px"> Move </button>
         }
 
-        @if (spellHealValid)
+        @if (gameTurn.MagicHealPossible)
         {
             <button class="btn btn-primary" style="margin-right:5px"> HealingSpell </button>
         }
@@ -115,9 +115,9 @@ Render With Grid:
     private HubConnection hubConnection;
 
     /// <summary>
-    /// Game that is being participated in.
+    /// Represents the current state of the game, including the turn.
     /// </summary>
-    private Game game;
+    private Turn gameTurn;
 
     /// <summary>
     /// Modal that is to be displayed on the page to roll multiple dice.
@@ -128,15 +128,6 @@ Render With Grid:
     /// Modal that is to be displayed on the page, to roll a D20 with modifier.
     /// </summary>
     private DungeonMaster.Pages.Components.D20ModifierModal D20ModifierModal { get; set; }
-
-    /// <summary>
-    /// Variables used to represent if that action is currently possible for the current character.
-    /// </summary>
-    private bool attackValid = true;           // If The character can range or melee attack
-    private bool spellAttackValid = true;      // If the character can attack with a spell
-    private bool moveValid = true;             // If the character can move
-    private bool spellHealValid = true;        // If the character can cast a healing spell
-
 
     /// <summary>
     /// Attributes used to represent the game in the canvas.
@@ -190,7 +181,7 @@ Render With Grid:
 
     public void StartGame()
     {
-        game = new Game(50, 25)
+        var game = new Game(50, 25)
         {
             GameName = "Combination Test Game"
         };
@@ -211,6 +202,8 @@ Render With Grid:
         boardImage = game.Gameboard.ImageLocation;
 
         gameStarted = true;
+
+        gameTurn = new Turn(game);
     }
 
     /// <summary>
@@ -267,20 +260,20 @@ Render With Grid:
     {
         base.StateHasChanged();
         gridInput = grid;
-        double scaledRows = scaleFactor * game.Gameboard.Rows;                          //Scale the row count by our scale factor
-        double scaledColumns = scaleFactor * game.Gameboard.Columns;                    //Scale the column count by our scale factor
+        double scaledRows = scaleFactor * gameTurn.Game.Gameboard.Rows;                          //Scale the row count by our scale factor
+        double scaledColumns = scaleFactor * gameTurn.Game.Gameboard.Columns;                    //Scale the column count by our scale factor
         await BackupRenderBoard(scaledRows, scaledColumns);
         await RenderBoardWithImage(boardImg, scaledRows, scaledColumns, scaleFactor);
 
         await this._context.SetStrokeStyleAsync("#FFFFFF");
 
-        for (int i = 0; i < game.Gameboard.Rows; i++)
+        for (int i = 0; i < gameTurn.Game.Gameboard.Rows; i++)
         {
-            for (int j = 0; j < game.Gameboard.Columns; j++)
+            for (int j = 0; j < gameTurn.Game.Gameboard.Columns; j++)
             {
                 double scaledRow = i * scaleFactor;
                 double scaledColumn = j * scaleFactor;
-                Drawable drawable = game.Gameboard.Drawables[i, j];
+                Drawable drawable = gameTurn.Game.Gameboard.Drawables[i, j];
                 if (drawable != null)
                 {
                     char1Image = drawable.ImageLocation;
