@@ -8,12 +8,7 @@ namespace DungeonMaster.Data
     /// </summary>
     public class Heal
     {
-        public void HealSelf(Character player)
-        {
-            player.Health += player.GetHealingSpellPower();
-        }
-
-        public AttackReport HealPlayer(Character caster, Character injuredPlayer)
+        public int HealSelf(Character player)
         {
             injuredPlayer.Health += caster.GetHealingSpellPower();
         }
