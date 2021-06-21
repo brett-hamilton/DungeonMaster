@@ -109,8 +109,14 @@
     public Character player1 { get; set; } = new Character("Player 1", 50, 1);
     public Character player2 { get; set; } = new Character("Player 2", 50, 1);
 
+    /// <summary>
+    /// Represents the log of actions in the attack sequence.
+    /// </summary>
     public List<string> GameLog { get; set; } = new List<string>();
 
+    /// <summary>
+    /// Represents a test instance of a Game.
+    /// </summary>
     public Game testGame { get; set; } = new Game();
 
     /// <summary>

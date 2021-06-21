@@ -13,15 +13,18 @@ using System.Threading.Tasks;
 
 namespace DungeonMaster.Data
 {
+	/// <summary>
+	/// Represents a weapon that a character can use
+	/// </summary>
 	public class Weapon
 	{
 		/// <summary>
-		/// name of the weapon
+		/// Name of the weapon
 		/// </summary>
 		public string Name { get; set; }
 
 		/// <summary>
-		/// the amount of damage with no dice rolls
+		/// The amount of damage with no dice rolls
 		/// </summary>
 		public int BaseDamage {get; set;}
 
@@ -33,23 +36,24 @@ namespace DungeonMaster.Data
 		/// <summary>
 		/// How far the weapon can reach
 		/// </summary>
-		public double Range { get; set; } //not necessary for the time being
+		public double Range { get; set; }
 
-		///
-		//determines whether the weapon is used for range
-		///
+		///	<summary>
+		/// Determines whether the weapon is used for range
+		///	</summary>
 		public bool RangedWeapon { get; set; } = false;
 
 		/// <summary>
-		/// What type of weapon it is. Will get rid of range bool
+		/// What type of weapon it is.
 		/// </summary>
 		public WeaponType WeaponType { get; set; }
 
-		///
-		//the type of damage the weapon uses
-		///
-		public Effect DamageType { get; set; }
+		///	<summary>
+		/// The type of damage the weapon uses.
+		///	</summary>
+		public Effect DamageType { get; set; } = new Effect("piercing", EffectTypes.Piercing, 0);
 
+		/// <summary>
 		/// Default constructor that takes no parameters
 		/// 
 		/// Created by: Brett Hamilton
@@ -63,15 +67,15 @@ namespace DungeonMaster.Data
 			this.Range = 5.0;
 		}
 
-	/// <summary>
-	/// Loaded constructor for making a new weapon
-	/// </summary>
-	/// Author: Hunter Page
-	/// <param name="name">name of the weapon</param>
-	/// <param name="baseDamage">damage of the weapon</param>
-	/// <param name="dice">dice it uses</param>
-	/// <param name="range">what effective range the weapon has</param>
-	public Weapon(string name, int baseDamage, Dice dice, double range)
+		/// <summary>
+		/// Loaded constructor for making a new weapon
+		/// </summary>
+		/// Author: Hunter Page
+		/// <param name="name">Name of the weapon.</param>
+		/// <param name="baseDamage">Damage of the weapon.</param>
+		/// <param name="dice">Dice it uses.</param>
+		/// <param name="range">What effective range the weapon has.</param>
+		public Weapon(string name, int baseDamage, Dice dice, double range)
 		{
 			this.Name = name;
 			this.BaseDamage = baseDamage;
@@ -83,11 +87,11 @@ namespace DungeonMaster.Data
 		/// Loaded constructor for making a new weapon
 		/// </summary>
 		/// Author: Hunter Page
-		/// <param name="name">name of the weapon</param>
-		/// <param name="baseDamage">damage of the weapon</param>
-		/// <param name="dice">dice it uses</param>
-		/// <param name="range">what effective range the weapon has</param>
-		/// <param name="damageTypes">what type of damage the weapon does</param>
+		/// <param name="name">Name of the weapon.</param>
+		/// <param name="baseDamage">Damage of the weapon.</param>
+		/// <param name="dice">Dice it uses.</param>
+		/// <param name="range">What effective range the weapon has.</param>
+		/// <param name="damageTypes">What type of damage the weapon does.</param>
 		public Weapon(string name, int baseDamage, Dice dice, double range, Effect damageTypes, bool rangedWeapon)
 		{
 			this.Name = name;
@@ -125,6 +129,19 @@ namespace DungeonMaster.Data
 					dieRoll = 0;
 				}
 
+				// Set the weapon type. Default to piercing damage if none listed.
+				string damageType;
+
+				if (DamageType == null)
+				{
+					damageType = "piercing";
+				}
+				else 
+				{
+					damageType = DamageType.EffectType.ToString();
+				}
+
+				// If we were successful in getting damage, create a new attack report.
 				if (dieRollReport != null)
 				{
 					return new AttackReport
@@ -132,7 +149,8 @@ namespace DungeonMaster.Data
 						DiceRollReport = dieRollReport,
 						TotalDamageDealt = BaseDamage + dieRoll,
 						WeaponBaseDamage = BaseDamage,
-						DieUsed = DiceUsed
+						DieUsed = DiceUsed,
+						DamageType = damageType						
 					};
 				}
 			}
@@ -145,10 +163,13 @@ namespace DungeonMaster.Data
 			};
 		}
 
+		/// <summary>
+		/// Provides string representation of a Weapon.
+		/// </summary>
+		/// <returns>String representation.</returns>
         public override string ToString()
         {
             return Name;
         }
-
     }
 }

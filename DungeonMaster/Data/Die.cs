@@ -11,6 +11,9 @@ namespace DungeonMaster.Data
     /// </summary>
     public class Die
     {
+        /// <summary>
+        /// Used to randomize rolls.
+        /// </summary>
         private static readonly Random Rand = new Random();
 
         /// <summary>

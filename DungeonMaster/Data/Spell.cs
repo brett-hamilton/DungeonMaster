@@ -15,22 +15,34 @@ namespace DungeonMaster.Data
 {
 	public class Spell
 	{
-		///name of the spell
+		/// <summary>
+		/// Name of the spell.
+		/// </summary>
 		public string SpellName { get; set; }
 
-		///type of spell
+		/// <summary>
+		/// Type of the spell.
+		/// </summary>
 		public SpellTypes SpellType { get; set; }
 
-		///Die used to roll
+		/// <summary>
+		/// Die used to roll this spell.
+		/// </summary>
 		public Dice DiceUsed { get; set; }
 
-		///number of time dice will be rolled
+		/// <summary>
+		/// Number of time dice will be rolled.
+		/// </summary>
 		public int NumberOfRolls { get; set; }
 
-		///the range the spell can reach
+		/// <summary>
+		/// The range the spell can reach.
+		/// </summary>
 		public int Range { get; set; }
 
-
+		/// <summary>
+		/// Default constructor for a spell.
+		/// </summary>
 		public Spell()
         {
 			this.SpellName = "Fireball";
@@ -44,11 +56,11 @@ namespace DungeonMaster.Data
 		/// Overloaded constructor of the Spell class
 		/// </summary>
 		/// Author: Hunter Page
-		/// <param name="spellName">name of the spell</param>
-		/// <param name="spellType">type of spell</param>
-		/// <param name="diceUsed">dice it uses</param>
-		/// <param name="range">what effective range the weapon has</param>
-        ///<param name="numberOfRolls">how many the die will be rolled when spell is being used</param>
+		/// <param name="spellName">Name of the spell.</param>
+		/// <param name="spellType">Type of spell.</param>
+		/// <param name="diceUsed">Dice it uses.</param>
+		/// <param name="range">What effective range the weapon has.</param>
+        ///<param name="numberOfRolls">How many the die will be rolled when spell is being used.</param>
 		public Spell(string spellName, SpellTypes spellType, Dice diceUsed, int numberOfRolls, int range)
 		{
 			this.SpellName = spellName;
@@ -62,7 +74,7 @@ namespace DungeonMaster.Data
 		/// Gets the damage of the Spell based off of its number of rolls and the dice being used
 		/// </summary>
 		/// Author: Hunter Page
-		///<returns>Report representing the damage dealt by the spell<returns>
+		///<returns>Report representing the damage dealt by the spell.<returns>
 		public AttackReport GetSpellDamage()
         {
 			var dieToUse = DiceUsed.ToString();
@@ -103,6 +115,10 @@ namespace DungeonMaster.Data
 			};
         }
 
+		/// <summary>
+		/// Provides a string representation for a spell.
+		/// </summary>
+		/// <returns>String representation.</returns>
         public override string ToString()
         {
             return SpellName;

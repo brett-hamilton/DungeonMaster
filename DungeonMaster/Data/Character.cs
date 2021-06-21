@@ -20,7 +20,7 @@ namespace DungeonMaster.Data
 		//public string Name { get; set; }
 
 		/// <summary>
-		/// melee weapon they have equipped
+		/// Melee weapon they have equipped
 		/// </summary>
 		public Weapon ActiveWeapon { get; set; } 
 
@@ -30,7 +30,7 @@ namespace DungeonMaster.Data
 		public double Health { get; set; }
 
 		/// <summary>
-		/// They armor object they are wearing
+		/// The armor object they are wearing
 		/// </summary>
 		public Armor Armor { get; set; } = new Armor("Leather Armor", 6);
 
@@ -39,18 +39,29 @@ namespace DungeonMaster.Data
 		/// </summary>
 		public double ActionPoints { get; set; }
 
-		///represents the current status of the player
+		/// <summary>
+		/// Represents the status of the character
+		/// </summary>		
 		public Status Status { get; set; }
 
-		///Inventory of the Spells and Weapons of the Player
+		/// <summary>
+		/// Inventory of the Spells and Weapons of the Player
+		/// </summary>
 		public Inventory PlayersInventory { get; set; }
 
-		///temporary spell attribute to create the attack method in Attack.cs for proof of concept
+		/// <summary>
+		/// Temporary spell attribute to create the attack method in Attack.cs for proof of concept
+		/// </summary>
 		public Spell ActiveSpell { get; set; }
 
-		///holds all of the stats of the player
+		/// <summary>
+		/// Holds all of the stats of the player
+		/// </summary>
 		public CharacterStats CharacterStats { get; set; }
 
+		/// <summary>
+		/// Default constructor for a character
+		/// </summary>
 		public Character()
 		{
 			Weapon sword = new Weapon("sword", 10, Dice.D6, 5.0);
@@ -66,8 +77,9 @@ namespace DungeonMaster.Data
 		/// <summary>
 		/// Constructor for the Character to be initialized
 		/// </summary>
-		/// <param name="name"></param>
-		/// <param name="health"></param>
+		/// <param name="name">Name of the character.</param>
+		/// <param name="health">Amount of health points character has.</param>
+		/// <param name="actionPoints">Number of action points character has.</param>
 		public Character(string name, double health, double actionPoints)
 		{
 			this.ActiveWeapon = new Weapon("Sword", 10, Dice.D6, 5.0);
@@ -78,6 +90,13 @@ namespace DungeonMaster.Data
 			Status = Status.Alive;
 		}
 
+		/// <summary>
+		/// Parameterized constructor for a character.
+		/// </summary>
+		/// <param name="name">The name of the character.</param>
+		/// <param name="health">The amount of health points the character has.</param>
+		/// <param name="actionPoints">The number of action points the character has.</param>
+		/// <param name="characterClass">The name of the class for the character.</param>
 		public Character(string name, double health, int actionPoints, string characterClass)
         {
 			Armor = new Armor("Leather", 6);
@@ -111,7 +130,7 @@ namespace DungeonMaster.Data
 			
 
 		/// <summary>
-		/// Constructor for the Character to be initialized
+		/// Constructor for the Character to be initialized, including player image
 		/// </summary>
 		/// <param name="name"></param>
 		/// <param name="health"></param>
@@ -129,9 +148,9 @@ namespace DungeonMaster.Data
 		}
 
 		/// <summary>
-		/// take health from the player
+		/// Take health from the player
 		/// </summary>
-		/// <param name="damage"></param>
+		/// <param name="damage">Amount of damage to subtract from the player's health.</param>
 		public void DamagePlayer(double damage)
 		{
 			Health -= damage;
@@ -144,11 +163,11 @@ namespace DungeonMaster.Data
 		}
 
 		/// <summary>
-		/// check the armor status with an attack value to see if the attack will hit or miss
+		/// Check the armor status with an attack value to see if the attack will hit or miss
 		/// 
 		/// </summary>
-		/// <param name="attackValue"></param>
-		/// <returns>true if armor is too weak, false otherwise</returns>
+		/// <param name="attackValue">Value representing the attack.</param>
+		/// <returns>True if armor is too weak, false otherwise.</returns>
 		public bool CheckArmor(double attackValue)
 		{
 			if(attackValue >= Armor.ProtectionPoints)
@@ -161,30 +180,29 @@ namespace DungeonMaster.Data
 		}
 
 		/// <summary>
-		/// add a weapon to the Player's Inventory
+		/// Add a weapon to the Player's Inventory
 		/// 
 		/// </summary>
-		/// <param name="weapon">a weapon to be added to the list</param>
-		/// <returns>true if armor is too weak, false otherwise</returns>
+		/// <param name="weapon">A weapon to be added to the list.</param>
 		public void addWeaponInventory(Weapon weapon)
         {
 			PlayersInventory.Weapons.Add(weapon);
         }
 
 		/// <summary>
-		/// add a spell to the Player's Inventory
+		/// Add a spell to the Player's Inventory
 		/// 
 		/// </summary>
-		/// <param name="weapon">a spell to be added to the list</param>public void addSpellInventory(Spell spell)
+		/// <param name="weapon">A spell to be added to the list.</param>
 		public void addSpellInventory(Spell spell)
         {
 			PlayersInventory.Spells.Add(spell);
         }
 
 		/// <summary>
-		/// Gets a number for the healing ppower of a spell
+		/// Gets a number for the healing power of a spell
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>The healing power of the spell.</returns>
 		public double GetHealingSpellPower()
         {
 
