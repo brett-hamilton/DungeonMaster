@@ -162,6 +162,11 @@ namespace DungeonMaster.Data
 			}
 		}
 
+		public void HealPlayer(double health)
+        {
+			Health += health;
+        }
+
 		/// <summary>
 		/// Check the armor status with an attack value to see if the attack will hit or miss
 		/// 
@@ -203,12 +208,12 @@ namespace DungeonMaster.Data
 		/// Gets a number for the healing power of a spell
 		/// </summary>
 		/// <returns>The healing power of the spell.</returns>
-		public double GetHealingSpellPower()
+		public DiceRollReport GetHealingSpellPower()
         {
 
 			int.TryParse(ActiveSpell.DiceUsed.ToString()[1..], out int dieSides);
 			var spellRollReport = Die.Roll(dieSides, ActiveSpell.NumberOfRolls);
-			return spellRollReport.GetDiceTotal() + CharacterStats.Intelligence;
+			return spellRollReport;
         }
 	}
 }

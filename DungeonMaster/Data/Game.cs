@@ -181,7 +181,7 @@ namespace DungeonMaster.Data
 			return attackReport.GetAttackReport();
 		}
 
-		public string HealingSpellAttempt(Character caster, Character receiver)
+		public string SpellHealAttempt(Character caster, Character receiver)
         {
 			if (receiver.Status == Status.Dead)
 			{
@@ -189,15 +189,16 @@ namespace DungeonMaster.Data
 			}
 
 			var rangeCheck = Gameboard.SpellRangeCheck(caster, receiver);
-
 			if (!rangeCheck)
 			{
-				return ($"{receiver.Name} is too far away to heal.");
+				return ($"{receiver.Name} is too far away to range attack.");
 			}
 
 			var heal = new Heal();
 
+			var healingReport = heal.HealCharacter(caster, receiver);
 
+			return healingReport.GetHealingReport();
 		}
 
         /// <summary>
