@@ -8,9 +8,23 @@ namespace DungeonMaster.Data
     /// </summary>
     public class Heal
     {
-        public int HealSelf(Character player)
+        /// <summary>
+        /// Allows a character to heal themself based off of their spell roll and intelligence
+        /// </summary>
+        /// <param name="caster">Person healing themself</param>
+        public void HealSelf(Character caster)
         {
-            injuredPlayer.Health += caster.GetHealingSpellPower();
+            caster.Health += caster.GetHealingSpellPower() + caster.CharacterStats.Intelligence;
+        }
+
+        /// <summary>
+        /// Allows a caster to heal another Character
+        /// </summary>
+        /// <param name="caster">Person performing the spell</param>
+        /// <param name="receiver">Character receiving the Spell</param>
+        public void HealCharacter(Character caster, Character receiver)
+        {
+            receiver.Health += caster.GetHealingSpellPower() + caster.CharacterStats.Intelligence;
         }
     }
 }
