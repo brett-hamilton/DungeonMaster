@@ -199,7 +199,7 @@ namespace DungeonMaster.Data
 
             // If the unit is within one vertical or horizontal block. This would also include
             //      diagonal locations.
-            if (Math.Abs(verticalDistance) == 1 || Math.Abs(horizontalDistance) == 1)
+            if (roundedDistance <= 1)
             {
                 return true;
             }
