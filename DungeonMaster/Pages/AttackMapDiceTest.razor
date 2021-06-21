@@ -6,47 +6,62 @@
 @inject NavigationManager NavigationManager;
 
 <h3>Attack, Map, and Dice Test</h3>
+@if (!gameStarted)
+{
+    <button class="btn btn-primary" @onclick="StartGame">
+        Start Game!
+    </button>
+}
 
-@* Map *@
+@if (gameStarted)
+{
+    @* Map *@
 
-@* Character Controls     ||   Dice Modal Controls *@
+    @* Character Controls *@
 
-<DungeonMaster.Pages.Components.DiceModal @ref="DiceModal" pageContainingModal="AttackMapDiceTest"></DungeonMaster.Pages.Components.DiceModal>
-<DungeonMaster.Pages.Components.D20ModifierModal @ref="D20ModifierModal" pageContainingModal="AttackMapDiceTest"></DungeonMaster.Pages.Components.D20ModifierModal>
-<div>
-    <button class="btn btn-primary" @onclick="() => DiceModal.OpenModal()"> Roll Dice</button>
-    <button class="btn btn-primary" @onclick="() => D20ModifierModal.OpenModal()"> Roll D20 With Advantage/Disadvantage</button>
-</div>
-<br />
-<br />
 
-@* Combat Log *@
-<div id="gameLog" class="row" style="outline: 1px solid blue; outline-offset: 8px; max-height: 200px; min-height: 200px">
-    <div style="border-right: 1px solid blue" class="col-2">
-        <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
+    @*Dice Modal Controls *@
+    <DungeonMaster.Pages.Components.DiceModal @ref="DiceModal" pageContainingModal="AttackMapDiceTest"></DungeonMaster.Pages.Components.DiceModal>
+    <DungeonMaster.Pages.Components.D20ModifierModal @ref="D20ModifierModal" pageContainingModal="AttackMapDiceTest"></DungeonMaster.Pages.Components.D20ModifierModal>
+    <div>
+        <button class="btn btn-primary" @onclick="() => DiceModal.OpenModal()"> Roll Dice</button>
+        <button class="btn btn-primary" @onclick="() => D20ModifierModal.OpenModal()"> Roll D20 With Advantage/Disadvantage</button>
     </div>
-    @* Use overflow-auto and max/min height to force game log to be scrollable and at set size. Based on Microsoft SignalR example. *@
-    <div class="col-10 overflow-auto" style="max-height: 200px; min-height: 200px">
-        <ul class="list-group" id="gameLog">
-            @* Iterate through the list of strings in reverse order, so newest message is at top. *@
-            @for (int i = (GameLog.Count - 1); i >= 0; i--)
-            {
-                if (i == (GameLog.Count - 1))
+
+    <br />
+    <br />
+
+    @* Combat Log *@
+    <div id="gameLog" class="row" style="outline: 1px solid blue; outline-offset: 8px; max-height: 200px; min-height: 200px">
+        <div style="border-right: 1px solid blue" class="col-2">
+            <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
+        </div>
+        @* Use overflow-auto and max/min height to force game log to be scrollable and at set size. Based on Microsoft SignalR example. *@
+        <div class="col-10 overflow-auto" style="max-height: 200px; min-height: 200px">
+            <ul class="list-group" id="gameLog">
+                @* Iterate through the list of strings in reverse order, so newest message is at top. *@
+                @for (int i = (GameLog.Count - 1); i >= 0; i--)
                 {
-                    <li class="list-group-item list-group-item-primary">@GameLog[i]</li>
+                    if (i == (GameLog.Count - 1))
+                    {
+                        <li class="list-group-item list-group-item-primary">@GameLog[i]</li>
+                    }
+
+                    else
+                    {
+                        <li class="list-group-item list-group-item-secondary">@GameLog[i]</li>
+                    }
                 }
 
-                else
-                {
-                    <li class="list-group-item list-group-item-secondary">@GameLog[i]</li>
-                }
-            }
-
-        </ul>
+            </ul>
+        </div>
     </div>
-</div>
+}
+
 
 @code {
+
+    private bool gameStarted = false;
 
     /// <summary>
     /// List of strings of all attacks carried out.
@@ -70,13 +85,6 @@
 
 
 
-
-
-    // Dice Modal and SignalR Aspects
-
-
-
-    // SignalR Aspects
 
     /// <summary>
     /// Method to initialize our hub connection used to send and receive messages.
@@ -102,14 +110,19 @@
         await hubConnection.StartAsync();
     }
 
-    // Combat Log Aspects
-
     /// <summary>
     /// Method to clear the game log.
     /// </summary>
     public void ClearLog()
     {
         GameLog = new List<string>();
+    }
+
+    public void StartGame()
+    {
+
+
+        gameStarted = true;
     }
 
 }
