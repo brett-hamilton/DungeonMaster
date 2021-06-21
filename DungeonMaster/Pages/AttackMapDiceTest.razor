@@ -141,7 +141,6 @@ Render With Grid:
     /// <summary>
     /// Attributes used to represent the game in the canvas.
     /// </summary>
-    private List<Character> characterList = new List<Character>();  //local character list for the display list
     private Canvas2DContext _context;                               //Blazor version of javascript _context
     protected BECanvasComponent _canvasReference;                   //Canvas reference for actually calling functions against;
     private static double scaleFactor = 30;                         //For smaller maps, this scales every object by this factor.
@@ -209,8 +208,6 @@ Render With Grid:
         character.ImageLocation = "/images/char2.png";
         game.AddCharacter(character, 30, 10);
 
-
-        characterList = game.CharacterList;
         boardImage = game.Gameboard.ImageLocation;
 
         gameStarted = true;
