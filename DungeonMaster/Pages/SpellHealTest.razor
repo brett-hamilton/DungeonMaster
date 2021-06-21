@@ -74,19 +74,34 @@
 </div>
 
 @code {
+    /// <summary>
+    /// The character to be healed.
+    /// </summary>
+    private Character character1 = new Character("Geralt", 10, 120, "fighter");
 
-    Character character1 = new Character("Geralt", 10, 120, "fighter");
+    /// <summary>
+    /// The character to heal the other.
+    /// </summary>
+    private Character character2 = new Character("Yennefer", 100, 80, "wizard");
 
-    Character character2 = new Character("Yennefer", 100, 80, "wizard");
+    /// <summary>
+    /// Character's intelligence.
+    /// </summary>
+    private int intelligence = 0;
 
-    int intelligence = 0;
+    /// <summary>
+    /// Game to contain the characters to test healing.
+    /// </summary>
+    private Game game = new Game();
 
-    string attackReport;
+    /// <summary>
+    /// Log containing game messages.
+    /// </summary>
+    private List<string> GameLog = new List<string>();
 
-    Game game;
-
-    List<string> GameLog = new List<string>();
-
+    /// <summary>
+    /// Method to set up the characters and the game.
+    /// </summary>
     public void SetupCharacters()
     {
         character1.ActiveWeapon = new Weapon("Long sword", 20, Dice.D8, 2);
@@ -100,9 +115,12 @@
         StateHasChanged();
     }
 
+    /// <summary>
+    /// Method to attempt to heal the other character.
+    /// </summary>
     public void HealExample()
     {
-        attackReport = game.SpellHealAttempt(character2, character1);
+        var attackReport = game.SpellHealAttempt(character2, character1);
         GameLog.Add(attackReport);
     }
 
