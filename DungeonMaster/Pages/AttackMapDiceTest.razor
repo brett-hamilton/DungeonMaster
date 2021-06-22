@@ -10,17 +10,8 @@
 @inject NavigationManager NavigationManager;
 
 <h3>Attack, Map, and Dice Test</h3>
-@if (!gameStarted)
-{
-    <button class="btn btn-primary" @onclick="StartGame">
-        Start Game!
-    </button>
-}
-
 <img id="board" @ref="boardImg" width="1920" height="1080" style="display:none" src="@boardImage" />
 <img id="char1" @ref="character1img" width="22" height="22" style="display:none" src="@char1Image" />
-
-
 
 Render With Grid:
 <input title="Render With Grid"type="checkbox" @onchange="async eventArgs => { await Render((bool)eventArgs.Value); }">
@@ -61,6 +52,7 @@ Render With Grid:
                 {
                     <button class="btn btn-secondary"  style="margin-right:5px" @onclick="@( click => TakeAction(character) )">@character.Name</button>
                 }
+                <button class="btn btn-info" @onclick="Cancel" >Cancel</button>
             }
         </div>
         @if (showMovementButtons)
@@ -73,7 +65,7 @@ Render With Grid:
                 </div>
                 <div class="row">
                     <button class="btn btn-secondary col-sm-2" style="margin-right: 5px; margin-bottom: 5px">West</button>
-                    <button class="btn btn-secondary col-sm-2 disabled" style="margin-right: 5px; margin-bottom: 5px">Direction</button>
+                    <button class="btn btn-info col-sm-2" @onclick="Cancel" style="margin-right: 5px; margin-bottom: 5px">Cancel</button>
                     <button class="btn btn-secondary col-sm-2" style="margin-right: 5px; margin-bottom: 5px">East</button>
                 </div>
                 <div class="row">
@@ -232,6 +224,16 @@ Render With Grid:
     public void ClearLog()
     {
         GameLog = new List<string>();
+    }
+
+    /// <summary>
+    /// Method to rehide buttons as user no longer wishes to see them.
+    /// </summary>
+    public void Cancel()
+    {
+        showMovementButtons = false;
+        showTargetButtons = false;
+        actionToTake = null;
     }
 
     /// <summary>
