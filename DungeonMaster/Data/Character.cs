@@ -50,7 +50,7 @@ namespace DungeonMaster.Data
 		/// <summary>
 		/// Inventory of the Spells and Weapons of the Player
 		/// </summary>
-		public Inventory PlayersInventory { get; set; }
+		public Inventory PlayersInventory { get; set; } = new Inventory();
 
 		/// <summary>
 		/// Temporary spell attribute to create the attack method in Attack.cs for proof of concept
@@ -58,9 +58,9 @@ namespace DungeonMaster.Data
 		public Spell ActiveSpell { get; set; }
 
 		/// <summary>
-		/// Holds all of the stats of the player
+		/// Holds all of the stats of the player, defaults to 8 for all stats.
 		/// </summary>
-		public CharacterStats CharacterStats { get; set; }
+		public CharacterStats CharacterStats { get; set; } = new CharacterStats(8,8,8,8,8,8);
 
 		/// <summary>
 		/// Default constructor for a character

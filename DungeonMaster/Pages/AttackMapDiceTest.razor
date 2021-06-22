@@ -19,22 +19,23 @@ Render With Grid:
 
 <div class="row">
     <div style="margin-right: 10px"><BECanvas Width="@canvasWidth" Height="@canvasHeight" @ref="_canvasReference"></BECanvas></div>
-    <div style="padding: 15px">
-        @if (gameStarted)
-        {
+    @if (gameStarted)
+    {
+        <div id="controls" style="padding: 15px; width:33%; border: 3px solid blue">
+
             @*Dice Modal Controls *@
             <div id="diceModals">
                 <DungeonMaster.Pages.Components.DiceModal @ref="DiceModal" pageContainingModal="AttackMapDiceTest"></DungeonMaster.Pages.Components.DiceModal>
                 <DungeonMaster.Pages.Components.D20ModifierModal @ref="D20ModifierModal" pageContainingModal="AttackMapDiceTest"></DungeonMaster.Pages.Components.D20ModifierModal>
             </div>
-            <div class="row" id="diceModalControls">
+            <div style="padding: 10px" class="row" id="diceModalControls">
                 <button class="btn btn-primary" style="margin-right:5px" @onclick="() => DiceModal.OpenModal()"> Roll Dice</button>
                 <button class="btn btn-primary" @onclick="() => D20ModifierModal.OpenModal()"> Roll D20</button>
             </div>
             <br />
 
             @* Character Controls *@
-            <div class="row" id="primaryButtonRow">
+            <div style="padding: 10px" class="row" id="primaryButtonRow">
                 @if (gameTurn.WeaponAttackPossible)
                 {
                     <button class="btn btn-primary" style="margin-right:5px" @onclick="@( click => Target("weaponAttack") )">Attack With Weapon</button>
@@ -55,7 +56,7 @@ Render With Grid:
                     <button class="btn btn-primary" style="margin-right:5px" @onclick="@( click => Target("magicHeal") )"> HealingSpell </button>
                 }
             </div><br />
-            <div id="secondaryButtonRow">
+            <div style="padding: 10px" id="secondaryButtonRow">
                 <div class="row" id="targetButtonsRow">
                     @if (showTargetButtons)
                     {
@@ -94,8 +95,32 @@ Render With Grid:
             </div>
             <br />
             <br />
-        }
-    </div>
+        </div>
+        <div id="playerInfo" style="padding: 15px; width:10%; border: 3px solid blue">
+            <div>
+                Character: @gameTurn.CurrentCharacter.Name
+            </div>
+            <div>
+                Health: @gameTurn.CurrentCharacter.Health
+                Movement Points: @* Not implemented yet. *@
+                Action Points: @gameTurn.CurrentCharacter.ActionPoints
+            </div>
+            <div>
+                Equiped Weapon:@gameTurn.CurrentCharacter.ActiveWeapon
+                Equiped Spell:@gameTurn.CurrentCharacter.ActiveSpell
+                Armor: @gameTurn.CurrentCharacter.Armor.Name
+                Armor Protection:@gameTurn.CurrentCharacter.Armor.ProtectionPoints
+            </div>
+            <div>
+                Strength: @gameTurn.CurrentCharacter.CharacterStats.Strength
+                Dexterity: @gameTurn.CurrentCharacter.CharacterStats.Dexterity
+                Intelligence: @gameTurn.CurrentCharacter.CharacterStats.Intelligence
+                Charisma: @gameTurn.CurrentCharacter.CharacterStats.Charisma
+                Constitution: @gameTurn.CurrentCharacter.CharacterStats.Constitution
+                Wisdom: @gameTurn.CurrentCharacter.CharacterStats.Wisdom
+            </div>
+        </div>
+    }
 </div>
 <br />
 
@@ -322,6 +347,7 @@ Render With Grid:
         {
             GameName = "Combination Test Game"
         };
+        var statsInventory = new CharacterStats(11, 12, 8, 15, 12, 6);
 
         var character = new Character("Jordan", 100, 2, "ranger");
         character.ImageLocation = "/images/char1.png";
