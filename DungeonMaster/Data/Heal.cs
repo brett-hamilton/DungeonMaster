@@ -9,13 +9,35 @@ namespace DungeonMaster.Data
     public class Heal
     {
         /// <summary>
-        /// Heals a character.
+        /// Allows a character to heal themself based off of their spell roll and intelligence
         /// </summary>
-        /// <param name="player">Character to be healed.</param>
-        /// <returns>Proxy value of 0 for now.</returns>
-        public int HealSelf(Character player)
+        /// <param name="caster">Person healing themself</param>
+        public void HealSelf(Character caster)
         {
-            return 0;
+            caster.Health += caster.GetHealingSpellPower().GetDiceTotal() + caster.CharacterStats.Intelligence;
+        }
+
+        /// <summary>
+        /// Allows a caster to heal another Character
+        /// </summary>
+        /// <param name="caster">Person performing the spell</param>
+        /// <param name="receiver">Character receiving the Spell</param>
+        public AttackReport HealCharacter(Character caster, Character receiver)
+        {
+            DiceRollReport roll = caster.GetHealingSpellPower();
+            double totalHealth = roll.GetDiceTotal() + caster.CharacterStats.Intelligence;
+            receiver.HealPlayer(totalHealth); 
+
+            AttackReport healingReport = new AttackReport();
+
+            healingReport.AttackerName = caster.Name;
+            healingReport.DefenderName = receiver.Name;
+            healingReport.CharacterIntelligence = caster.CharacterStats.Intelligence;
+            healingReport.DieUsed = caster.ActiveSpell.DiceUsed;
+            healingReport.TotalDamageDealt = (int)totalHealth;
+            healingReport.DiceRollReport = roll;
+
+            return healingReport;
         }
     }
 }

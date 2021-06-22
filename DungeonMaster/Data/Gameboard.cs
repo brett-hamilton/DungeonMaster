@@ -208,6 +208,36 @@ namespace DungeonMaster.Data
         }
 
         /// <summary>
+        /// Method determines if a receiver is within range to accept a healing spell
+        /// Author: Hunter Page
+        /// </summary>
+        /// <param name="caster">the person using the spell</param>
+        /// <param name="receiver">the person receiving the spell</param>
+        /// <returns>true if receiver is in range, false otherwise</returns>
+        public bool SpellRangeCheck(Character caster, Character receiver)
+        {
+            Coordinate attackerCoord = GetCoordinate(caster);
+            Coordinate defenderCoord = GetCoordinate(receiver);
+
+            if (attackerCoord == null || defenderCoord == null)
+            {
+                return false;
+            }
+
+            double distanceBetween = GetDistance(attackerCoord, defenderCoord);
+
+            // In order to allow diagonal attacks, we will round the value down to the previous whole number.
+            var roundedDistance = Math.Round(distanceBetween, 0, MidpointRounding.ToZero);
+
+            if (caster.ActiveSpell.Range < roundedDistance)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// Method to calculate the distance between two characters.
         /// </summary>
         /// <param name="character1">First character in the gameboard.</param>
