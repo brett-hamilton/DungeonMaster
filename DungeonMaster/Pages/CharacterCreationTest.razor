@@ -52,7 +52,7 @@
     <button class="btn btn-primary" @onclick="CreateCharacter">Create and Save Character</button>
     <p>@errorMessage</p>
     <p>Character List:</p>
-    <div>
+    <div style="max-height: 200px; min-height: 100px; width: 500px">
         <ul class="list-group" id="charList">
             @foreach (Character character in characterList)
 			{
@@ -187,6 +187,20 @@
         displayName = characterName;
         //clears TextBox
         characterName = string.Empty;
+
+        ResetStats();
+    }
+    
+    /// <summary>
+    /// Resets character stats to default options.
+    /// </summary>
+    private void ResetStats()
+    {
+        statsForCharacter = new CharacterStats();
+        StatNumbers = new List<int> ( ) { 15, 14, 13, 12, 10, 8 };
+        StatNames = new List<string> ( ) { "strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma" };
+        currentStatValue = 0;
+        currentStatString = string.Empty;
     }
 
     /// <summary>
