@@ -52,6 +52,10 @@ Render With Grid:
                 {
                     <button class="btn btn-secondary"  style="margin-right:5px" @onclick="@( click => TakeAction(character) )">@character.Name</button>
                 }
+                @if (actionToTake.Equals("magicHeal")) 
+                { 
+                    <button class="btn btn-secondary" style="margin-right:5px" @onclick="@( click => TakeAction(gameTurn.CurrentCharacter) )">@gameTurn.CurrentCharacter.Name</button>
+                }
                 <button class="btn btn-info" @onclick="Cancel" >Cancel</button>
             }
         </div>
@@ -75,8 +79,6 @@ Render With Grid:
                 </div>
             </div>
         }
-        
-
     </div>
     <br />
     <br />
