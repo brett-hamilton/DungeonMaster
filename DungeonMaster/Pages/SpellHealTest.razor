@@ -1,0 +1,134 @@
+﻿@page "/SpellHealTest"
+
+@using DungeonMaster.Data
+@using System.IO;
+@using System.Text.Json;
+
+<h3>Testing Spell Healing</h3>
+
+@*Not sure if needed yet*@
+<div class="row">
+    <button class="btn btn-primary" @onclick="SetupCharacters">Set Up Characters</button>
+</div>
+
+@*Column representing Player 1's information.*@
+<div class="row">
+    <div class="col-3 card" style="margin-right: 10px">
+        <div class="card-body">
+            <h5 class="card-title">
+                @character1.Name
+            </h5>
+            <p class="card-text">
+                Health: @character1.Health <br />
+                Weapon: @character1.ActiveWeapon.Name <br />
+            </p>
+        </div>
+    </div>
+</div>
+
+@*Column representing Player 2's information.*@
+<div class="row">
+    <div class="col-3 card" style="margin-right: 10px">
+        <div class="card-body">
+            <h5 class="card-title">
+                @character2.Name
+            </h5>
+            <p class="card-text">
+                Health: @character2.Health <br />
+                Intelligence: @intelligence <br />
+                Spell: @character2.ActiveSpell.SpellName <br />
+
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <button class="btn btn-danger" @onclick="HealExample">Heal your friend!</button>
+</div>
+<br />
+<br />
+<div class="row" style="outline: 1px solid blue; outline-offset: 8px; max-height: 200px; min-height: 200px">
+    <div style="border-right: 1px solid blue" class="col-2">
+        <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
+    </div>
+    @* Use overflow-auto and max/min height to force game log to be scrollable and at set size. *@
+    <div class="col-10 overflow-auto" style="max-height: 200px; min-height: 200px">
+        <ul class="list-group " id="gameLog">
+            @* Iterate through the list of strings in reverse order, so newest message is at top. Based on Microsoft SignalR example. *@
+            @for (int i = (GameLog.Count - 1); i >= 0; i--)
+            {
+                if (i == (GameLog.Count - 1))
+                {
+                    <li class="list-group-item list-group-item-primary">@GameLog[i]</li>
+                }
+
+                else
+                {
+                    <li class="list-group-item list-group-item-secondary">@GameLog[i]</li>
+                }
+            }
+
+        </ul>
+    </div>
+</div>
+
+@code {
+    /// <summary>
+    /// The character to be healed.
+    /// </summary>
+    private Character character1 = new Character("Geralt", 10, 120, "fighter");
+
+    /// <summary>
+    /// The character to heal the other.
+    /// </summary>
+    private Character character2 = new Character("Yennefer", 100, 80, "wizard");
+
+    /// <summary>
+    /// Character's intelligence.
+    /// </summary>
+    private int intelligence = 0;
+
+    /// <summary>
+    /// Game to contain the characters to test healing.
+    /// </summary>
+    private Game game = new Game();
+
+    /// <summary>
+    /// Log containing game messages.
+    /// </summary>
+    private List<string> GameLog = new List<string>();
+
+    /// <summary>
+    /// Method to set up the characters and the game.
+    /// </summary>
+    public void SetupCharacters()
+    {
+        character1.ActiveWeapon = new Weapon("Long sword", 20, Dice.D8, 2);
+
+        character2.ActiveSpell = new HealingSpell("invigoration", SpellTypes.Healing, 20, Dice.D6, 3, 20);
+        character2.CharacterStats = new CharacterStats(3, 4, 5, 8, 4, 3);
+        intelligence = character2.CharacterStats.Intelligence;
+
+        game = new Game(character1, character2);
+
+        StateHasChanged();
+    }
+
+    /// <summary>
+    /// Method to attempt to heal the other character.
+    /// </summary>
+    public void HealExample()
+    {
+        var attackReport = game.SpellHealAttempt(character2, character1);
+        GameLog.Add(attackReport);
+    }
+
+    /// <summary>
+    /// Method to clear the game log.
+    /// </summary>
+    public void ClearLog()
+    {
+        GameLog = new List<string>();
+    }
+}

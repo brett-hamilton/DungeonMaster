@@ -63,10 +63,15 @@ namespace DungeonMaster.Data
         public string DamageType { get; set; }
 
         /// <summary>
+        /// Character's intelligence in a Spell Heal/Attack
+        /// </summary>
+        public int CharacterIntelligence { get; set; }
+
+        /// <summary>
         /// Returns a string containing information about the attack attempt. This is then displayed
         /// in the game log for the players.
         /// </summary>
-        /// <returns></returns>
+        /// <returns> String containing representation of the report.</returns>
         public string GetAttackReport()
         {
             if (!HitCheck)
@@ -91,6 +96,16 @@ namespace DungeonMaster.Data
                 attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {WeaponBaseDamage} base damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType} damage.";
                 return attackReport;
             }
+        }
+
+        /// <summary>
+        /// Method to build a report about the healing attempt, and return it.
+        /// </summary>
+        /// <returns> A string containing information about the heal attempt. </returns>
+        public string GetHealingReport()
+        {
+            return $"{AttackerName} rolled a healing spell of {DiceRollReport.GetDiceTotal()} health amount + {CharacterIntelligence} intelligence bonus = {TotalDamageDealt}. This healed {DefenderName}." +
+                $"They rolled {DieUsed} {DiceRollReport.GetDiceReport()}.";
         }
     }
 }
