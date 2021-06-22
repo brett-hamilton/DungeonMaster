@@ -294,6 +294,10 @@ Render With Grid:
         StateHasChanged();
     }
 
+    /// <summary>
+    /// Method to start the test game, create the characters, and load them into the game.
+    /// The game is then initialized with the first character's turn started.
+    /// </summary>
     public void StartGame()
     {
         var game = new Game(50, 25)
