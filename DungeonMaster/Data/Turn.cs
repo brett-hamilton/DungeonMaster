@@ -46,6 +46,14 @@ namespace DungeonMaster.Data
         public Game Game { get; set; }
 
         /// <summary>
+        /// Default constructor to create an emtpy turn.
+        /// </summary>
+        public Turn() 
+        { 
+            
+        }
+
+        /// <summary>
         /// Constructor that creates a turn, for the Game provided.
         /// </summary>
         /// <param name="game"></param>
@@ -103,6 +111,7 @@ namespace DungeonMaster.Data
                 WeaponAttackPossible = false;
             }
         }
+
         /// <summary>
         /// Update if the character is able to use a spell attack.
         /// </summary>
@@ -110,14 +119,17 @@ namespace DungeonMaster.Data
         {
             if (CurrentCharacter.ActiveSpell != null)
             {
-                if (CurrentCharacter.ActiveSpell is DamageSpell) 
+                if (CurrentCharacter.ActiveSpell is DamageSpell)
                 {
                     MagicAttackPossible = true;
                 }
             }
-            
-            MagicAttackPossible = false;
+            else 
+            {
+                MagicAttackPossible = false;
+            }
         }
+
         /// <summary>
         /// Update if the character is able to use a magic spell.
         /// </summary>
@@ -130,8 +142,10 @@ namespace DungeonMaster.Data
                     MagicHealPossible = true;
                 }
             }
-
-            MagicHealPossible = false;
+            else 
+            {
+                MagicHealPossible = false;
+            }
         }
 
         /// <summary>
