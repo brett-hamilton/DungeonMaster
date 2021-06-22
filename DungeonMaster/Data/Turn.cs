@@ -5,22 +5,50 @@ using System.Threading.Tasks;
 
 namespace DungeonMaster.Data
 {
+    /// <summary>
+    /// Class representing the current Turn of the game.
+    /// </summary>
     public class Turn
     {
+        /// <summary>
+        /// Current character whose turn it is.
+        /// </summary>
         public Character CurrentCharacter { get; set; }
 
+        /// <summary>
+        /// List of all other characters in the game. Stored in turn order.
+        /// </summary>
         public LinkedList<Character> OtherCharactersInOrder { get; set; } = new LinkedList<Character>();
 
+        /// <summary>
+        /// If the current character can launch a Weapon Attack.
+        /// </summary>
         public bool WeaponAttackPossible { get; set; }
 
+        /// <summary>
+        /// If the current character can launch a magic Attack.
+        /// </summary>
         public bool MagicAttackPossible { get; set; }
 
+        /// <summary>
+        /// If the current character can cast a healing spell.
+        /// </summary>
         public bool MagicHealPossible { get; set; }
 
+        /// <summary>
+        /// If movement is possible for the current character.
+        /// </summary>
         public bool MovePossible { get; set; }
 
+        /// <summary>
+        /// Game that the turn is for. 
+        /// </summary>
         public Game Game { get; set; }
 
+        /// <summary>
+        /// Constructor that creates a turn, for the Game provided.
+        /// </summary>
+        /// <param name="game"></param>
         public Turn(Game game) 
         {
             Game = game;
@@ -36,6 +64,10 @@ namespace DungeonMaster.Data
             UpdatePossibilities();
         }
 
+        /// <summary>
+        /// Method to add the current character to the end of the queue, and make the 
+        /// first Character in the list the current character.
+        /// </summary>
         public void UpdateTurn() 
         {
             OtherCharactersInOrder.AddLast(CurrentCharacter);
