@@ -79,5 +79,18 @@ namespace XunitTest
 			Assert.Equal(char1.Name, characters[0].Name);
 			Assert.Equal(char2.Name, characters[1].Name);
 		}
+
+		/// <summary>
+		/// Tests if the characters file can be emptied.
+		/// </summary>
+		[Fact]
+		public void ClearCharacterFileTest()
+		{
+			string jsonString = JsonSerializer.Serialize (char1);
+			File.WriteAllText (PATH, jsonString);
+			CharacterFile.Clear();
+			string contents = File.ReadAllText(PATH);
+			Assert.Equal(contents, string.Empty);
+		}
 	}
 }

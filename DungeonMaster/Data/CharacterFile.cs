@@ -66,5 +66,13 @@ namespace DungeonMaster.Data
 
 			return characters;
 		}
+
+		/// <summary>
+		/// Empties the characters file.
+		/// </summary>
+		public static void Clear()
+		{
+			File.WriteAllText (PATH, string.Empty);
+		}
 	}
 }

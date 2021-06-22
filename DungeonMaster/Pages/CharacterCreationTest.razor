@@ -51,6 +51,25 @@
     </div>
     <button class="btn btn-primary" @onclick="CreateCharacter">Create and Save Character</button>
     <p>@errorMessage</p>
+    <p>Character List:</p>
+    <div>
+        <ul class="list-group" id="charList">
+            @foreach (Character character in characterList)
+			{
+                <li class="list-group-item list-group-item-primary">@character.Name</li>
+			}
+        </ul>
+    </div>
+    <div>
+        <select name="DeleteCharacter" @bind="characterToDelete">
+            <option value="default">[select character]</option>
+            @foreach (Character character in characterList)
+            {
+                <option value="@character.Name">@character.Name</option>
+            }
+        </select>
+        <button class="btn btn-primary" @onclick="DeleteCharacter">Delete Character</button>
+    </div>
 </div>
 
 @code {
@@ -81,7 +100,19 @@
     /// </summary>
     private string currentStatString = string.Empty;
 
-    /* Stats for the character*/
+    /// <summary>
+    /// Path to characters file.
+    /// </summary>
+    private const string PATH = "Saves/characters.json";
+
+    /// <summary>
+    /// Name of the character the user wants to delete.
+    /// </summary>
+    private string characterToDelete = string.Empty;
+
+    /// <summary>
+    /// Stats for the character.
+    /// </summary>
     private CharacterStats statsForCharacter = new CharacterStats();
 
     /// <summary>
@@ -93,6 +124,26 @@
     /// List of the names of the stats
     /// </summary>
     private List<string> StatNames = new List<string>() { "strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma" };
+
+    /// <summary>
+    /// List of characters from the characters file.
+    /// </summary>
+    private List<Character> characterList = new List<Character>();
+
+    /// <summary>
+    /// Load characters on start up from characters file.
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        if (!File.Exists(PATH))
+        {
+            return;                 // Do nothing if file does not exist
+        }
+
+        characterList = CharacterFile.Read();
+
+        await Task.Delay(10);
+    }
 
     /// <summary>
     /// Creates a character with the provided information from form and saves it to JSON file.
@@ -110,29 +161,24 @@
 
         Character newCharacter = new Character(characterName, 50, 1);
         newCharacter.CharacterStats = statsForCharacter;
-        string jsonString = JsonSerializer.Serialize(newCharacter);
-        displayName = characterName;
-        //clears TextBox
-        characterName = string.Empty;
-        // Write the JSON string to a file for storage
-        string fileName = "characters.json";
-        string path = "Saves/" + fileName;
-
-
 
         try
         {
-
-            //Appends a new character to the file without deleting previous ones and puts them on new lines for better readability.
-            File.AppendAllText(path, jsonString + Environment.NewLine);
-
-
-
+            CharacterFile.Write (newCharacter, false);
+            characterList.Add(newCharacter);
         }
         catch (IOException e)
         {
+            errorMessage = "Error Writing to File: " + e.Message;
+        }
+        catch (Exception e)
+        {
             errorMessage = "Error: " + e.Message;
         }
+
+        displayName = characterName;
+        //clears TextBox
+        characterName = string.Empty;
     }
 
     /// <summary>
@@ -176,6 +222,37 @@
             StatNames.Remove(currentStatString);
             currentStatValue = 0;
             currentStatString = string.Empty;
+        }
+    }
+
+    /// <summary>
+    /// Delete a character from the character list and file.
+    /// </summary>
+    public void DeleteCharacter()
+    {
+        bool removed = false;
+
+        foreach (Character character in characterList)
+        {
+            if (character.Name == characterToDelete)
+            {
+                characterList.Remove(character);
+                removed = true;
+                break;
+            }
+        }
+
+        if (!removed)
+        {
+            return;                 // Character was not found
+        }
+
+        // Write new character list to character file
+        CharacterFile.Clear();
+
+        foreach (Character character in characterList)
+        {
+            CharacterFile.Write(character, false);
         }
     }
 }
