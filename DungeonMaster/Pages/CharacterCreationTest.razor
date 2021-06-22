@@ -60,6 +60,7 @@
 			}
         </ul>
     </div>
+    <br />
     <div>
         <select name="DeleteCharacter" @bind="characterToDelete">
             <option value="default">[select character]</option>
@@ -69,6 +70,10 @@
             }
         </select>
         <button class="btn btn-primary" @onclick="DeleteCharacter">Delete Character</button>
+    </div>
+    <br />
+    <div>
+        <button class="btn btn-primary" @onclick="DeleteAllCharacters">Delete All Characters</button>
     </div>
 </div>
 
@@ -82,7 +87,10 @@
     /// Contains error message if error has occurred.
     /// </summary>
     private string errorMessage = string.Empty;
-    //used to display the name while clearing the textbox
+
+    /// <summary>
+    /// Used to display the name while clearing the textbox
+    /// </summary>
     private string displayName = string.Empty;
 
     /// <summary>
@@ -254,5 +262,13 @@
         {
             CharacterFile.Write(character, false);
         }
+    }
+
+    /// <summary>
+    /// Clears the characters file.
+    /// </summary>
+    public void DeleteAllCharacters()
+    {
+        CharacterFile.Clear();
     }
 }
