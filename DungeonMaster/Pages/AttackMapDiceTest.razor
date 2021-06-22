@@ -96,28 +96,42 @@ Render With Grid:
             <br />
             <br />
         </div>
-        <div id="playerInfo" style="padding: 15px; width:10%; border: 3px solid blue">
+        <div id="playerInfo" style="margin-left: 10px; padding: 15px; width:17%; border: 3px solid blue">
+            <strong>CHARACTER</strong>
             <div>
                 Character: @gameTurn.CurrentCharacter.Name
-            </div>
-            <div>
+                <br />
                 Health: @gameTurn.CurrentCharacter.Health
+                <br />
                 Movement Points: @* Not implemented yet. *@
+                <br />
                 Action Points: @gameTurn.CurrentCharacter.ActionPoints
             </div>
+            <br />
+            <strong>INVENTORY</strong>
             <div>
                 Equiped Weapon:@gameTurn.CurrentCharacter.ActiveWeapon
+                <br />
                 Equiped Spell:@gameTurn.CurrentCharacter.ActiveSpell
+                <br />
                 Armor: @gameTurn.CurrentCharacter.Armor.Name
+                <br />
                 Armor Protection:@gameTurn.CurrentCharacter.Armor.ProtectionPoints
             </div>
+            <br />
+            <strong>SKILLS</strong>
             <div>
                 Strength: @gameTurn.CurrentCharacter.CharacterStats.Strength
+                <br />
                 Dexterity: @gameTurn.CurrentCharacter.CharacterStats.Dexterity
+                <br />
                 Intelligence: @gameTurn.CurrentCharacter.CharacterStats.Intelligence
+                <br />
                 Charisma: @gameTurn.CurrentCharacter.CharacterStats.Charisma
+                <br />
                 Constitution: @gameTurn.CurrentCharacter.CharacterStats.Constitution
                 Wisdom: @gameTurn.CurrentCharacter.CharacterStats.Wisdom
+                <br />
             </div>
         </div>
     }
@@ -125,8 +139,8 @@ Render With Grid:
 <br />
 
 @* Combat Log *@
-<div id="gameLog" class="row" style="outline: 1px solid blue; outline-offset: 8px; max-height: 200px; min-height: 200px">
-    <div style="border-right: 1px solid blue" class="col-2">
+<div id="gameLog" class="row" style="outline: 3px solid blue; outline-offset: 8px; max-height: 200px; min-height: 200px">
+    <div style="border-right: 3px solid blue" class="col-2">
         <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
     </div>
     @* Use overflow-auto and max/min height to force game log to be scrollable and at set size. Based on Microsoft SignalR example. *@
