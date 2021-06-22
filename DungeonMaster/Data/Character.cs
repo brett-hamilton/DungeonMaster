@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace DungeonMaster.Data
 {
+	/// <summary>
+	/// Class representing a character in the game.
+	/// </summary>
 	public class Character : Drawable
 	{
 		/// <summary>
@@ -127,13 +130,15 @@ namespace DungeonMaster.Data
 					break;
 			}
 		}
-			
+
 
 		/// <summary>
-		/// Constructor for the Character to be initialized, including player image
+		/// Constructor for the Character to be initialized, including player image.
 		/// </summary>
-		/// <param name="name"></param>
-		/// <param name="health"></param>
+		/// <param name="name">Name of the character.</param>
+		/// <param name="health">Health of the character.</param>
+		/// <param name="actionPoints">Action points for the character.</param>
+		/// <param name="playerImage">Image file for the player.</param>
 		public Character(string name, double health, double actionPoints, string playerImage)
 		{
 			this.ActiveWeapon = new Weapon("Sword", 10, Dice.D6, 5.0);
@@ -143,7 +148,7 @@ namespace DungeonMaster.Data
 			this.ActionPoints = actionPoints;
 			IsCollidable = true;
 			ImageLocation = playerImage;
-			BackupColorCode = "FF00FF";
+			BackupColorCode = "#FF00FF";
 			Status = Status.Alive;
 		}
 
@@ -161,7 +166,10 @@ namespace DungeonMaster.Data
 				Status = Status.Dead;
 			}
 		}
-
+		/// <summary>
+		/// Method to heal a player and give them health.
+		/// </summary>
+		/// <param name="health">Amount to be added to the player.</param>
 		public void HealPlayer(double health)
         {
 			Health += health;
@@ -189,7 +197,7 @@ namespace DungeonMaster.Data
 		/// 
 		/// </summary>
 		/// <param name="weapon">A weapon to be added to the list.</param>
-		public void addWeaponInventory(Weapon weapon)
+		public void AddWeaponInventory(Weapon weapon)
         {
 			PlayersInventory.Weapons.Add(weapon);
         }
@@ -199,7 +207,7 @@ namespace DungeonMaster.Data
 		/// 
 		/// </summary>
 		/// <param name="weapon">A spell to be added to the list.</param>
-		public void addSpellInventory(Spell spell)
+		public void AddSpellInventory(Spell spell)
         {
 			PlayersInventory.Spells.Add(spell);
         }
