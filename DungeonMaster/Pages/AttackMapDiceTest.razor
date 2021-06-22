@@ -19,7 +19,6 @@
 
 <img id="board" @ref="boardImg" width="1920" height="1080" style="display:none" src="@boardImage" />
 <img id="char1" @ref="character1img" width="22" height="22" style="display:none" src="@char1Image" />
-<img id="char2" @ref="character2img" width="22" height="22" style="display:none" src="@char2Image" />
 
 
 
@@ -27,7 +26,7 @@ Render With Grid:
 <input title="Render With Grid"type="checkbox" @onchange="async eventArgs => { await Render((bool)eventArgs.Value); }">
 <button @onclick="async eventArgs => { await Render(); }">REDRAW</button>
 
-<div><BECanvas Width="1500" Height="750" @ref="_canvasReference"></BECanvas></div>
+<div><BECanvas Width="@canvasWidth" Height="@canvasHeight" @ref="_canvasReference"></BECanvas></div>
 
 @if (gameStarted)
 {
@@ -135,6 +134,12 @@ Render With Grid:
     /// </summary>
     private bool gameStarted = false;
 
+
+    private long canvasWidth = 1500;
+
+
+    private long canvasHeight = 1500;
+
     /// <summary>
     /// String representing which action the user is requesting to take.
     /// </summary>
@@ -180,7 +185,7 @@ Render With Grid:
     /// </summary>
     private Canvas2DContext _context;                               //Blazor version of javascript _context
     protected BECanvasComponent _canvasReference;                   //Canvas reference for actually calling functions against;
-    private static double scaleFactor = 25;                         //For smaller maps, this scales every object by this factor.
+    private static long scaleFactor = 15;                         //For smaller maps, this scales every object by this factor.
     private string backgroundColor = "#009900";                     //Sets the background for the entire canvas. Ideally we would draw the background sprites above this.
     private ElementReference boardImg;
     private ElementReference character1img;
@@ -300,7 +305,7 @@ Render With Grid:
     /// </summary>
     public void StartGame()
     {
-        var game = new Game(50, 25)
+        var game = new Game(35, 35)
         {
             GameName = "Combination Test Game"
         };
@@ -323,6 +328,9 @@ Render With Grid:
         gameStarted = true;
 
         gameTurn = new Turn(game);
+
+        canvasWidth = game.Gameboard.Columns * scaleFactor;
+        canvasHeight = game.Gameboard.Rows * scaleFactor;
     }
 
     /// <summary>
@@ -356,7 +364,7 @@ Render With Grid:
     protected async Task BackupRenderBoard(double scaledRows, double scaledColumns)
     {
         await this._context.SetFillStyleAsync(backgroundColor);
-        await this._context.FillRectAsync(0, 0, scaledRows, scaledColumns);
+        await this._context.FillRectAsync(0, 0, scaledColumns, scaledRows);
     }
 
     /// <summary>
@@ -368,7 +376,7 @@ Render With Grid:
     /// <param name="scaleFactor">Scale.</param>
     protected async Task RenderBoardWithImage(ElementReference elementReference, double scaledRows, double scaledColumns, double scaleFactor)
     {
-        await this._context.DrawImageAsync(boardImg, 0, 0, scaledRows, scaledColumns);
+        await this._context.DrawImageAsync(boardImg, 0, 0, scaledColumns, scaledRows);
     }
 
     /// <summary>
@@ -402,20 +410,20 @@ Render With Grid:
 
                     try
                     {
-                        await this._context.DrawImageAsync(character1img, scaledRow, scaledColumn, scaleFactor, scaleFactor);
+                        await this._context.DrawImageAsync(character1img, scaledColumn, scaledRow, scaleFactor, scaleFactor);
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e);
                         await Task.Delay(10);
-                        await this._context.FillRectAsync(scaledRow, scaledColumn, scaleFactor, scaleFactor);
+                        await this._context.FillRectAsync(scaledColumn, scaledRow, scaleFactor, scaleFactor);
                     }
                 }
                 else
                 {
                     if (grid)
                     {
-                        await this._context.StrokeRectAsync(scaledRow, scaledColumn, scaleFactor, scaleFactor);
+                        await this._context.StrokeRectAsync(scaledColumn, scaledRow, scaleFactor, scaleFactor);
                     }
                 }
             }
