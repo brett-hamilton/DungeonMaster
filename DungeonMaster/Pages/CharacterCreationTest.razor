@@ -190,7 +190,7 @@
 
         ResetStats();
     }
-    
+
     /// <summary>
     /// Resets character stats to default options.
     /// </summary>
@@ -283,6 +283,7 @@
     /// </summary>
     public void DeleteAllCharacters()
     {
+        characterList.Clear();
         CharacterFile.Clear();
     }
 }
