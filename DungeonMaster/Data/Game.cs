@@ -182,6 +182,31 @@ namespace DungeonMaster.Data
 
 			return attackReport.GetAttackReport();
 		}
+		/// <summary>
+		/// Method to attempt to heal another character with a spell.
+		/// </summary>
+		/// <param name="caster">Character casting the spell. </param>
+		/// <param name="receiver">Target of the spell.</param>
+		/// <returns>String describing the result.</returns>
+		public string SpellHealAttempt(Character caster, Character receiver)
+        {
+			if (receiver.Status == Status.Dead)
+			{
+				return ($"{receiver.Name} is already dead.");
+			}
+
+			var rangeCheck = Gameboard.SpellRangeCheck(caster, receiver);
+			if (!rangeCheck)
+			{
+				return ($"{receiver.Name} is too far away to heal.");
+			}
+
+			var heal = new Heal();
+
+			var healingReport = heal.HealCharacter(caster, receiver);
+
+			return healingReport.GetHealingReport();
+		}
 
         /// <summary>
         /// Gets the formatted character list.

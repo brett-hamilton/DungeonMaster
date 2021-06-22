@@ -4,7 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System;
 
-namespace DungeonMaster.XunitTest
+namespace XunitTest
 {
     
     /// <summary>
