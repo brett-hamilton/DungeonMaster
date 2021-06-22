@@ -13,8 +13,11 @@ namespace XunitTest
     /// </summary>
     public class TurnTests
     {
+        /// <summary>
+        /// Readonly damage spell, healing spell, and weapon used by the turns below. The addition or removal of these from the 
+        /// characters in the turn are then used to test if our updates are working as expected.
+        /// </summary>
         private readonly Weapon meleeWeapon = new Weapon { Name = "Sword",RangedWeapon = false };
-        private readonly Weapon rangedWeapon = new Weapon { Name = "Bow", RangedWeapon = true };
         private readonly Spell damageSpell = new DamageSpell ("Fire Ball", SpellTypes.Fire, 2, Dice.D2, 2, 20);
         private readonly Spell healingSpell = new HealingSpell ("Heal", SpellTypes.Healing, 2, Dice.D2, 2, 20);
 
