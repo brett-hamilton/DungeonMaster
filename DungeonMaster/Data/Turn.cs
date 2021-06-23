@@ -123,6 +123,10 @@ namespace DungeonMaster.Data
                 {
                     MagicAttackPossible = true;
                 }
+                else 
+                {
+                    MagicAttackPossible = false;
+                }
             }
             else 
             {
