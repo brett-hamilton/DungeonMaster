@@ -67,7 +67,7 @@ namespace DungeonMaster.Data
 		/// </summary>
 		public Character()
 		{
-			Weapon sword = new Weapon("sword", 10, Dice.D6, 5.0);
+			Weapon sword = new Weapon("Sword", 10, Dice.D6, 5.0);
 			Name = "Geralt";
 			this.Health = 100;
 			this.ActiveWeapon = sword;
@@ -111,7 +111,7 @@ namespace DungeonMaster.Data
 			switch(characterClass)
             {
 				case "ranger" :
-					ActiveWeapon = new Weapon("long bow", 10, Dice.D6, 50)
+					ActiveWeapon = new Weapon("Long Bow", 10, Dice.D6, 50)
 					{
 						RangedWeapon = true
                     };
@@ -126,7 +126,7 @@ namespace DungeonMaster.Data
 					break;
 
 				default :
-					ActiveWeapon = new Weapon("dagger", 2, Dice.D6, 1);
+					ActiveWeapon = new Weapon("Dagger", 2, Dice.D6, 1);
 					break;
 			}
 		}
