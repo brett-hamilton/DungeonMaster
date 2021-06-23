@@ -56,7 +56,7 @@ namespace DungeonMaster.Data
         /// <summary>
         /// Constructor that creates a turn, for the Game provided.
         /// </summary>
-        /// <param name="game"></param>
+        /// <param name="game">Game to add to the turn.</param>
         public Turn(Game game) 
         {
             Game = game;
