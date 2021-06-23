@@ -72,7 +72,7 @@ namespace DungeonMaster.Data
 		/// </summary>
 		public Character()
 		{
-			Weapon sword = new Weapon("sword", 10, Dice.D6, 5.0);
+			Weapon sword = new Weapon("sword", Dice.D6, 5.0, WeaponType.OneHanded);
 			Name = "Geralt";
 			this.Health = 100;
 			this.ActiveWeapon = sword;
@@ -90,12 +90,13 @@ namespace DungeonMaster.Data
 		/// <param name="actionPoints">Number of action points character has.</param>
 		public Character(string name, double health, double actionPoints)
 		{
-			this.ActiveWeapon = new Weapon("Sword", 10, Dice.D6, 5.0);
+			this.ActiveWeapon = new Weapon("Sword", Dice.D6, 5.0, WeaponType.OneHanded);
 			Armor = new Armor("Leather", 6);
 			this.Name = name;
 			this.Health = health;
 			this.ActionPoints = actionPoints;
 			Status = Status.Alive;
+			PlayersInventory = new Inventory();
 		}
 
 		/// <summary>
@@ -112,11 +113,12 @@ namespace DungeonMaster.Data
 			this.Health = health;
 			this.ActionPoints = actionPoints;
 			Status = Status.Alive;
+			PlayersInventory = new Inventory();
 
 			switch(characterClass)
             {
 				case "ranger" :
-					ActiveWeapon = new Weapon("long bow", 10, Dice.D6, 50)
+					ActiveWeapon = new Weapon("long bow", Dice.D6, 50, WeaponType.Range)
 					{
 						RangedWeapon = true
                     };
@@ -125,7 +127,7 @@ namespace DungeonMaster.Data
 					break;
 
 				case "fighter" :
-					ActiveWeapon = new Weapon("Battle Axe", 20, Dice.D6, 1);
+					ActiveWeapon = new Weapon("Battle Axe", Dice.D6, 1, WeaponType.TwoHanded);
 					Proficiency = WeaponType.TwoHanded;
 					break;
 
@@ -134,7 +136,7 @@ namespace DungeonMaster.Data
 					break;
 
 				default :
-					ActiveWeapon = new Weapon("dagger", 2, Dice.D6, 1);
+					ActiveWeapon = new Weapon("dagger", Dice.D6, 1, WeaponType.LightOneHanded);
 					Proficiency = WeaponType.LightOneHanded;
 					break;
 			}
@@ -150,7 +152,7 @@ namespace DungeonMaster.Data
 		/// <param name="playerImage">Image file for the player.</param>
 		public Character(string name, double health, double actionPoints, string playerImage)
 		{
-			this.ActiveWeapon = new Weapon("Sword", 10, Dice.D6, 5.0);
+			this.ActiveWeapon = new Weapon("Sword", Dice.D6, 5.0, WeaponType.OneHanded);
 			Armor = new Armor("Leather", 6);
 			this.Name = name;
 			this.Health = health;
@@ -159,6 +161,7 @@ namespace DungeonMaster.Data
 			ImageLocation = playerImage;
 			BackupColorCode = "#FF00FF";
 			Status = Status.Alive;
+			PlayersInventory = new Inventory();
 		}
 
 		/// <summary>

@@ -75,10 +75,10 @@ namespace DungeonMaster.Data
 		/// <param name="baseDamage">Damage of the weapon.</param>
 		/// <param name="dice">Dice it uses.</param>
 		/// <param name="range">What effective range the weapon has.</param>
-		public Weapon(string name, int baseDamage, Dice dice, double range)
+		public Weapon(string name, Dice dice, double range, WeaponType weaponType)
 		{
 			this.Name = name;
-			this.BaseDamage = baseDamage;
+			//this.BaseDamage = baseDamage;
 			this.DiceUsed = dice;
 			this.Range = range;
 		}
@@ -92,10 +92,10 @@ namespace DungeonMaster.Data
 		/// <param name="dice">Dice it uses.</param>
 		/// <param name="range">What effective range the weapon has.</param>
 		/// <param name="damageTypes">What type of damage the weapon does.</param>
-		public Weapon(string name, int baseDamage, Dice dice, double range, Effect damageTypes, bool rangedWeapon)
+		public Weapon(string name, Dice dice, double range, Effect damageTypes, bool rangedWeapon, WeaponType weaponType)
 		{
 			this.Name = name;
-			this.BaseDamage = baseDamage;
+			//this.BaseDamage = baseDamage;
 			this.DiceUsed = dice;
 			this.Range = range;
 			this.DamageType = damageTypes;
@@ -147,8 +147,8 @@ namespace DungeonMaster.Data
 					return new AttackReport
 					{
 						DiceRollReport = dieRollReport,
-						TotalDamageDealt = BaseDamage + dieRoll,
-						WeaponBaseDamage = BaseDamage,
+						TotalDamageDealt = dieRoll,
+						WeaponBaseDamage = 0,
 						DieUsed = DiceUsed,
 						DamageType = damageType						
 					};
@@ -157,8 +157,8 @@ namespace DungeonMaster.Data
 			// If we could not parse the Die, or the Die was invalid, return just base damage.
 			return new AttackReport 
 			{ 
-				TotalDamageDealt = BaseDamage, 
-				WeaponBaseDamage = BaseDamage, 
+				TotalDamageDealt = 0, 
+				WeaponBaseDamage = 0, 
 				DieUsed = DiceUsed 
 			};
 		}

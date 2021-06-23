@@ -104,7 +104,7 @@
     /// </summary>
     public void SetupCharacters()
     {
-        character1.ActiveWeapon = new Weapon("Long sword", 20, Dice.D8, 2);
+        character1.ActiveWeapon = new Weapon("Long sword", Dice.D8, 2, WeaponType.TwoHanded);
 
         character2.ActiveSpell = new HealingSpell("invigoration", SpellTypes.Healing, 20, Dice.D6, 3, 20);
         character2.CharacterStats = new CharacterStats(3, 4, 5, 8, 4, 3);
