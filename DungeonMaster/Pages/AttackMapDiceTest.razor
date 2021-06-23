@@ -17,8 +17,8 @@
 <div class="row" style="margin-left: 5px; margin-top: 5px">
     <div class="overflow-auto" style="max-height: 50%; min-width: 50%; max-width: 50%; bottom: 5px; min-height: 50%;">
         <div style="position: relative" >
-            <div style="position:absolute;left:0;top:0;z-index:1; width:40%"><BECanvas Width="@canvasWidth" Height="@canvasHeight" @ref="_canvasGrid"></BECanvas></div>
-            <div style="position:absolute;left:0;top:0;z-index:0; width:40%"><BECanvas Width="@canvasWidth" Height="@canvasHeight" @ref="_canvasReference"></BECanvas></div>
+            <div style="position:absolute;left:0;top:0;z-index:1;"><BECanvas Width="@canvasWidth" Height="@canvasHeight" @ref="_canvasGrid"></BECanvas></div>
+            <div style="position:absolute;left:0;top:0;z-index:0;"><BECanvas Width="@canvasWidth" Height="@canvasHeight" @ref="_canvasReference"></BECanvas></div>
         </div>
     </div>
 
@@ -359,6 +359,7 @@ Render With Grid:
                 case "magicAttack":
                     break;
                 case "magicHeal":
+                    report = gameTurn.Game.SpellHealAttempt(gameTurn.CurrentCharacter, character);
                     break;
                 default:
                     break;
@@ -420,17 +421,17 @@ Render With Grid:
             char1Image = character.ImageLocation;
             character.CharacterStats = statsInventory;
             character.ActiveSpell = healSpell;
-            game.AddCharacter(character, 1, 1);
+            game.AddCharacter(character, 0, 0);
 
             statsInventory = new CharacterStats(10, 11, 6, 12, 10, 7);
             character = new Character("Dustin", 100, 2, "fighter");
             character.ImageLocation = "/images/char2.png";
             character.CharacterStats = statsInventory;
-            game.AddCharacter(character, 12, 12);
+            game.AddCharacter(character, 0, 4);
 
             character = new Character("Gavin", 100, 2, "wizard");
             character.ImageLocation = "/images/char2.png";
-            game.AddCharacter(character, 30, 10);
+            game.AddCharacter(character, 34, 0);
 
             boardImage = game.Gameboard.ImageLocation;
 
