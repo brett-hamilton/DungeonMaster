@@ -17,6 +17,15 @@
 
 Render With Grid: <input type="checkbox" @onchange="eventArgs => { Render((bool)eventArgs.Value); }">
 <button @onclick="eventArgs => { Render(); }">REDRAW</button>
+<button @onclick="eventArgs => { MoveDirection(CardinalDirection.S); }">MoveChar1South</button>
+<button @onclick="eventArgs => { MoveDirection(CardinalDirection.N); }">MoveChar1North</button>
+<button @onclick="eventArgs => { MoveDirection(CardinalDirection.W); }">MoveChar1West</button>
+<button @onclick="eventArgs => { MoveDirection(CardinalDirection.E); }">MoveChar1East</button>
+<button @onclick="eventArgs => { MoveDirection(CardinalDirection.NE); }">MoveChar1NORTHEAST</button>
+<button @onclick="eventArgs => { MoveDirection(CardinalDirection.SE); }">MoveChar1SOUTHEAST</button>
+<button @onclick="eventArgs => { MoveDirection(CardinalDirection.NW); }">MoveChar1NORTHWEST</button>
+<button @onclick="eventArgs => { MoveDirection(CardinalDirection.SW); }">MoveChar1SOUTHWEST</button>
+
 
 
 
@@ -35,6 +44,12 @@ Render With Grid: <input type="checkbox" @onchange="eventArgs => { Render((bool)
         </ul>
     </div>
 </div>
+
+
+
+
+
+
 
 @code {
     private List<Character> characterList = new List<Character>();  //local character list for the display list
@@ -170,5 +185,12 @@ Render With Grid: <input type="checkbox" @onchange="eventArgs => { Render((bool)
                 }
             }
         }
+    }
+
+    public void MoveDirection(CardinalDirection direction)
+    {
+        var result = game.CharacterMove(character1, direction);
+        Console.WriteLine(result);
+        Render();
     }
 }

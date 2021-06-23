@@ -77,7 +77,7 @@ namespace DungeonMaster.Data
             {
                 for (int j = 0; j < Columns; j++)
                 {
-                    if (drawable == Drawables[i, j])
+                    if (drawable == Drawables[j, i])
                     {
                         coordinateToReturn = new Coordinate() { Row = i, Column = j };
                         return coordinateToReturn;
@@ -252,6 +252,85 @@ namespace DungeonMaster.Data
             double distance = Math.Sqrt(((rowDifference * rowDifference) + (colDifference * colDifference)));
 
             return distance;
+        }
+
+        /// <summary>
+        /// Gets the new coordinate.
+        /// </summary>
+        /// <param name="currentPosition">The current position of the object in the gameboard.</param>
+        /// <param name="direction">The direction to move.</param>
+        /// <returns></returns>
+        public Coordinate GetNewCoordinate(Coordinate currentPosition, CardinalDirection direction) 
+        {
+            var newCoordinate = new Coordinate();
+
+            var firstCharacterInDirection = direction.ToString()[0];
+
+            if (firstCharacterInDirection.Equals('N'))
+            {
+                newCoordinate.Row = currentPosition.Row - 1;
+            }
+            else if (firstCharacterInDirection.Equals('S'))
+            {
+                newCoordinate.Row = currentPosition.Row + 1;
+            }
+            else 
+            {
+                newCoordinate.Row = currentPosition.Row;
+                if(direction.ToString().Contains("E"))
+                {
+                    newCoordinate.Column = currentPosition.Column + 1;
+                }
+                else
+                {
+                    newCoordinate.Column = currentPosition.Column - 1;
+                }
+                return newCoordinate;
+            }
+
+
+            if (direction.ToString().Contains("E"))
+            {
+                newCoordinate.Column = currentPosition.Column + 1;
+            }
+            else if (direction.ToString().Contains("W"))
+            {
+                newCoordinate.Column = currentPosition.Column - 1;
+            }
+            else 
+            {
+                newCoordinate.Column = currentPosition.Column;
+            }
+
+            return newCoordinate;
+        }
+
+        public string Move(Drawable objectToMove, Coordinate currentCoordinate, Coordinate newCoordinate) 
+        {
+            // Validate Coords
+            var x = newCoordinate.Column;
+            var y = newCoordinate.Row;
+            Console.WriteLine($"x: {x}, y: {y}");
+            if (x >= Columns || x < 0)
+            {
+                return "Coordinate was out of bounds: Column";
+            }
+
+            if (y < 0 || y >= Rows) 
+            {
+                return "Coordinate was out of bounds: Row";
+            }
+            // Validate not occupied
+            if (!(Drawables[x,y] == null))
+            {
+                return "Space is occupied already";
+            }
+            else
+            {
+                Drawables[currentCoordinate.Column, currentCoordinate.Row] = null;
+                Drawables[x, y] = objectToMove;
+                return $"Character moved to {x + 1}, {y + 1}";
+            }
         }
     }
 }

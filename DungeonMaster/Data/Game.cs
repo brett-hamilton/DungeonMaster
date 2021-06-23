@@ -227,5 +227,16 @@ namespace DungeonMaster.Data
 
 			return outputString;
 		}
+
+		public string CharacterMove(Drawable character, CardinalDirection direction) 
+		{
+			// Once implemented -> check movement points.
+			var currentPosition = Gameboard.GetCoordinate(character);
+			// Get new Coords
+			var newCoords = Gameboard.GetNewCoordinate(currentPosition, direction);
+			// Call Move
+
+			return Gameboard.Move(character, currentPosition, newCoords);
+		}
 	}
 }
