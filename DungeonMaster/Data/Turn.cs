@@ -46,7 +46,7 @@ namespace DungeonMaster.Data
         public Game Game { get; set; }
 
         /// <summary>
-        /// Default constructor to create an emtpy turn.
+        /// Default constructor to create an empty turn.
         /// </summary>
         public Turn() 
         { 
