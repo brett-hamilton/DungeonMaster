@@ -13,47 +13,69 @@
 <img id="board" @ref="boardImg" width="1920" height="1080" style="display:none" src="@boardImage" />
 <img id="char1" @ref="character1img" width="22" height="22" style="display:none" src="@char1Image" />
 
-Render With Grid:
-<input title="Render With Grid"type="checkbox" @onchange="async eventArgs => { await Render((bool)eventArgs.Value); }">
-<button @onclick="async eventArgs => { await Render(); }">REDRAW</button>
 
-<div class="row">
-    <div style="margin-right: 10px"><BECanvas Width="@canvasWidth" Height="@canvasHeight" @ref="_canvasReference"></BECanvas></div>
+<div class="row" style="margin-left: 5px; margin-top: 5px">
+    <div id="gameLog" class="row" style="outline: 3px solid blue; max-height: 60%; min-width: 50%; max-width: 50%; bottom: 5px; min-height: 60%;">
+        <div style="border-right: 3px solid blue" class="col-3">
+            <button style="margin-top:5px; margin-left: 5px" class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
+        </div>
+        @* Use overflow-auto and max/min height to force game log to be scrollable and at set size. Based on Microsoft SignalR example. *@
+        <div class="col-19 overflow-auto" style="max-height: 300px; min-height: 300px">
+            <ul class="list-group" id="gameLog">
+                @* Iterate through the list of strings in reverse order, so newest message is at top. *@
+                @for (int i = (GameLog.Count - 1); i >= 0; i--)
+                {
+                    if (i == (GameLog.Count - 1))
+                    {
+                        <li class="list-group-item list-group-item-primary">@GameLog[i]</li>
+                    }
+
+                    else
+                    {
+                        <li class="list-group-item list-group-item-secondary">@GameLog[i]</li>
+                    }
+                }
+
+            </ul>
+        </div>
+    </div>
+
     @if (gameStarted)
     {
-        <div id="controls" style="padding: 15px; width:33%; border: 3px solid blue">
+        <div id="controls" style="padding: 15px; width: 35%; border: 3px solid blue; margin-left: 30px; max-height: 60%; min-height: 60%">
 
             @*Dice Modal Controls *@
             <div id="diceModals">
                 <DungeonMaster.Pages.Components.DiceModal @ref="DiceModal" pageContainingModal="AttackMapDiceTest"></DungeonMaster.Pages.Components.DiceModal>
                 <DungeonMaster.Pages.Components.D20ModifierModal @ref="D20ModifierModal" pageContainingModal="AttackMapDiceTest"></DungeonMaster.Pages.Components.D20ModifierModal>
             </div>
-            <div style="padding: 10px" class="row" id="diceModalControls">
+            <div style="padding: 10px" class="row horizontal" id="diceModalControls">
                 <button class="btn btn-primary" style="margin-right:5px" @onclick="() => DiceModal.OpenModal()"> Roll Dice</button>
-                <button class="btn btn-primary" @onclick="() => D20ModifierModal.OpenModal()"> Roll D20</button>
+                <button class="btn btn-primary" style="margin-right:5px" @onclick="() => D20ModifierModal.OpenModal()"> Roll D20</button>
             </div>
-            <br />
+            <hr />
 
             @* Character Controls *@
             <div style="padding: 10px" class="row" id="primaryButtonRow">
+
                 @if (gameTurn.WeaponAttackPossible)
                 {
-                    <button class="btn btn-primary" style="margin-right:5px" @onclick="@( click => Target("weaponAttack") )">Attack With Weapon</button>
+                    <button class="btn btn-primary" style="margin-right:5px; margin-bottom: 5px" @onclick="@( click => Target("weaponAttack") )">Attack With Weapon</button>
                 }
 
                 @if (gameTurn.MagicAttackPossible)
                 {
-                    <button class="btn btn-primary" style="margin-right:5px" @onclick="@( click => Target("magicAttack") )"> Damage Spell </button>
+                    <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicAttack") )"> Damage Spell </button>
                 }
 
                 @if (gameTurn.MovePossible)
                 {
-                    <button class="btn btn-primary" style="margin-right:5px" @onclick="@( click => Target("move") )"> Move </button>
+                    <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("move") )"> Move </button>
                 }
 
                 @if (gameTurn.MagicHealPossible)
                 {
-                    <button class="btn btn-primary" style="margin-right:5px" @onclick="@( click => Target("magicHeal") )"> HealingSpell </button>
+                    <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicHeal") )"> Healing Spell </button>
                 }
             </div><br />
             <div style="padding: 10px" id="secondaryButtonRow">
@@ -63,32 +85,32 @@ Render With Grid:
 
                         foreach (var character in gameTurn.OtherCharactersInOrder)
                         {
-                            <button class="btn btn-secondary" style="margin-right:5px" @onclick="@( click => TakeAction(character) )">@character.Name</button>
+                            <button class="btn btn-secondary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => TakeAction(character) )">@character.Name</button>
                         }
                         @if (actionToTake.Equals("magicHeal"))
                         {
-                            <button class="btn btn-secondary" style="margin-right:5px" @onclick="@( click => TakeAction(gameTurn.CurrentCharacter) )">@gameTurn.CurrentCharacter.Name</button>
+                            <button class="btn btn-secondary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => TakeAction(gameTurn.CurrentCharacter) )">@gameTurn.CurrentCharacter.Name</button>
                         }
-                        <button class="btn btn-info" @onclick="Cancel">Cancel</button>
+                        <button class="btn btn-info" style="margin-right: 5px; margin-bottom: 5px" @onclick="Cancel">Cancel</button>
                     }
                 </div>
                 @if (showMovementButtons)
                 {
                     <div id="movementButtonsRow">
                         <div class="row">
-                            <button class="btn btn-secondary col-sm-3" style="margin-right:5px; margin-bottom:5px">Northwest</button>
-                            <button class="btn btn-secondary col-sm-3" style="margin-right: 5px; margin-bottom: 5px">North</button>
-                            <button class="btn btn-secondary col-sm-3" style="margin-right: 5px; margin-bottom: 5px">Northeast</button>
+                            <button class="btn btn-secondary col-sm-3" @onclick="click=> Move(gameTurn.CurrentCharacter, CardinalDirection.NW)" style="margin-right:5px; margin-bottom:5px">Northwest</button>
+                            <button class="btn btn-secondary col-sm-3" @onclick="click=> Move(gameTurn.CurrentCharacter, CardinalDirection.N)" style="margin-right: 5px; margin-bottom: 5px">North</button>
+                            <button class="btn btn-secondary col-sm-3" @onclick="click=> Move(gameTurn.CurrentCharacter, CardinalDirection.NE)" style="margin-right: 5px; margin-bottom: 5px">Northeast</button>
                         </div>
                         <div class="row">
-                            <button class="btn btn-secondary col-sm-3" style="margin-right: 5px; margin-bottom: 5px">West</button>
+                            <button class="btn btn-secondary col-sm-3" @onclick="click=> Move(gameTurn.CurrentCharacter, CardinalDirection.W)" style="margin-right: 5px; margin-bottom: 5px">West</button>
                             <button class="btn btn-info col-sm-3" @onclick="Cancel" style="margin-right: 5px; margin-bottom: 5px">Cancel</button>
-                            <button class="btn btn-secondary col-sm-3" style="margin-right: 5px; margin-bottom: 5px">East</button>
+                            <button class="btn btn-secondary col-sm-3" @onclick="click=> Move(gameTurn.CurrentCharacter, CardinalDirection.E)" style="margin-right: 5px; margin-bottom: 5px">East</button>
                         </div>
                         <div class="row">
-                            <button class="btn btn-secondary col-sm-3" style="margin-right: 5px; margin-bottom: 5px">Southwest</button>
-                            <button class="btn btn-secondary col-sm-3" style="margin-right: 5px; margin-bottom: 5px">South</button>
-                            <button class="btn btn-secondary col-sm-3" style="margin-right: 5px; margin-bottom: 5px">Southeast</button>
+                            <button class="btn btn-secondary col-sm-3" @onclick="click=> Move(gameTurn.CurrentCharacter, CardinalDirection.SW)" style="margin-right: 5px; margin-bottom: 5px">Southwest</button>
+                            <button class="btn btn-secondary col-sm-3" @onclick="click=> Move(gameTurn.CurrentCharacter, CardinalDirection.S)" style="margin-right: 5px; margin-bottom: 5px">South</button>
+                            <button class="btn btn-secondary col-sm-3" @onclick="click=> Move(gameTurn.CurrentCharacter, CardinalDirection.SE)" style="margin-right: 5px; margin-bottom: 5px">Southeast</button>
                         </div>
                     </div>
                 }
@@ -96,7 +118,7 @@ Render With Grid:
             <br />
             <br />
         </div>
-        <div id="playerInfo" style="margin-left: 10px; padding: 15px; width:17%; border: 3px solid blue">
+        <div id="playerInfo" style="margin-left: 10px; padding: 15px; width: 13%; border: 3px solid blue;">
             <strong>CHARACTER</strong>
             <div>
                 Character: @gameTurn.CurrentCharacter.Name
@@ -134,39 +156,26 @@ Render With Grid:
                 Wisdom: @gameTurn.CurrentCharacter.CharacterStats.Wisdom
                 <br />
             </div>
+            <hr />
             <button class="btn btn-danger" @onclick="EndTurn">End Your Turn</button>
         </div>
     }
 </div>
 <br />
 
-@* Combat Log *@
-<div id="gameLog" class="row" style="outline: 3px solid blue; max-height: 200px; min-height: 200px">
-    <div style="border-right: 3px solid blue" class="col-1">
-        <button style="margin-top:5px; margin-left: 5px" class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
-    </div>
-    @* Use overflow-auto and max/min height to force game log to be scrollable and at set size. Based on Microsoft SignalR example. *@
-    <div class="col-11 overflow-auto" style="max-height: 200px; min-height: 200px">
-        <ul class="list-group" id="gameLog">
-            @* Iterate through the list of strings in reverse order, so newest message is at top. *@
-            @for (int i = (GameLog.Count - 1); i >= 0; i--)
-            {
-                if (i == (GameLog.Count - 1))
-                {
-                    <li class="list-group-item list-group-item-primary">@GameLog[i]</li>
-                }
 
-                else
-                {
-                    <li class="list-group-item list-group-item-secondary">@GameLog[i]</li>
-                }
-            }
 
-        </ul>
+Render With Grid:
+<input title="Render With Grid" type="checkbox" @onchange="async eventArgs => { await Render((bool)eventArgs.Value); }">
+<button @onclick="async eventArgs => { await Render(); }">REDRAW</button>
+<div class="row">
+    <div style="position: relative">
+        <div style="position:absolute;left:0;top:0;z-index:1; width:40%"><BECanvas Width="@canvasWidth" Height="@canvasHeight" @ref="_canvasGrid"></BECanvas></div>
+        <div style="position:absolute;left:0;top:0;z-index:0; width:40%"><BECanvas Width="@canvasWidth" Height="@canvasHeight" @ref="_canvasReference"></BECanvas></div>
     </div>
+
 </div>
-
-
+<br />
 
 @code {
     /// <summary>
@@ -229,7 +238,8 @@ Render With Grid:
     /// </summary>
     private Canvas2DContext _context;                               //Blazor version of javascript _context
     protected BECanvasComponent _canvasReference;                   //Canvas reference for actually calling functions against;
-    private static long scaleFactor = 15;                         //For smaller maps, this scales every object by this factor.
+    protected BECanvasComponent _canvasGrid;                        //Canvas reference for actually calling functions against;
+    private static long scaleFactor = 20;                         //For smaller maps, this scales every object by this factor.
     private string backgroundColor = "#009900";                     //Sets the background for the entire canvas. Ideally we would draw the background sprites above this.
     private ElementReference boardImg;
     private ElementReference character1img;
@@ -346,14 +356,39 @@ Render With Grid:
                 break;
             case "magicHeal":
                 break;
-            case "move":
-                break;
             default:
                 break;
         }
 
-        // Report the output and reset all the buttons.
-        GameLog.Add(report);
+        ReportOutcome(report);
+    }
+
+    /// <summary>
+    /// Method to move a drawable in a cardinal direction
+    /// </summary>
+    /// <param name="drawable> Drawable to be moved.</param>
+    /// <param name="direction"> Direction to move the drawable.</param>
+    public async Task Move(Drawable drawable, CardinalDirection direction)
+    {
+        var report = gameTurn.Game.CharacterMove(drawable, direction);
+
+        await Render();
+
+        ReportOutcome(report);
+
+    }
+
+    /// <summary>
+    /// Method to report to the user the output of the action taken.
+    /// </summary>
+    /// <param name="report">Report of the action taken to be reported to user.</param>
+    public void ReportOutcome(String report)
+    {
+        if (report != null)
+        {
+            GameLog.Add(report);
+        }
+
         showMovementButtons = false;
         showTargetButtons = false;
         actionToTake = null;
@@ -374,14 +409,19 @@ Render With Grid:
             GameName = "Combination Test Game"
         };
         var statsInventory = new CharacterStats(11, 12, 8, 15, 12, 6);
+        var healSpell = new HealingSpell("Cure Wounds", SpellTypes.Healing, 1, Dice.D4, 2, 100);
 
         var character = new Character("Jordan", 100, 2, "ranger");
         character.ImageLocation = "/images/char1.png";
         char1Image = character.ImageLocation;
+        character.CharacterStats = statsInventory;
+        character.ActiveSpell = healSpell;
         game.AddCharacter(character, 1, 1);
 
+        statsInventory = new CharacterStats(10, 11, 6, 12, 10, 7);
         character = new Character("Dustin", 100, 2, "fighter");
         character.ImageLocation = "/images/char2.png";
+        character.CharacterStats = statsInventory;
         game.AddCharacter(character, 12, 12);
 
         character = new Character("Gavin", 100, 2, "wizard");
@@ -426,7 +466,7 @@ Render With Grid:
     /// </summary>
     /// <param name="scaledRows">Board rows.</param>
     /// <param name="scaledColumns">Board columns.</param>
-    protected async Task BackupRenderBoard(double scaledRows, double scaledColumns)
+    protected async Task BackupRenderBoard(double scaledColumns, double scaledRows)
     {
         await this._context.SetFillStyleAsync(backgroundColor);
         await this._context.FillRectAsync(0, 0, scaledColumns, scaledRows);
@@ -439,7 +479,7 @@ Render With Grid:
     /// <param name="scaledRows">Board rows.</param>
     /// <param name="scaledColumns">Board columns.</param>
     /// <param name="scaleFactor">Scale.</param>
-    protected async Task RenderBoardWithImage(ElementReference elementReference, double scaledRows, double scaledColumns, double scaleFactor)
+    protected async Task RenderBoardWithImage(ElementReference elementReference, double scaledColumns, double scaledRows, double scaleFactor)
     {
         await this._context.DrawImageAsync(boardImg, 0, 0, scaledColumns, scaledRows);
     }
@@ -459,13 +499,13 @@ Render With Grid:
 
         await this._context.SetStrokeStyleAsync("#FFFFFF");
 
-        for (int i = 0; i < gameTurn.Game.Gameboard.Rows; i++)
+        for (int i = 0; i < gameTurn.Game.Gameboard.Columns; i++)
         {
-            for (int j = 0; j < gameTurn.Game.Gameboard.Columns; j++)
+            for (int j = 0; j < gameTurn.Game.Gameboard.Rows; j++)
             {
                 double scaledRow = i * scaleFactor;
                 double scaledColumn = j * scaleFactor;
-                Drawable drawable = gameTurn.Game.Gameboard.Drawables[i, j];
+                Drawable drawable = gameTurn.Game.Gameboard.Drawables[j, i];
                 if (drawable != null)
                 {
                     char1Image = drawable.ImageLocation;
