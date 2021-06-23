@@ -130,9 +130,11 @@ Render With Grid:
                 Charisma: @gameTurn.CurrentCharacter.CharacterStats.Charisma
                 <br />
                 Constitution: @gameTurn.CurrentCharacter.CharacterStats.Constitution
+                <br />
                 Wisdom: @gameTurn.CurrentCharacter.CharacterStats.Wisdom
                 <br />
             </div>
+            <button class="btn btn-danger" @onclick="EndTurn">End Your Turn</button>
         </div>
     }
 </div>
@@ -283,6 +285,16 @@ Render With Grid:
     }
 
     /// <summary>
+    /// Method to end the turn for the current player.
+    /// </summary>
+    public void EndTurn()
+    {
+        Cancel();
+        gameTurn.UpdateTurn();
+        StateHasChanged();
+    }
+
+    /// <summary>
     /// Method to set the action to use for our next set up bottons, also display the correct buttons
     /// depending upon what the user requested.
     /// </summary>
@@ -372,7 +384,7 @@ Render With Grid:
         character.ImageLocation = "/images/char2.png";
         game.AddCharacter(character, 12, 12);
 
-        character = new Character("Gavin", 100, 2, "fighter");
+        character = new Character("Gavin", 100, 2, "wizard");
         character.ImageLocation = "/images/char2.png";
         game.AddCharacter(character, 30, 10);
 
