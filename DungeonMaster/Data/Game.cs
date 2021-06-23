@@ -42,9 +42,9 @@ namespace DungeonMaster.Data
 		/// </summary>
 		/// <param name="rows">Number of rows for the game board.</param>
 		/// <param name="columns">Number of columns for the game board.</param>
-		public Game(int rows, int columns)
+		public Game(int columns, int rows)
 		{
-			Gameboard = new Gameboard(rows, columns);
+			Gameboard = new Gameboard(columns, rows);
 			CharacterList = new List<Character>();
 		}
 
@@ -109,11 +109,11 @@ namespace DungeonMaster.Data
 		/// <param name="row">Row to place character in.</param>
 		/// <param name="col">Column to place character in.</param>
 		/// <returns>Boolean representing if character was placed into the gameboard.</returns>
-		public Boolean AddCharacter(Character character, int row, int column)
+		public bool AddCharacter(Character character, int column, int row)
         {
-			if (Gameboard.AddDrawable (character, row, column))
+			if (Gameboard.AddDrawable(character, column, row))
 			{
-				CharacterList.Add (character);
+				CharacterList.Add(character);
 				return true;
 			}
 			else
@@ -226,6 +226,24 @@ namespace DungeonMaster.Data
 			}
 
 			return outputString;
+		}
+
+
+        /// <summary>
+        /// Attempts to move the drawable (character) in the CardinalDirection (direction)
+        /// </summary>
+        /// <param name="character">The character.</param>
+        /// <param name="direction">The direction.</param>
+        /// <returns>Returns a string reporting the outcome</returns>
+	    public string CharacterMove(Drawable character, CardinalDirection direction) 
+		{
+			// Once implemented -> check movement points.
+			var currentPosition = Gameboard.GetCoordinate(character);
+			// Get new Coords
+			var newCoords = Gameboard.GetNewCoordinate(currentPosition, direction);
+			// Call Move
+
+			return Gameboard.Move(character, currentPosition, newCoords);
 		}
 	}
 }

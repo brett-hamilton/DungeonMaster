@@ -1,4 +1,4 @@
-﻿@page "/CanvasTestWithImages"
+﻿@page "/CanvasMultilayerDrawing"
 
 @using DungeonMaster.Data
 @using Microsoft.AspNetCore.Components
@@ -15,24 +15,20 @@
 
 
 
-Render With Grid: <input type="checkbox" @onchange="eventArgs => { Render((bool)eventArgs.Value); }">
+Render With Grid:
+<input type="checkbox" @onchange="eventArgs => { RenderGridLayer((bool)eventArgs.Value); }">
 <button @onclick="eventArgs => { Render(); }">REDRAW</button>
-<button @onclick="eventArgs => { MoveDirection(CardinalDirection.S); }">MoveChar1South</button>
-<button @onclick="eventArgs => { MoveDirection(CardinalDirection.N); }">MoveChar1North</button>
-<button @onclick="eventArgs => { MoveDirection(CardinalDirection.W); }">MoveChar1West</button>
-<button @onclick="eventArgs => { MoveDirection(CardinalDirection.E); }">MoveChar1East</button>
-<button @onclick="eventArgs => { MoveDirection(CardinalDirection.NE); }">MoveChar1NORTHEAST</button>
-<button @onclick="eventArgs => { MoveDirection(CardinalDirection.SE); }">MoveChar1SOUTHEAST</button>
-<button @onclick="eventArgs => { MoveDirection(CardinalDirection.NW); }">MoveChar1NORTHWEST</button>
-<button @onclick="eventArgs => { MoveDirection(CardinalDirection.SW); }">MoveChar1SOUTHWEST</button>
 
 
 
+<div style="position: relative">
+    <div style="position:absolute;left:0;top:0;z-index:1;"><BECanvas Width="@canvasWidth" Height="@canvasHeight" @ref="_canvasGrid"></BECanvas></div>
+    <div style="position:absolute;left:0;top:0;z-index:0;"><BECanvas Width="@canvasWidth" Height="@canvasHeight" @ref="_canvasReference"></BECanvas></div>
+</div>
 
-<div><BECanvas Width="1500" Height="750" @ref="_canvasReference"></BECanvas></div>
 <br />
 <p>Character List:</p>
-<div class="row" style="outline: 0px solid blue; outline-offset: 8px; max-height: 200px; min-height: 100px; width: 500px">
+<div class="row" style="visibility: hidden; outline: 0px solid blue; outline-offset: 8px; max-height: 200px; min-height: 100px; width: 500px; position: absolute; left: @canvasWidth;">
     @* Use overflow-auto and max/min height to force game log to be scrollable and at set size. *@
     <div class="col-10 overflow-auto" style="max-height: 200px; min-height: 100px; width: 500px">
         <ul class="list-group " id="charList">
@@ -45,16 +41,12 @@ Render With Grid: <input type="checkbox" @onchange="eventArgs => { Render((bool)
     </div>
 </div>
 
-
-
-
-
-
-
 @code {
     private List<Character> characterList = new List<Character>();  //local character list for the display list
     private Canvas2DContext _context;                               //Blazor version of javascript _context
+    private Canvas2DContext _gridContext;                               //Blazor version of javascript _context
     protected BECanvasComponent _canvasReference;                   //Canvas reference for actually calling functions against;
+    protected BECanvasComponent _canvasGrid;                        //Canvas reference for actually calling functions against;
     public Game game = null;                                        //Give the page a game to display. Null until startGame();
     private Character character1 = new Character();                 //Generate characters to display. This step will be changed when a real game is generated or loaded.
     private Character character2 = new Character();
@@ -65,6 +57,8 @@ Render With Grid: <input type="checkbox" @onchange="eventArgs => { Render((bool)
     private ElementReference boardImg;
     private ElementReference character1img;
     private ElementReference character2img;
+    private long canvasWidth = 1000;
+    private long canvasHeight = 1000;
 
 
     private string boardImage = string.Empty;
@@ -84,7 +78,7 @@ Render With Grid: <input type="checkbox" @onchange="eventArgs => { Render((bool)
         game.AddCharacter(character1, 0, 0);                         //Add characters at locations
         game.AddCharacter(character2, 20, 20);
         game.AddCharacter(character3, 49, 20);
-        game.AddCharacter(character4, 20, 21);
+        game.AddCharacter(character4, 24, 20);
         characterList = game.CharacterList;
         boardImage = game.Gameboard.ImageLocation;
         char1Image = character1.ImageLocation;
@@ -100,8 +94,11 @@ Render With Grid: <input type="checkbox" @onchange="eventArgs => { Render((bool)
         if (firstRender)
         {
             startGame();                                                      //Initialize the game prior to trying to draw it
+            canvasHeight = (long) game.Gameboard.Rows * (long) scaleFactor;
+            canvasWidth = (long) game.Gameboard.Columns * (long) scaleFactor;
             this._context = await this._canvasReference.CreateCanvas2DAsync();
-            await Render(gridInput);
+            this._gridContext = await this._canvasGrid.CreateCanvas2DAsync();
+            await Render();
         }
     }
 
@@ -151,13 +148,13 @@ Render With Grid: <input type="checkbox" @onchange="eventArgs => { Render((bool)
 
         await this._context.SetStrokeStyleAsync("#FFFFFF");
 
-        for (int i = 0; i < game.Gameboard.Rows; i++)
+        for (int i = 0; i < game.Gameboard.Columns; i++)
         {
-            for (int j = 0; j < game.Gameboard.Columns; j++)
+            for (int j = 0; j < game.Gameboard.Rows; j++)
             {
-                double scaledRow = i * scaleFactor;
-                double scaledColumn = j * scaleFactor;
-                Drawable drawable = game.Gameboard.Drawables[j, i];
+                double scaledColumn = i * scaleFactor;
+                double scaledRow = j * scaleFactor;
+                Drawable drawable = game.Gameboard.Drawables[i, j];
                 if (drawable != null)
                 {
                     char1Image = drawable.ImageLocation;
@@ -176,21 +173,38 @@ Render With Grid: <input type="checkbox" @onchange="eventArgs => { Render((bool)
                         await this._context.FillRectAsync(scaledColumn, scaledRow, scaleFactor, scaleFactor);
                     }
                 }
-                else
-                {
-                    if(grid)
-                    {
-                        await this._context.StrokeRectAsync(scaledColumn, scaledRow, scaleFactor, scaleFactor);
-                    }
-                }
             }
         }
     }
 
-    public void MoveDirection(CardinalDirection direction)
+    protected async Task RenderGridLayer(bool showGrid)
     {
-        var result = game.CharacterMove(character1, direction);
-        Console.WriteLine(result);
-        Render();
+        double scaledRows = scaleFactor * game.Gameboard.Rows;                          //Scale the row count by our scale factor
+        double scaledColumns = scaleFactor * game.Gameboard.Columns;                    //Scale the column count by our scale factor
+        await RenderGridLayer(showGrid, scaledColumns, scaledRows);
+    }
+
+    protected async Task RenderGridLayer(bool showGrid, double scaledColumns, double scaledRows)
+    {
+        base.StateHasChanged();
+        await this._gridContext.SetStrokeStyleAsync("#777777");
+        if (!showGrid)
+        {
+            await this._gridContext.ClearRectAsync(0, 0, scaledColumns, scaledRows);
+            await this._gridContext.BeginPathAsync();
+        }
+        else
+        {
+            for (int i = 0; i < game.Gameboard.Rows; i++)
+            {
+                for (int j = 0; j < game.Gameboard.Columns; j++)
+                {
+                    if((( i % 2 == 0 )&&( j % 2 == 1))||(( i % 2 == 1)&&( j % 2 == 0)))         //If ( I is even, and J is odd) OR ( I is odd, and J is even) draw the square. This reduces our calls of stroke async to half as many.
+                    {
+                        await this._gridContext.StrokeRectAsync(j * scaleFactor, i * scaleFactor, scaleFactor, scaleFactor);
+                    }
+                }
+            }
+        }
     }
 }

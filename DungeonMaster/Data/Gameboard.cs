@@ -37,7 +37,7 @@ namespace DungeonMaster.Data
         {
             Rows = 40;
             Columns = 40;
-            Drawables = new Drawable[Rows, Columns];
+            Drawables = new Drawable[Columns, Rows];
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace DungeonMaster.Data
         /// </summary>
         /// <param name="rows">Number of rows for the gameboard.</param>
         /// <param name="columns">Number of columns for the gameboard.</param>
-        public Gameboard(int rows, int columns)
+        public Gameboard(int columns, int rows)
         {
             if (rows < 1)
             {
@@ -57,7 +57,7 @@ namespace DungeonMaster.Data
             }
             Rows = rows;
             Columns = columns;
-            Drawables = new Drawable[Rows, Columns];
+            Drawables = new Drawable[Columns, Rows];
             ImageLocation = "/images/tempmap.png";
         }
 
@@ -77,7 +77,7 @@ namespace DungeonMaster.Data
             {
                 for (int j = 0; j < Columns; j++)
                 {
-                    if (drawable == Drawables[i, j])
+                    if (drawable == Drawables[j, i])
                     {
                         coordinateToReturn = new Coordinate() { Row = i, Column = j };
                         return coordinateToReturn;
@@ -96,17 +96,17 @@ namespace DungeonMaster.Data
         /// <returns>
         ///     <c>true</c> if the item is added; otherwise, <c>false</c>.
         /// </returns>
-        public Boolean AddDrawable(Drawable drawable, int row, int column)
+        public bool AddDrawable(Drawable drawable, int column, int row)
         {
             if (row < Rows && column < Columns && row > -1 && column > -1)
             {
-                if (Drawables[row, column] != null)
+                if (Drawables[column, row] != null)
                 {
                     return false;
                 }
                 else
                 {
-                    Drawables[row, column] = drawable;
+                    Drawables[column, row] = drawable;
                 }
 
                 return true;
@@ -123,11 +123,11 @@ namespace DungeonMaster.Data
         /// <returns>
         ///   <c>true</c> if the specified row is occupied; otherwise, <c>false</c>.
         /// </returns>
-        public Boolean IsOccupied(int row, int column)
+        public Boolean IsOccupied(int column, int row)
         {
             if (row < Rows && column < Columns && row > -1 && column > -1)
             {
-                if (Drawables[row, column] != null)
+                if (Drawables[column, row] != null)
                 {
                     return true;
                 }
@@ -252,6 +252,91 @@ namespace DungeonMaster.Data
             double distance = Math.Sqrt(((rowDifference * rowDifference) + (colDifference * colDifference)));
 
             return distance;
+        }
+
+        /// <summary>
+        /// Gets the new coordinate.
+        /// </summary>
+        /// <param name="currentPosition">The current position of the object in the gameboard.</param>
+        /// <param name="direction">The direction to move.</param>
+        /// <returns></returns>
+        public Coordinate GetNewCoordinate(Coordinate currentPosition, CardinalDirection direction) 
+        {
+            var newCoordinate = new Coordinate();
+
+            var firstCharacterInDirection = direction.ToString()[0];
+
+            if (firstCharacterInDirection.Equals('N'))
+            {
+                newCoordinate.Row = currentPosition.Row - 1;
+            }
+            else if (firstCharacterInDirection.Equals('S'))
+            {
+                newCoordinate.Row = currentPosition.Row + 1;
+            }
+            else 
+            {
+                newCoordinate.Row = currentPosition.Row;
+                if(direction.ToString().Contains("E"))
+                {
+                    newCoordinate.Column = currentPosition.Column + 1;
+                }
+                else
+                {
+                    newCoordinate.Column = currentPosition.Column - 1;
+                }
+                return newCoordinate;
+            }
+
+
+            if (direction.ToString().Contains("E"))
+            {
+                newCoordinate.Column = currentPosition.Column + 1;
+            }
+            else if (direction.ToString().Contains("W"))
+            {
+                newCoordinate.Column = currentPosition.Column - 1;
+            }
+            else 
+            {
+                newCoordinate.Column = currentPosition.Column;
+            }
+
+            return newCoordinate;
+        }
+
+        /// <summary>
+        /// Moves the specified object to move.
+        /// </summary>
+        /// <param name="objectToMove">The object to move.</param>
+        /// <param name="currentCoordinate">The current coordinate.</param>
+        /// <param name="newCoordinate">The new coordinate.</param>
+        /// <returns>A string reporting the result of the move</returns>
+        public string Move(Drawable objectToMove, Coordinate currentCoordinate, Coordinate newCoordinate) 
+        {
+            // Validate Coords
+            var x = newCoordinate.Column;
+            var y = newCoordinate.Row;
+            if (x >= Columns || x < 0)
+            {
+                return "Coordinate was out of bounds: Column";
+            }
+
+            if (y < 0 || y >= Rows) 
+            {
+                return "Coordinate was out of bounds: Row";
+            }
+            // Validate not occupied
+            if (!(Drawables[x,y] == null))
+            {
+                return "Space is occupied already";
+            }
+            else
+            {
+                Drawables[currentCoordinate.Column, currentCoordinate.Row] = null;
+                Drawables[x, y] = objectToMove;
+                return $"Character moved to {x + 1}, {y + 1}";
+            }
         }
     }
 }
