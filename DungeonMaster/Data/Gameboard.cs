@@ -305,12 +305,18 @@ namespace DungeonMaster.Data
             return newCoordinate;
         }
 
+        /// <summary>
+        /// Moves the specified object to move.
+        /// </summary>
+        /// <param name="objectToMove">The object to move.</param>
+        /// <param name="currentCoordinate">The current coordinate.</param>
+        /// <param name="newCoordinate">The new coordinate.</param>
+        /// <returns>A string reporting the result of the move</returns>
         public string Move(Drawable objectToMove, Coordinate currentCoordinate, Coordinate newCoordinate) 
         {
             // Validate Coords
             var x = newCoordinate.Column;
             var y = newCoordinate.Row;
-            Console.WriteLine($"x: {x}, y: {y}");
             if (x >= Columns || x < 0)
             {
                 return "Coordinate was out of bounds: Column";

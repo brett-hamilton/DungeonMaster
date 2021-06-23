@@ -228,7 +228,14 @@ namespace DungeonMaster.Data
 			return outputString;
 		}
 
-		public string CharacterMove(Drawable character, CardinalDirection direction) 
+
+        /// <summary>
+        /// Attempts to move the drawable (character) in the CardinalDirection (direction)
+        /// </summary>
+        /// <param name="character">The character.</param>
+        /// <param name="direction">The direction.</param>
+        /// <returns>Returns a string reporting the outcome</returns>
+	    public string CharacterMove(Drawable character, CardinalDirection direction) 
 		{
 			// Once implemented -> check movement points.
 			var currentPosition = Gameboard.GetCoordinate(character);
