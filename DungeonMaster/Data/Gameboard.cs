@@ -37,7 +37,7 @@ namespace DungeonMaster.Data
         {
             Rows = 40;
             Columns = 40;
-            Drawables = new Drawable[Rows, Columns];
+            Drawables = new Drawable[Columns, Rows];
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace DungeonMaster.Data
         /// </summary>
         /// <param name="rows">Number of rows for the gameboard.</param>
         /// <param name="columns">Number of columns for the gameboard.</param>
-        public Gameboard(int rows, int columns)
+        public Gameboard(int columns, int rows)
         {
             if (rows < 1)
             {
@@ -57,7 +57,7 @@ namespace DungeonMaster.Data
             }
             Rows = rows;
             Columns = columns;
-            Drawables = new Drawable[Rows, Columns];
+            Drawables = new Drawable[Columns, Rows];
             ImageLocation = "/images/tempmap.png";
         }
 
@@ -96,17 +96,17 @@ namespace DungeonMaster.Data
         /// <returns>
         ///     <c>true</c> if the item is added; otherwise, <c>false</c>.
         /// </returns>
-        public Boolean AddDrawable(Drawable drawable, int row, int column)
+        public bool AddDrawable(Drawable drawable, int column, int row)
         {
             if (row < Rows && column < Columns && row > -1 && column > -1)
             {
-                if (Drawables[row, column] != null)
+                if (Drawables[column, row] != null)
                 {
                     return false;
                 }
                 else
                 {
-                    Drawables[row, column] = drawable;
+                    Drawables[column, row] = drawable;
                 }
 
                 return true;
@@ -123,11 +123,11 @@ namespace DungeonMaster.Data
         /// <returns>
         ///   <c>true</c> if the specified row is occupied; otherwise, <c>false</c>.
         /// </returns>
-        public Boolean IsOccupied(int row, int column)
+        public Boolean IsOccupied(int column, int row)
         {
             if (row < Rows && column < Columns && row > -1 && column > -1)
             {
-                if (Drawables[row, column] != null)
+                if (Drawables[column, row] != null)
                 {
                     return true;
                 }
