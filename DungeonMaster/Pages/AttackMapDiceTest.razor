@@ -281,15 +281,12 @@ Render With Grid:
         protected BECanvasComponent _drawableCanvas;                   //Canvas reference for actually calling functions against;
         protected BECanvasComponent _gridCanvas;                   //Canvas reference for actually calling functions against;
         private static long scaleFactor = 20;                         //For smaller maps, this scales every object by this factor.
-        private string backgroundColor = "#009900";                     //Sets the background for the entire canvas. Ideally we would draw the background sprites above this.
         private ElementReference boardImg;
         private ElementReference character1img;
-        private ElementReference character2img;
         private string boardImage = string.Empty;
         private string char1Image = string.Empty;
-        private string char2Image = string.Empty;
-        public Boolean gridInput = false;
-        public string gridColor = "#FFFFFF";
+        private string backgroundColor = "#000000";
+
 
 
 
