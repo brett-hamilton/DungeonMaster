@@ -50,7 +50,7 @@ namespace DungeonMaster.Data
 		/// <summary>
 		/// Inventory of the Spells and Weapons of the Player
 		/// </summary>
-		public Inventory PlayersInventory { get; set; }
+		public Inventory PlayersInventory { get; set; } = new Inventory();
 
 		/// <summary>
 		/// Temporary spell attribute to create the attack method in Attack.cs for proof of concept
@@ -58,16 +58,16 @@ namespace DungeonMaster.Data
 		public Spell ActiveSpell { get; set; }
 
 		/// <summary>
-		/// Holds all of the stats of the player
+		/// Holds all of the stats of the player, defaults to 8 for all stats.
 		/// </summary>
-		public CharacterStats CharacterStats { get; set; }
+		public CharacterStats CharacterStats { get; set; } = new CharacterStats(8,8,8,8,8,8);
 
 		/// <summary>
 		/// Default constructor for a character
 		/// </summary>
 		public Character()
 		{
-			Weapon sword = new Weapon("sword", 10, Dice.D6, 5.0);
+			Weapon sword = new Weapon("Sword", 10, Dice.D6, 5.0);
 			Name = "Geralt";
 			this.Health = 100;
 			this.ActiveWeapon = sword;
@@ -111,7 +111,7 @@ namespace DungeonMaster.Data
 			switch(characterClass)
             {
 				case "ranger" :
-					ActiveWeapon = new Weapon("long bow", 10, Dice.D6, 50)
+					ActiveWeapon = new Weapon("Long Bow", 10, Dice.D6, 50)
 					{
 						RangedWeapon = true
                     };
@@ -126,7 +126,7 @@ namespace DungeonMaster.Data
 					break;
 
 				default :
-					ActiveWeapon = new Weapon("dagger", 2, Dice.D6, 1);
+					ActiveWeapon = new Weapon("Dagger", 2, Dice.D6, 1);
 					break;
 			}
 		}

@@ -16,7 +16,7 @@ namespace XunitTest
         /// <summary>
         /// Test roll values.
         /// </summary>
-        private List<int> listOfRollValues = new List<int> { 10, 15 };
+        private readonly List<int> listOfRollValues = new() { 10, 15 };
 
         /// <summary>
         /// Sum of the dice in list of roll values.

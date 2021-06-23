@@ -25,7 +25,9 @@ namespace DungeonMaster.Data
         /// <value>
         /// The character list of characters in the game.
         /// </value>
-		public List<Character> CharacterList { get; set; } 
+		public List<Character> CharacterList { get; set; }
+
+		public Turn CurrentTurn { get; set; }
 
 		/// <summary>
 		/// Default constructor to build a generic game with no entities.

@@ -16,8 +16,8 @@
 
 
 Render With Grid:
-<input type="checkbox" @onchange="eventArgs => { RenderGridLayer((bool)eventArgs.Value); }">
-<button @onclick="eventArgs => { Render(); }">REDRAW</button>
+<input type="checkbox" @onchange="async eventArgs => {await RenderGridLayer((bool)eventArgs.Value); }">
+<button @onclick="async eventArgs => { await Render(); }">REDRAW</button>
 
 
 

@@ -44,6 +44,13 @@
     private string diceResult;
 
     /// <summary>
+    /// Page containing the modal, to be used in the SignalR report.
+    /// </summary>
+    [Parameter]
+    public string pageContainingModal { get; set; }
+
+
+    /// <summary>
     /// Modifier to be applied to the D20 Roll
     /// </summary>
     private string modifier;
@@ -81,7 +88,7 @@
     /// </summary>
     /// <returns></returns>
     async Task Send() =>
-        await hubConnection.SendAsync("SendMessage", diceResult, "DiceModalTest");
+        await hubConnection.SendAsync("SendMessage", diceResult, pageContainingModal);
 
     /// <summary>
     /// Method to change styling to display the Modal.

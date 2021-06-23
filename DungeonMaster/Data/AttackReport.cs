@@ -87,13 +87,13 @@ namespace DungeonMaster.Data
             if (DisadvantageRoll != null) 
             {
                 string attackReport = $"{AttackerName} attacked {DefenderName} from within melee distance. {AttackerName} {DisadvantageRoll.GetDiceReport()} This attack hit {DefenderName}.";
-                attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {WeaponBaseDamage} base damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType} damage.";
+                attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {WeaponBaseDamage} base damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType.ToLower()} damage.";
                 return attackReport;
             }
             else
             {
                 string attackReport = $"{AttackerName} rolled an attack of {AttackRoll}. This attack hit {DefenderName}.";
-                attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {WeaponBaseDamage} base damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType} damage.";
+                attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {WeaponBaseDamage} base damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType.ToLower()} damage.";
                 return attackReport;
             }
         }
