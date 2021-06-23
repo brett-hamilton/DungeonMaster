@@ -60,6 +60,11 @@ namespace DungeonMaster.Data
 		public CharacterStats CharacterStats { get; set; }
 
 		/// <summary>
+		/// What weapon type the user is good with
+		/// </summary>
+		public WeaponType Proficiency { get; set; }
+
+		/// <summary>
 		/// Default constructor for a character
 		/// </summary>
 		public Character()
@@ -91,7 +96,7 @@ namespace DungeonMaster.Data
 		}
 
 		/// <summary>
-		/// Parameterized constructor for a character.
+		/// Parameterized constructor for a character when creating one on the Character Creation page.
 		/// </summary>
 		/// <param name="name">The name of the character.</param>
 		/// <param name="health">The amount of health points the character has.</param>
@@ -112,10 +117,13 @@ namespace DungeonMaster.Data
 					{
 						RangedWeapon = true
                     };
+
+					Proficiency = WeaponType.Range;
 					break;
 
 				case "fighter" :
 					ActiveWeapon = new Weapon("Battle Axe", 20, Dice.D6, 1);
+					Proficiency = WeaponType.TwoHanded;
 					break;
 
 				case "wizard" :
@@ -124,6 +132,7 @@ namespace DungeonMaster.Data
 
 				default :
 					ActiveWeapon = new Weapon("dagger", 2, Dice.D6, 1);
+					Proficiency = WeaponType.LightOneHanded;
 					break;
 			}
 		}
@@ -214,6 +223,20 @@ namespace DungeonMaster.Data
 			int.TryParse(ActiveSpell.DiceUsed.ToString()[1..], out int dieSides);
 			var spellRollReport = Die.Roll(dieSides, ActiveSpell.NumberOfRolls);
 			return spellRollReport;
+        }
+
+		/// <summary>
+		/// determines if the user is efficient with the weapon they are currently holding
+		/// </summary>
+		/// <returns>integer of 2 if both weapon type and proficiency are the same</returns>
+		public int isProficient()
+        {
+			if(Proficiency == ActiveWeapon.WeaponType)
+            {
+				return 2;
+            }
+
+			return 0;
         }
 	}
 }

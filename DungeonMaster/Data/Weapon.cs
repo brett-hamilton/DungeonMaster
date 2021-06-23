@@ -26,7 +26,7 @@ namespace DungeonMaster.Data
 		/// <summary>
 		/// The amount of damage with no dice rolls
 		/// </summary>
-		public int BaseDamage {get; set;}
+		//public int BaseDamage {get; set;}
 
 		/// <summary>
 		/// What dice the weapon uses, default is set to D4.
@@ -62,7 +62,7 @@ namespace DungeonMaster.Data
 		public Weapon()
 		{
 			this.Name = "sword";
-			this.BaseDamage = 10;
+			//this.BaseDamage = 10;
 			this.DiceUsed = Dice.D6;
 			this.Range = 5.0;
 		}

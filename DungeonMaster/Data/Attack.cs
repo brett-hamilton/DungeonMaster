@@ -26,7 +26,7 @@ namespace DungeonMaster.Data
 		public AttackReport MeleeAttack(Character attacker, Character defender)
 		{
 			// Roll the attack dice for a value to compare to defender's armor rating
-			double attackValue = Die.RollD20();
+			double attackValue = Die.RollD20() + attacker.isProficient() + attacker.CharacterStats.Strength;
 
 			// Determine if the attack value is enough to hit
 			bool hit = defender.CheckArmor(attackValue);
@@ -36,7 +36,7 @@ namespace DungeonMaster.Data
 				// Decrease defender's health by the attacker's weapon stat
 				
 				var attackReport = attacker.ActiveWeapon.GetDamage();
-				int damageAmount = attackReport.TotalDamageDealt;
+				int damageAmount = attackReport.TotalDamageDealt + attacker.CharacterStats.Strength;
 				defender.DamagePlayer(damageAmount);
 				attackReport.AttackRoll = attackValue;
 				attackReport.HitCheck = hit;
@@ -73,12 +73,12 @@ namespace DungeonMaster.Data
 			if (disadvantage)
 			{
 				disadvatageRollReport = Die.RollD20Disadvantage();
-				attackValue = disadvatageRollReport.GetDiceTotal();
+				attackValue = disadvatageRollReport.GetDiceTotal() + attacker.isProficient() + attacker.CharacterStats.Dexterity;
 				
 			}
 			else 
 			{
-				attackValue = Die.RollD20();
+				attackValue = Die.RollD20() + attacker.isProficient() + attacker.CharacterStats.Dexterity;
 			}
 
 			bool hit = defender.CheckArmor(attackValue);
@@ -86,7 +86,7 @@ namespace DungeonMaster.Data
 			if (hit) 
 			{
 				var attackReport = attacker.ActiveWeapon.GetDamage();
-				defender.DamagePlayer(attackReport.TotalDamageDealt); 
+				defender.DamagePlayer(attackReport.TotalDamageDealt + attacker.CharacterStats.Dexterity); 
 				attackReport.AttackRoll = attackValue;
 				attackReport.HitCheck = hit;
 				attackReport.AttackerName = attacker.Name;
