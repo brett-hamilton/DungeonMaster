@@ -23,9 +23,10 @@ namespace XunitTest
             Drawable pushableItem = new Drawable("chair", true, null, null);
             game.AddDrawable(pushableItem, 5, 2);
 
-            PushReport pushReport = game.PushObject(character, pushableItem);
+            string pushReport = game.PushObject(character, pushableItem);
+            string expectedString = "chair is too far away from Geralt.";
 
-            Assert.False(pushReport.PushPossible);
+            Assert.True(pushReport.Equals(expectedString));
         }
 
         /// <summary>
@@ -61,7 +62,7 @@ namespace XunitTest
             PushReport pushReport = game.Gameboard.GetCoordinateAfterPush(character, pushableItem);
             Coordinate newCoordinates = pushReport.NewCoordinate;
             string outputString = pushReport.GetPushResult();
-            string expectedString = "Geralt pushed chair to (5, 3)";
+            string expectedString = "Geralt pushed chair to (6, 4)"; //This string includes the locations having been increased by 1 so the user isn't aware of the off by one of arrays.
 
             Assert.True(outputString.Equals(expectedString));
         }
