@@ -67,6 +67,33 @@ namespace DungeonMaster.Data
 			Wisdom = wisdom;
 			Charisma = charisma;
 		}
+
+		/// <summary>
+		/// Method to get modifier for melee attacks.
+		/// </summary>
+		/// <returns>An int which is to be added to the attack roll.</returns>
+		public int GetStrengthModifier() 
+		{
+			return ((Strength / 2) - 5);
+		}
+
+		/// <summary>
+		/// Method to get modifier for ranged attacks.
+		/// </summary>
+		/// <returns>An int which is to be added to the attack roll.</returns>
+		public int GetDexterityModifier() 
+		{
+			return ((Dexterity / 2) - 5);
+		}
+
+		/// <summary>
+		/// Method to get modifier for magic.
+		/// </summary>
+		/// <returns>Int to be added to attack roll.</returns>
+		public int GetIntelligenceModifier() 
+		{
+			return ((Intelligence / 2) - 5);
+		}
 	}
 }
 
