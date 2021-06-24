@@ -62,6 +62,12 @@
     public int DieToRoll { get; set; }
 
     /// <summary>
+    /// Page containing the modal, to be used in the SignalR report.
+    /// </summary>
+    [Parameter]
+    public string pageContainingModal { get; set; }
+
+    /// <summary>
     /// Result to be displayed showing the result of the dice roll.
     /// </summary>
     private string diceResult;
@@ -99,7 +105,7 @@
     /// </summary>
     /// <returns></returns>
     async Task Send() =>
-        await hubConnection.SendAsync("SendMessage", diceResult, "DiceModalTest");
+        await hubConnection.SendAsync("SendMessage", diceResult, pageContainingModal);
 
     /// <summary>
     /// Method to change styling to display the Modal.
