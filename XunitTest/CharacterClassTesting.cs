@@ -98,7 +98,7 @@ namespace XunitTest
         {
             character1.ActiveSpell = new HealingSpell("Revive", SpellTypes.Healing, 20, Dice.D6, 2, 10);
 
-            var healingPowerReport = character1.GetHealingSpellPower();
+            var healingPowerReport = character1.ActiveSpell.GetHealingSpellPower();
 
             Assert.InRange(healingPowerReport.GetDiceTotal(), 1, 12);
         }
