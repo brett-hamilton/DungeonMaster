@@ -103,15 +103,16 @@
                         </div>
                     </div>
                 }
-                <div class="row" id="pushableItemsButtonsRow">
-                    @if (showPushableItemsButtons)
+            <div class="row" id="pushableItemsButtonsRow">
+                @if (showPushableItemsButtons)
+                {
+                    @foreach (var item in gameTurn.PushableObjects)
                     {
-                        @foreach (var item in gameTurn.PushableObjects) 
-                        { 
-                            <button class="btn btn-secondary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => PushItem(item) )">@item.Name</button>
-                        }
+                        <button class="btn btn-secondary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => PushItem(item) )">@item.Name</button>
                     }
-                </div>
+                    <button class="btn btn-info" style="margin-right: 5px; margin-bottom: 5px" @onclick="Cancel">Cancel</button>
+                }
+            </div>
             </div>
             <br />
             <br />
