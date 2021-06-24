@@ -222,5 +222,29 @@ namespace XunitTest
             Assert.True(turn.InteractionPossible == true);
             Assert.True(turn.PushableObjects.Count == 1);
         }
+
+        /// <summary>
+        /// Method to test if a pushable object is not nearby, if our method
+        /// recognizes it.
+        /// </summary>
+        [Fact]
+        public void UpdateInteractionNotPossibleTest()
+        {
+            var turn = new Turn();
+            var game = new Game();
+            var character1 = new Character();
+            turn.CurrentCharacter = character1;
+            var pushableObject = new Drawable() { IsCollidable = true };
+            game.AddCharacter(character1, 2, 2);
+            game.AddDrawable(pushableObject, 4, 4);
+            turn.Game = game;
+            turn.InteractionPossible = true;
+            turn.PushableObjects = new List<Drawable> { character1, character1 };
+
+            turn.UpdateInteractionPossibilities();
+
+            Assert.True(turn.InteractionPossible == false);
+            Assert.True(turn.PushableObjects.Count == 0);
+        }
     }
 }

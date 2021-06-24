@@ -61,6 +61,10 @@
                     {
                         <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicHeal") )"> Healing Spell </button>
                     }
+                    @if (gameTurn.InteractionPossible) 
+                    { 
+                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("interaction") )"> Push Item </button>
+                    }
                 }
             </div><br />
             <div style="padding: 10px" id="secondaryButtonRow">
@@ -99,6 +103,15 @@
                         </div>
                     </div>
                 }
+                <div class="row" id="pushableItemsButtonsRow">
+                    @if (showPushableItemsButtons)
+                    {
+                        @foreach (var item in gameTurn.PushableObjects) 
+                        { 
+                            <button class="btn btn-secondary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => PushItem(item) )">@item.Name</button>
+                        }
+                    }
+                </div>
             </div>
             <br />
             <br />
@@ -249,6 +262,11 @@ Render With Grid:
         private bool showMovementButtons = false;
 
         /// <summary>
+        /// Bool representing if the buttons for moveable items should be shown.
+        /// </summary>
+        private bool showPushableItemsButtons = false;
+
+        /// <summary>
         /// List of strings of all attacks carried out.
         /// </summary>
         public List<string> GameLog { get; set; } = new List<string>();
@@ -331,6 +349,7 @@ Render With Grid:
         {
             showMovementButtons = false;
             showTargetButtons = false;
+            showPushableItemsButtons = false;
             actionToTake = null;
         }
 
@@ -355,18 +374,28 @@ Render With Grid:
             {
                 showTargetButtons = true;
                 showMovementButtons = false;
+                showPushableItemsButtons = false;
             }
 
             else if (action.Equals("move"))
             {
                 showTargetButtons = false;
                 showMovementButtons = true;
+                showPushableItemsButtons = false;
+            }
+
+            else if (action.Equals("interaction"))
+            {
+                showPushableItemsButtons = true;
+                showTargetButtons = false;
+                showMovementButtons = false;
             }
 
             else
             {
                 showTargetButtons = false;
                 showMovementButtons = false;
+                showPushableItemsButtons = false;
             }
 
             actionToTake = action;
@@ -405,6 +434,20 @@ Render With Grid:
             ReportOutcome(report);
         }
 
+
+        /// <summary>
+        /// Method to attempt to push an itme in the gameboard by the current character.
+        /// </summary>
+        /// <param name="itemToPush">Item the character is attempting to push.</param>
+        public async Task PushItem(Drawable itemToPush)
+        {
+            var report = gameTurn.Game.PushObject(gameTurn.CurrentCharacter, itemToPush);
+            StateHasChanged();
+            await Render();
+
+            ReportOutcome(report);
+        }
+
         /// <summary>
         /// Method to move a drawable in a cardinal direction
         /// </summary>
@@ -433,6 +476,7 @@ Render With Grid:
 
             showMovementButtons = false;
             showTargetButtons = false;
+            showPushableItemsButtons = false;
             actionToTake = null;
 
             gameTurn.UpdatePossibilities();

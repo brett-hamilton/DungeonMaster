@@ -422,7 +422,7 @@ namespace DungeonMaster.Data
             {
                 for (int j = minColumn; j <= maxColumn; j++) 
                 {
-                    var objectAtLocation = Drawables[i, j];
+                    var objectAtLocation = Drawables[j, i];
 
                     if (objectAtLocation != null)
                     {
