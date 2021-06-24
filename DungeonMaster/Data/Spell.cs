@@ -116,10 +116,36 @@ namespace DungeonMaster.Data
         }
 
 		/// <summary>
+		/// Gets a number for the healing power of a spell
+		/// </summary>
+		/// <returns>The healing power of the spell.</returns>
+		public DiceRollReport GetHealingSpellPower()
+		{
+			if (int.TryParse(DiceUsed.ToString()[1..], out int dieSides))
+			{
+				try
+				{
+					return Die.Roll(dieSides, NumberOfRolls);
+				}
+				catch (Exception) 
+				{
+					return new MultipleDiceRollReport
+					{
+						DiceRolled = new List<int>(),
+					};
+				}
+			}
+			return  new MultipleDiceRollReport 
+			{ 
+				DiceRolled = new List<int>(),
+			};
+		}
+
+		/// <summary>
 		/// Provides a string representation for a spell.
 		/// </summary>
 		/// <returns>String representation.</returns>
-        public override string ToString()
+		public override string ToString()
         {
             return SpellName;
         }

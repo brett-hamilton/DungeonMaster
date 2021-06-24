@@ -227,18 +227,6 @@ namespace DungeonMaster.Data
         }
 
 		/// <summary>
-		/// Gets a number for the healing power of a spell
-		/// </summary>
-		/// <returns>The healing power of the spell.</returns>
-		public DiceRollReport GetHealingSpellPower()
-        {
-
-			int.TryParse(ActiveSpell.DiceUsed.ToString()[1..], out int dieSides);
-			var spellRollReport = Die.Roll(dieSides, ActiveSpell.NumberOfRolls);
-			return spellRollReport;
-        }
-
-		/// <summary>
 		/// determines if the user is efficient with the weapon they are currently holding
 		/// </summary>
 		/// <returns>integer of 2 if both weapon type and proficiency are the same</returns>
