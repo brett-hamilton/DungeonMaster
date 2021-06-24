@@ -91,6 +91,7 @@ namespace DungeonMaster.Data
 			{
 				var attackReport = attacker.ActiveWeapon.GetDamage();
 				defender.DamagePlayer(attackReport.TotalDamageDealt + modifierDamage);
+				attackReport.TotalDamageDealt += modifierDamage;
 				attackReport.ModifierDamage = modifierDamage;
 				attackReport.AttackRoll = attackValue;
 				attackReport.HitCheck = hit;
