@@ -177,21 +177,50 @@ namespace XunitTest
         public void UpdateAllPossibilitiesTest() 
         {
             var turn = new Turn();
+            var game = new Game();
             var character1 = new Character();
             turn.CurrentCharacter = character1;
             character1.ActiveWeapon = null;
             character1.ActiveSpell = null;
+            game.AddCharacter(character1, 2, 2);
+            turn.Game = game;
             // Set all possibilities to True.
             turn.MagicAttackPossible = true;
             turn.MagicHealPossible = true;
             turn.WeaponAttackPossible = true;
             turn.MovePossible = true;
+            turn.PushableObjects = new List<Drawable> { character1, character1 };
+            turn.InteractionPossible = true;
 
             turn.UpdatePossibilities();
 
             Assert.True(turn.MagicAttackPossible == false);
             Assert.True(turn.WeaponAttackPossible == false);
             Assert.True(turn.MagicHealPossible == false);
+            Assert.True(turn.InteractionPossible == false);
+            Assert.True(turn.PushableObjects.Count == 0);
+        }
+
+        /// <summary>
+        /// Method to test if a pushable object is nearby, if our method
+        /// recognizes it.
+        /// </summary>
+        [Fact]
+        public void UpdateInteractionPossibleTest() 
+        {
+            var turn = new Turn();
+            var game = new Game();
+            var character1 = new Character();
+            turn.CurrentCharacter = character1;
+            var pushableObject = new Drawable() { IsCollidable = true};
+            game.AddCharacter(character1, 2, 2);
+            game.AddDrawable(pushableObject, 3, 2);
+            turn.Game = game;
+
+            turn.UpdateInteractionPossibilities();
+
+            Assert.True(turn.InteractionPossible == true);
+            Assert.True(turn.PushableObjects.Count == 1);
         }
     }
 }

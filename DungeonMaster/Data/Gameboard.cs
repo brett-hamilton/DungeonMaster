@@ -388,6 +388,10 @@ namespace DungeonMaster.Data
         {
             var listOfPushableItems = new List<Drawable>();
             var characterLocation = GetCoordinate(character);
+            if (characterLocation == null) 
+            {
+                return listOfPushableItems;
+            }
             // Find the range of valid values to search. If we go outside of bounds, stop beforehand.
             var minColumn = characterLocation.Column - 1;
             if (minColumn < 0) 

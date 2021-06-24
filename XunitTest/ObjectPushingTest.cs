@@ -38,8 +38,8 @@ namespace XunitTest
             Game game = new Game(10, 10);
             Character character = new Character();
             game.AddCharacter(character, 5, 5);
-            Drawable nonPushable = new Drawable("unpushableWall", true, null, null);
-            game.AddDrawable(nonPushable, 5, 2);
+            Drawable nonPushable = new Drawable("unpushableWall", false, null, null);
+            game.AddDrawable(nonPushable, 5, 4);
 
             var outputString = game.PushObject(character, nonPushable);
             var expectedString = "unpushableWall was too far from Geralt to push.";
@@ -102,6 +102,9 @@ namespace XunitTest
             Assert.True(newCoordinates.Column == 7);
         }
 
+        /// <summary>
+        /// Test to see if there are nearby pushable objects. There should be one.
+        /// </summary>
         [Fact]
         public void NearbyPushableObjectTest() 
         {
@@ -117,6 +120,9 @@ namespace XunitTest
             Assert.True(listOfItems.Count == 1);
         }
 
+        /// <summary>
+        /// Test to see if there are nearby pushable objects, there should not be.
+        /// </summary>
         [Fact]
         public void NoNearbyPushableObjectTest() 
         {
