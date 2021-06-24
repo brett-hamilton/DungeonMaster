@@ -23,10 +23,9 @@ namespace XunitTest
             Drawable pushableItem = new Drawable("chair", true, null, null);
             game.AddDrawable(pushableItem, 5, 2);
 
-            var outputString = game.PushObject(character, pushableItem);
-            var expectedString = "chair was too far from Geralt to push.";
+            PushReport pushReport = game.PushObject(character, pushableItem);
 
-            Assert.True(outputString.Equals(expectedString));
+            Assert.False(pushReport.PushPossible);
         }
 
         /// <summary>
@@ -38,13 +37,12 @@ namespace XunitTest
             Game game = new Game(10, 10);
             Character character = new Character();
             game.AddCharacter(character, 5, 5);
-            Drawable nonPushable = new Drawable("unpushableWall", true, null, null);
-            game.AddDrawable(nonPushable, 5, 2);
+            Drawable nonPushable = new Drawable("unpushableWall", false, null, null);
+            game.AddDrawable(nonPushable, 5, 4);
 
-            var outputString = game.PushObject(character, nonPushable);
-            var expectedString = "unpushableWall was too far from Geralt to push.";
+            PushReport pushReport = game.Gameboard.GetCoordinateAfterPush(character, nonPushable);
 
-            Assert.True(outputString.Equals(expectedString));
+            Assert.False(pushReport.PushPossible);
         }
 
 
@@ -60,8 +58,10 @@ namespace XunitTest
             Drawable pushableItem = new Drawable("chair", true, null, null);
             game.AddDrawable(pushableItem, 5, 4);
 
-            var outputString = game.PushObject(character, pushableItem);
-            var expectedString = "Character moved to 6, 4";
+            PushReport pushReport = game.Gameboard.GetCoordinateAfterPush(character, pushableItem);
+            Coordinate newCoordinates = pushReport.NewCoordinate;
+            string outputString = pushReport.getPushResult();
+            string expectedString = "Geralt pushed chair to (5, 3)";
 
             Assert.True(outputString.Equals(expectedString));
         }
@@ -78,7 +78,8 @@ namespace XunitTest
             Drawable pushableItem = new Drawable("chair", true, null, null);
             game.AddDrawable(pushableItem, 6, 5);
 
-            Coordinate newCoordinates = game.Gameboard.GetCoordinateAfterPush(character, pushableItem);
+            PushReport pushReport = game.Gameboard.GetCoordinateAfterPush(character, pushableItem);
+            Coordinate newCoordinates = pushReport.NewCoordinate;
 
             Assert.True(newCoordinates.Row == 5);
             Assert.True(newCoordinates.Column == 7);
@@ -96,7 +97,8 @@ namespace XunitTest
             Drawable pushableItem = new Drawable("chair", true, null, null);
             game.AddDrawable(pushableItem, 6, 6);
 
-            Coordinate newCoordinates = game.Gameboard.GetCoordinateAfterPush(character, pushableItem);
+            PushReport pushReport = game.Gameboard.GetCoordinateAfterPush(character, pushableItem);
+            Coordinate newCoordinates = pushReport.NewCoordinate;
 
             Assert.True(newCoordinates.Row == 7);
             Assert.True(newCoordinates.Column == 7);
