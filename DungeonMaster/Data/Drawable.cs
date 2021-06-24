@@ -30,7 +30,7 @@ namespace DungeonMaster.Data
         /// <value>
         ///   <c>true</c> if this instance is collidable; otherwise, <c>false</c>.
         /// </value>
-        protected Boolean IsCollidable { get; set; }
+        public bool IsCollidable { get; set; }
 
         /// <summary>
         /// Gets or sets the image location.

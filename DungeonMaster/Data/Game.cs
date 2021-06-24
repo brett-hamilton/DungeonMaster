@@ -124,6 +124,25 @@ namespace DungeonMaster.Data
 			}
         }
 
+        /// <summary>
+        /// Adds the drawable to the gameboard if column/row are valid.
+        /// </summary>
+        /// <param name="drawable">The drawable.</param>
+        /// <param name="column">The column.</param>
+        /// <param name="row">The row.</param>
+        /// <returns>True if drawable can be inserted at location given, false otherwise.</returns>
+        public bool AddDrawable(Drawable drawable, int column, int row)
+        {
+			if(Gameboard.AddDrawable(drawable, column, row))
+            {
+				return true;
+            }
+			else
+            {
+				return false;
+            }			
+        }
+
 		/// <summary>
 		/// Melee Attack method, which will check range, then call the attack class's melee attack.
 		/// </summary>
@@ -247,5 +266,25 @@ namespace DungeonMaster.Data
 
 			return Gameboard.Move(character, currentPosition, newCoords);
 		}
+
+        /// <summary>
+        /// Attempts to push "itemToPush" from "character".
+        /// </summary>
+        /// <param name="character">The character.</param>
+        /// <param name="itemToPush">The item to push.</param>
+        /// <returns>string representing the result of the action</returns>
+        public string PushObject(Drawable character, Drawable itemToPush)
+        {
+			Coordinate currLocation = Gameboard.GetCoordinate(itemToPush);
+			Coordinate newLocation = Gameboard.GetCoordinateAfterPush(character, itemToPush);
+			if(newLocation == null)
+            {
+				return $"{itemToPush.Name} was too far from {character.Name} to push.";
+            }
+			else
+            {
+				return Gameboard.Move(itemToPush, currLocation, newLocation);
+            }				
+        }
 	}
 }
