@@ -284,7 +284,7 @@ namespace DungeonMaster.Data
         /// <param name="character">The character.</param>
         /// <param name="direction">The direction.</param>
         /// <returns>Returns a string reporting the outcome</returns>
-	    public MoveReport CharacterMove(Drawable character, CardinalDirection direction) 
+	    public string CharacterMove(Drawable character, CardinalDirection direction) 
 		{
 			// Once implemented -> check movement points.
 			var currentPosition = Gameboard.GetCoordinate(character);
@@ -292,7 +292,7 @@ namespace DungeonMaster.Data
 			var newCoords = Gameboard.GetNewCoordinate(currentPosition, direction);
 			// Call Move
 
-			return Gameboard.Move(character, currentPosition, newCoords);
+			return Gameboard.Move(character, currentPosition, newCoords).GetMoveResult();
 		}
 
         /// <summary>
@@ -301,21 +301,21 @@ namespace DungeonMaster.Data
         /// <param name="character">The character.</param>
         /// <param name="itemToPush">The item to push.</param>
         /// <returns>string representing the result of the action</returns>
-        public PushReport PushObject(Drawable character, Drawable itemToPush)
+        public string PushObject(Drawable character, Drawable itemToPush)
         {
 			Coordinate currLocation = Gameboard.GetCoordinate(itemToPush);
 			PushReport pushReport = Gameboard.GetCoordinateAfterPush(character, itemToPush);
 
 			if(!pushReport.PushPossible)
             {
-				return pushReport;
-            }
+				return pushReport.GetPushResult();
+			}
 			else
             {
 				MoveReport moveReport = Gameboard.Move(itemToPush, currLocation, pushReport.NewCoordinate);
 				pushReport.PushPossible = moveReport.MoveSuccessful;
 				pushReport.ErrorString = moveReport.ErrorString;
-				return pushReport;
+				return pushReport.GetPushResult();
 			}		
         }
 	}

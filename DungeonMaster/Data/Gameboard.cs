@@ -354,7 +354,7 @@ namespace DungeonMaster.Data
         /// </summary>
         /// <param name="pusher">The pusher.</param>
         /// <param name="itemToPush">The item to push.</param>
-        /// <returns>Returns null if invalid push, otherwise returns coordinate of the new location for itemtopush</returns>
+        /// <returns>A PushReport containing the results of the push.</returns>
         public PushReport GetCoordinateAfterPush(Drawable pusher, Drawable itemToPush)
         {
             PushReport pushReport = new PushReport(pusher, itemToPush);

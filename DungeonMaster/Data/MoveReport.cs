@@ -23,7 +23,11 @@ namespace DungeonMaster.Data
             CurrentCoordinate = currentCoordinate;
         }
 
-        public string getMoveResult()
+        /// <summary>
+        /// After filling in the needed properties, returns a string representing the result of the move attempt.
+        /// </summary>
+        /// <returns>A string representing the result of the move attempt.</returns>
+        public string GetMoveResult()
         {
             if (!MoveSuccessful)
             {

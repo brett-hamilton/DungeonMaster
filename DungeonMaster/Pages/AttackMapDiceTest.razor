@@ -409,11 +409,11 @@ Render With Grid:
         /// <param name="direction"> Direction to move the drawable.</param>
         public async Task Move(Drawable drawable, CardinalDirection direction)
         {
-            MoveReport report = gameTurn.Game.CharacterMove(drawable, direction);
+            string report = gameTurn.Game.CharacterMove(drawable, direction);
             StateHasChanged();
             await Render();
 
-            ReportOutcome(report.getMoveResult());
+            ReportOutcome(report);
 
         }
 
@@ -549,7 +549,7 @@ Render With Grid:
 
             double scaledRows = scaleFactor * gameTurn.Game.Gameboard.Rows;                          //Scale the row count by our scale factor
             double scaledColumns = scaleFactor * gameTurn.Game.Gameboard.Columns;                    //Scale the column count by our scale factor
-            
+
             await this._drawableContext.ClearRectAsync(0, 0, scaledColumns, scaledRows);
 
             for (int i = 0; i < gameTurn.Game.Gameboard.Rows; i++)

@@ -60,7 +60,7 @@ namespace XunitTest
 
             PushReport pushReport = game.Gameboard.GetCoordinateAfterPush(character, pushableItem);
             Coordinate newCoordinates = pushReport.NewCoordinate;
-            string outputString = pushReport.getPushResult();
+            string outputString = pushReport.GetPushResult();
             string expectedString = "Geralt pushed chair to (5, 3)";
 
             Assert.True(outputString.Equals(expectedString));
