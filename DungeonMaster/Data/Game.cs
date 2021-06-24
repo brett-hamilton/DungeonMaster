@@ -208,6 +208,12 @@ namespace DungeonMaster.Data
 			return healingReport.GetHealingReport();
 		}
 
+		/// <summary>
+		/// Attempt to attack another character with a spell.
+		/// </summary>
+		/// <param name="caster">Character attempting to attack. </param>
+		/// <param name="receiver">Character defending. </param>
+		/// <returns>A string describing the outcome of the attempt.</returns>
 		public string SpellAttackAttempt(Character caster, Character receiver)
         {
 			if (receiver.Status == Status.Dead)

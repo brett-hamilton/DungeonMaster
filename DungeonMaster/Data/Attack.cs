@@ -26,7 +26,7 @@ namespace DungeonMaster.Data
 		public AttackReport MeleeAttack(Character attacker, Character defender)
 		{
 			// Roll the attack dice for a value to compare to defender's armor rating
-			double attackValue = Die.RollD20() + attacker.isProficient() + attacker.CharacterStats.Strength;
+			double attackValue = Die.RollD20() + attacker.IsProficient() + attacker.CharacterStats.GetStrengthModifier();
 
 			// Determine if the attack value is enough to hit
 			bool hit = defender.CheckArmor(attackValue);
@@ -36,7 +36,7 @@ namespace DungeonMaster.Data
 				// Decrease defender's health by the attacker's weapon stat
 				
 				var attackReport = attacker.ActiveWeapon.GetDamage();
-				int damageAmount = attackReport.TotalDamageDealt + attacker.CharacterStats.Strength;
+				int damageAmount = attackReport.TotalDamageDealt + attacker.CharacterStats.GetStrengthModifier();
 				defender.DamagePlayer(damageAmount);
 				attackReport.AttackRoll = attackValue;
 				attackReport.HitCheck = hit;
@@ -73,12 +73,12 @@ namespace DungeonMaster.Data
 			if (disadvantage)
 			{
 				disadvatageRollReport = Die.RollD20Disadvantage();
-				attackValue = disadvatageRollReport.GetDiceTotal() + attacker.isProficient() + attacker.CharacterStats.Dexterity;
+				attackValue = disadvatageRollReport.GetDiceTotal() + attacker.IsProficient() + attacker.CharacterStats.GetDexterityModifier();
 				
 			}
 			else 
 			{
-				attackValue = Die.RollD20() + attacker.isProficient() + attacker.CharacterStats.Dexterity;
+				attackValue = Die.RollD20() + attacker.IsProficient() + attacker.CharacterStats.GetDexterityModifier();
 			}
 
 			bool hit = defender.CheckArmor(attackValue);
@@ -86,7 +86,7 @@ namespace DungeonMaster.Data
 			if (hit) 
 			{
 				var attackReport = attacker.ActiveWeapon.GetDamage();
-				defender.DamagePlayer(attackReport.TotalDamageDealt + attacker.CharacterStats.Dexterity); 
+				defender.DamagePlayer(attackReport.TotalDamageDealt + attacker.CharacterStats.GetDexterityModifier()); 
 				attackReport.AttackRoll = attackValue;
 				attackReport.HitCheck = hit;
 				attackReport.AttackerName = attacker.Name;
@@ -106,11 +106,17 @@ namespace DungeonMaster.Data
 			};
         }
 
+		/// <summary>
+		/// Method to attack to attack another character with a spell.
+		/// </summary>
+		/// <param name="caster">Character attacking.</param>
+		/// <param name="receiver">Character defending.</param>
+		/// <returns>A report describing the outcome of the attempt.</returns>
 		public AttackReport SpellAttack(Character caster, Character receiver)
         {
 			AttackReport attackReport = caster.ActiveSpell.GetSpellDamage();
 
-			double totalDamage = attackReport.DiceRollReport.GetDiceTotal() + caster.CharacterStats.Intelligence;
+			double totalDamage = attackReport.DiceRollReport.GetDiceTotal() + caster.CharacterStats.GetIntelligenceModifier();
 			receiver.DamagePlayer(totalDamage);
 
 			attackReport.AttackerName = caster.Name;

@@ -72,7 +72,7 @@ namespace DungeonMaster.Data
 		/// </summary>
 		public Character()
 		{
-			Weapon sword = new Weapon("sword", 10, Dice.D6, 5.0);
+			Weapon sword = new Weapon("Sword", Dice.D6, 5.0, WeaponType.OneHanded);
 			Name = "Geralt";
 			this.Health = 100;
 			this.ActiveWeapon = sword;
@@ -118,7 +118,7 @@ namespace DungeonMaster.Data
 			switch(characterClass)
             {
 				case "ranger" :
-					ActiveWeapon = new Weapon("long bow", Dice.D6, 50, WeaponType.Range)
+					ActiveWeapon = new Weapon("Long Bow", Dice.D6, 50, WeaponType.Range)
 					{
 						RangedWeapon = true
                     };
@@ -136,7 +136,7 @@ namespace DungeonMaster.Data
 					break;
 
 				default :
-					ActiveWeapon = new Weapon("dagger", Dice.D6, 1, WeaponType.LightOneHanded);
+					ActiveWeapon = new Weapon("Dagger", Dice.D6, 1, WeaponType.LightOneHanded);
 					Proficiency = WeaponType.LightOneHanded;
 					break;
 			}
@@ -240,7 +240,7 @@ namespace DungeonMaster.Data
 		/// determines if the user is efficient with the weapon they are currently holding
 		/// </summary>
 		/// <returns>integer of 2 if both weapon type and proficiency are the same</returns>
-		public int isProficient()
+		public int IsProficient()
         {
 			if(Proficiency == ActiveWeapon.WeaponType)
             {
