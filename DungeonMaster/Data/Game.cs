@@ -206,6 +206,28 @@ namespace DungeonMaster.Data
 			return healingReport.GetHealingReport();
 		}
 
+		public string SpellAttackAttempt(Character caster, Character receiver)
+        {
+			if (receiver.Status == Status.Dead)
+			{
+				return ($"{receiver.Name} is already dead.");
+			}
+
+			var rangeCheck = Gameboard.SpellRangeCheck(caster, receiver);
+			if (!rangeCheck)
+			{
+				return ($"{receiver.Name} is too far away to attack.");
+			}
+
+			var attack = new Attack();
+
+			var attackReport = attack.SpellAttack(caster, receiver);
+
+			return attackReport.GetSpellAttackReport();
+
+
+        }
+
         /// <summary>
         /// Gets the formatted character list.
         /// </summary>

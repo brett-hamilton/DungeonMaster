@@ -105,5 +105,22 @@ namespace DungeonMaster.Data
 				DisadvantageRoll = disadvatageRollReport
 			};
         }
+
+		public AttackReport SpellAttack(Character caster, Character receiver)
+        {
+			AttackReport attackReport = caster.ActiveSpell.GetSpellDamage();
+
+			double totalDamage = attackReport.DiceRollReport.GetDiceTotal() + caster.CharacterStats.Intelligence;
+			receiver.DamagePlayer(totalDamage);
+
+			attackReport.AttackerName = caster.Name;
+			attackReport.DefenderName = receiver.Name;
+			attackReport.CharacterIntelligence = caster.CharacterStats.Intelligence;
+			attackReport.SpellName = caster.ActiveSpell.SpellName;
+			attackReport.SpellType = caster.ActiveSpell.SpellType;
+			attackReport.TotalDamageDealt = (int)totalDamage;
+
+			return attackReport;
+        }
 	}
 }

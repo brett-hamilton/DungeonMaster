@@ -68,6 +68,16 @@ namespace DungeonMaster.Data
         public int CharacterIntelligence { get; set; }
 
         /// <summary>
+        /// Name of the Spell used
+        /// </summary>
+        public string SpellName { get; set; }
+
+        /// <summary>
+        /// THe type of Spell
+        /// </summary>
+        public SpellTypes SpellType { get; set; }
+
+        /// <summary>
         /// Returns a string containing information about the attack attempt. This is then displayed
         /// in the game log for the players.
         /// </summary>
@@ -106,6 +116,17 @@ namespace DungeonMaster.Data
         {
             return $"{AttackerName} rolled a healing spell of {DiceRollReport.GetDiceTotal()} health amount + {CharacterIntelligence} intelligence bonus = {TotalDamageDealt}. This healed {DefenderName}." +
                 $"They rolled {DieUsed} {DiceRollReport.GetDiceReport()}.";
+        }
+
+        /// <summary>
+        /// Method to build a report about the spell attack attempt
+        /// </summary>
+        /// <returns></returns>
+        public string GetSpellAttackReport()
+        {
+            return $"{AttackerName} rolled the attack spell {SpellName}, a {SpellType} type. The attack was {DiceRollReport.GetDiceTotal()} roll damage + {CharacterIntelligence} intelligence bonus = {TotalDamageDealt}." +
+                $"This damaged {DefenderName}. The roll was {DieUsed}, with {DiceRollReport.GetDiceReport()}.";
+                    
         }
     }
 }
