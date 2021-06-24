@@ -12,7 +12,7 @@
 
 <div id="CharacterCreator">
     <label for="characterName">Name: </label>
-    <input placeholder="enter character name" @bind="characterName" />
+    <input placeholder="Enter character name" @bind="characterName" />
     <label for="Character Class">Class: </label>
     <select name="class" @bind="characterClass">
         <option value="ranger">Ranger</option>
@@ -55,9 +55,13 @@
     <div style="max-height: 200px; min-height: 100px; width: 500px">
         <ul class="list-group" id="charList">
             @foreach (Character character in characterList)
-			{
-                <li class="list-group-item list-group-item-primary">@character.Name</li>
-			}
+            {
+                if (character.Name != string.Empty)
+                {
+                    <li class="list-group-item list-group-item-primary">@character.Name</li>
+                }
+        
+            }
         </ul>
     </div>
     <br />
