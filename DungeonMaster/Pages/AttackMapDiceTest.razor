@@ -391,6 +391,7 @@ Render With Grid:
                     }
                     break;
                 case "magicAttack":
+                    report = gameTurn.Game.SpellAttackAttempt(gameTurn.CurrentCharacter, character);
                     break;
                 case "magicHeal":
                     report = gameTurn.Game.SpellHealAttempt(gameTurn.CurrentCharacter, character);
