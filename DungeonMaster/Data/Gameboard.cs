@@ -339,17 +339,22 @@ namespace DungeonMaster.Data
             }
         }
 
+        /// <summary>
+        /// Returns the coordinate if a push is possible. 
+        /// </summary>
+        /// <param name="pusher">The pusher.</param>
+        /// <param name="itemToPush">The item to push.</param>
+        /// <returns>Returns null if invalid push, otherwise returns coordinate of the new location for itemtopush</returns>
         public Coordinate GetCoordinateAfterPush(Drawable pusher, Drawable itemToPush)
         {
             Coordinate characterLocation = GetCoordinate(pusher);
             Coordinate itemLocation = GetCoordinate(itemToPush);
             Coordinate returnCoordinate = new Coordinate();
 
-            //        -1   =             0            -      1 
             var columnDiff = characterLocation.Column - itemLocation.Column;
             var rowDiff = characterLocation.Row - itemLocation.Row;
 
-            if((Math.Abs(columnDiff) > 1)||(Math.Abs(rowDiff) > 1))
+            if((Math.Abs(columnDiff) > 1)||(Math.Abs(rowDiff) > 1))     //If the object is more than 1 away in any direction, it isn't pushable.
             {
                 return null;
             }

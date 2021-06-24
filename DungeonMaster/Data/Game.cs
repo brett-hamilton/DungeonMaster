@@ -267,7 +267,13 @@ namespace DungeonMaster.Data
 			return Gameboard.Move(character, currentPosition, newCoords);
 		}
 
-		public string PushObject(Drawable character, Drawable itemToPush)
+        /// <summary>
+        /// Attempts to push "itemToPush" from "character".
+        /// </summary>
+        /// <param name="character">The character.</param>
+        /// <param name="itemToPush">The item to push.</param>
+        /// <returns>string representing the result of the action</returns>
+        public string PushObject(Drawable character, Drawable itemToPush)
         {
 			Coordinate currLocation = Gameboard.GetCoordinate(itemToPush);
 			Coordinate newLocation = Gameboard.GetCoordinateAfterPush(character, itemToPush);
