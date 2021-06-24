@@ -110,7 +110,7 @@ namespace DungeonMaster.Data
 			return new AttackReport 
 			{ 
 				TotalDamageDealt = 1, 
-				//WeaponBaseDamage = BaseDamage, 
+				//ModifierDamage = BaseDamage, 
 				DieUsed = DiceUsed 
 			};
         }

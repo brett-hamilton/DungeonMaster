@@ -111,7 +111,7 @@ namespace XunitTest
         {
             character1.Proficiency = WeaponType.OneHanded;
 
-            Assert.Equal(2, character1.isProficient());
+            Assert.Equal(2, character1.IsProficient());
 
 
         }
@@ -124,7 +124,7 @@ namespace XunitTest
         {
             character1.Proficiency = WeaponType.TwoHanded;
 
-            Assert.NotEqual(2, character1.isProficient());
+            Assert.NotEqual(2, character1.IsProficient());
 
 
         }

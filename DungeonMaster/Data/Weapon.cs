@@ -148,7 +148,6 @@ namespace DungeonMaster.Data
 					{
 						DiceRollReport = dieRollReport,
 						TotalDamageDealt = dieRoll,
-						WeaponBaseDamage = 0,
 						DieUsed = DiceUsed,
 						DamageType = damageType						
 					};
@@ -158,7 +157,6 @@ namespace DungeonMaster.Data
 			return new AttackReport 
 			{ 
 				TotalDamageDealt = 0, 
-				WeaponBaseDamage = 0, 
 				DieUsed = DiceUsed 
 			};
 		}
