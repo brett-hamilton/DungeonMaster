@@ -347,6 +347,10 @@ namespace DungeonMaster.Data
         /// <returns>Returns null if invalid push, otherwise returns coordinate of the new location for itemtopush</returns>
         public Coordinate GetCoordinateAfterPush(Drawable pusher, Drawable itemToPush)
         {
+            if(!itemToPush.IsCollidable)
+            {
+                return null;
+            }
             Coordinate characterLocation = GetCoordinate(pusher);
             Coordinate itemLocation = GetCoordinate(itemToPush);
             Coordinate returnCoordinate = new Coordinate();

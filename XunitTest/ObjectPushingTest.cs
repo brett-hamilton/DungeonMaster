@@ -30,6 +30,25 @@ namespace XunitTest
         }
 
         /// <summary>
+        /// Attempts to push an object that is too far away, so it fails.
+        /// </summary>
+        [Fact]
+        public void AttemptToPushUnpushableObjectTest()
+        {
+            Game game = new Game(10, 10);
+            Character character = new Character();
+            game.AddCharacter(character, 5, 5);
+            Drawable nonPushable = new Drawable("unpushableWall", true, null, null);
+            game.AddDrawable(nonPushable, 5, 2);
+
+            var outputString = game.PushObject(character, nonPushable);
+            var expectedString = "unpushableWall was too far from Geralt to push.";
+
+            Assert.True(outputString.Equals(expectedString));
+        }
+
+
+        /// <summary>
         /// Attempts to push the object north. Should pass.
         /// </summary>
         [Fact]
