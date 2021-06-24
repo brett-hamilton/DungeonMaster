@@ -338,5 +338,41 @@ namespace DungeonMaster.Data
                 return $"Character moved to {x + 1}, {y + 1}";
             }
         }
+
+        public Coordinate GetCoordinateAfterPush(Drawable pusher, Drawable itemToPush)
+        {
+            Coordinate characterLocation = GetCoordinate(pusher);
+            Coordinate itemLocation = GetCoordinate(itemToPush);
+            Coordinate returnCoordinate = new Coordinate();
+
+            //        -1   =             0            -      1 
+            var columnDiff = characterLocation.Column - itemLocation.Column;
+            var rowDiff = characterLocation.Row - itemLocation.Row;
+
+            if((Math.Abs(columnDiff) > 1)||(Math.Abs(rowDiff) > 1))
+            {
+                return null;
+            }
+            else
+            {
+                if(columnDiff == 0)
+                {
+                    returnCoordinate.Column = itemLocation.Column;
+                }    
+                else
+                {
+                    returnCoordinate.Column = itemLocation.Column - columnDiff;
+                }
+                if (rowDiff == 0)
+                {
+                    returnCoordinate.Row = itemLocation.Row;
+                }
+                else
+                {
+                    returnCoordinate.Row = itemLocation.Row - rowDiff;
+                }
+            }
+            return returnCoordinate;
+        }
     }
 }
