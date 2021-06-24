@@ -40,25 +40,27 @@
 
             @* Character Controls *@
             <div style="padding: 10px" class="row" id="primaryButtonRow">
-
-                @if (gameTurn.WeaponAttackPossible)
+                @if (gameTurn.CurrentCharacter.Status != Status.Dead)
                 {
-                    <button class="btn btn-primary" style="margin-right:5px; margin-bottom: 5px" @onclick="@( click => Target("weaponAttack") )">Attack With Weapon</button>
-                }
+                    @if (gameTurn.WeaponAttackPossible)
+                    {
+                        <button class="btn btn-primary" style="margin-right:5px; margin-bottom: 5px" @onclick="@( click => Target("weaponAttack") )">Attack With Weapon</button>
+                    }
 
-                @if (gameTurn.MagicAttackPossible)
-                {
-                    <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicAttack") )"> Damage Spell </button>
-                }
+                    @if (gameTurn.MagicAttackPossible)
+                    {
+                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicAttack") )"> Damage Spell </button>
+                    }
 
-                @if (gameTurn.MovePossible)
-                {
-                    <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("move") )"> Move </button>
-                }
+                    @if (gameTurn.MovePossible)
+                    {
+                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("move") )"> Move </button>
+                    }
 
-                @if (gameTurn.MagicHealPossible)
-                {
-                    <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicHeal") )"> Healing Spell </button>
+                    @if (gameTurn.MagicHealPossible)
+                    {
+                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicHeal") )"> Healing Spell </button>
+                    }
                 }
             </div><br />
             <div style="padding: 10px" id="secondaryButtonRow">
@@ -468,6 +470,9 @@ Render With Grid:
             character.ImageLocation = "/images/char2.png";
             game.AddCharacter(character, 34, 0);
 
+            var woodblock = new Drawable("wood block", true, "/images/tempWoodTexture.png", "#FFFFFF");
+            game.AddDrawable(woodblock, 3, 2);
+
             boardImage = game.Gameboard.ImageLocation;
 
             gameStarted = true;
@@ -550,7 +555,7 @@ Render With Grid:
 
             double scaledRows = scaleFactor * gameTurn.Game.Gameboard.Rows;                          //Scale the row count by our scale factor
             double scaledColumns = scaleFactor * gameTurn.Game.Gameboard.Columns;                    //Scale the column count by our scale factor
-            
+
             await this._drawableContext.ClearRectAsync(0, 0, scaledColumns, scaledRows);
 
             for (int i = 0; i < gameTurn.Game.Gameboard.Rows; i++)
