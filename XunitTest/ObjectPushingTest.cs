@@ -101,5 +101,34 @@ namespace XunitTest
             Assert.True(newCoordinates.Row == 7);
             Assert.True(newCoordinates.Column == 7);
         }
+
+        [Fact]
+        public void NearbyPushableObjectTest() 
+        {
+            var game = new Game(10, 10);
+            Character character = new Character();
+            game.AddCharacter(character, 5, 5);
+            Drawable pushableItem = new Drawable("chair", true, null, null);
+            game.AddDrawable(pushableItem, 6, 6);
+
+            var listOfItems = game.Gameboard.PushableItemsNearby(character);
+
+            Assert.True(listOfItems[0] == pushableItem);
+            Assert.True(listOfItems.Count == 1);
+        }
+
+        [Fact]
+        public void NoNearbyPushableObjectTest() 
+        {
+            var game = new Game(10, 10);
+            Character character = new Character();
+            game.AddCharacter(character, 5, 5);
+            Drawable pushableItem = new Drawable("chair", true, null, null);
+            game.AddDrawable(pushableItem, 7, 7);
+
+            var listOfItems = game.Gameboard.PushableItemsNearby(character);
+
+            Assert.True(listOfItems.Count == 0);
+        }
     }
 }

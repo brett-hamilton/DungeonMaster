@@ -40,6 +40,8 @@ namespace DungeonMaster.Data
         /// </summary>
         public bool MovePossible { get; set; }
 
+        public bool InteractionPossible { get; set; }
+
         /// <summary>
         /// Game that the turn is for. 
         /// </summary>
@@ -158,6 +160,11 @@ namespace DungeonMaster.Data
         public void UpdateMovementPossibilities() 
         {
             MovePossible = true;
+        }
+
+        public void UpdateInteractionPossibilities() 
+        {
+            var result = Game.Gameboard.PushableItemsNearby(CurrentCharacter);
         }
     }
 }
