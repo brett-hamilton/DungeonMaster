@@ -92,7 +92,7 @@
     public Character Attacker { get; set; } = new Character()
     {
         Name = "Robin Hood",
-        ActiveWeapon = new Weapon("Bow", 4, Dice.D6, 100)
+        ActiveWeapon = new Weapon("Bow", Dice.D6, 100, WeaponType.Range)
         {
             RangedWeapon = true,
 
@@ -129,7 +129,7 @@
         Attacker = new Character()
         {
             Name = "Robin Hood",
-            ActiveWeapon = new Weapon("Bow", 4, Dice.D6, 100)
+            ActiveWeapon = new Weapon("Bow", Dice.D6, 100, WeaponType.Range)
             {
                 RangedWeapon = true,
 

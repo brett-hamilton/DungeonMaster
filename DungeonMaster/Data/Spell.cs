@@ -101,7 +101,7 @@ namespace DungeonMaster.Data
 					return new AttackReport
 					{
 						DiceRollReport = dieRollReport,
-						TotalDamageDealt = dieRoll, //only will use dieRoll until proficiency is implemented
+						//TotalDamageDealt = dieRoll, //only will use dieRoll until proficiency is implemented
 						DieUsed = DiceUsed
 					};
 				}
@@ -110,7 +110,7 @@ namespace DungeonMaster.Data
 			return new AttackReport 
 			{ 
 				TotalDamageDealt = 1, 
-				//WeaponBaseDamage = BaseDamage, 
+				//ModifierDamage = BaseDamage, 
 				DieUsed = DiceUsed 
 			};
         }

@@ -25,7 +25,7 @@ namespace DungeonMaster.Data
         /// <summary>
         /// Base damage of the attacking weapon.
         /// </summary>
-        public int WeaponBaseDamage { get; set; }
+        public int ModifierDamage { get; set; }
 
         /// <summary>
         /// Base damage and die damage roll total to be deducted from the other player.
@@ -68,6 +68,16 @@ namespace DungeonMaster.Data
         public int CharacterIntelligence { get; set; }
 
         /// <summary>
+        /// Name of the Spell used
+        /// </summary>
+        public string SpellName { get; set; }
+
+        /// <summary>
+        /// THe type of Spell
+        /// </summary>
+        public SpellTypes SpellType { get; set; }
+
+        /// <summary>
         /// Returns a string containing information about the attack attempt. This is then displayed
         /// in the game log for the players.
         /// </summary>
@@ -87,13 +97,13 @@ namespace DungeonMaster.Data
             if (DisadvantageRoll != null) 
             {
                 string attackReport = $"{AttackerName} attacked {DefenderName} from within melee distance. {AttackerName} {DisadvantageRoll.GetDiceReport()} This attack hit {DefenderName}.";
-                attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {WeaponBaseDamage} base damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType.ToLower()} damage.";
+                attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {ModifierDamage} modifier damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType.ToLower()} damage.";
                 return attackReport;
             }
             else
             {
                 string attackReport = $"{AttackerName} rolled an attack of {AttackRoll}. This attack hit {DefenderName}.";
-                attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {WeaponBaseDamage} base damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType.ToLower()} damage.";
+                attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {ModifierDamage} modifier damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType.ToLower()} damage.";
                 return attackReport;
             }
         }
@@ -106,6 +116,17 @@ namespace DungeonMaster.Data
         {
             return $"{AttackerName} rolled a healing spell of {DiceRollReport.GetDiceTotal()} health amount + {CharacterIntelligence} intelligence bonus = {TotalDamageDealt}. This healed {DefenderName}." +
                 $"They rolled {DieUsed} {DiceRollReport.GetDiceReport()}.";
+        }
+
+        /// <summary>
+        /// Method to build a report about the spell attack attempt
+        /// </summary>
+        /// <returns></returns>
+        public string GetSpellAttackReport()
+        {
+            return $"{AttackerName} rolled the attack spell {SpellName}, a {SpellType} type. The attack was {DiceRollReport.GetDiceTotal()} roll damage + {CharacterIntelligence} intelligence bonus = {TotalDamageDealt}." +
+                $"This damaged {DefenderName}. The roll was {DieUsed}, with {DiceRollReport.GetDiceReport()}.";
+                    
         }
     }
 }
