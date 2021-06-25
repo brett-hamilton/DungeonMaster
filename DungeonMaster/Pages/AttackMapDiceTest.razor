@@ -456,7 +456,7 @@ Render With Grid:
         /// <param name="direction"> Direction to move the drawable.</param>
         public async Task Move(Drawable drawable, CardinalDirection direction)
         {
-            var report = gameTurn.Game.CharacterMove(drawable, direction);
+            string report = gameTurn.Game.CharacterMove(drawable, direction);
             StateHasChanged();
             await Render();
 

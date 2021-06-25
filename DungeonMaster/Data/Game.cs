@@ -292,7 +292,7 @@ namespace DungeonMaster.Data
 			var newCoords = Gameboard.GetNewCoordinate(currentPosition, direction);
 			// Call Move
 
-			return Gameboard.Move(character, currentPosition, newCoords);
+			return Gameboard.Move(character, currentPosition, newCoords).GetMoveResult();
 		}
 
         /// <summary>
@@ -304,15 +304,19 @@ namespace DungeonMaster.Data
         public string PushObject(Drawable character, Drawable itemToPush)
         {
 			Coordinate currLocation = Gameboard.GetCoordinate(itemToPush);
-			Coordinate newLocation = Gameboard.GetCoordinateAfterPush(character, itemToPush);
-			if(newLocation == null)
+			PushReport pushReport = Gameboard.GetCoordinateAfterPush(character, itemToPush);
+
+			if(!pushReport.PushPossible)
             {
-				return $"{itemToPush.Name} was too far from {character.Name} to push.";
-            }
+				return pushReport.GetPushResult();
+			}
 			else
             {
-				return Gameboard.Move(itemToPush, currLocation, newLocation);
-            }				
+				MoveReport moveReport = Gameboard.Move(itemToPush, currLocation, pushReport.NewCoordinate);
+				pushReport.PushPossible = moveReport.MoveSuccessful;
+				pushReport.ErrorString = moveReport.ErrorString;
+				return pushReport.GetPushResult();
+			}		
         }
 	}
 }

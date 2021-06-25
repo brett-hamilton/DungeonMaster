@@ -312,30 +312,40 @@ namespace DungeonMaster.Data
         /// <param name="currentCoordinate">The current coordinate.</param>
         /// <param name="newCoordinate">The new coordinate.</param>
         /// <returns>A string reporting the result of the move</returns>
-        public string Move(Drawable objectToMove, Coordinate currentCoordinate, Coordinate newCoordinate) 
+        public MoveReport Move(Drawable objectToMove, Coordinate currentCoordinate, Coordinate newCoordinate) 
         {
+            MoveReport moveReport = new MoveReport(objectToMove, currentCoordinate);
+            moveReport.NewCoordinate = newCoordinate;
+
             // Validate Coords
             var x = newCoordinate.Column;
             var y = newCoordinate.Row;
             if (x >= Columns || x < 0)
             {
-                return "Coordinate was out of bounds: Column";
+                moveReport.MoveSuccessful = false;
+                moveReport.ErrorString = "Coordinate was out of bounds: Column.";
+                return moveReport;
             }
 
             if (y < 0 || y >= Rows) 
             {
-                return "Coordinate was out of bounds: Row";
+                moveReport.MoveSuccessful = false;
+                moveReport.ErrorString = "Coordinate was out of bounds: Row.";
+                return moveReport;
             }
             // Validate not occupied
             if (!(Drawables[x,y] == null))
             {
-                return "Space is occupied already";
+                moveReport.MoveSuccessful = false;
+                moveReport.ErrorString = "Location is already occupied.";
+                return moveReport;
             }
             else
             {
                 Drawables[currentCoordinate.Column, currentCoordinate.Row] = null;
                 Drawables[x, y] = objectToMove;
-                return $"Character moved to {x + 1}, {y + 1}";
+                moveReport.MoveSuccessful = true;
+                return moveReport;
             }
         }
 
@@ -344,13 +354,18 @@ namespace DungeonMaster.Data
         /// </summary>
         /// <param name="pusher">The pusher.</param>
         /// <param name="itemToPush">The item to push.</param>
-        /// <returns>Returns null if invalid push, otherwise returns coordinate of the new location for itemtopush</returns>
-        public Coordinate GetCoordinateAfterPush(Drawable pusher, Drawable itemToPush)
+        /// <returns>A PushReport containing the results of the push.</returns>
+        public PushReport GetCoordinateAfterPush(Drawable pusher, Drawable itemToPush)
         {
+            PushReport pushReport = new PushReport(pusher, itemToPush);
+
             if(!itemToPush.IsCollidable)
             {
-                return null;
+                pushReport.PushPossible = false;
+                pushReport.ErrorString = $"{itemToPush.Name} is not movable.";
+                return pushReport;
             }
+
             Coordinate characterLocation = GetCoordinate(pusher);
             Coordinate itemLocation = GetCoordinate(itemToPush);
             Coordinate returnCoordinate = new Coordinate();
@@ -360,7 +375,9 @@ namespace DungeonMaster.Data
 
             if((Math.Abs(columnDiff) > 1)||(Math.Abs(rowDiff) > 1))     //If the object is more than 1 away in any direction, it isn't pushable.
             {
-                return null;
+                pushReport.PushPossible = false;
+                pushReport.ErrorString = $"{itemToPush.Name} is too far away from {pusher.Name}.";
+                return pushReport;
             }
             else
             {
@@ -381,7 +398,9 @@ namespace DungeonMaster.Data
                     returnCoordinate.Row = itemLocation.Row - rowDiff;
                 }
             }
-            return returnCoordinate;
+            pushReport.PushPossible = true;
+            pushReport.NewCoordinate = returnCoordinate;
+            return pushReport;
         }
 
         public List<Drawable> PushableItemsNearby(Character character) 
