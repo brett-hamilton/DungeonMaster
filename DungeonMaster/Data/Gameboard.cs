@@ -402,5 +402,59 @@ namespace DungeonMaster.Data
             pushReport.NewCoordinate = returnCoordinate;
             return pushReport;
         }
+
+        public List<Drawable> PushableItemsNearby(Character character) 
+        {
+            var listOfPushableItems = new List<Drawable>();
+            var characterLocation = GetCoordinate(character);
+            if (characterLocation == null) 
+            {
+                return listOfPushableItems;
+            }
+            // Find the range of valid values to search. If we go outside of bounds, stop beforehand.
+            var minColumn = characterLocation.Column - 1;
+            if (minColumn < 0) 
+            {
+                minColumn = 0;
+            }
+            var maxColumn = characterLocation.Column + 1;
+            if (maxColumn >= Columns)
+            {
+                maxColumn = Columns - 1;
+            }
+
+            var minRow = characterLocation.Row - 1;
+            if (minRow < 0)
+            {
+                minRow = 0;
+            }
+
+            var maxRow = characterLocation.Row + 1;
+            if (maxRow >= Rows)
+            {
+                maxRow = Rows - 1; 
+            }
+
+            // Iterate through the surrounding squares, and if an item is collidable add it to the list to return
+            // which represents pushable objects.
+            for (int i = minRow; i <= maxRow; i++) 
+            {
+                for (int j = minColumn; j <= maxColumn; j++) 
+                {
+                    var objectAtLocation = Drawables[j, i];
+
+                    if (objectAtLocation != null)
+                    {
+                        // If the object exists, and it is collidable, add it to the list to return.
+                        if (objectAtLocation.IsCollidable) 
+                        {
+                            listOfPushableItems.Add(objectAtLocation);
+                        }
+                    }
+                }
+            }// end for(int i = minRow; i < maxRow; i++) 
+
+            return listOfPushableItems;
+        }
     }
 }

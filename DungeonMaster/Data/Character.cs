@@ -77,7 +77,7 @@ namespace DungeonMaster.Data
 			this.Health = 100;
 			this.ActiveWeapon = sword;
 			this.ActionPoints = 120;
-			this.IsCollidable = true;
+			IsCollidable = false;
 			this.BackupColorCode = "#FF00FF";
 			this.ImageLocation = "/images/char1.png";
 		}
@@ -94,6 +94,7 @@ namespace DungeonMaster.Data
 			Armor = new Armor("Leather", 6);
 			this.Name = name;
 			this.Health = health;
+			IsCollidable = false;
 			this.ActionPoints = actionPoints;
 			Status = Status.Alive;
 			PlayersInventory = new Inventory();
@@ -113,6 +114,7 @@ namespace DungeonMaster.Data
 			this.Health = health;
 			this.ActionPoints = actionPoints;
 			Status = Status.Alive;
+			IsCollidable = false;
 			PlayersInventory = new Inventory();
 
 			switch(characterClass)
@@ -157,7 +159,7 @@ namespace DungeonMaster.Data
 			this.Name = name;
 			this.Health = health;
 			this.ActionPoints = actionPoints;
-			IsCollidable = true;
+			IsCollidable = false;
 			ImageLocation = playerImage;
 			BackupColorCode = "#FF00FF";
 			Status = Status.Alive;
@@ -222,18 +224,6 @@ namespace DungeonMaster.Data
 		public void AddSpellInventory(Spell spell)
         {
 			PlayersInventory.Spells.Add(spell);
-        }
-
-		/// <summary>
-		/// Gets a number for the healing power of a spell
-		/// </summary>
-		/// <returns>The healing power of the spell.</returns>
-		public DiceRollReport GetHealingSpellPower()
-        {
-
-			int.TryParse(ActiveSpell.DiceUsed.ToString()[1..], out int dieSides);
-			var spellRollReport = Die.Roll(dieSides, ActiveSpell.NumberOfRolls);
-			return spellRollReport;
         }
 
 		/// <summary>

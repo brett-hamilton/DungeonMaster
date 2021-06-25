@@ -41,9 +41,19 @@ namespace DungeonMaster.Data
         public bool MovePossible { get; set; }
 
         /// <summary>
+        /// If there are any nearby pushable objects.
+        /// </summary>
+        public bool InteractionPossible { get; set; }
+
+        /// <summary>
+        /// List of Objects that are pushable near the character.
+        /// </summary>
+        public List<Drawable> PushableObjects { get; set; } = new List<Drawable>();
+
+        /// <summary>
         /// Game that the turn is for. 
         /// </summary>
-        public Game Game { get; set; }
+        public Game Game { get; set; } = new Game();
 
         /// <summary>
         /// Default constructor to create an empty turn.
@@ -91,6 +101,7 @@ namespace DungeonMaster.Data
         /// </summary>
         public void UpdatePossibilities() 
         {
+            UpdateInteractionPossibilities();
             UpdateWeaponPossibilities();
             UpdateMagicAttackPossibilities();
             UpdateMagicHealPossibilities();
@@ -158,6 +169,25 @@ namespace DungeonMaster.Data
         public void UpdateMovementPossibilities() 
         {
             MovePossible = true;
+        }
+
+        /// <summary>
+        /// Method to determine if there are nearby pushable objects, and if so who.
+        /// </summary>
+        public void UpdateInteractionPossibilities() 
+        {
+            var result = Game.Gameboard.PushableItemsNearby(CurrentCharacter);
+
+            PushableObjects = result;
+
+            if (PushableObjects.Count == 0)
+            {
+                InteractionPossible = false;
+            }
+            else 
+            {
+                InteractionPossible = true;
+            }
         }
     }
 }

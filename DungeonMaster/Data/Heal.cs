@@ -14,7 +14,7 @@ namespace DungeonMaster.Data
         /// <param name="caster">Person healing themself</param>
         public void HealSelf(Character caster)
         {
-            caster.Health += caster.GetHealingSpellPower().GetDiceTotal() + caster.CharacterStats.Intelligence;
+            caster.Health += caster.ActiveSpell.GetHealingSpellPower().GetDiceTotal() + caster.CharacterStats.GetIntelligenceModifier();
         }
 
         /// <summary>
@@ -24,15 +24,17 @@ namespace DungeonMaster.Data
         /// <param name="receiver">Character receiving the Spell</param>
         public AttackReport HealCharacter(Character caster, Character receiver)
         {
-            DiceRollReport roll = caster.GetHealingSpellPower();
-            double totalHealth = roll.GetDiceTotal() + caster.CharacterStats.Intelligence;
+            DiceRollReport roll = caster.ActiveSpell.GetHealingSpellPower();
+            var modifierAmount = caster.CharacterStats.GetIntelligenceModifier();
+
+            double totalHealth = roll.GetDiceTotal() + modifierAmount;
             receiver.HealPlayer(totalHealth); 
 
             AttackReport healingReport = new AttackReport();
 
             healingReport.AttackerName = caster.Name;
             healingReport.DefenderName = receiver.Name;
-            healingReport.CharacterIntelligence = caster.CharacterStats.Intelligence;
+            healingReport.Modifier = modifierAmount;
             healingReport.DieUsed = caster.ActiveSpell.DiceUsed;
             healingReport.TotalDamageDealt = (int)totalHealth;
             healingReport.DiceRollReport = roll;

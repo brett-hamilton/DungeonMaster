@@ -39,7 +39,7 @@ namespace DungeonMaster.Data
 				
 				var attackReport = attacker.ActiveWeapon.GetDamage();
 				int damageAmount = attackReport.TotalDamageDealt + modifierDamage;
-				attackReport.ModifierDamage = modifierDamage;
+				attackReport.Modifier = modifierDamage;
 				defender.DamagePlayer(damageAmount);
 				attackReport.AttackRoll = attackValue;
 				attackReport.HitCheck = hit;
@@ -92,7 +92,7 @@ namespace DungeonMaster.Data
 				var attackReport = attacker.ActiveWeapon.GetDamage();
 				defender.DamagePlayer(attackReport.TotalDamageDealt + modifierDamage);
 				attackReport.TotalDamageDealt += modifierDamage;
-				attackReport.ModifierDamage = modifierDamage;
+				attackReport.Modifier = modifierDamage;
 				attackReport.AttackRoll = attackValue;
 				attackReport.HitCheck = hit;
 				attackReport.AttackerName = attacker.Name;
@@ -128,10 +128,9 @@ namespace DungeonMaster.Data
 
 			attackReport.AttackerName = caster.Name;
 			attackReport.DefenderName = receiver.Name;
-			attackReport.CharacterIntelligence = caster.CharacterStats.Intelligence;
 			attackReport.SpellName = caster.ActiveSpell.SpellName;
 			attackReport.SpellType = caster.ActiveSpell.SpellType;
-			attackReport.ModifierDamage = modifierDamage;
+			attackReport.Modifier = modifierDamage;
 			attackReport.TotalDamageDealt = (int)totalDamage;
 
 			return attackReport;
