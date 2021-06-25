@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace DungeonMaster
 {
@@ -14,6 +15,9 @@ namespace DungeonMaster
 		public static void Main (string[] args)
 		{
 			CreateHostBuilder (args).Build ( ).Run ( );
+			const string PATH = "Saves/characters.json";
+			if (!File.Exists(PATH))
+				File.Create(PATH);
 		}
 
 		public static IHostBuilder CreateHostBuilder (string[] args) =>
