@@ -12,7 +12,7 @@
 
 <div id="CharacterCreator">
     <label for="characterName">Name: </label>
-    <input placeholder="enter character name" @bind="characterName" />
+    <input placeholder="Enter character name" @bind="characterName" />
     <label for="Character Class">Class: </label>
     <select name="class" @bind="characterClass">
         <option value="ranger">Ranger</option>
@@ -55,9 +55,13 @@
     <div style="max-height: 200px; min-height: 100px; width: 500px">
         <ul class="list-group" id="charList">
             @foreach (Character character in characterList)
-			{
-                <li class="list-group-item list-group-item-primary">@character.Name</li>
-			}
+            {
+                if (character.Name != string.Empty)
+                {
+                    <li class="list-group-item list-group-item-primary">@character.Name</li>
+                }
+        
+            }
         </ul>
     </div>
     <br />
@@ -78,9 +82,9 @@
 </div>
 
 @code {
-    /// <summary>
-    /// Name of the character bring created
-    /// </summary>
+        /// <summary>
+        /// Name of the character bring created
+        /// </summary>
     private string characterName = string.Empty;
 
     /// <summary>
@@ -145,7 +149,7 @@
     {
         if (!File.Exists(PATH))
         {
-            return;                 // Do nothing if file does not exist
+            File.Create(PATH);                 // Create the File.
         }
 
         characterList = CharacterFile.Read();
@@ -171,9 +175,11 @@
         newCharacter.CharacterStats = statsForCharacter;
 
         try
-        {
-            CharacterFile.Write (newCharacter, false);
-            characterList.Add(newCharacter);
+        {   if (newCharacter.Name != string.Empty)
+            {
+                CharacterFile.Write(newCharacter, false);
+                characterList.Add(newCharacter);
+            }
         }
         catch (IOException e)
         {
