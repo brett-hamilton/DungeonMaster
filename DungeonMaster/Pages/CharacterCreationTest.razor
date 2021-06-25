@@ -82,9 +82,9 @@
 </div>
 
 @code {
-    /// <summary>
-    /// Name of the character bring created
-    /// </summary>
+        /// <summary>
+        /// Name of the character bring created
+        /// </summary>
     private string characterName = string.Empty;
 
     /// <summary>
@@ -149,7 +149,7 @@
     {
         if (!File.Exists(PATH))
         {
-            return;                 // Do nothing if file does not exist
+            File.Create(PATH);                 // Create the File.
         }
 
         characterList = CharacterFile.Read();
@@ -175,9 +175,11 @@
         newCharacter.CharacterStats = statsForCharacter;
 
         try
-        {
-            CharacterFile.Write (newCharacter, false);
-            characterList.Add(newCharacter);
+        {   if (newCharacter.Name != string.Empty)
+            {
+                CharacterFile.Write(newCharacter, false);
+                characterList.Add(newCharacter);
+            }
         }
         catch (IOException e)
         {
