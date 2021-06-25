@@ -40,27 +40,33 @@
 
             @* Character Controls *@
             <div style="padding: 10px" class="row" id="primaryButtonRow">
-
-                @if (gameTurn.WeaponAttackPossible)
+                @if (gameTurn.CurrentCharacter.Status != Status.Dead)
                 {
-                    <button class="btn btn-primary" style="margin-right:5px; margin-bottom: 5px" @onclick="@( click => Target("weaponAttack") )">Attack With Weapon</button>
-                }
+                    @if (gameTurn.WeaponAttackPossible)
+                    {
+                        <button class="btn btn-primary" style="margin-right:5px; margin-bottom: 5px" @onclick="@( click => Target("weaponAttack") )">Attack With Weapon</button>
+                    }
 
-                @if (gameTurn.MagicAttackPossible)
-                {
-                    <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicAttack") )"> Damage Spell </button>
-                }
+                    @if (gameTurn.MagicAttackPossible)
+                    {
+                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicAttack") )"> Damage Spell </button>
+                    }
 
-                @if (gameTurn.MovePossible)
-                {
-                    <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("move") )"> Move </button>
-                }
+                    @if (gameTurn.MovePossible)
+                    {
+                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("move") )"> Move </button>
+                    }
 
-                @if (gameTurn.MagicHealPossible)
-                {
-                    <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicHeal") )"> Healing Spell </button>
+                    @if (gameTurn.MagicHealPossible)
+                    {
+                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicHeal") )"> Healing Spell </button>
+                    }
+                    @if (gameTurn.InteractionPossible) 
+                    { 
+                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("interaction") )"> Push Item </button>
+                    }
                 }
-            </div><br />
+            </div><hr />
             <div style="padding: 10px" id="secondaryButtonRow">
                 <div class="row" id="targetButtonsRow">
                     @if (showTargetButtons)
@@ -97,6 +103,16 @@
                         </div>
                     </div>
                 }
+            <div class="row" id="pushableItemsButtonsRow">
+                @if (showPushableItemsButtons)
+                {
+                    @foreach (var item in gameTurn.PushableObjects)
+                    {
+                        <button class="btn btn-secondary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => PushItem(item) )">@item.Name</button>
+                    }
+                    <button class="btn btn-info" style="margin-right: 5px; margin-bottom: 5px" @onclick="Cancel">Cancel</button>
+                }
+            </div>
             </div>
             <br />
             <br />
@@ -247,6 +263,11 @@ Render With Grid:
         private bool showMovementButtons = false;
 
         /// <summary>
+        /// Bool representing if the buttons for moveable items should be shown.
+        /// </summary>
+        private bool showPushableItemsButtons = false;
+
+        /// <summary>
         /// List of strings of all attacks carried out.
         /// </summary>
         public List<string> GameLog { get; set; } = new List<string>();
@@ -329,6 +350,7 @@ Render With Grid:
         {
             showMovementButtons = false;
             showTargetButtons = false;
+            showPushableItemsButtons = false;
             actionToTake = null;
         }
 
@@ -353,18 +375,28 @@ Render With Grid:
             {
                 showTargetButtons = true;
                 showMovementButtons = false;
+                showPushableItemsButtons = false;
             }
 
             else if (action.Equals("move"))
             {
                 showTargetButtons = false;
                 showMovementButtons = true;
+                showPushableItemsButtons = false;
+            }
+
+            else if (action.Equals("interaction"))
+            {
+                showPushableItemsButtons = true;
+                showTargetButtons = false;
+                showMovementButtons = false;
             }
 
             else
             {
                 showTargetButtons = false;
                 showMovementButtons = false;
+                showPushableItemsButtons = false;
             }
 
             actionToTake = action;
@@ -391,6 +423,7 @@ Render With Grid:
                     }
                     break;
                 case "magicAttack":
+                    report = gameTurn.Game.SpellAttackAttempt(gameTurn.CurrentCharacter, character);
                     break;
                 case "magicHeal":
                     report = gameTurn.Game.SpellHealAttempt(gameTurn.CurrentCharacter, character);
@@ -398,6 +431,20 @@ Render With Grid:
                 default:
                     break;
             }
+
+            ReportOutcome(report);
+        }
+
+
+        /// <summary>
+        /// Method to attempt to push an itme in the gameboard by the current character.
+        /// </summary>
+        /// <param name="itemToPush">Item the character is attempting to push.</param>
+        public async Task PushItem(Drawable itemToPush)
+        {
+            var report = gameTurn.Game.PushObject(gameTurn.CurrentCharacter, itemToPush);
+            StateHasChanged();
+            await Render();
 
             ReportOutcome(report);
         }
@@ -430,6 +477,7 @@ Render With Grid:
 
             showMovementButtons = false;
             showTargetButtons = false;
+            showPushableItemsButtons = false;
             actionToTake = null;
 
             gameTurn.UpdatePossibilities();
@@ -465,7 +513,10 @@ Render With Grid:
 
             character = new Character("Gavin", 100, 2, "wizard");
             character.ImageLocation = "/images/char2.png";
-            game.AddCharacter(character, 34, 0);
+            game.AddCharacter(character, 20, 0);
+
+            var woodblock = new Drawable("wood block", true, "/images/tempWoodTexture.png", "#FFFFFF");
+            game.AddDrawable(woodblock, 3, 2);
 
             boardImage = game.Gameboard.ImageLocation;
 
@@ -549,7 +600,7 @@ Render With Grid:
 
             double scaledRows = scaleFactor * gameTurn.Game.Gameboard.Rows;                          //Scale the row count by our scale factor
             double scaledColumns = scaleFactor * gameTurn.Game.Gameboard.Columns;                    //Scale the column count by our scale factor
-            
+
             await this._drawableContext.ClearRectAsync(0, 0, scaledColumns, scaledRows);
 
             for (int i = 0; i < gameTurn.Game.Gameboard.Rows; i++)
