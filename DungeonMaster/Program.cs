@@ -15,9 +15,7 @@ namespace DungeonMaster
 		public static void Main (string[] args)
 		{
 			CreateHostBuilder (args).Build ( ).Run ( );
-			const string PATH = "Saves/characters.json";
-			if (!File.Exists(PATH))
-				File.Create(PATH);
+		
 		}
 
 		public static IHostBuilder CreateHostBuilder (string[] args) =>
