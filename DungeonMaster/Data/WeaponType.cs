@@ -1,13 +1,11 @@
-﻿using System;
-
-namespace DungeonMaster.Data
+﻿namespace DungeonMaster.Data
 {
-	public enum WeaponType
-	{
-		OneHanded,
-		TwoHanded,
-		LightOneHanded,
-		Range
-	}
+    public enum WeaponType
+    {
+        OneHanded,
+        TwoHanded,
+        LightOneHanded,
+        Range
+    }
 }
 

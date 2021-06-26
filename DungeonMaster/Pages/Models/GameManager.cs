@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Threading.Tasks;
 
 namespace DungeonMaster.Pages.Models
@@ -24,15 +21,15 @@ namespace DungeonMaster.Pages.Models
         public async void MainLoop()
         {
             IsRunning = true;
-            while(IsRunning)
+            while (IsRunning)
             {
 
-               // Player.Move(2);
+                // Player.Move(2);
 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Player)));
 
                 await Task.Delay(20);
             }
-        }  
+        }
     }
 }

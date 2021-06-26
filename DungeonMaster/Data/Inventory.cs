@@ -1,53 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 
 namespace DungeonMaster.Data
 {
-	public class Inventory
-	{
-		/// <summary>
-		/// List of Weapons held in the inventory.
-		/// </summary>
-		public List<Weapon> Weapons { get; set; }
+    public class Inventory
+    {
+        /// <summary>
+        /// List of Weapons held in the inventory.
+        /// </summary>
+        public List<Weapon> Weapons { get; set; }
 
-		/// <summary>
-		/// List of Spells held in the inventory.
-		/// </summary>
-		public List<Spell> Spells { get; set; }
+        /// <summary>
+        /// List of Spells held in the inventory.
+        /// </summary>
+        public List<Spell> Spells { get; set; }
 
-		/// <summary>
-		/// Default constructor for inventory
-		/// </summary>
-		public Inventory()
-		{
-			Weapons = new List<Weapon>();
-			Spells = new List<Spell>();
-		}
-
-		/// <summary>
-		/// Provides an inventory listing.
-		/// </summary>
-		/// <returns>String representation of the inventory.</returns>
-		public override string ToString()
+        /// <summary>
+        /// Default constructor for inventory
+        /// </summary>
+        public Inventory()
         {
-			StringBuilder inventoryList = new StringBuilder();
+            Weapons = new List<Weapon>();
+            Spells = new List<Spell>();
+        }
 
-			inventoryList.Append("Weapons\n-------------");
+        /// <summary>
+        /// Provides an inventory listing.
+        /// </summary>
+        /// <returns>String representation of the inventory.</returns>
+        public override string ToString()
+        {
+            StringBuilder inventoryList = new StringBuilder();
 
-            foreach(Weapon w in Weapons)
+            inventoryList.Append("Weapons\n-------------");
+
+            foreach (Weapon w in Weapons)
             {
-				inventoryList.Append(w.ToString() + "\n");
+                inventoryList.Append(w.ToString() + "\n");
             }
 
-			inventoryList.Append("Spells\n-------------");
+            inventoryList.Append("Spells\n-------------");
 
-            foreach(Spell s in Spells)
+            foreach (Spell s in Spells)
             {
-				inventoryList.Append(s.ToString() + "\n");
+                inventoryList.Append(s.ToString() + "\n");
             }
 
-			return inventoryList.ToString();
+            return inventoryList.ToString();
         }
     }
 }

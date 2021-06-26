@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace DungeonMaster.Data
+﻿namespace DungeonMaster.Data
 {
     /// <summary>
     /// Collections of methods that involve healing
@@ -28,7 +25,7 @@ namespace DungeonMaster.Data
             var modifierAmount = caster.CharacterStats.GetIntelligenceModifier();
 
             double totalHealth = roll.GetDiceTotal() + modifierAmount;
-            receiver.HealPlayer(totalHealth); 
+            receiver.HealPlayer(totalHealth);
 
             AttackReport healingReport = new AttackReport();
 

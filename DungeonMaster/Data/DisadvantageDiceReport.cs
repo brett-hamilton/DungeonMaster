@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DungeonMaster.Data
+﻿namespace DungeonMaster.Data
 {
     /// <summary>
     /// Concretion of Dice Roll report where two D20 are rolled and the smaller is returned.

@@ -82,9 +82,9 @@
 </div>
 
 @code {
-        /// <summary>
-        /// Name of the character bring created
-        /// </summary>
+    /// <summary>
+    /// Name of the character bring created
+    /// </summary>
     private string characterName = string.Empty;
 
     /// <summary>
@@ -143,18 +143,23 @@
     private List<Character> characterList = new List<Character>();
 
     /// <summary>
-    /// Load characters on start up from characters file.
+    /// Load characters on start up from characters file. Also prevents the page from crashing in the event the save file is gone or corrupted.
     /// </summary>
     protected override async Task OnInitializedAsync()
-    {
-        if (!File.Exists(PATH))
+    { try
         {
-            File.Create(PATH);                 // Create the File.
+            if (!File.Exists(PATH))
+            {
+                File.Create(PATH);                 // Create the File.
+            }
+
+            characterList = CharacterFile.Read();
+
+            await Task.Delay(10);
+        } catch(IOException e)
+        {
+
         }
-
-        characterList = CharacterFile.Read();
-
-        await Task.Delay(10);
     }
 
     /// <summary>
@@ -177,9 +182,14 @@
         try
         {   if (newCharacter.Name != string.Empty)
             {
+
                 CharacterFile.Write(newCharacter, false);
                 characterList.Add(newCharacter);
             }
+
+
+
+
         }
         catch (IOException e)
         {
@@ -291,5 +301,6 @@
     {
         characterList.Clear();
         CharacterFile.Clear();
+        displayName = string.Empty;
     }
 }
