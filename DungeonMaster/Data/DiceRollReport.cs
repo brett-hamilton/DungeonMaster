@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DungeonMaster.Data
 {
@@ -26,6 +23,6 @@ namespace DungeonMaster.Data
         /// </summary>
         /// <returns> A string containing the report of the dice roll.</returns>
         public abstract string GetDiceReport();
-        
+
     }
 }

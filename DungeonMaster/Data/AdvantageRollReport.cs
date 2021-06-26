@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DungeonMaster.Data
+﻿namespace DungeonMaster.Data
 {
     /// <summary>
     /// Concretion of a Roll report for two D20's where the larger is returned.

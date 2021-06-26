@@ -5,12 +5,6 @@
  * Last Modified: 6/9/21
  *************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DungeonMaster.Data;
-
 namespace DungeonMaster.Data
 {
     public enum SpellTypes

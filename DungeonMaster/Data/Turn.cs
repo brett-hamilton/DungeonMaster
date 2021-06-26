@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace DungeonMaster.Data
 {
@@ -58,21 +56,21 @@ namespace DungeonMaster.Data
         /// <summary>
         /// Default constructor to create an empty turn.
         /// </summary>
-        public Turn() 
-        { 
-            
+        public Turn()
+        {
+
         }
 
         /// <summary>
         /// Constructor that creates a turn, for the Game provided.
         /// </summary>
         /// <param name="game">Game to add to the turn.</param>
-        public Turn(Game game) 
+        public Turn(Game game)
         {
             Game = game;
-            if (Game.CharacterList != null) 
+            if (Game.CharacterList != null)
             {
-                foreach (var character in Game.CharacterList) 
+                foreach (var character in Game.CharacterList)
                 {
                     OtherCharactersInOrder.AddLast(character);
                 }
@@ -86,7 +84,7 @@ namespace DungeonMaster.Data
         /// Method to add the current character to the end of the queue, and make the 
         /// first Character in the list the current character.
         /// </summary>
-        public void UpdateTurn() 
+        public void UpdateTurn()
         {
             OtherCharactersInOrder.AddLast(CurrentCharacter);
 
@@ -99,7 +97,7 @@ namespace DungeonMaster.Data
         /// <summary>
         /// Update all the possible options the current character has.
         /// </summary>
-        public void UpdatePossibilities() 
+        public void UpdatePossibilities()
         {
             UpdateInteractionPossibilities();
             UpdateWeaponPossibilities();
@@ -111,7 +109,7 @@ namespace DungeonMaster.Data
         /// <summary>
         /// Update if the person is able to attack another.
         /// </summary>
-        public void UpdateWeaponPossibilities() 
+        public void UpdateWeaponPossibilities()
         {
             if (CurrentCharacter.ActiveWeapon != null)
             {
@@ -126,7 +124,7 @@ namespace DungeonMaster.Data
         /// <summary>
         /// Update if the character is able to use a spell attack.
         /// </summary>
-        public void UpdateMagicAttackPossibilities() 
+        public void UpdateMagicAttackPossibilities()
         {
             if (CurrentCharacter.ActiveSpell != null)
             {
@@ -134,12 +132,12 @@ namespace DungeonMaster.Data
                 {
                     MagicAttackPossible = true;
                 }
-                else 
+                else
                 {
                     MagicAttackPossible = false;
                 }
             }
-            else 
+            else
             {
                 MagicAttackPossible = false;
             }
@@ -148,7 +146,7 @@ namespace DungeonMaster.Data
         /// <summary>
         /// Update if the character is able to use a magic spell.
         /// </summary>
-        public void UpdateMagicHealPossibilities() 
+        public void UpdateMagicHealPossibilities()
         {
             if (CurrentCharacter.ActiveSpell != null)
             {
@@ -157,7 +155,7 @@ namespace DungeonMaster.Data
                     MagicHealPossible = true;
                 }
             }
-            else 
+            else
             {
                 MagicHealPossible = false;
             }
@@ -166,7 +164,7 @@ namespace DungeonMaster.Data
         /// <summary>
         /// As movement range is not yet impelemented, we assume movement is possible.
         /// </summary>
-        public void UpdateMovementPossibilities() 
+        public void UpdateMovementPossibilities()
         {
             MovePossible = true;
         }
@@ -174,7 +172,7 @@ namespace DungeonMaster.Data
         /// <summary>
         /// Method to determine if there are nearby pushable objects, and if so who.
         /// </summary>
-        public void UpdateInteractionPossibilities() 
+        public void UpdateInteractionPossibilities()
         {
             var result = Game.Gameboard.PushableItemsNearby(CurrentCharacter);
 
@@ -184,7 +182,7 @@ namespace DungeonMaster.Data
             {
                 InteractionPossible = false;
             }
-            else 
+            else
             {
                 InteractionPossible = true;
             }

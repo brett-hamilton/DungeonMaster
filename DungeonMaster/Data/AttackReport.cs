@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DungeonMaster.Data
+﻿namespace DungeonMaster.Data
 {
     /// <summary>
     /// Report used to transmit information to View about attack, for the log.
@@ -81,7 +76,7 @@ namespace DungeonMaster.Data
         {
             if (!HitCheck)
             {
-                if (DisadvantageRoll != null) 
+                if (DisadvantageRoll != null)
                 {
                     return $"{AttackerName} attacked {DefenderName} from within melee distance. {AttackerName} {DisadvantageRoll.GetDiceReport()} This attack missed {DefenderName}.";
                 }
@@ -89,7 +84,7 @@ namespace DungeonMaster.Data
                 return $"{AttackerName} rolled an attack of {AttackRoll}. This attack missed {DefenderName}.";
             }
 
-            if (DisadvantageRoll != null) 
+            if (DisadvantageRoll != null)
             {
                 string attackReport = $"{AttackerName} attacked {DefenderName} from within melee distance. {AttackerName} {DisadvantageRoll.GetDiceReport()} This attack hit {DefenderName}.";
                 attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {Modifier} modifier damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType.ToLower()} damage.";
@@ -121,7 +116,7 @@ namespace DungeonMaster.Data
         {
             return $"{AttackerName} rolled the attack spell {SpellName}, a {SpellType} type. The attack was {Modifier} intelligence bonus + {DiceRollReport.GetDiceTotal()} roll damage = {TotalDamageDealt}." +
                 $"This damaged {DefenderName}. The roll was {DieUsed}, with {DiceRollReport.GetDiceReport()}.";
-                    
+
         }
     }
 }

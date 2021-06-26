@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DungeonMaster.Data
+﻿namespace DungeonMaster.Data
 {
     /// <summary>
     /// This class is a go-between for pushing objects, as before we only were able to have a single bool return, which didn't tell the person why the push failed or passed.
@@ -33,7 +28,7 @@ namespace DungeonMaster.Data
         /// <returns>String representing the error or result of the move.</returns>
         public string GetPushResult()
         {
-            if(!PushPossible)
+            if (!PushPossible)
             {
                 return ErrorString;
             }

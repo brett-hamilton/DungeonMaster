@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DungeonMaster.Data
 {
@@ -260,7 +258,7 @@ namespace DungeonMaster.Data
         /// <param name="currentPosition">The current position of the object in the gameboard.</param>
         /// <param name="direction">The direction to move.</param>
         /// <returns></returns>
-        public Coordinate GetNewCoordinate(Coordinate currentPosition, CardinalDirection direction) 
+        public Coordinate GetNewCoordinate(Coordinate currentPosition, CardinalDirection direction)
         {
             var newCoordinate = new Coordinate();
 
@@ -274,10 +272,10 @@ namespace DungeonMaster.Data
             {
                 newCoordinate.Row = currentPosition.Row + 1;
             }
-            else 
+            else
             {
                 newCoordinate.Row = currentPosition.Row;
-                if(direction.ToString().Contains("E"))
+                if (direction.ToString().Contains("E"))
                 {
                     newCoordinate.Column = currentPosition.Column + 1;
                 }
@@ -297,7 +295,7 @@ namespace DungeonMaster.Data
             {
                 newCoordinate.Column = currentPosition.Column - 1;
             }
-            else 
+            else
             {
                 newCoordinate.Column = currentPosition.Column;
             }
@@ -312,7 +310,7 @@ namespace DungeonMaster.Data
         /// <param name="currentCoordinate">The current coordinate.</param>
         /// <param name="newCoordinate">The new coordinate.</param>
         /// <returns>A string reporting the result of the move</returns>
-        public MoveReport Move(Drawable objectToMove, Coordinate currentCoordinate, Coordinate newCoordinate) 
+        public MoveReport Move(Drawable objectToMove, Coordinate currentCoordinate, Coordinate newCoordinate)
         {
             MoveReport moveReport = new MoveReport(objectToMove, currentCoordinate);
             moveReport.NewCoordinate = newCoordinate;
@@ -327,14 +325,14 @@ namespace DungeonMaster.Data
                 return moveReport;
             }
 
-            if (y < 0 || y >= Rows) 
+            if (y < 0 || y >= Rows)
             {
                 moveReport.MoveSuccessful = false;
                 moveReport.ErrorString = "Coordinate was out of bounds: Row.";
                 return moveReport;
             }
             // Validate not occupied
-            if (!(Drawables[x,y] == null))
+            if (!(Drawables[x, y] == null))
             {
                 moveReport.MoveSuccessful = false;
                 moveReport.ErrorString = "Location is already occupied.";
@@ -359,7 +357,7 @@ namespace DungeonMaster.Data
         {
             PushReport pushReport = new PushReport(pusher, itemToPush);
 
-            if(!itemToPush.IsCollidable)
+            if (!itemToPush.IsCollidable)
             {
                 pushReport.PushPossible = false;
                 pushReport.ErrorString = $"{itemToPush.Name} is not movable.";
@@ -373,7 +371,7 @@ namespace DungeonMaster.Data
             var columnDiff = characterLocation.Column - itemLocation.Column;
             var rowDiff = characterLocation.Row - itemLocation.Row;
 
-            if((Math.Abs(columnDiff) > 1)||(Math.Abs(rowDiff) > 1))     //If the object is more than 1 away in any direction, it isn't pushable.
+            if ((Math.Abs(columnDiff) > 1) || (Math.Abs(rowDiff) > 1))     //If the object is more than 1 away in any direction, it isn't pushable.
             {
                 pushReport.PushPossible = false;
                 pushReport.ErrorString = $"{itemToPush.Name} is too far away from {pusher.Name}.";
@@ -381,10 +379,10 @@ namespace DungeonMaster.Data
             }
             else
             {
-                if(columnDiff == 0)
+                if (columnDiff == 0)
                 {
                     returnCoordinate.Column = itemLocation.Column;
-                }    
+                }
                 else
                 {
                     returnCoordinate.Column = itemLocation.Column - columnDiff;
@@ -403,17 +401,17 @@ namespace DungeonMaster.Data
             return pushReport;
         }
 
-        public List<Drawable> PushableItemsNearby(Character character) 
+        public List<Drawable> PushableItemsNearby(Character character)
         {
             var listOfPushableItems = new List<Drawable>();
             var characterLocation = GetCoordinate(character);
-            if (characterLocation == null) 
+            if (characterLocation == null)
             {
                 return listOfPushableItems;
             }
             // Find the range of valid values to search. If we go outside of bounds, stop beforehand.
             var minColumn = characterLocation.Column - 1;
-            if (minColumn < 0) 
+            if (minColumn < 0)
             {
                 minColumn = 0;
             }
@@ -432,21 +430,21 @@ namespace DungeonMaster.Data
             var maxRow = characterLocation.Row + 1;
             if (maxRow >= Rows)
             {
-                maxRow = Rows - 1; 
+                maxRow = Rows - 1;
             }
 
             // Iterate through the surrounding squares, and if an item is collidable add it to the list to return
             // which represents pushable objects.
-            for (int i = minRow; i <= maxRow; i++) 
+            for (int i = minRow; i <= maxRow; i++)
             {
-                for (int j = minColumn; j <= maxColumn; j++) 
+                for (int j = minColumn; j <= maxColumn; j++)
                 {
                     var objectAtLocation = Drawables[j, i];
 
                     if (objectAtLocation != null)
                     {
                         // If the object exists, and it is collidable, add it to the list to return.
-                        if (objectAtLocation.IsCollidable) 
+                        if (objectAtLocation.IsCollidable)
                         {
                             listOfPushableItems.Add(objectAtLocation);
                         }

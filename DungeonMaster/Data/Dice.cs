@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DungeonMaster.Data
+﻿namespace DungeonMaster.Data
 {
-	public enum Dice
-	{
-		D2,
-		D4,
-		D6,
-		D8,
-		D10,
-		D12,
-		D20,
-		D100
-	}
+    public enum Dice
+    {
+        D2,
+        D4,
+        D6,
+        D8,
+        D10,
+        D12,
+        D20,
+        D100
+    }
 }

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DungeonMaster.Data;
 using Xunit;
-using DungeonMaster.Data;
 
 namespace XunitTest
 {
@@ -109,7 +104,7 @@ namespace XunitTest
         /// Test to see if there are nearby pushable objects. There should be one.
         /// </summary>
         [Fact]
-        public void NearbyPushableObjectTest() 
+        public void NearbyPushableObjectTest()
         {
             var game = new Game(10, 10);
             Character character = new Character();
@@ -127,7 +122,7 @@ namespace XunitTest
         /// Test to see if there are nearby pushable objects, there should not be.
         /// </summary>
         [Fact]
-        public void NoNearbyPushableObjectTest() 
+        public void NoNearbyPushableObjectTest()
         {
             var game = new Game(10, 10);
             Character character = new Character();

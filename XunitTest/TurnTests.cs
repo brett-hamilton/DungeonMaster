@@ -1,10 +1,6 @@
-﻿using System;
+﻿using DungeonMaster.Data;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
-using DungeonMaster.Data;
 
 namespace XunitTest
 {
@@ -17,9 +13,9 @@ namespace XunitTest
         /// Readonly damage spell, healing spell, and weapon used by the turns below. The addition or removal of these from the 
         /// characters in the turn are then used to test if our updates are working as expected.
         /// </summary>
-        private readonly Weapon meleeWeapon = new Weapon { Name = "Sword",RangedWeapon = false };
-        private readonly Spell damageSpell = new DamageSpell ("Fire Ball", SpellTypes.Fire, 2, Dice.D2, 2, 20);
-        private readonly Spell healingSpell = new HealingSpell ("Heal", SpellTypes.Healing, 2, Dice.D2, 2, 20);
+        private readonly Weapon meleeWeapon = new Weapon { Name = "Sword", RangedWeapon = false };
+        private readonly Spell damageSpell = new DamageSpell("Fire Ball", SpellTypes.Fire, 2, Dice.D2, 2, 20);
+        private readonly Spell healingSpell = new HealingSpell("Heal", SpellTypes.Healing, 2, Dice.D2, 2, 20);
 
 
         /// <summary>
@@ -70,7 +66,7 @@ namespace XunitTest
         /// we should now have the option to attack with a weapon.
         /// </summary>
         [Fact]
-        public void UpdateAddWeaponPossibilitiesTest() 
+        public void UpdateAddWeaponPossibilitiesTest()
         {
             var turn = new Turn();
             var character1 = new Character();
@@ -86,7 +82,7 @@ namespace XunitTest
         /// Method to test that if we remove a weapon, the bool representing it is switched to false.
         /// </summary>
         [Fact]
-        public void UpdateRemoveWeaponPossibilitiesTest() 
+        public void UpdateRemoveWeaponPossibilitiesTest()
         {
             var turn = new Turn();
             var character1 = new Character();
@@ -155,7 +151,7 @@ namespace XunitTest
         /// Method to test that if we remove a magic heal item, that the bool representing it it set to false.
         /// </summary>
         [Fact]
-        public void UpdateRemoveMagicHealTest() 
+        public void UpdateRemoveMagicHealTest()
         {
             var turn = new Turn();
             var character1 = new Character();
@@ -174,7 +170,7 @@ namespace XunitTest
         /// but to move (as it is by default allowed).
         /// </summary>
         [Fact]
-        public void UpdateAllPossibilitiesTest() 
+        public void UpdateAllPossibilitiesTest()
         {
             var turn = new Turn();
             var game = new Game();
@@ -206,13 +202,13 @@ namespace XunitTest
         /// recognizes it.
         /// </summary>
         [Fact]
-        public void UpdateInteractionPossibleTest() 
+        public void UpdateInteractionPossibleTest()
         {
             var turn = new Turn();
             var game = new Game();
             var character1 = new Character();
             turn.CurrentCharacter = character1;
-            var pushableObject = new Drawable() { IsCollidable = true};
+            var pushableObject = new Drawable() { IsCollidable = true };
             game.AddCharacter(character1, 2, 2);
             game.AddDrawable(pushableObject, 3, 2);
             turn.Game = game;

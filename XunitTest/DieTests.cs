@@ -1,12 +1,10 @@
-using Xunit;
 using DungeonMaster.Data;
-using System.Linq;
-using System.Collections.Generic;
 using System;
+using Xunit;
 
 namespace XunitTest
 {
-    
+
     /// <summary>
     /// Class containing methods to test the Die class
     /// </summary>
@@ -16,7 +14,7 @@ namespace XunitTest
         /// Maximum value that should be returned from a D20.
         /// </summary>
         private const int D20_MAX_VALUE = 20;
-        
+
         /// <summary>
         /// Minimum value that should be returned from a D20. 
         /// </summary>
@@ -31,7 +29,7 @@ namespace XunitTest
         /// A valid number of dice to be rolled.
         /// </summary>
         private const int MULTI_DICE_VALID_NUM_DICE = 3;
-        
+
         /// <summary>
         /// Method to test that a D20 roll returns a valid value
         /// </summary>
@@ -72,7 +70,7 @@ namespace XunitTest
         /// in the list to return.
         /// </summary>
         [Fact]
-        public void RollD20WithAdvantageRightSortOrderTest() 
+        public void RollD20WithAdvantageRightSortOrderTest()
         {
             var dieRoll = Die.RollD20Advantage();
 
@@ -83,7 +81,7 @@ namespace XunitTest
         /// Method to test that when two D20s are rolled, the higher value is returned.
         /// </summary>
         [Fact]
-        public void RollD20WithAdvantageRightDieReturnedTest() 
+        public void RollD20WithAdvantageRightDieReturnedTest()
         {
             var dieRoll = Die.RollD20Advantage();
             var highRoll = dieRoll.GetDiceTotal();
@@ -96,11 +94,11 @@ namespace XunitTest
         /// Method to test that when two D20s are rolled, a valid value is returned.
         /// </summary>
         [Fact]
-        public void RollD20WithDisadvantageReturnValueTest() 
+        public void RollD20WithDisadvantageReturnValueTest()
         {
             var dieRoll = Die.RollD20Disadvantage();
 
-            var lowRoll = dieRoll.GetDiceTotal() ;
+            var lowRoll = dieRoll.GetDiceTotal();
 
             Assert.True(lowRoll >= D20_MIN_VALUE && lowRoll <= D20_MAX_VALUE);
         }
@@ -109,7 +107,7 @@ namespace XunitTest
         /// Method to test that exactly two dice are rolled.
         /// </summary>
         [Fact]
-        public void RollD20WithDisadvantageValidNumberOfRolls() 
+        public void RollD20WithDisadvantageValidNumberOfRolls()
         {
             var dieRoll = Die.RollD20Disadvantage();
 
@@ -120,7 +118,7 @@ namespace XunitTest
         /// Method to test that when two D20 die are rolled, they are stored in the correct order.
         /// </summary>
         [Fact]
-        public void RollD20WithDisAvantageRightSortOrderTest() 
+        public void RollD20WithDisAvantageRightSortOrderTest()
         {
             var dieRoll = Die.RollD20Disadvantage();
 
@@ -131,7 +129,7 @@ namespace XunitTest
         /// Method to test that when two die are rolled with disadvantage, the lower is returned.
         /// </summary>
         [Fact]
-        public void RollD20WithDisAvantageRightDieReturnedTest() 
+        public void RollD20WithDisAvantageRightDieReturnedTest()
         {
             var dieRoll = Die.RollD20Disadvantage();
             var lowRoll = dieRoll.GetDiceTotal();
@@ -144,13 +142,13 @@ namespace XunitTest
         /// Method to test that our output of rolling three four sided dice total is not too large.
         /// </summary>
         [Fact]
-        public void RollMultipleDiceValidInputValidTotalMaxTest() 
+        public void RollMultipleDiceValidInputValidTotalMaxTest()
         {
             var maxPossibleOutcome = MULTI_DICE_VALID_SIDES * MULTI_DICE_VALID_NUM_DICE;
 
             var diceRoll = Die.Roll(MULTI_DICE_VALID_SIDES, MULTI_DICE_VALID_NUM_DICE);
             var outcome = diceRoll.GetDiceTotal();
-            
+
             Assert.True(outcome <= maxPossibleOutcome);
         }
 
@@ -172,7 +170,7 @@ namespace XunitTest
         /// Method to make sure that we roll the correct number of dice.
         /// </summary>
         [Fact]
-        public void RollMultipleDiceValidInputValidRollNumber() 
+        public void RollMultipleDiceValidInputValidRollNumber()
         {
             var diceRoll = Die.Roll(MULTI_DICE_VALID_SIDES, MULTI_DICE_VALID_NUM_DICE);
             var numDiceRolled = diceRoll.DiceRolled.Count;
@@ -184,14 +182,14 @@ namespace XunitTest
         /// Method to check that each value rolled not lower than valid minimum value.
         /// </summary>
         [Fact]
-        public void RollMultipleDiceCheckMinValue() 
+        public void RollMultipleDiceCheckMinValue()
         {
             var diceRoll = Die.Roll(MULTI_DICE_VALID_SIDES, MULTI_DICE_VALID_NUM_DICE);
 
             foreach (var roll in diceRoll.DiceRolled)
             {
                 Assert.True(roll >= 1);
-            }    
+            }
 
         }
 
@@ -199,7 +197,7 @@ namespace XunitTest
         /// Method to check that each value rolled is not larger than max value.
         /// </summary>
         [Fact]
-        public void RollMultipleDiceCheckMaxValue() 
+        public void RollMultipleDiceCheckMaxValue()
         {
             var diceRoll = Die.Roll(MULTI_DICE_VALID_SIDES, MULTI_DICE_VALID_NUM_DICE);
 
@@ -213,7 +211,7 @@ namespace XunitTest
         /// Method to check output if too few sides are provided.
         /// </summary>
         [Fact]
-        public void RollMultipleDiceTooFewSides() 
+        public void RollMultipleDiceTooFewSides()
         {
             var exception = Assert.Throws<Exception>(() => Die.Roll(-1, MULTI_DICE_VALID_NUM_DICE));
 
@@ -224,7 +222,7 @@ namespace XunitTest
         /// Method to check output if too many sides are provided.
         /// </summary>
         [Fact]
-        public void RollMultipleDiceTooManySides() 
+        public void RollMultipleDiceTooManySides()
         {
             var exception = Assert.Throws<Exception>(() => Die.Roll(10000, MULTI_DICE_VALID_NUM_DICE));
 
@@ -235,7 +233,7 @@ namespace XunitTest
         /// Method to check output if too many dice are provided.
         /// </summary>
         [Fact]
-        public void RollMultipleDiceTooManyDice() 
+        public void RollMultipleDiceTooManyDice()
         {
             var exception = Assert.Throws<Exception>(() => Die.Roll(MULTI_DICE_VALID_SIDES, 1000));
 
@@ -246,7 +244,7 @@ namespace XunitTest
         /// Method to check output if too few dice are provided.
         /// </summary>
         [Fact]
-        public void RollMultipleDiceTooFewDice() 
+        public void RollMultipleDiceTooFewDice()
         {
             var exception = Assert.Throws<Exception>(() => Die.Roll(MULTI_DICE_VALID_SIDES, -1));
 
