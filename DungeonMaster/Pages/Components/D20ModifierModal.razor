@@ -49,6 +49,12 @@
     [Parameter]
     public string pageContainingModal { get; set; }
 
+    /// <summary>
+    /// Character Requesting the roll.
+    /// </summary>
+    [Parameter]
+    public Drawable characterRequestingRoll {get; set;}
+
 
     /// <summary>
     /// Modifier to be applied to the D20 Roll
@@ -117,25 +123,34 @@
     public async Task RollWithModifier()
     {
         int diceTotal;
+        string name;
+        if (characterRequestingRoll == null)
+        {
+            name = "Player";
+        }
+        else
+        {
+            name = characterRequestingRoll.Name;
+        }
 
         if (modifier == "a")
         {
             var diceRollReport = Die.RollD20Advantage();
             diceTotal = diceRollReport.GetDiceTotal();
-            diceResult = $"Player {diceRollReport.GetDiceReport()}";
+            diceResult = $"{name} {diceRollReport.GetDiceReport()}";
         }
 
         else if (modifier == "d")
         {
             var diceRollReport = Die.RollD20Disadvantage();
             diceTotal = diceRollReport.GetDiceTotal();
-            diceResult = $"Player {diceRollReport.GetDiceReport()}";
+            diceResult = $"{name} {diceRollReport.GetDiceReport()}";
         }
 
         else
         {
             diceTotal = Die.RollD20();
-            diceResult = $"Player rolled 1 D20 for {diceTotal}";
+            diceResult = $"{name} rolled 1 D20 for {diceTotal}";
         }
         CloseModal();
         await Send();
