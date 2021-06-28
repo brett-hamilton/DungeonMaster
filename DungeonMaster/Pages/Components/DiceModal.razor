@@ -68,6 +68,12 @@
     public string pageContainingModal { get; set; }
 
     /// <summary>
+    /// Character Requesting the roll.
+    /// </summary>
+    [Parameter]
+    public Drawable characterRequestingRoll { get; set; }
+
+    /// <summary>
     /// Result to be displayed showing the result of the dice roll.
     /// </summary>
     private string diceResult;
@@ -131,11 +137,21 @@
     /// <returns></returns>
     public async Task RollMultipleDice()
     {
+        string name;
+        if (characterRequestingRoll == null)
+        {
+            name = "Player";
+        }
+        else
+        {
+            name = characterRequestingRoll.Name;
+        }
+
         // If the roll is successful, report it to the main page.
         try
         {
             var rollReport = Die.Roll(DieSides, DieToRoll);
-            diceResult = $"Player rolled {rollReport.GetDiceReport()}";
+            diceResult = $"{name} rolled {rollReport.GetDiceReport()}";
             CloseModal();
             await Send();
         }
@@ -153,8 +169,17 @@
     /// <returns></returns>
     public async Task Roll()
     {
+        string name;
+        if (characterRequestingRoll == null)
+        {
+            name = "Player";
+        }
+        else
+        {
+            name = characterRequestingRoll.Name;
+        }
         var diceTotal = Die.RollD20();
-        diceResult = $"Player rolled 1 D20 for {diceTotal}";
+        diceResult = $"{name} rolled 1 D20 for {diceTotal}";
         CloseModal();
         await Send();
     }
