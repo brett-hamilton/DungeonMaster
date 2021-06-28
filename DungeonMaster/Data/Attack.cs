@@ -22,7 +22,7 @@
         {
 
             var modifierDamage = attacker.CharacterStats.GetStrengthModifier();
-            DiceRollReport actionPointRoll;
+            DiceRollReport actionPointRoll = Die.Roll(6, 1);
             double attackValue;
 
             if(attacker.ActionPoints <= 0)
@@ -32,9 +32,8 @@
 
             if (actionPoint)
             {
-                actionPointRoll = Die.Roll(6, 1);
                 attackValue = Die.RollD20() + attacker.IsProficient() + modifierDamage + actionPointRoll.GetDiceTotal();
-                attacker.ActionPoints--;
+                attacker.LowerActionPoint();
             }
             else
             {
@@ -57,6 +56,8 @@
                 attackReport.HitCheck = hit;
                 attackReport.AttackerName = attacker.Name;
                 attackReport.DefenderName = defender.Name;
+                attackReport.ActionPointUsed = actionPoint;
+                attackReport.ActionPointDiceRoll = actionPointRoll.GetDiceTotal();
 
                 return attackReport;
             }
@@ -99,6 +100,7 @@
                 {
                     disadvatageRollReport = Die.RollD20Disadvantage();
                     attackValue = disadvatageRollReport.GetDiceTotal() + attacker.IsProficient() + modifierDamage + actionPointNumber.GetDiceTotal();
+                    attacker.LowerActionPoint();
                 }
                 else
                 {
@@ -112,6 +114,7 @@
                 if(actionPoint)
                 {
                     attackValue = Die.RollD20() + attacker.IsProficient() + modifierDamage + actionPointNumber.GetDiceTotal();
+                    attacker.LowerActionPoint();
                 }
                 else
                 {
@@ -132,6 +135,8 @@
                 attackReport.AttackerName = attacker.Name;
                 attackReport.DefenderName = defender.Name;
                 attackReport.DisadvantageRoll = disadvatageRollReport;
+                attackReport.ActionPointUsed = actionPoint;
+                attackReport.ActionPointDiceRoll = actionPointNumber.GetDiceTotal();
 
                 return attackReport;
             }

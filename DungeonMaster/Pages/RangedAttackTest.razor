@@ -52,8 +52,8 @@
 {
     <div>
         <br />
-        <button class="btn btn-warning" @onclick="() => Attack(Defender1)">@Defender1.Name</button>
-        <button class="btn btn-warning" @onclick="() => Attack(Defender2)">@Defender2.Name</button>
+        <button class="btn btn-warning" @onclick="() => Attack(Defender1, true)">@Defender1.Name</button>
+        <button class="btn btn-warning" @onclick="() => Attack(Defender2, true)">@Defender2.Name</button>
     </div>
 }
 <br />
@@ -148,9 +148,9 @@
     /// Method to attack the chosen character, adding the result to the game log.
     /// </summary>
     /// <param name="defender">The defending character.</param>
-    public void Attack(Character defender)
+    public void Attack(Character defender, bool actionPointUsed)
     {
-        var message = Game.RangedAttackAttempt(Attacker, defender);
+        var message = Game.RangedAttackAttempt(Attacker, defender, actionPointUsed);
 
         GameLog.Add(message);
 
