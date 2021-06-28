@@ -460,7 +460,14 @@ Render With Grid:
             StateHasChanged();
             await Render();
 
-            ReportOutcome(report);
+            // We do not ReportOutcome as we do not want to close the movement buttons.
+            if (report != null)
+            {
+                GameLog.Add(report);
+            }
+            gameTurn.UpdatePossibilities();
+
+            StateHasChanged();
 
         }
 
