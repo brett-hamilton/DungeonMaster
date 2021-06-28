@@ -18,12 +18,29 @@
         /// <param name="attacker">The character attacking.</param>
         /// <param name="defender">The character being attacked.</param>
         /// <returns>Attack Report detailing what happened in the attack.</returns>
-        public AttackReport MeleeAttack(Character attacker, Character defender)
+        public AttackReport MeleeAttack(Character attacker, Character defender, bool actionPoint)
         {
 
             var modifierDamage = attacker.CharacterStats.GetStrengthModifier();
-            // Roll the attack dice for a value to compare to defender's armor rating
-            double attackValue = Die.RollD20() + attacker.IsProficient() + modifierDamage;
+            DiceRollReport actionPointRoll;
+            double attackValue;
+
+            if(attacker.ActionPoints <= 0)
+            {
+                actionPoint = false;
+            }
+
+            if (actionPoint)
+            {
+                actionPointRoll = Die.Roll(6, 1);
+                attackValue = Die.RollD20() + attacker.IsProficient() + modifierDamage + actionPointRoll.GetDiceTotal();
+                attacker.ActionPoints--;
+            }
+            else
+            {
+                // Roll the attack dice for a value to compare to defender's armor rating
+                attackValue = Die.RollD20() + attacker.IsProficient() + modifierDamage;
+            }
 
             // Determine if the attack value is enough to hit
             bool hit = defender.CheckArmor(attackValue);
@@ -64,20 +81,42 @@
         /// <param name="defender">Character defending against the attack.</param>
         /// <param name="disadvantage">If the defending character is in melee range.</param>
         /// <returns>An attack report containing information about the attack.</returns>
-        public AttackReport RangedAttack(Character attacker, Character defender, bool disadvantage)
+        public AttackReport RangedAttack(Character attacker, Character defender, bool disadvantage, bool actionPoint)
         {
             DiceRollReport disadvatageRollReport = null;
             double attackValue;
             var modifierDamage = attacker.CharacterStats.GetDexterityModifier();
+            DiceRollReport actionPointNumber = Die.Roll(6, 1);
+
+            if (attacker.ActionPoints <= 0)
+            {
+                actionPoint = false;
+            }
+
             if (disadvantage)
             {
-                disadvatageRollReport = Die.RollD20Disadvantage();
-                attackValue = disadvatageRollReport.GetDiceTotal() + attacker.IsProficient() + modifierDamage;
+                if (actionPoint)
+                {
+                    disadvatageRollReport = Die.RollD20Disadvantage();
+                    attackValue = disadvatageRollReport.GetDiceTotal() + attacker.IsProficient() + modifierDamage + actionPointNumber.GetDiceTotal();
+                }
+                else
+                {
+                    disadvatageRollReport = Die.RollD20Disadvantage();
+                    attackValue = disadvatageRollReport.GetDiceTotal() + attacker.IsProficient() + modifierDamage;
+                }
 
             }
             else
             {
-                attackValue = Die.RollD20() + attacker.IsProficient() + modifierDamage;
+                if(actionPoint)
+                {
+                    attackValue = Die.RollD20() + attacker.IsProficient() + modifierDamage + actionPointNumber.GetDiceTotal();
+                }
+                else
+                {
+                    attackValue = Die.RollD20() + attacker.IsProficient() + modifierDamage;
+                }
             }
 
             bool hit = defender.CheckArmor(attackValue);
@@ -119,6 +158,8 @@
             var modifierDamage = caster.CharacterStats.GetIntelligenceModifier();
 
             double totalDamage = attackReport.DiceRollReport.GetDiceTotal() + modifierDamage;
+            
+
             receiver.DamagePlayer(totalDamage);
 
             attackReport.AttackerName = caster.Name;
