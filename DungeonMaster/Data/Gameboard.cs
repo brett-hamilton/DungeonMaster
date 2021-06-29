@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace DungeonMaster.Data
 {
+    /// <summary>
+    /// Class Gameboard, holds the positions of objects within the gameboard, and the size information. Also has an image location that is drawn as the background.
+    /// </summary>
     public class Gameboard
     {
         /// <summary>
@@ -65,7 +68,7 @@ namespace DungeonMaster.Data
         /// Last Updated: 06/12/2021 by Dustin Ollis
         /// Update: Restructured to Drawable over Character.
         /// </summary>
-        /// <param name="Drawable">Drawable to get coordinates from.</param>
+        /// <param name="drawable">Drawable to get coordinates from.</param>
         /// <returns>The coordinates of the character.</returns>
         public Coordinate GetCoordinate(Drawable drawable)
         {
@@ -401,6 +404,11 @@ namespace DungeonMaster.Data
             return pushReport;
         }
 
+        /// <summary>
+        /// Pushables the items nearby.
+        /// </summary>
+        /// <param name="character">The character.</param>
+        /// <returns>List&lt;Drawable&gt;.</returns>
         public List<Drawable> PushableItemsNearby(Character character)
         {
             var listOfPushableItems = new List<Drawable>();

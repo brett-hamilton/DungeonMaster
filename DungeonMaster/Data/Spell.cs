@@ -10,6 +10,8 @@ using System.Collections.Generic;
 
 namespace DungeonMaster.Data
 {
+
+    /// <summary>Object representing a spell item that is equippable by characters to either attack/damage or heal other characters. </summary>
     public class Spell
     {
         /// <summary>
@@ -71,7 +73,7 @@ namespace DungeonMaster.Data
         /// Gets the damage of the Spell based off of its number of rolls and the dice being used
         /// </summary>
         /// Author: Hunter Page
-        ///<returns>Report representing the damage dealt by the spell.<returns>
+        /// <returns>DungeonMaster.Data.AttackReport representing the damage dealt by the spell.</returns>
         public AttackReport GetSpellDamage()
         {
             var dieToUse = DiceUsed.ToString();

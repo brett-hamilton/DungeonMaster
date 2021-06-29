@@ -67,6 +67,7 @@ namespace DungeonMaster.Data
         /// <param name="name">The name of the object.</param>
         /// <param name="isCollidable">If set to <c>true</c> [is collidable].</param>
         /// <param name="ImageLocation">The image location.</param>
+        /// <param name="ColorCode">The backup color code. Not currently used.</param>
         public Drawable(string name, Boolean isCollidable, string ImageLocation, string ColorCode)
         {
             this.Name = name;
@@ -83,6 +84,7 @@ namespace DungeonMaster.Data
         /// <param name="isCollidable">if set to <c>true</c> [is collidable].</param>
         /// <param name="ImageLocation">The image location.</param>
         /// <param name="direction">The direction (Only 8 options, the 4 cardinals and the intermediates.)</param>
+        /// <param name="ColorCode">The backup color code. Not currently used.</param>
         public Drawable(string name, Boolean isCollidable, string ImageLocation, string ColorCode, CardinalDirection direction)
         {
             this.Name = name;

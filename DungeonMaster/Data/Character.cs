@@ -12,10 +12,6 @@ namespace DungeonMaster.Data
     /// </summary>
     public class Character : Drawable
     {
-        /// <summary>
-        /// Name of the character
-        /// </summary>
-        //public string Name { get; set; }
 
         /// <summary>
         /// Melee weapon they have equipped
@@ -215,7 +211,7 @@ namespace DungeonMaster.Data
         /// Add a spell to the Player's Inventory
         /// 
         /// </summary>
-        /// <param name="weapon">A spell to be added to the list.</param>
+        /// <param name="spell">A spell to be added to the list.</param>
         public void AddSpellInventory(Spell spell)
         {
             PlayersInventory.Spells.Add(spell);

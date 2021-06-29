@@ -2,6 +2,9 @@
 
 namespace DungeonMaster.Data
 {
+    /// <summary>
+    /// Class Game, Stores basic information about the game and specifically the entities within it.
+    /// </summary>
     public class Game
     {
         /// <summary>
@@ -23,6 +26,10 @@ namespace DungeonMaster.Data
         /// </value>
 		public List<Character> CharacterList { get; set; }
 
+        /// <summary>
+        /// Gets or sets the current turn.
+        /// </summary>
+        /// <value>The current turn.</value>
         public Turn CurrentTurn { get; set; }
 
         /// <summary>
@@ -105,7 +112,7 @@ namespace DungeonMaster.Data
         /// </summary>
         /// <param name="character">Character to be placed in the gameboard.</param>
         /// <param name="row">Row to place character in.</param>
-        /// <param name="col">Column to place character in.</param>
+        /// <param name="column">Column to place character in.</param>
         /// <returns>Boolean representing if character was placed into the gameboard.</returns>
         public bool AddCharacter(Character character, int column, int row)
         {

@@ -1,5 +1,8 @@
 ﻿namespace DungeonMaster.Data
 {
+    /// <summary>
+    /// Class CharacterStats.
+    /// </summary>
     public class CharacterStats
     {
         /// <summary>

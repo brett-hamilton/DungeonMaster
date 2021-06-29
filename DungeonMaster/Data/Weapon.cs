@@ -21,11 +21,6 @@ namespace DungeonMaster.Data
         public string Name { get; set; }
 
         /// <summary>
-        /// The amount of damage with no dice rolls
-        /// </summary>
-        //public int BaseDamage {get; set;}
-
-        /// <summary>
         /// What dice the weapon uses, default is set to D4.
         /// </summary>
         public Dice DiceUsed { get; set; } = Dice.D4;
@@ -43,7 +38,7 @@ namespace DungeonMaster.Data
         /// <summary>
         /// What type of weapon it is.
         /// </summary>
-        public WeaponType WeaponType { get; set; }
+        public WeaponType WeaponType { get; set; } = WeaponType.OneHanded;
 
         ///	<summary>
         /// The type of damage the weapon uses.
@@ -69,15 +64,15 @@ namespace DungeonMaster.Data
         /// </summary>
         /// Author: Hunter Page
         /// <param name="name">Name of the weapon.</param>
-        /// <param name="baseDamage">Damage of the weapon.</param>
-        /// <param name="dice">Dice it uses.</param>
+        /// <param name="weaponType">Type of the weapon.</param>
+        /// <param name="dice">Dice the weapon uses.</param>
         /// <param name="range">What effective range the weapon has.</param>
         public Weapon(string name, Dice dice, double range, WeaponType weaponType)
         {
             this.Name = name;
-            //this.BaseDamage = baseDamage;
             this.DiceUsed = dice;
             this.Range = range;
+            WeaponType = weaponType;
         }
 
         /// <summary>
@@ -85,18 +80,19 @@ namespace DungeonMaster.Data
         /// </summary>
         /// Author: Hunter Page
         /// <param name="name">Name of the weapon.</param>
-        /// <param name="baseDamage">Damage of the weapon.</param>
-        /// <param name="dice">Dice it uses.</param>
+        /// <param name="weaponType">Type of the weapon.</param>
+        /// <param name="dice">Dice the weapon uses.</param>
         /// <param name="range">What effective range the weapon has.</param>
         /// <param name="damageTypes">What type of damage the weapon does.</param>
+        /// <param name="rangedWeapon">If the weapon is ranged weapon or not.</param>
         public Weapon(string name, Dice dice, double range, Effect damageTypes, bool rangedWeapon, WeaponType weaponType)
         {
             this.Name = name;
-            //this.BaseDamage = baseDamage;
             this.DiceUsed = dice;
             this.Range = range;
             this.DamageType = damageTypes;
             this.RangedWeapon = rangedWeapon;
+            WeaponType = weaponType;
 
         }
 
