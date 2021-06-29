@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="103f8fcb-6b14-4551-be36-35cfdf42e7ac" Title="DungeonMaster Namespace" Url="html/N-DungeonMaster.htm">
+    <HelpTOCNode Id="1657c286-dfcd-47de-a078-49c7f969f19f" Title="Program Class" Url="html/T-DungeonMaster.Program.htm">
+      <HelpTOCNode Title="Program Members" Url="html/AllMembers.T-DungeonMaster.Program.htm" />
+      <HelpTOCNode Id="a4349490-5bf8-4b7b-b4db-bc5608fa02f5" Title="Program Methods" Url="html/Methods.T-DungeonMaster.Program.htm">
+        <HelpTOCNode Id="550536c0-2d40-4b96-8c6c-f88920c00a99" Title="CreateHostBuilder Method " Url="html/Overload-DungeonMaster.Program.CreateHostBuilder.htm">
+          <HelpTOCNode Title="M:DungeonMaster.Program.CreateHostBuilder(System.String[])" Url="" />
+          <HelpTOCNode Title="CreateHostBuilder Method (String[])" Url="html/M-DungeonMaster.Program.CreateHostBuilder_1.htm" />
+          <HelpTOCNode Title="M:DungeonMaster.Program.CreateHostBuilder(System.String[])" Url="" />
+          <HelpTOCNode Title="CreateHostBuilder Method (String[])" Url="html/M-DungeonMaster.Program.CreateHostBuilder_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="77f9dd4f-772b-4ad0-a559-0f351eccb643" Title="Main Method " Url="html/Overload-DungeonMaster.Program.Main.htm">
+          <HelpTOCNode Title="M:DungeonMaster.Program.Main(System.String[])" Url="" />
+          <HelpTOCNode Title="Main Method (String[])" Url="html/M-DungeonMaster.Program.Main_1.htm" />
+          <HelpTOCNode Title="M:DungeonMaster.Program.Main(System.String[])" Url="" />
+          <HelpTOCNode Title="Main Method (String[])" Url="html/M-DungeonMaster.Program.Main_1.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="363cc2f5-bec8-41ff-8a53-3b3fb46459d7" Title="Startup Class" Url="html/T-DungeonMaster.Startup.htm">
+      <HelpTOCNode Title="Startup Members" Url="html/AllMembers.T-DungeonMaster.Startup.htm" />
+      <HelpTOCNode Title="Startup Constructor " Url="html/M-DungeonMaster.Startup.-ctor.htm" />
+      <HelpTOCNode Id="020c07bd-eacc-4842-8a44-340ac1b77e6d" Title="Startup Methods" Url="html/Methods.T-DungeonMaster.Startup.htm">
+        <HelpTOCNode Title="Configure Method " Url="html/M-DungeonMaster.Startup.Configure.htm" />
+        <HelpTOCNode Title="ConfigureServices Method " Url="html/M-DungeonMaster.Startup.ConfigureServices.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="27041b46-59f1-49c8-9dea-a7627f069b5c" Title="Startup Properties" Url="html/Properties.T-DungeonMaster.Startup.htm">
+        <HelpTOCNode Title="Configuration Property " Url="html/P-DungeonMaster.Startup.Configuration.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="458963d0-7fcb-455b-87a8-d0242ac71d22" Title="DungeonMaster.Data Namespace" Url="html/N-DungeonMaster.Data.htm">
+    <HelpTOCNode Id="2329be4d-7825-4f1a-8a87-d8139c69994a" Title="AdvantageRollReport Class" Url="html/T-DungeonMaster.Data.AdvantageRollReport.htm">
+      <HelpTOCNode Title="AdvantageRollReport Members" Url="html/AllMembers.T-DungeonMaster.Data.AdvantageRollReport.htm" />
+      <HelpTOCNode Id="bec91601-214d-4f1f-94d2-514a07775a5c" Title="AdvantageRollReport Methods" Url="html/Methods.T-DungeonMaster.Data.AdvantageRollReport.htm">
+        <HelpTOCNode Title="GetDiceReport Method " Url="html/M-DungeonMaster.Data.AdvantageRollReport.GetDiceReport.htm" />
+        <HelpTOCNode Title="GetDiceTotal Method " Url="html/M-DungeonMaster.Data.AdvantageRollReport.GetDiceTotal.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="AdvantageRollReport Properties" Url="html/Properties.T-DungeonMaster.Data.AdvantageRollReport.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="9abf3e7a-5356-401d-839b-6b6fcba25477" Title="Armor Class" Url="html/T-DungeonMaster.Data.Armor.htm">
+      <HelpTOCNode Title="Armor Members" Url="html/AllMembers.T-DungeonMaster.Data.Armor.htm" />
+      <HelpTOCNode Title="Armor Constructor " Url="html/M-DungeonMaster.Data.Armor.-ctor.htm" />
+      <HelpTOCNode Title="Armor Methods" Url="html/Methods.T-DungeonMaster.Data.Armor.htm" />
+      <HelpTOCNode Id="b93d2c32-7f4d-4d1c-abd5-75d356ba6ee8" Title="Armor Properties" Url="html/Properties.T-DungeonMaster.Data.Armor.htm">
+        <HelpTOCNode Title="Name Property " Url="html/P-DungeonMaster.Data.Armor.Name.htm" />
+        <HelpTOCNode Title="ProtectionPoints Property " Url="html/P-DungeonMaster.Data.Armor.ProtectionPoints.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="aebaf41d-90f1-489a-8f7e-9ebf082b41e1" Title="Attack Class" Url="html/T-DungeonMaster.Data.Attack.htm">
+      <HelpTOCNode Title="Attack Members" Url="html/AllMembers.T-DungeonMaster.Data.Attack.htm" />
+      <HelpTOCNode Id="cd954810-113c-46df-8b79-3c57dffecf00" Title="Attack Methods" Url="html/Methods.T-DungeonMaster.Data.Attack.htm">
+        <HelpTOCNode Title="MeleeAttack Method " Url="html/M-DungeonMaster.Data.Attack.MeleeAttack.htm" />
+        <HelpTOCNode Title="RangedAttack Method " Url="html/M-DungeonMaster.Data.Attack.RangedAttack.htm" />
+        <HelpTOCNode Title="SpellAttack Method " Url="html/M-DungeonMaster.Data.Attack.SpellAttack.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c011fffc-be0e-4da9-9873-4a721313712b" Title="AttackReport Class" Url="html/T-DungeonMaster.Data.AttackReport.htm">
+      <HelpTOCNode Title="AttackReport Members" Url="html/AllMembers.T-DungeonMaster.Data.AttackReport.htm" />
+      <HelpTOCNode Id="bda0c331-69aa-4d39-ac03-3574714c4fd8" Title="AttackReport Methods" Url="html/Methods.T-DungeonMaster.Data.AttackReport.htm">
+        <HelpTOCNode Title="GetAttackReport Method " Url="html/M-DungeonMaster.Data.AttackReport.GetAttackReport.htm" />
+        <HelpTOCNode Title="GetHealingReport Method " Url="html/M-DungeonMaster.Data.AttackReport.GetHealingReport.htm" />
+        <HelpTOCNode Title="GetSpellAttackReport Method " Url="html/M-DungeonMaster.Data.AttackReport.GetSpellAttackReport.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a8daf627-48d4-4fe1-8a25-1da1597900aa" Title="AttackReport Properties" Url="html/Properties.T-DungeonMaster.Data.AttackReport.htm">
+        <HelpTOCNode Title="AttackerName Property " Url="html/P-DungeonMaster.Data.AttackReport.AttackerName.htm" />
+        <HelpTOCNode Title="AttackRoll Property " Url="html/P-DungeonMaster.Data.AttackReport.AttackRoll.htm" />
+        <HelpTOCNode Title="DamageType Property " Url="html/P-DungeonMaster.Data.AttackReport.DamageType.htm" />
+        <HelpTOCNode Title="DefenderName Property " Url="html/P-DungeonMaster.Data.AttackReport.DefenderName.htm" />
+        <HelpTOCNode Title="DiceRollReport Property " Url="html/P-DungeonMaster.Data.AttackReport.DiceRollReport.htm" />
+        <HelpTOCNode Title="DieUsed Property " Url="html/P-DungeonMaster.Data.AttackReport.DieUsed.htm" />
+        <HelpTOCNode Title="DisadvantageRoll Property " Url="html/P-DungeonMaster.Data.AttackReport.DisadvantageRoll.htm" />
+        <HelpTOCNode Title="HitCheck Property " Url="html/P-DungeonMaster.Data.AttackReport.HitCheck.htm" />
+        <HelpTOCNode Title="Modifier Property " Url="html/P-DungeonMaster.Data.AttackReport.Modifier.htm" />
+        <HelpTOCNode Title="SpellName Property " Url="html/P-DungeonMaster.Data.AttackReport.SpellName.htm" />
+        <HelpTOCNode Title="SpellType Property " Url="html/P-DungeonMaster.Data.AttackReport.SpellType.htm" />
+        <HelpTOCNode Title="TotalDamageDealt Property " Url="html/P-DungeonMaster.Data.AttackReport.TotalDamageDealt.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="CardinalDirection Enumeration" Url="html/T-DungeonMaster.Data.CardinalDirection.htm" />
+    <HelpTOCNode Id="6f5aea0d-8be3-4ab4-be0d-8236e027f6c4" Title="Character Class" Url="html/T-DungeonMaster.Data.Character.htm">
+      <HelpTOCNode Title="Character Members" Url="html/AllMembers.T-DungeonMaster.Data.Character.htm" />
+      <HelpTOCNode Id="d8729667-0a94-44c4-9e2b-418486f3ba05" Title="Character Constructor " Url="html/Overload-DungeonMaster.Data.Character.-ctor.htm">
+        <HelpTOCNode Title="Character Constructor " Url="html/M-DungeonMaster.Data.Character.-ctor.htm" />
+        <HelpTOCNode Title="Character Constructor (String, Double, Double)" Url="html/M-DungeonMaster.Data.Character.-ctor_1.htm" />
+        <HelpTOCNode Title="Character Constructor (String, Double, Int32, String)" Url="html/M-DungeonMaster.Data.Character.-ctor_2.htm" />
+        <HelpTOCNode Title="Character Constructor (String, Double, Double, String)" Url="html/M-DungeonMaster.Data.Character.-ctor_3.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="2eb033ac-c511-4af9-945c-fefbef42910b" Title="Character Methods" Url="html/Methods.T-DungeonMaster.Data.Character.htm">
+        <HelpTOCNode Title="AddSpellInventory Method " Url="html/M-DungeonMaster.Data.Character.AddSpellInventory.htm" />
+        <HelpTOCNode Title="AddWeaponInventory Method " Url="html/M-DungeonMaster.Data.Character.AddWeaponInventory.htm" />
+        <HelpTOCNode Title="CheckArmor Method " Url="html/M-DungeonMaster.Data.Character.CheckArmor.htm" />
+        <HelpTOCNode Title="DamagePlayer Method " Url="html/M-DungeonMaster.Data.Character.DamagePlayer.htm" />
+        <HelpTOCNode Title="HealPlayer Method " Url="html/M-DungeonMaster.Data.Character.HealPlayer.htm" />
+        <HelpTOCNode Title="IsProficient Method " Url="html/M-DungeonMaster.Data.Character.IsProficient.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="ab86dddf-00f1-4d8c-a0f0-076d09f9bb4f" Title="Character Properties" Url="html/Properties.T-DungeonMaster.Data.Character.htm">
+        <HelpTOCNode Title="ActionPoints Property " Url="html/P-DungeonMaster.Data.Character.ActionPoints.htm" />
+        <HelpTOCNode Title="ActiveSpell Property " Url="html/P-DungeonMaster.Data.Character.ActiveSpell.htm" />
+        <HelpTOCNode Title="ActiveWeapon Property " Url="html/P-DungeonMaster.Data.Character.ActiveWeapon.htm" />
+        <HelpTOCNode Title="Armor Property " Url="html/P-DungeonMaster.Data.Character.Armor.htm" />
+        <HelpTOCNode Title="CharacterStats Property " Url="html/P-DungeonMaster.Data.Character.CharacterStats.htm" />
+        <HelpTOCNode Title="Health Property " Url="html/P-DungeonMaster.Data.Character.Health.htm" />
+        <HelpTOCNode Title="PlayersInventory Property " Url="html/P-DungeonMaster.Data.Character.PlayersInventory.htm" />
+        <HelpTOCNode Title="Proficiency Property " Url="html/P-DungeonMaster.Data.Character.Proficiency.htm" />
+        <HelpTOCNode Title="Status Property " Url="html/P-DungeonMaster.Data.Character.Status.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8f9e6c7e-0773-4e98-a3ed-cf66933858e5" Title="CharacterFile Class" Url="html/T-DungeonMaster.Data.CharacterFile.htm">
+      <HelpTOCNode Title="CharacterFile Members" Url="html/AllMembers.T-DungeonMaster.Data.CharacterFile.htm" />
+      <HelpTOCNode Id="2c722fe7-13d3-45dc-a7ef-f032b1602e58" Title="CharacterFile Fields" Url="html/Fields.T-DungeonMaster.Data.CharacterFile.htm">
+        <HelpTOCNode Title="PATH Field" Url="html/F-DungeonMaster.Data.CharacterFile.PATH.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0c98b759-325a-494e-bca4-2116ec469d7e" Title="CharacterFile Methods" Url="html/Methods.T-DungeonMaster.Data.CharacterFile.htm">
+        <HelpTOCNode Title="Clear Method " Url="html/M-DungeonMaster.Data.CharacterFile.Clear.htm" />
+        <HelpTOCNode Title="GetPath Method " Url="html/M-DungeonMaster.Data.CharacterFile.GetPath.htm" />
+        <HelpTOCNode Title="Read Method " Url="html/M-DungeonMaster.Data.CharacterFile.Read.htm" />
+        <HelpTOCNode Title="Write Method " Url="html/M-DungeonMaster.Data.CharacterFile.Write.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="95ef454f-4ff0-483a-9440-43419da1f1c4" Title="CharacterStats Class" Url="html/T-DungeonMaster.Data.CharacterStats.htm">
+      <HelpTOCNode Title="CharacterStats Members" Url="html/AllMembers.T-DungeonMaster.Data.CharacterStats.htm" />
+      <HelpTOCNode Id="e8333d08-a250-4d3d-83d0-00cb4c4a958f" Title="CharacterStats Constructor " Url="html/Overload-DungeonMaster.Data.CharacterStats.-ctor.htm">
+        <HelpTOCNode Title="CharacterStats Constructor " Url="html/M-DungeonMaster.Data.CharacterStats.-ctor.htm" />
+        <HelpTOCNode Title="CharacterStats Constructor (Int32, Int32, Int32, Int32, Int32, Int32)" Url="html/M-DungeonMaster.Data.CharacterStats.-ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="7a696bc6-5573-4a56-8098-d17bc67b3fc1" Title="CharacterStats Methods" Url="html/Methods.T-DungeonMaster.Data.CharacterStats.htm">
+        <HelpTOCNode Title="GetDexterityModifier Method " Url="html/M-DungeonMaster.Data.CharacterStats.GetDexterityModifier.htm" />
+        <HelpTOCNode Title="GetIntelligenceModifier Method " Url="html/M-DungeonMaster.Data.CharacterStats.GetIntelligenceModifier.htm" />
+        <HelpTOCNode Title="GetStrengthModifier Method " Url="html/M-DungeonMaster.Data.CharacterStats.GetStrengthModifier.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="dd8f56e3-cb76-40b4-b0be-44a3fdb27691" Title="CharacterStats Properties" Url="html/Properties.T-DungeonMaster.Data.CharacterStats.htm">
+        <HelpTOCNode Title="Charisma Property " Url="html/P-DungeonMaster.Data.CharacterStats.Charisma.htm" />
+        <HelpTOCNode Title="Constitution Property " Url="html/P-DungeonMaster.Data.CharacterStats.Constitution.htm" />
+        <HelpTOCNode Title="Dexterity Property " Url="html/P-DungeonMaster.Data.CharacterStats.Dexterity.htm" />
+        <HelpTOCNode Title="Intelligence Property " Url="html/P-DungeonMaster.Data.CharacterStats.Intelligence.htm" />
+        <HelpTOCNode Title="Strength Property " Url="html/P-DungeonMaster.Data.CharacterStats.Strength.htm" />
+        <HelpTOCNode Title="Wisdom Property " Url="html/P-DungeonMaster.Data.CharacterStats.Wisdom.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f2c30a7b-2c10-42e4-a5fa-772f178b0a73" Title="Coordinate Class" Url="html/T-DungeonMaster.Data.Coordinate.htm">
+      <HelpTOCNode Title="Coordinate Members" Url="html/AllMembers.T-DungeonMaster.Data.Coordinate.htm" />
+      <HelpTOCNode Title="Coordinate Methods" Url="html/Methods.T-DungeonMaster.Data.Coordinate.htm" />
+      <HelpTOCNode Id="fd6b6f30-6d2c-4296-9ac1-29596230538f" Title="Coordinate Properties" Url="html/Properties.T-DungeonMaster.Data.Coordinate.htm">
+        <HelpTOCNode Title="Column Property " Url="html/P-DungeonMaster.Data.Coordinate.Column.htm" />
+        <HelpTOCNode Title="Row Property " Url="html/P-DungeonMaster.Data.Coordinate.Row.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="240454fa-cac2-4f5c-8460-71506c2242ca" Title="DamageSpell Class" Url="html/T-DungeonMaster.Data.DamageSpell.htm">
+      <HelpTOCNode Title="DamageSpell Members" Url="html/AllMembers.T-DungeonMaster.Data.DamageSpell.htm" />
+      <HelpTOCNode Title="DamageSpell Constructor " Url="html/M-DungeonMaster.Data.DamageSpell.-ctor.htm" />
+      <HelpTOCNode Title="DamageSpell Methods" Url="html/Methods.T-DungeonMaster.Data.DamageSpell.htm" />
+      <HelpTOCNode Id="75ae9f7e-e7d4-495c-9080-fdc0f1353fcf" Title="DamageSpell Properties" Url="html/Properties.T-DungeonMaster.Data.DamageSpell.htm">
+        <HelpTOCNode Title="Damage Property " Url="html/P-DungeonMaster.Data.DamageSpell.Damage.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="Dice Enumeration" Url="html/T-DungeonMaster.Data.Dice.htm" />
+    <HelpTOCNode Id="90b42762-5aef-4760-884d-7ed2cf5f61e3" Title="DiceRollReport Class" Url="html/T-DungeonMaster.Data.DiceRollReport.htm">
+      <HelpTOCNode Title="DiceRollReport Members" Url="html/AllMembers.T-DungeonMaster.Data.DiceRollReport.htm" />
+      <HelpTOCNode Id="7f9c18b5-0207-4657-891b-6920460dad01" Title="DiceRollReport Methods" Url="html/Methods.T-DungeonMaster.Data.DiceRollReport.htm">
+        <HelpTOCNode Title="GetDiceReport Method " Url="html/M-DungeonMaster.Data.DiceRollReport.GetDiceReport.htm" />
+        <HelpTOCNode Title="GetDiceTotal Method " Url="html/M-DungeonMaster.Data.DiceRollReport.GetDiceTotal.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6db20339-7b22-4a9a-9ad0-a3902595d696" Title="DiceRollReport Properties" Url="html/Properties.T-DungeonMaster.Data.DiceRollReport.htm">
+        <HelpTOCNode Title="DiceRolled Property " Url="html/P-DungeonMaster.Data.DiceRollReport.DiceRolled.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="cb7584b6-362f-4d89-889e-94333ed1a7cc" Title="Die Class" Url="html/T-DungeonMaster.Data.Die.htm">
+      <HelpTOCNode Title="Die Members" Url="html/AllMembers.T-DungeonMaster.Data.Die.htm" />
+      <HelpTOCNode Id="60645cc8-9fc2-416f-b6a7-fb86a510b23b" Title="Die Fields" Url="html/Fields.T-DungeonMaster.Data.Die.htm">
+        <HelpTOCNode Title="Rand Field" Url="html/F-DungeonMaster.Data.Die.Rand.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0368ed16-814a-4892-940e-a8682e3f1ff9" Title="Die Methods" Url="html/Methods.T-DungeonMaster.Data.Die.htm">
+        <HelpTOCNode Title="Roll Method " Url="html/M-DungeonMaster.Data.Die.Roll.htm" />
+        <HelpTOCNode Title="RollD20 Method " Url="html/M-DungeonMaster.Data.Die.RollD20.htm" />
+        <HelpTOCNode Title="RollD20Advantage Method " Url="html/M-DungeonMaster.Data.Die.RollD20Advantage.htm" />
+        <HelpTOCNode Title="RollD20Disadvantage Method " Url="html/M-DungeonMaster.Data.Die.RollD20Disadvantage.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="efbf2e32-5136-4c48-a229-d226cbf9a2c9" Title="DisadvantageRollReport Class" Url="html/T-DungeonMaster.Data.DisadvantageRollReport.htm">
+      <HelpTOCNode Title="DisadvantageRollReport Members" Url="html/AllMembers.T-DungeonMaster.Data.DisadvantageRollReport.htm" />
+      <HelpTOCNode Id="aea60724-f14f-4269-b112-c3c615100646" Title="DisadvantageRollReport Methods" Url="html/Methods.T-DungeonMaster.Data.DisadvantageRollReport.htm">
+        <HelpTOCNode Title="GetDiceReport Method " Url="html/M-DungeonMaster.Data.DisadvantageRollReport.GetDiceReport.htm" />
+        <HelpTOCNode Title="GetDiceTotal Method " Url="html/M-DungeonMaster.Data.DisadvantageRollReport.GetDiceTotal.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DisadvantageRollReport Properties" Url="html/Properties.T-DungeonMaster.Data.DisadvantageRollReport.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="bc231093-1ee4-41bf-9c87-ba4dc0592a68" Title="Drawable Class" Url="html/T-DungeonMaster.Data.Drawable.htm">
+      <HelpTOCNode Title="Drawable Members" Url="html/AllMembers.T-DungeonMaster.Data.Drawable.htm" />
+      <HelpTOCNode Id="1afed2bf-9cb4-437d-8536-c36a7c53f44a" Title="Drawable Constructor " Url="html/Overload-DungeonMaster.Data.Drawable.-ctor.htm">
+        <HelpTOCNode Title="Drawable Constructor " Url="html/M-DungeonMaster.Data.Drawable.-ctor.htm" />
+        <HelpTOCNode Title="Drawable Constructor (String, Boolean, String, String)" Url="html/M-DungeonMaster.Data.Drawable.-ctor_1.htm" />
+        <HelpTOCNode Title="Drawable Constructor (String, Boolean, String, String, CardinalDirection)" Url="html/M-DungeonMaster.Data.Drawable.-ctor_2.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Drawable Methods" Url="html/Methods.T-DungeonMaster.Data.Drawable.htm" />
+      <HelpTOCNode Id="6ac65ff6-bb63-4de8-aece-9612f75683cb" Title="Drawable Properties" Url="html/Properties.T-DungeonMaster.Data.Drawable.htm">
+        <HelpTOCNode Title="BackupColorCode Property " Url="html/P-DungeonMaster.Data.Drawable.BackupColorCode.htm" />
+        <HelpTOCNode Title="Direction Property " Url="html/P-DungeonMaster.Data.Drawable.Direction.htm" />
+        <HelpTOCNode Title="ImageLocation Property " Url="html/P-DungeonMaster.Data.Drawable.ImageLocation.htm" />
+        <HelpTOCNode Title="IsCollidable Property " Url="html/P-DungeonMaster.Data.Drawable.IsCollidable.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P-DungeonMaster.Data.Drawable.Name.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="7f13a278-1ad6-4ad2-8dbf-444a99160634" Title="Effect Class" Url="html/T-DungeonMaster.Data.Effect.htm">
+      <HelpTOCNode Title="Effect Members" Url="html/AllMembers.T-DungeonMaster.Data.Effect.htm" />
+      <HelpTOCNode Title="Effect Constructor " Url="html/M-DungeonMaster.Data.Effect.-ctor.htm" />
+      <HelpTOCNode Title="Effect Methods" Url="html/Methods.T-DungeonMaster.Data.Effect.htm" />
+      <HelpTOCNode Id="00f96cf2-6ccf-4924-bb89-d786d36523ec" Title="Effect Properties" Url="html/Properties.T-DungeonMaster.Data.Effect.htm">
+        <HelpTOCNode Title="Damage Property " Url="html/P-DungeonMaster.Data.Effect.Damage.htm" />
+        <HelpTOCNode Title="EffectType Property " Url="html/P-DungeonMaster.Data.Effect.EffectType.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P-DungeonMaster.Data.Effect.Name.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="EffectTypes Enumeration" Url="html/T-DungeonMaster.Data.EffectTypes.htm" />
+    <HelpTOCNode Id="ecb19ab6-3c45-4ee2-821d-0b5d5c9d239a" Title="Game Class" Url="html/T-DungeonMaster.Data.Game.htm">
+      <HelpTOCNode Title="Game Members" Url="html/AllMembers.T-DungeonMaster.Data.Game.htm" />
+      <HelpTOCNode Id="bac0b271-c2b4-44aa-9e19-9613c460b0c6" Title="Game Constructor " Url="html/Overload-DungeonMaster.Data.Game.-ctor.htm">
+        <HelpTOCNode Title="Game Constructor " Url="html/M-DungeonMaster.Data.Game.-ctor.htm" />
+        <HelpTOCNode Title="Game Constructor (Int32, Int32)" Url="html/M-DungeonMaster.Data.Game.-ctor_1.htm" />
+        <HelpTOCNode Title="Game Constructor (Character, Character)" Url="html/M-DungeonMaster.Data.Game.-ctor_2.htm" />
+        <HelpTOCNode Title="Game Constructor (String, Gameboard, List(Character))" Url="html/M-DungeonMaster.Data.Game.-ctor_3.htm" />
+        <HelpTOCNode Title="Game Constructor (Game)" Url="html/M-DungeonMaster.Data.Game.-ctor_4.htm" />
+        <HelpTOCNode Title="Game Constructor (Game, String)" Url="html/M-DungeonMaster.Data.Game.-ctor_5.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="41e32d91-fb53-4770-87a8-04ea73efbe62" Title="Game Methods" Url="html/Methods.T-DungeonMaster.Data.Game.htm">
+        <HelpTOCNode Title="AddCharacter Method " Url="html/M-DungeonMaster.Data.Game.AddCharacter.htm" />
+        <HelpTOCNode Title="AddDrawable Method " Url="html/M-DungeonMaster.Data.Game.AddDrawable.htm" />
+        <HelpTOCNode Title="CharacterMove Method " Url="html/M-DungeonMaster.Data.Game.CharacterMove.htm" />
+        <HelpTOCNode Title="GetFormattedCharacterList Method " Url="html/M-DungeonMaster.Data.Game.GetFormattedCharacterList.htm" />
+        <HelpTOCNode Title="MeleeAttackAttempt Method " Url="html/M-DungeonMaster.Data.Game.MeleeAttackAttempt.htm" />
+        <HelpTOCNode Title="PushObject Method " Url="html/M-DungeonMaster.Data.Game.PushObject.htm" />
+        <HelpTOCNode Title="RangedAttackAttempt Method " Url="html/M-DungeonMaster.Data.Game.RangedAttackAttempt.htm" />
+        <HelpTOCNode Title="SpellAttackAttempt Method " Url="html/M-DungeonMaster.Data.Game.SpellAttackAttempt.htm" />
+        <HelpTOCNode Title="SpellHealAttempt Method " Url="html/M-DungeonMaster.Data.Game.SpellHealAttempt.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="f7b7995b-5a4d-48bf-b324-98bd4777dd7b" Title="Game Properties" Url="html/Properties.T-DungeonMaster.Data.Game.htm">
+        <HelpTOCNode Title="CharacterList Property " Url="html/P-DungeonMaster.Data.Game.CharacterList.htm" />
+        <HelpTOCNode Title="CurrentTurn Property " Url="html/P-DungeonMaster.Data.Game.CurrentTurn.htm" />
+        <HelpTOCNode Title="Gameboard Property " Url="html/P-DungeonMaster.Data.Game.Gameboard.htm" />
+        <HelpTOCNode Title="GameName Property " Url="html/P-DungeonMaster.Data.Game.GameName.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9e4a941f-f07a-43bb-b583-3847c1b95a8f" Title="Gameboard Class" Url="html/T-DungeonMaster.Data.Gameboard.htm">
+      <HelpTOCNode Title="Gameboard Members" Url="html/AllMembers.T-DungeonMaster.Data.Gameboard.htm" />
+      <HelpTOCNode Id="e8d06176-82bf-401b-9a09-d1eaa5c8e0da" Title="Gameboard Constructor " Url="html/Overload-DungeonMaster.Data.Gameboard.-ctor.htm">
+        <HelpTOCNode Title="Gameboard Constructor " Url="html/M-DungeonMaster.Data.Gameboard.-ctor.htm" />
+        <HelpTOCNode Title="Gameboard Constructor (Int32, Int32)" Url="html/M-DungeonMaster.Data.Gameboard.-ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="31d10019-7f71-46f2-a3eb-bfe358f59512" Title="Gameboard Methods" Url="html/Methods.T-DungeonMaster.Data.Gameboard.htm">
+        <HelpTOCNode Title="AddDrawable Method " Url="html/M-DungeonMaster.Data.Gameboard.AddDrawable.htm" />
+        <HelpTOCNode Title="GetCoordinate Method " Url="html/M-DungeonMaster.Data.Gameboard.GetCoordinate.htm" />
+        <HelpTOCNode Title="GetCoordinateAfterPush Method " Url="html/M-DungeonMaster.Data.Gameboard.GetCoordinateAfterPush.htm" />
+        <HelpTOCNode Title="GetDistance Method " Url="html/M-DungeonMaster.Data.Gameboard.GetDistance.htm" />
+        <HelpTOCNode Title="GetNewCoordinate Method " Url="html/M-DungeonMaster.Data.Gameboard.GetNewCoordinate.htm" />
+        <HelpTOCNode Title="IsOccupied Method " Url="html/M-DungeonMaster.Data.Gameboard.IsOccupied.htm" />
+        <HelpTOCNode Title="MeleeRangeCheck Method " Url="html/M-DungeonMaster.Data.Gameboard.MeleeRangeCheck.htm" />
+        <HelpTOCNode Title="Move Method " Url="html/M-DungeonMaster.Data.Gameboard.Move.htm" />
+        <HelpTOCNode Title="PushableItemsNearby Method " Url="html/M-DungeonMaster.Data.Gameboard.PushableItemsNearby.htm" />
+        <HelpTOCNode Title="RangedRangeCheck Method " Url="html/M-DungeonMaster.Data.Gameboard.RangedRangeCheck.htm" />
+        <HelpTOCNode Title="SpellRangeCheck Method " Url="html/M-DungeonMaster.Data.Gameboard.SpellRangeCheck.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b69b7321-f06a-4020-9f01-f145f377cbc3" Title="Gameboard Properties" Url="html/Properties.T-DungeonMaster.Data.Gameboard.htm">
+        <HelpTOCNode Title="Columns Property " Url="html/P-DungeonMaster.Data.Gameboard.Columns.htm" />
+        <HelpTOCNode Title="Drawables Property " Url="html/P-DungeonMaster.Data.Gameboard.Drawables.htm" />
+        <HelpTOCNode Title="ImageLocation Property " Url="html/P-DungeonMaster.Data.Gameboard.ImageLocation.htm" />
+        <HelpTOCNode Title="Rows Property " Url="html/P-DungeonMaster.Data.Gameboard.Rows.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="d62a63e4-0e4a-4897-8fab-25c7e29f3345" Title="Heal Class" Url="html/T-DungeonMaster.Data.Heal.htm">
+      <HelpTOCNode Title="Heal Members" Url="html/AllMembers.T-DungeonMaster.Data.Heal.htm" />
+      <HelpTOCNode Id="270f5fa6-742d-43b6-b90d-4bd7f8ff4c93" Title="Heal Methods" Url="html/Methods.T-DungeonMaster.Data.Heal.htm">
+        <HelpTOCNode Title="HealCharacter Method " Url="html/M-DungeonMaster.Data.Heal.HealCharacter.htm" />
+        <HelpTOCNode Title="HealSelf Method " Url="html/M-DungeonMaster.Data.Heal.HealSelf.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="d5d782b3-32f9-4810-a4ad-d0590e54a491" Title="HealingSpell Class" Url="html/T-DungeonMaster.Data.HealingSpell.htm">
+      <HelpTOCNode Title="HealingSpell Members" Url="html/AllMembers.T-DungeonMaster.Data.HealingSpell.htm" />
+      <HelpTOCNode Title="HealingSpell Constructor " Url="html/M-DungeonMaster.Data.HealingSpell.-ctor.htm" />
+      <HelpTOCNode Title="HealingSpell Methods" Url="html/Methods.T-DungeonMaster.Data.HealingSpell.htm" />
+      <HelpTOCNode Id="dbc16f5e-e386-455e-b408-4e5e357e9741" Title="HealingSpell Properties" Url="html/Properties.T-DungeonMaster.Data.HealingSpell.htm">
+        <HelpTOCNode Title="HealingFactor Property " Url="html/P-DungeonMaster.Data.HealingSpell.HealingFactor.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5b2cc89e-93a5-47c9-b040-16b9188d0997" Title="Inventory Class" Url="html/T-DungeonMaster.Data.Inventory.htm">
+      <HelpTOCNode Title="Inventory Members" Url="html/AllMembers.T-DungeonMaster.Data.Inventory.htm" />
+      <HelpTOCNode Title="Inventory Constructor " Url="html/M-DungeonMaster.Data.Inventory.-ctor.htm" />
+      <HelpTOCNode Id="33490ed2-176d-42ab-a568-063dfd6dbdef" Title="Inventory Methods" Url="html/Methods.T-DungeonMaster.Data.Inventory.htm">
+        <HelpTOCNode Title="ToString Method " Url="html/M-DungeonMaster.Data.Inventory.ToString.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="386757d6-da27-4f7d-b09d-e545c3ed3806" Title="Inventory Properties" Url="html/Properties.T-DungeonMaster.Data.Inventory.htm">
+        <HelpTOCNode Title="Spells Property " Url="html/P-DungeonMaster.Data.Inventory.Spells.htm" />
+        <HelpTOCNode Title="Weapons Property " Url="html/P-DungeonMaster.Data.Inventory.Weapons.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="6cec6a4b-a243-470a-b8c4-88f20e8083f9" Title="MoveReport Class" Url="html/T-DungeonMaster.Data.MoveReport.htm">
+      <HelpTOCNode Title="MoveReport Members" Url="html/AllMembers.T-DungeonMaster.Data.MoveReport.htm" />
+      <HelpTOCNode Title="MoveReport Constructor " Url="html/M-DungeonMaster.Data.MoveReport.-ctor.htm" />
+      <HelpTOCNode Id="b7a8d549-6ff8-4d79-b340-29f83aa9f0e1" Title="MoveReport Methods" Url="html/Methods.T-DungeonMaster.Data.MoveReport.htm">
+        <HelpTOCNode Title="GetMoveResult Method " Url="html/M-DungeonMaster.Data.MoveReport.GetMoveResult.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="d9eff1ff-6cc4-447a-8494-35db362a4c58" Title="MoveReport Properties" Url="html/Properties.T-DungeonMaster.Data.MoveReport.htm">
+        <HelpTOCNode Title="CurrentCoordinate Property " Url="html/P-DungeonMaster.Data.MoveReport.CurrentCoordinate.htm" />
+        <HelpTOCNode Title="ErrorString Property " Url="html/P-DungeonMaster.Data.MoveReport.ErrorString.htm" />
+        <HelpTOCNode Title="ItemToMove Property " Url="html/P-DungeonMaster.Data.MoveReport.ItemToMove.htm" />
+        <HelpTOCNode Title="MoveSuccessful Property " Url="html/P-DungeonMaster.Data.MoveReport.MoveSuccessful.htm" />
+        <HelpTOCNode Title="NewCoordinate Property " Url="html/P-DungeonMaster.Data.MoveReport.NewCoordinate.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a7618a36-0538-46b3-ae27-7a0adeba5c73" Title="MultipleDiceRollReport Class" Url="html/T-DungeonMaster.Data.MultipleDiceRollReport.htm">
+      <HelpTOCNode Title="MultipleDiceRollReport Members" Url="html/AllMembers.T-DungeonMaster.Data.MultipleDiceRollReport.htm" />
+      <HelpTOCNode Id="54a6323a-3b9a-4c22-b801-03fa5670bc4b" Title="MultipleDiceRollReport Methods" Url="html/Methods.T-DungeonMaster.Data.MultipleDiceRollReport.htm">
+        <HelpTOCNode Title="GetDiceReport Method " Url="html/M-DungeonMaster.Data.MultipleDiceRollReport.GetDiceReport.htm" />
+        <HelpTOCNode Title="GetDiceTotal Method " Url="html/M-DungeonMaster.Data.MultipleDiceRollReport.GetDiceTotal.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MultipleDiceRollReport Properties" Url="html/Properties.T-DungeonMaster.Data.MultipleDiceRollReport.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="952f4a10-f899-4464-bd9f-77aca5324760" Title="PushReport Class" Url="html/T-DungeonMaster.Data.PushReport.htm">
+      <HelpTOCNode Title="PushReport Members" Url="html/AllMembers.T-DungeonMaster.Data.PushReport.htm" />
+      <HelpTOCNode Title="PushReport Constructor " Url="html/M-DungeonMaster.Data.PushReport.-ctor.htm" />
+      <HelpTOCNode Id="9c52f23d-7a76-4630-b6df-86183d2c35e7" Title="PushReport Methods" Url="html/Methods.T-DungeonMaster.Data.PushReport.htm">
+        <HelpTOCNode Title="GetPushResult Method " Url="html/M-DungeonMaster.Data.PushReport.GetPushResult.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="44c6c2d5-f590-41e5-b2cc-0a00c255e6de" Title="PushReport Properties" Url="html/Properties.T-DungeonMaster.Data.PushReport.htm">
+        <HelpTOCNode Title="ErrorString Property " Url="html/P-DungeonMaster.Data.PushReport.ErrorString.htm" />
+        <HelpTOCNode Title="NewCoordinate Property " Url="html/P-DungeonMaster.Data.PushReport.NewCoordinate.htm" />
+        <HelpTOCNode Title="PushedItem Property " Url="html/P-DungeonMaster.Data.PushReport.PushedItem.htm" />
+        <HelpTOCNode Title="Pusher Property " Url="html/P-DungeonMaster.Data.PushReport.Pusher.htm" />
+        <HelpTOCNode Title="PushPossible Property " Url="html/P-DungeonMaster.Data.PushReport.PushPossible.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="3100d617-69c5-422d-a361-740da6f88bef" Title="Spell Class" Url="html/T-DungeonMaster.Data.Spell.htm">
+      <HelpTOCNode Title="Spell Members" Url="html/AllMembers.T-DungeonMaster.Data.Spell.htm" />
+      <HelpTOCNode Id="8b200cd7-5b7a-47b3-880c-6722836edee2" Title="Spell Constructor " Url="html/Overload-DungeonMaster.Data.Spell.-ctor.htm">
+        <HelpTOCNode Title="Spell Constructor " Url="html/M-DungeonMaster.Data.Spell.-ctor.htm" />
+        <HelpTOCNode Title="Spell Constructor (String, SpellTypes, Dice, Int32, Int32)" Url="html/M-DungeonMaster.Data.Spell.-ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="e0558ff9-547c-4c72-a39f-d182791d5e1b" Title="Spell Methods" Url="html/Methods.T-DungeonMaster.Data.Spell.htm">
+        <HelpTOCNode Title="GetHealingSpellPower Method " Url="html/M-DungeonMaster.Data.Spell.GetHealingSpellPower.htm" />
+        <HelpTOCNode Title="GetSpellDamage Method " Url="html/M-DungeonMaster.Data.Spell.GetSpellDamage.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/M-DungeonMaster.Data.Spell.ToString.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="f4e1eeb7-8ba4-4a5a-8862-ca50f020f875" Title="Spell Properties" Url="html/Properties.T-DungeonMaster.Data.Spell.htm">
+        <HelpTOCNode Title="DiceUsed Property " Url="html/P-DungeonMaster.Data.Spell.DiceUsed.htm" />
+        <HelpTOCNode Title="NumberOfRolls Property " Url="html/P-DungeonMaster.Data.Spell.NumberOfRolls.htm" />
+        <HelpTOCNode Title="Range Property " Url="html/P-DungeonMaster.Data.Spell.Range.htm" />
+        <HelpTOCNode Title="SpellName Property " Url="html/P-DungeonMaster.Data.Spell.SpellName.htm" />
+        <HelpTOCNode Title="SpellType Property " Url="html/P-DungeonMaster.Data.Spell.SpellType.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="SpellTypes Enumeration" Url="html/T-DungeonMaster.Data.SpellTypes.htm" />
+    <HelpTOCNode Id="90792d1e-962b-4742-9bf5-b16eaabf2cb0" Title="Turn Class" Url="html/T-DungeonMaster.Data.Turn.htm">
+      <HelpTOCNode Title="Turn Members" Url="html/AllMembers.T-DungeonMaster.Data.Turn.htm" />
+      <HelpTOCNode Id="e6d2808f-f8e0-4207-9ddb-a4f12a060f51" Title="Turn Constructor " Url="html/Overload-DungeonMaster.Data.Turn.-ctor.htm">
+        <HelpTOCNode Title="Turn Constructor " Url="html/M-DungeonMaster.Data.Turn.-ctor.htm" />
+        <HelpTOCNode Title="Turn Constructor (Game)" Url="html/M-DungeonMaster.Data.Turn.-ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="bab08188-5d9d-4454-bd22-b59bac091ff3" Title="Turn Methods" Url="html/Methods.T-DungeonMaster.Data.Turn.htm">
+        <HelpTOCNode Title="UpdateInteractionPossibilities Method " Url="html/M-DungeonMaster.Data.Turn.UpdateInteractionPossibilities.htm" />
+        <HelpTOCNode Title="UpdateMagicAttackPossibilities Method " Url="html/M-DungeonMaster.Data.Turn.UpdateMagicAttackPossibilities.htm" />
+        <HelpTOCNode Title="UpdateMagicHealPossibilities Method " Url="html/M-DungeonMaster.Data.Turn.UpdateMagicHealPossibilities.htm" />
+        <HelpTOCNode Title="UpdateMovementPossibilities Method " Url="html/M-DungeonMaster.Data.Turn.UpdateMovementPossibilities.htm" />
+        <HelpTOCNode Title="UpdatePossibilities Method " Url="html/M-DungeonMaster.Data.Turn.UpdatePossibilities.htm" />
+        <HelpTOCNode Title="UpdateTurn Method " Url="html/M-DungeonMaster.Data.Turn.UpdateTurn.htm" />
+        <HelpTOCNode Title="UpdateWeaponPossibilities Method " Url="html/M-DungeonMaster.Data.Turn.UpdateWeaponPossibilities.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="7c2eb159-b1f7-4947-8f88-dde5b0e951cf" Title="Turn Properties" Url="html/Properties.T-DungeonMaster.Data.Turn.htm">
+        <HelpTOCNode Title="CurrentCharacter Property " Url="html/P-DungeonMaster.Data.Turn.CurrentCharacter.htm" />
+        <HelpTOCNode Title="Game Property " Url="html/P-DungeonMaster.Data.Turn.Game.htm" />
+        <HelpTOCNode Title="InteractionPossible Property " Url="html/P-DungeonMaster.Data.Turn.InteractionPossible.htm" />
+        <HelpTOCNode Title="MagicAttackPossible Property " Url="html/P-DungeonMaster.Data.Turn.MagicAttackPossible.htm" />
+        <HelpTOCNode Title="MagicHealPossible Property " Url="html/P-DungeonMaster.Data.Turn.MagicHealPossible.htm" />
+        <HelpTOCNode Title="MovePossible Property " Url="html/P-DungeonMaster.Data.Turn.MovePossible.htm" />
+        <HelpTOCNode Title="OtherCharactersInOrder Property " Url="html/P-DungeonMaster.Data.Turn.OtherCharactersInOrder.htm" />
+        <HelpTOCNode Title="PushableObjects Property " Url="html/P-DungeonMaster.Data.Turn.PushableObjects.htm" />
+        <HelpTOCNode Title="WeaponAttackPossible Property " Url="html/P-DungeonMaster.Data.Turn.WeaponAttackPossible.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="454a23be-174d-49c4-ab37-f8ec88fae0a6" Title="Weapon Class" Url="html/T-DungeonMaster.Data.Weapon.htm">
+      <HelpTOCNode Title="Weapon Members" Url="html/AllMembers.T-DungeonMaster.Data.Weapon.htm" />
+      <HelpTOCNode Id="a37ae28a-d0f9-42a6-aa46-943efa502b65" Title="Weapon Constructor " Url="html/Overload-DungeonMaster.Data.Weapon.-ctor.htm">
+        <HelpTOCNode Title="Weapon Constructor " Url="html/M-DungeonMaster.Data.Weapon.-ctor.htm" />
+        <HelpTOCNode Title="Weapon Constructor (String, Dice, Double, WeaponType)" Url="html/M-DungeonMaster.Data.Weapon.-ctor_1.htm" />
+        <HelpTOCNode Title="Weapon Constructor (String, Dice, Double, Effect, Boolean, WeaponType)" Url="html/M-DungeonMaster.Data.Weapon.-ctor_2.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="87ac8ec7-f826-4f23-a0f7-00cf1b6b89fe" Title="Weapon Methods" Url="html/Methods.T-DungeonMaster.Data.Weapon.htm">
+        <HelpTOCNode Title="GetDamage Method " Url="html/M-DungeonMaster.Data.Weapon.GetDamage.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/M-DungeonMaster.Data.Weapon.ToString.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="d9fb5e50-f3ea-43f0-9a74-c886e0c94734" Title="Weapon Properties" Url="html/Properties.T-DungeonMaster.Data.Weapon.htm">
+        <HelpTOCNode Title="DamageType Property " Url="html/P-DungeonMaster.Data.Weapon.DamageType.htm" />
+        <HelpTOCNode Title="DiceUsed Property " Url="html/P-DungeonMaster.Data.Weapon.DiceUsed.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P-DungeonMaster.Data.Weapon.Name.htm" />
+        <HelpTOCNode Title="Range Property " Url="html/P-DungeonMaster.Data.Weapon.Range.htm" />
+        <HelpTOCNode Title="RangedWeapon Property " Url="html/P-DungeonMaster.Data.Weapon.RangedWeapon.htm" />
+        <HelpTOCNode Title="WeaponType Property " Url="html/P-DungeonMaster.Data.Weapon.WeaponType.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="WeaponType Enumeration" Url="html/T-DungeonMaster.Data.WeaponType.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="62aa3693-5a09-4349-a237-ed695b4e6fa5" Title="DungeonMaster.Hubs Namespace" Url="html/N-DungeonMaster.Hubs.htm">
+    <HelpTOCNode Id="7e2e2095-06d6-4f2b-8a18-bfd7242b1746" Title="DungeonMasterHub Class" Url="html/T-DungeonMaster.Hubs.DungeonMasterHub.htm">
+      <HelpTOCNode Title="DungeonMasterHub Members" Url="html/AllMembers.T-DungeonMaster.Hubs.DungeonMasterHub.htm" />
+      <HelpTOCNode Id="f5fa059d-9c72-4f67-b737-b5fc03a5ad23" Title="DungeonMasterHub Methods" Url="html/Methods.T-DungeonMaster.Hubs.DungeonMasterHub.htm">
+        <HelpTOCNode Title="SendMessage Method " Url="html/M-DungeonMaster.Hubs.DungeonMasterHub.SendMessage.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="632dc2d9-e94d-44fe-94c2-0c02c4658f28" Title="DungeonMaster.Pages Namespace" Url="html/N-DungeonMaster.Pages.htm">
+    <HelpTOCNode Id="11b2d0eb-ffd2-40e1-9589-8945cac1e682" Title="ErrorModel Class" Url="html/T-DungeonMaster.Pages.ErrorModel.htm">
+      <HelpTOCNode Title="ErrorModel Members" Url="html/AllMembers.T-DungeonMaster.Pages.ErrorModel.htm" />
+      <HelpTOCNode Title="ErrorModel Constructor " Url="html/M-DungeonMaster.Pages.ErrorModel.-ctor.htm" />
+      <HelpTOCNode Id="b64e8a90-42d2-414a-9470-4145f1998255" Title="ErrorModel Fields" Url="html/Fields.T-DungeonMaster.Pages.ErrorModel.htm">
+        <HelpTOCNode Title="_logger Field" Url="html/F-DungeonMaster.Pages.ErrorModel._logger.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="d5599d76-5488-4dfb-b0ff-4d053c8357a6" Title="ErrorModel Methods" Url="html/Methods.T-DungeonMaster.Pages.ErrorModel.htm">
+        <HelpTOCNode Title="OnGet Method " Url="html/M-DungeonMaster.Pages.ErrorModel.OnGet.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="f153ad3a-c388-49db-866a-1aa6698b8f7f" Title="ErrorModel Properties" Url="html/Properties.T-DungeonMaster.Pages.ErrorModel.htm">
+        <HelpTOCNode Title="RequestId Property " Url="html/P-DungeonMaster.Pages.ErrorModel.RequestId.htm" />
+        <HelpTOCNode Title="ShowRequestId Property " Url="html/P-DungeonMaster.Pages.ErrorModel.ShowRequestId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="45a35c71-096a-4cf6-9889-118b332bc70e" Title="global Namespace" Url="html/N-global.htm">
+    <HelpTOCNode Title="Status Enumeration" Url="html/T-global.Status.htm" />
+  </HelpTOCNode>
+</HelpTOC>

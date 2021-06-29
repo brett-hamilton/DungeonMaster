@@ -1,0 +1,772 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+
+  <HelpKINode Title=". constructor" Url="html/M-global.$Program.-ctor.htm" />
+  <HelpKINode Title="ActionPoints property" Url="html/P-DungeonMaster.Data.Character.ActionPoints.htm" />
+  <HelpKINode Title="ActiveSpell property" Url="html/P-DungeonMaster.Data.Character.ActiveSpell.htm" />
+  <HelpKINode Title="ActiveWeapon property" Url="html/P-DungeonMaster.Data.Character.ActiveWeapon.htm" />
+  <HelpKINode Title="AddCharacter method" Url="html/M-DungeonMaster.Data.Game.AddCharacter.htm" />
+  <HelpKINode Title="AddDrawable method" Url="html/M-DungeonMaster.Data.Game.AddDrawable.htm" />
+  <HelpKINode Title="AddDrawable method" Url="html/M-DungeonMaster.Data.Gameboard.AddDrawable.htm" />
+  <HelpKINode Title="AddSpellInventory method" Url="html/M-DungeonMaster.Data.Character.AddSpellInventory.htm" />
+  <HelpKINode Title="AddWeaponInventory method" Url="html/M-DungeonMaster.Data.Character.AddWeaponInventory.htm" />
+  <HelpKINode Title="AdvantageRollReport class" Url="html/AllMembers.T-DungeonMaster.Data.AdvantageRollReport.htm" />
+  <HelpKINode Title="AdvantageRollReport class" Url="html/T-DungeonMaster.Data.AdvantageRollReport.htm" />
+  <HelpKINode Title="AdvantageRollReport class">
+    <HelpKINode Title="about AdvantageRollReport class" Url="html/T-DungeonMaster.Data.AdvantageRollReport.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.AdvantageRollReport.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.AdvantageRollReport.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.AdvantageRollReport.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AdvantageRollReport.GetDiceReport method" Url="html/M-DungeonMaster.Data.AdvantageRollReport.GetDiceReport.htm" />
+  <HelpKINode Title="AdvantageRollReport.GetDiceTotal method" Url="html/M-DungeonMaster.Data.AdvantageRollReport.GetDiceTotal.htm" />
+  <HelpKINode Title="Alive enumeration member" Url="html/T-global.Status.htm" />
+  <HelpKINode Title="Alive field" Url="html/F-global.Status.Alive.htm" />
+  <HelpKINode Title="Armor class" Url="html/AllMembers.T-DungeonMaster.Data.Armor.htm" />
+  <HelpKINode Title="Armor class" Url="html/T-DungeonMaster.Data.Armor.htm" />
+  <HelpKINode Title="Armor class">
+    <HelpKINode Title="about Armor class" Url="html/T-DungeonMaster.Data.Armor.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.Armor.htm" />
+    <HelpKINode Title="constructor" Url="html/M-DungeonMaster.Data.Armor.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.Armor.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.Armor.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Armor property" Url="html/P-DungeonMaster.Data.Character.Armor.htm" />
+  <HelpKINode Title="Armor.Armor constructor" Url="html/M-DungeonMaster.Data.Armor.-ctor.htm" />
+  <HelpKINode Title="Armor.Name property" Url="html/P-DungeonMaster.Data.Armor.Name.htm" />
+  <HelpKINode Title="Armor.ProtectionPoints property" Url="html/P-DungeonMaster.Data.Armor.ProtectionPoints.htm" />
+  <HelpKINode Title="Attack class" Url="html/AllMembers.T-DungeonMaster.Data.Attack.htm" />
+  <HelpKINode Title="Attack class" Url="html/T-DungeonMaster.Data.Attack.htm" />
+  <HelpKINode Title="Attack class">
+    <HelpKINode Title="about Attack class" Url="html/T-DungeonMaster.Data.Attack.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.Attack.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.Attack.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Attack.MeleeAttack method" Url="html/M-DungeonMaster.Data.Attack.MeleeAttack.htm" />
+  <HelpKINode Title="Attack.RangedAttack method" Url="html/M-DungeonMaster.Data.Attack.RangedAttack.htm" />
+  <HelpKINode Title="Attack.SpellAttack method" Url="html/M-DungeonMaster.Data.Attack.SpellAttack.htm" />
+  <HelpKINode Title="AttackerName property" Url="html/P-DungeonMaster.Data.AttackReport.AttackerName.htm" />
+  <HelpKINode Title="AttackReport class" Url="html/AllMembers.T-DungeonMaster.Data.AttackReport.htm" />
+  <HelpKINode Title="AttackReport class" Url="html/T-DungeonMaster.Data.AttackReport.htm" />
+  <HelpKINode Title="AttackReport class">
+    <HelpKINode Title="about AttackReport class" Url="html/T-DungeonMaster.Data.AttackReport.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.AttackReport.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.AttackReport.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.AttackReport.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AttackReport.AttackerName property" Url="html/P-DungeonMaster.Data.AttackReport.AttackerName.htm" />
+  <HelpKINode Title="AttackReport.AttackRoll property" Url="html/P-DungeonMaster.Data.AttackReport.AttackRoll.htm" />
+  <HelpKINode Title="AttackReport.DamageType property" Url="html/P-DungeonMaster.Data.AttackReport.DamageType.htm" />
+  <HelpKINode Title="AttackReport.DefenderName property" Url="html/P-DungeonMaster.Data.AttackReport.DefenderName.htm" />
+  <HelpKINode Title="AttackReport.DiceRollReport property" Url="html/P-DungeonMaster.Data.AttackReport.DiceRollReport.htm" />
+  <HelpKINode Title="AttackReport.DieUsed property" Url="html/P-DungeonMaster.Data.AttackReport.DieUsed.htm" />
+  <HelpKINode Title="AttackReport.DisadvantageRoll property" Url="html/P-DungeonMaster.Data.AttackReport.DisadvantageRoll.htm" />
+  <HelpKINode Title="AttackReport.GetAttackReport method" Url="html/M-DungeonMaster.Data.AttackReport.GetAttackReport.htm" />
+  <HelpKINode Title="AttackReport.GetHealingReport method" Url="html/M-DungeonMaster.Data.AttackReport.GetHealingReport.htm" />
+  <HelpKINode Title="AttackReport.GetSpellAttackReport method" Url="html/M-DungeonMaster.Data.AttackReport.GetSpellAttackReport.htm" />
+  <HelpKINode Title="AttackReport.HitCheck property" Url="html/P-DungeonMaster.Data.AttackReport.HitCheck.htm" />
+  <HelpKINode Title="AttackReport.Modifier property" Url="html/P-DungeonMaster.Data.AttackReport.Modifier.htm" />
+  <HelpKINode Title="AttackReport.SpellName property" Url="html/P-DungeonMaster.Data.AttackReport.SpellName.htm" />
+  <HelpKINode Title="AttackReport.SpellType property" Url="html/P-DungeonMaster.Data.AttackReport.SpellType.htm" />
+  <HelpKINode Title="AttackReport.TotalDamageDealt property" Url="html/P-DungeonMaster.Data.AttackReport.TotalDamageDealt.htm" />
+  <HelpKINode Title="AttackRoll property" Url="html/P-DungeonMaster.Data.AttackReport.AttackRoll.htm" />
+  <HelpKINode Title="BackupColorCode property" Url="html/P-DungeonMaster.Data.Drawable.BackupColorCode.htm" />
+  <HelpKINode Title="Bleeding enumeration member" Url="html/T-global.Status.htm" />
+  <HelpKINode Title="Bleeding field" Url="html/F-global.Status.Bleeding.htm" />
+  <HelpKINode Title="Bludgeoning enumeration member" Url="html/T-DungeonMaster.Data.EffectTypes.htm" />
+  <HelpKINode Title="Bludgeoning field" Url="html/F-DungeonMaster.Data.EffectTypes.Bludgeoning.htm" />
+  <HelpKINode Title="CardinalDirection enumeration" Url="html/T-DungeonMaster.Data.CardinalDirection.htm" />
+  <HelpKINode Title="CardinalDirection.E field" Url="html/F-DungeonMaster.Data.CardinalDirection.E.htm" />
+  <HelpKINode Title="CardinalDirection.N field" Url="html/F-DungeonMaster.Data.CardinalDirection.N.htm" />
+  <HelpKINode Title="CardinalDirection.NE field" Url="html/F-DungeonMaster.Data.CardinalDirection.NE.htm" />
+  <HelpKINode Title="CardinalDirection.NW field" Url="html/F-DungeonMaster.Data.CardinalDirection.NW.htm" />
+  <HelpKINode Title="CardinalDirection.S field" Url="html/F-DungeonMaster.Data.CardinalDirection.S.htm" />
+  <HelpKINode Title="CardinalDirection.SE field" Url="html/F-DungeonMaster.Data.CardinalDirection.SE.htm" />
+  <HelpKINode Title="CardinalDirection.SW field" Url="html/F-DungeonMaster.Data.CardinalDirection.SW.htm" />
+  <HelpKINode Title="CardinalDirection.W field" Url="html/F-DungeonMaster.Data.CardinalDirection.W.htm" />
+  <HelpKINode Title="Character class" Url="html/AllMembers.T-DungeonMaster.Data.Character.htm" />
+  <HelpKINode Title="Character class" Url="html/T-DungeonMaster.Data.Character.htm" />
+  <HelpKINode Title="Character class">
+    <HelpKINode Title="about Character class" Url="html/T-DungeonMaster.Data.Character.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.Character.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload-DungeonMaster.Data.Character.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.Character.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.Character.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Character.ActionPoints property" Url="html/P-DungeonMaster.Data.Character.ActionPoints.htm" />
+  <HelpKINode Title="Character.ActiveSpell property" Url="html/P-DungeonMaster.Data.Character.ActiveSpell.htm" />
+  <HelpKINode Title="Character.ActiveWeapon property" Url="html/P-DungeonMaster.Data.Character.ActiveWeapon.htm" />
+  <HelpKINode Title="Character.AddSpellInventory method" Url="html/M-DungeonMaster.Data.Character.AddSpellInventory.htm" />
+  <HelpKINode Title="Character.AddWeaponInventory method" Url="html/M-DungeonMaster.Data.Character.AddWeaponInventory.htm" />
+  <HelpKINode Title="Character.Armor property" Url="html/P-DungeonMaster.Data.Character.Armor.htm" />
+  <HelpKINode Title="Character.Character constructor" Url="html/Overload-DungeonMaster.Data.Character.-ctor.htm" />
+  <HelpKINode Title="Character.CharacterStats property" Url="html/P-DungeonMaster.Data.Character.CharacterStats.htm" />
+  <HelpKINode Title="Character.CheckArmor method" Url="html/M-DungeonMaster.Data.Character.CheckArmor.htm" />
+  <HelpKINode Title="Character.DamagePlayer method" Url="html/M-DungeonMaster.Data.Character.DamagePlayer.htm" />
+  <HelpKINode Title="Character.HealPlayer method" Url="html/M-DungeonMaster.Data.Character.HealPlayer.htm" />
+  <HelpKINode Title="Character.Health property" Url="html/P-DungeonMaster.Data.Character.Health.htm" />
+  <HelpKINode Title="Character.IsProficient method" Url="html/M-DungeonMaster.Data.Character.IsProficient.htm" />
+  <HelpKINode Title="Character.PlayersInventory property" Url="html/P-DungeonMaster.Data.Character.PlayersInventory.htm" />
+  <HelpKINode Title="Character.Proficiency property" Url="html/P-DungeonMaster.Data.Character.Proficiency.htm" />
+  <HelpKINode Title="Character.Status property" Url="html/P-DungeonMaster.Data.Character.Status.htm" />
+  <HelpKINode Title="CharacterFile class" Url="html/AllMembers.T-DungeonMaster.Data.CharacterFile.htm" />
+  <HelpKINode Title="CharacterFile class" Url="html/T-DungeonMaster.Data.CharacterFile.htm" />
+  <HelpKINode Title="CharacterFile class">
+    <HelpKINode Title="about CharacterFile class" Url="html/T-DungeonMaster.Data.CharacterFile.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.CharacterFile.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-DungeonMaster.Data.CharacterFile.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.CharacterFile.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CharacterFile.Clear method" Url="html/M-DungeonMaster.Data.CharacterFile.Clear.htm" />
+  <HelpKINode Title="CharacterFile.GetPath method" Url="html/M-DungeonMaster.Data.CharacterFile.GetPath.htm" />
+  <HelpKINode Title="CharacterFile.PATH field" Url="html/F-DungeonMaster.Data.CharacterFile.PATH.htm" />
+  <HelpKINode Title="CharacterFile.Read method" Url="html/M-DungeonMaster.Data.CharacterFile.Read.htm" />
+  <HelpKINode Title="CharacterFile.Write method" Url="html/M-DungeonMaster.Data.CharacterFile.Write.htm" />
+  <HelpKINode Title="CharacterList property" Url="html/P-DungeonMaster.Data.Game.CharacterList.htm" />
+  <HelpKINode Title="CharacterMove method" Url="html/M-DungeonMaster.Data.Game.CharacterMove.htm" />
+  <HelpKINode Title="CharacterStats class" Url="html/AllMembers.T-DungeonMaster.Data.CharacterStats.htm" />
+  <HelpKINode Title="CharacterStats class" Url="html/T-DungeonMaster.Data.CharacterStats.htm" />
+  <HelpKINode Title="CharacterStats class">
+    <HelpKINode Title="about CharacterStats class" Url="html/T-DungeonMaster.Data.CharacterStats.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.CharacterStats.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload-DungeonMaster.Data.CharacterStats.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.CharacterStats.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.CharacterStats.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CharacterStats property" Url="html/P-DungeonMaster.Data.Character.CharacterStats.htm" />
+  <HelpKINode Title="CharacterStats.CharacterStats constructor" Url="html/Overload-DungeonMaster.Data.CharacterStats.-ctor.htm" />
+  <HelpKINode Title="CharacterStats.Charisma property" Url="html/P-DungeonMaster.Data.CharacterStats.Charisma.htm" />
+  <HelpKINode Title="CharacterStats.Constitution property" Url="html/P-DungeonMaster.Data.CharacterStats.Constitution.htm" />
+  <HelpKINode Title="CharacterStats.Dexterity property" Url="html/P-DungeonMaster.Data.CharacterStats.Dexterity.htm" />
+  <HelpKINode Title="CharacterStats.GetDexterityModifier method" Url="html/M-DungeonMaster.Data.CharacterStats.GetDexterityModifier.htm" />
+  <HelpKINode Title="CharacterStats.GetIntelligenceModifier method" Url="html/M-DungeonMaster.Data.CharacterStats.GetIntelligenceModifier.htm" />
+  <HelpKINode Title="CharacterStats.GetStrengthModifier method" Url="html/M-DungeonMaster.Data.CharacterStats.GetStrengthModifier.htm" />
+  <HelpKINode Title="CharacterStats.Intelligence property" Url="html/P-DungeonMaster.Data.CharacterStats.Intelligence.htm" />
+  <HelpKINode Title="CharacterStats.Strength property" Url="html/P-DungeonMaster.Data.CharacterStats.Strength.htm" />
+  <HelpKINode Title="CharacterStats.Wisdom property" Url="html/P-DungeonMaster.Data.CharacterStats.Wisdom.htm" />
+  <HelpKINode Title="Charisma property" Url="html/P-DungeonMaster.Data.CharacterStats.Charisma.htm" />
+  <HelpKINode Title="CheckArmor method" Url="html/M-DungeonMaster.Data.Character.CheckArmor.htm" />
+  <HelpKINode Title="Clear method" Url="html/M-DungeonMaster.Data.CharacterFile.Clear.htm" />
+  <HelpKINode Title="Column property" Url="html/P-DungeonMaster.Data.Coordinate.Column.htm" />
+  <HelpKINode Title="Columns property" Url="html/P-DungeonMaster.Data.Gameboard.Columns.htm" />
+  <HelpKINode Title="Configuration property" Url="html/P-DungeonMaster.Startup.Configuration.htm" />
+  <HelpKINode Title="Configure method" Url="html/M-DungeonMaster.Startup.Configure.htm" />
+  <HelpKINode Title="ConfigureServices method" Url="html/M-DungeonMaster.Startup.ConfigureServices.htm" />
+  <HelpKINode Title="Constitution property" Url="html/P-DungeonMaster.Data.CharacterStats.Constitution.htm" />
+  <HelpKINode Title="Coordinate class" Url="html/AllMembers.T-DungeonMaster.Data.Coordinate.htm" />
+  <HelpKINode Title="Coordinate class" Url="html/T-DungeonMaster.Data.Coordinate.htm" />
+  <HelpKINode Title="Coordinate class">
+    <HelpKINode Title="about Coordinate class" Url="html/T-DungeonMaster.Data.Coordinate.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.Coordinate.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.Coordinate.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.Coordinate.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Coordinate.Column property" Url="html/P-DungeonMaster.Data.Coordinate.Column.htm" />
+  <HelpKINode Title="Coordinate.Row property" Url="html/P-DungeonMaster.Data.Coordinate.Row.htm" />
+  <HelpKINode Title="CreateHostBuilder method" Url="html/Overload-DungeonMaster.Program.CreateHostBuilder.htm" />
+  <HelpKINode Title="CurrentCharacter property" Url="html/P-DungeonMaster.Data.Turn.CurrentCharacter.htm" />
+  <HelpKINode Title="CurrentCoordinate property" Url="html/P-DungeonMaster.Data.MoveReport.CurrentCoordinate.htm" />
+  <HelpKINode Title="CurrentTurn property" Url="html/P-DungeonMaster.Data.Game.CurrentTurn.htm" />
+  <HelpKINode Title="D10 enumeration member" Url="html/T-DungeonMaster.Data.Dice.htm" />
+  <HelpKINode Title="D10 field" Url="html/F-DungeonMaster.Data.Dice.D10.htm" />
+  <HelpKINode Title="D100 enumeration member" Url="html/T-DungeonMaster.Data.Dice.htm" />
+  <HelpKINode Title="D100 field" Url="html/F-DungeonMaster.Data.Dice.D100.htm" />
+  <HelpKINode Title="D12 enumeration member" Url="html/T-DungeonMaster.Data.Dice.htm" />
+  <HelpKINode Title="D12 field" Url="html/F-DungeonMaster.Data.Dice.D12.htm" />
+  <HelpKINode Title="D2 enumeration member" Url="html/T-DungeonMaster.Data.Dice.htm" />
+  <HelpKINode Title="D2 field" Url="html/F-DungeonMaster.Data.Dice.D2.htm" />
+  <HelpKINode Title="D20 enumeration member" Url="html/T-DungeonMaster.Data.Dice.htm" />
+  <HelpKINode Title="D20 field" Url="html/F-DungeonMaster.Data.Dice.D20.htm" />
+  <HelpKINode Title="D4 enumeration member" Url="html/T-DungeonMaster.Data.Dice.htm" />
+  <HelpKINode Title="D4 field" Url="html/F-DungeonMaster.Data.Dice.D4.htm" />
+  <HelpKINode Title="D6 enumeration member" Url="html/T-DungeonMaster.Data.Dice.htm" />
+  <HelpKINode Title="D6 field" Url="html/F-DungeonMaster.Data.Dice.D6.htm" />
+  <HelpKINode Title="D8 enumeration member" Url="html/T-DungeonMaster.Data.Dice.htm" />
+  <HelpKINode Title="D8 field" Url="html/F-DungeonMaster.Data.Dice.D8.htm" />
+  <HelpKINode Title="Damage property" Url="html/P-DungeonMaster.Data.DamageSpell.Damage.htm" />
+  <HelpKINode Title="Damage property" Url="html/P-DungeonMaster.Data.Effect.Damage.htm" />
+  <HelpKINode Title="DamagePlayer method" Url="html/M-DungeonMaster.Data.Character.DamagePlayer.htm" />
+  <HelpKINode Title="DamageSpell class" Url="html/AllMembers.T-DungeonMaster.Data.DamageSpell.htm" />
+  <HelpKINode Title="DamageSpell class" Url="html/T-DungeonMaster.Data.DamageSpell.htm" />
+  <HelpKINode Title="DamageSpell class">
+    <HelpKINode Title="about DamageSpell class" Url="html/T-DungeonMaster.Data.DamageSpell.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.DamageSpell.htm" />
+    <HelpKINode Title="constructor" Url="html/M-DungeonMaster.Data.DamageSpell.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.DamageSpell.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.DamageSpell.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DamageSpell.Damage property" Url="html/P-DungeonMaster.Data.DamageSpell.Damage.htm" />
+  <HelpKINode Title="DamageSpell.DamageSpell constructor" Url="html/M-DungeonMaster.Data.DamageSpell.-ctor.htm" />
+  <HelpKINode Title="DamageType property" Url="html/P-DungeonMaster.Data.AttackReport.DamageType.htm" />
+  <HelpKINode Title="DamageType property" Url="html/P-DungeonMaster.Data.Weapon.DamageType.htm" />
+  <HelpKINode Title="Dead enumeration member" Url="html/T-global.Status.htm" />
+  <HelpKINode Title="Dead field" Url="html/F-global.Status.Dead.htm" />
+  <HelpKINode Title="DefenderName property" Url="html/P-DungeonMaster.Data.AttackReport.DefenderName.htm" />
+  <HelpKINode Title="Dexterity property" Url="html/P-DungeonMaster.Data.CharacterStats.Dexterity.htm" />
+  <HelpKINode Title="Dice enumeration" Url="html/T-DungeonMaster.Data.Dice.htm" />
+  <HelpKINode Title="Dice.D10 field" Url="html/F-DungeonMaster.Data.Dice.D10.htm" />
+  <HelpKINode Title="Dice.D100 field" Url="html/F-DungeonMaster.Data.Dice.D100.htm" />
+  <HelpKINode Title="Dice.D12 field" Url="html/F-DungeonMaster.Data.Dice.D12.htm" />
+  <HelpKINode Title="Dice.D2 field" Url="html/F-DungeonMaster.Data.Dice.D2.htm" />
+  <HelpKINode Title="Dice.D20 field" Url="html/F-DungeonMaster.Data.Dice.D20.htm" />
+  <HelpKINode Title="Dice.D4 field" Url="html/F-DungeonMaster.Data.Dice.D4.htm" />
+  <HelpKINode Title="Dice.D6 field" Url="html/F-DungeonMaster.Data.Dice.D6.htm" />
+  <HelpKINode Title="Dice.D8 field" Url="html/F-DungeonMaster.Data.Dice.D8.htm" />
+  <HelpKINode Title="DiceRolled property" Url="html/P-DungeonMaster.Data.DiceRollReport.DiceRolled.htm" />
+  <HelpKINode Title="DiceRollReport class" Url="html/AllMembers.T-DungeonMaster.Data.DiceRollReport.htm" />
+  <HelpKINode Title="DiceRollReport class" Url="html/T-DungeonMaster.Data.DiceRollReport.htm" />
+  <HelpKINode Title="DiceRollReport class">
+    <HelpKINode Title="about DiceRollReport class" Url="html/T-DungeonMaster.Data.DiceRollReport.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.DiceRollReport.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.DiceRollReport.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.DiceRollReport.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DiceRollReport property" Url="html/P-DungeonMaster.Data.AttackReport.DiceRollReport.htm" />
+  <HelpKINode Title="DiceRollReport.DiceRolled property" Url="html/P-DungeonMaster.Data.DiceRollReport.DiceRolled.htm" />
+  <HelpKINode Title="DiceRollReport.GetDiceReport method" Url="html/M-DungeonMaster.Data.DiceRollReport.GetDiceReport.htm" />
+  <HelpKINode Title="DiceRollReport.GetDiceTotal method" Url="html/M-DungeonMaster.Data.DiceRollReport.GetDiceTotal.htm" />
+  <HelpKINode Title="DiceUsed property" Url="html/P-DungeonMaster.Data.Spell.DiceUsed.htm" />
+  <HelpKINode Title="DiceUsed property" Url="html/P-DungeonMaster.Data.Weapon.DiceUsed.htm" />
+  <HelpKINode Title="Die class" Url="html/AllMembers.T-DungeonMaster.Data.Die.htm" />
+  <HelpKINode Title="Die class" Url="html/T-DungeonMaster.Data.Die.htm" />
+  <HelpKINode Title="Die class">
+    <HelpKINode Title="about Die class" Url="html/T-DungeonMaster.Data.Die.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.Die.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-DungeonMaster.Data.Die.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.Die.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Die.Rand field" Url="html/F-DungeonMaster.Data.Die.Rand.htm" />
+  <HelpKINode Title="Die.Roll method" Url="html/M-DungeonMaster.Data.Die.Roll.htm" />
+  <HelpKINode Title="Die.RollD20 method" Url="html/M-DungeonMaster.Data.Die.RollD20.htm" />
+  <HelpKINode Title="Die.RollD20Advantage method" Url="html/M-DungeonMaster.Data.Die.RollD20Advantage.htm" />
+  <HelpKINode Title="Die.RollD20Disadvantage method" Url="html/M-DungeonMaster.Data.Die.RollD20Disadvantage.htm" />
+  <HelpKINode Title="DieUsed property" Url="html/P-DungeonMaster.Data.AttackReport.DieUsed.htm" />
+  <HelpKINode Title="Direction property" Url="html/P-DungeonMaster.Data.Drawable.Direction.htm" />
+  <HelpKINode Title="DisadvantageRoll property" Url="html/P-DungeonMaster.Data.AttackReport.DisadvantageRoll.htm" />
+  <HelpKINode Title="DisadvantageRollReport class" Url="html/AllMembers.T-DungeonMaster.Data.DisadvantageRollReport.htm" />
+  <HelpKINode Title="DisadvantageRollReport class" Url="html/T-DungeonMaster.Data.DisadvantageRollReport.htm" />
+  <HelpKINode Title="DisadvantageRollReport class">
+    <HelpKINode Title="about DisadvantageRollReport class" Url="html/T-DungeonMaster.Data.DisadvantageRollReport.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.DisadvantageRollReport.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.DisadvantageRollReport.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.DisadvantageRollReport.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DisadvantageRollReport.GetDiceReport method" Url="html/M-DungeonMaster.Data.DisadvantageRollReport.GetDiceReport.htm" />
+  <HelpKINode Title="DisadvantageRollReport.GetDiceTotal method" Url="html/M-DungeonMaster.Data.DisadvantageRollReport.GetDiceTotal.htm" />
+  <HelpKINode Title="Disoriented enumeration member" Url="html/T-global.Status.htm" />
+  <HelpKINode Title="Disoriented field" Url="html/F-global.Status.Disoriented.htm" />
+  <HelpKINode Title="Disorienting enumeration member" Url="html/T-DungeonMaster.Data.SpellTypes.htm" />
+  <HelpKINode Title="Disorienting field" Url="html/F-DungeonMaster.Data.SpellTypes.Disorienting.htm" />
+  <HelpKINode Title="Drawable class" Url="html/AllMembers.T-DungeonMaster.Data.Drawable.htm" />
+  <HelpKINode Title="Drawable class" Url="html/T-DungeonMaster.Data.Drawable.htm" />
+  <HelpKINode Title="Drawable class">
+    <HelpKINode Title="about Drawable class" Url="html/T-DungeonMaster.Data.Drawable.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.Drawable.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload-DungeonMaster.Data.Drawable.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.Drawable.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.Drawable.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Drawable.BackupColorCode property" Url="html/P-DungeonMaster.Data.Drawable.BackupColorCode.htm" />
+  <HelpKINode Title="Drawable.Direction property" Url="html/P-DungeonMaster.Data.Drawable.Direction.htm" />
+  <HelpKINode Title="Drawable.Drawable constructor" Url="html/Overload-DungeonMaster.Data.Drawable.-ctor.htm" />
+  <HelpKINode Title="Drawable.ImageLocation property" Url="html/P-DungeonMaster.Data.Drawable.ImageLocation.htm" />
+  <HelpKINode Title="Drawable.IsCollidable property" Url="html/P-DungeonMaster.Data.Drawable.IsCollidable.htm" />
+  <HelpKINode Title="Drawable.Name property" Url="html/P-DungeonMaster.Data.Drawable.Name.htm" />
+  <HelpKINode Title="Drawables property" Url="html/P-DungeonMaster.Data.Gameboard.Drawables.htm" />
+  <HelpKINode Title="DungeonMaster namespace" Url="html/N-DungeonMaster.htm" />
+  <HelpKINode Title="DungeonMaster.Data namespace" Url="html/N-DungeonMaster.Data.htm" />
+  <HelpKINode Title="DungeonMaster.Data.AdvantageRollReport class" Url="html/AllMembers.T-DungeonMaster.Data.AdvantageRollReport.htm" />
+  <HelpKINode Title="DungeonMaster.Data.AdvantageRollReport class" Url="html/T-DungeonMaster.Data.AdvantageRollReport.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Armor class" Url="html/AllMembers.T-DungeonMaster.Data.Armor.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Armor class" Url="html/T-DungeonMaster.Data.Armor.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Attack class" Url="html/AllMembers.T-DungeonMaster.Data.Attack.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Attack class" Url="html/T-DungeonMaster.Data.Attack.htm" />
+  <HelpKINode Title="DungeonMaster.Data.AttackReport class" Url="html/AllMembers.T-DungeonMaster.Data.AttackReport.htm" />
+  <HelpKINode Title="DungeonMaster.Data.AttackReport class" Url="html/T-DungeonMaster.Data.AttackReport.htm" />
+  <HelpKINode Title="DungeonMaster.Data.CardinalDirection enumeration" Url="html/T-DungeonMaster.Data.CardinalDirection.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Character class" Url="html/AllMembers.T-DungeonMaster.Data.Character.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Character class" Url="html/T-DungeonMaster.Data.Character.htm" />
+  <HelpKINode Title="DungeonMaster.Data.CharacterFile class" Url="html/AllMembers.T-DungeonMaster.Data.CharacterFile.htm" />
+  <HelpKINode Title="DungeonMaster.Data.CharacterFile class" Url="html/T-DungeonMaster.Data.CharacterFile.htm" />
+  <HelpKINode Title="DungeonMaster.Data.CharacterStats class" Url="html/AllMembers.T-DungeonMaster.Data.CharacterStats.htm" />
+  <HelpKINode Title="DungeonMaster.Data.CharacterStats class" Url="html/T-DungeonMaster.Data.CharacterStats.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Coordinate class" Url="html/AllMembers.T-DungeonMaster.Data.Coordinate.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Coordinate class" Url="html/T-DungeonMaster.Data.Coordinate.htm" />
+  <HelpKINode Title="DungeonMaster.Data.DamageSpell class" Url="html/AllMembers.T-DungeonMaster.Data.DamageSpell.htm" />
+  <HelpKINode Title="DungeonMaster.Data.DamageSpell class" Url="html/T-DungeonMaster.Data.DamageSpell.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Dice enumeration" Url="html/T-DungeonMaster.Data.Dice.htm" />
+  <HelpKINode Title="DungeonMaster.Data.DiceRollReport class" Url="html/AllMembers.T-DungeonMaster.Data.DiceRollReport.htm" />
+  <HelpKINode Title="DungeonMaster.Data.DiceRollReport class" Url="html/T-DungeonMaster.Data.DiceRollReport.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Die class" Url="html/AllMembers.T-DungeonMaster.Data.Die.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Die class" Url="html/T-DungeonMaster.Data.Die.htm" />
+  <HelpKINode Title="DungeonMaster.Data.DisadvantageRollReport class" Url="html/AllMembers.T-DungeonMaster.Data.DisadvantageRollReport.htm" />
+  <HelpKINode Title="DungeonMaster.Data.DisadvantageRollReport class" Url="html/T-DungeonMaster.Data.DisadvantageRollReport.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Drawable class" Url="html/AllMembers.T-DungeonMaster.Data.Drawable.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Drawable class" Url="html/T-DungeonMaster.Data.Drawable.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Effect class" Url="html/AllMembers.T-DungeonMaster.Data.Effect.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Effect class" Url="html/T-DungeonMaster.Data.Effect.htm" />
+  <HelpKINode Title="DungeonMaster.Data.EffectTypes enumeration" Url="html/T-DungeonMaster.Data.EffectTypes.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Game class" Url="html/AllMembers.T-DungeonMaster.Data.Game.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Game class" Url="html/T-DungeonMaster.Data.Game.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Gameboard class" Url="html/AllMembers.T-DungeonMaster.Data.Gameboard.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Gameboard class" Url="html/T-DungeonMaster.Data.Gameboard.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Heal class" Url="html/AllMembers.T-DungeonMaster.Data.Heal.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Heal class" Url="html/T-DungeonMaster.Data.Heal.htm" />
+  <HelpKINode Title="DungeonMaster.Data.HealingSpell class" Url="html/AllMembers.T-DungeonMaster.Data.HealingSpell.htm" />
+  <HelpKINode Title="DungeonMaster.Data.HealingSpell class" Url="html/T-DungeonMaster.Data.HealingSpell.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Inventory class" Url="html/AllMembers.T-DungeonMaster.Data.Inventory.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Inventory class" Url="html/T-DungeonMaster.Data.Inventory.htm" />
+  <HelpKINode Title="DungeonMaster.Data.MoveReport class" Url="html/AllMembers.T-DungeonMaster.Data.MoveReport.htm" />
+  <HelpKINode Title="DungeonMaster.Data.MoveReport class" Url="html/T-DungeonMaster.Data.MoveReport.htm" />
+  <HelpKINode Title="DungeonMaster.Data.MultipleDiceRollReport class" Url="html/AllMembers.T-DungeonMaster.Data.MultipleDiceRollReport.htm" />
+  <HelpKINode Title="DungeonMaster.Data.MultipleDiceRollReport class" Url="html/T-DungeonMaster.Data.MultipleDiceRollReport.htm" />
+  <HelpKINode Title="DungeonMaster.Data.PushReport class" Url="html/AllMembers.T-DungeonMaster.Data.PushReport.htm" />
+  <HelpKINode Title="DungeonMaster.Data.PushReport class" Url="html/T-DungeonMaster.Data.PushReport.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Spell class" Url="html/AllMembers.T-DungeonMaster.Data.Spell.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Spell class" Url="html/T-DungeonMaster.Data.Spell.htm" />
+  <HelpKINode Title="DungeonMaster.Data.SpellTypes enumeration" Url="html/T-DungeonMaster.Data.SpellTypes.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Turn class" Url="html/AllMembers.T-DungeonMaster.Data.Turn.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Turn class" Url="html/T-DungeonMaster.Data.Turn.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Weapon class" Url="html/AllMembers.T-DungeonMaster.Data.Weapon.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Weapon class" Url="html/T-DungeonMaster.Data.Weapon.htm" />
+  <HelpKINode Title="DungeonMaster.Data.WeaponType enumeration" Url="html/T-DungeonMaster.Data.WeaponType.htm" />
+  <HelpKINode Title="DungeonMaster.Hubs namespace" Url="html/N-DungeonMaster.Hubs.htm" />
+  <HelpKINode Title="DungeonMaster.Hubs.DungeonMasterHub class" Url="html/AllMembers.T-DungeonMaster.Hubs.DungeonMasterHub.htm" />
+  <HelpKINode Title="DungeonMaster.Hubs.DungeonMasterHub class" Url="html/T-DungeonMaster.Hubs.DungeonMasterHub.htm" />
+  <HelpKINode Title="DungeonMaster.Pages namespace" Url="html/N-DungeonMaster.Pages.htm" />
+  <HelpKINode Title="DungeonMaster.Pages.ErrorModel class" Url="html/AllMembers.T-DungeonMaster.Pages.ErrorModel.htm" />
+  <HelpKINode Title="DungeonMaster.Pages.ErrorModel class" Url="html/T-DungeonMaster.Pages.ErrorModel.htm" />
+  <HelpKINode Title="DungeonMaster.Program class" Url="html/AllMembers.T-DungeonMaster.Program.htm" />
+  <HelpKINode Title="DungeonMaster.Program class" Url="html/T-DungeonMaster.Program.htm" />
+  <HelpKINode Title="DungeonMaster.Startup class" Url="html/AllMembers.T-DungeonMaster.Startup.htm" />
+  <HelpKINode Title="DungeonMaster.Startup class" Url="html/T-DungeonMaster.Startup.htm" />
+  <HelpKINode Title="DungeonMasterHub class" Url="html/AllMembers.T-DungeonMaster.Hubs.DungeonMasterHub.htm" />
+  <HelpKINode Title="DungeonMasterHub class" Url="html/T-DungeonMaster.Hubs.DungeonMasterHub.htm" />
+  <HelpKINode Title="DungeonMasterHub class">
+    <HelpKINode Title="about DungeonMasterHub class" Url="html/T-DungeonMaster.Hubs.DungeonMasterHub.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Hubs.DungeonMasterHub.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Hubs.DungeonMasterHub.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DungeonMasterHub.SendMessage method" Url="html/M-DungeonMaster.Hubs.DungeonMasterHub.SendMessage.htm" />
+  <HelpKINode Title="E enumeration member" Url="html/T-DungeonMaster.Data.CardinalDirection.htm" />
+  <HelpKINode Title="E field" Url="html/F-DungeonMaster.Data.CardinalDirection.E.htm" />
+  <HelpKINode Title="Effect class" Url="html/AllMembers.T-DungeonMaster.Data.Effect.htm" />
+  <HelpKINode Title="Effect class" Url="html/T-DungeonMaster.Data.Effect.htm" />
+  <HelpKINode Title="Effect class">
+    <HelpKINode Title="about Effect class" Url="html/T-DungeonMaster.Data.Effect.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.Effect.htm" />
+    <HelpKINode Title="constructor" Url="html/M-DungeonMaster.Data.Effect.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.Effect.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.Effect.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Effect.Damage property" Url="html/P-DungeonMaster.Data.Effect.Damage.htm" />
+  <HelpKINode Title="Effect.Effect constructor" Url="html/M-DungeonMaster.Data.Effect.-ctor.htm" />
+  <HelpKINode Title="Effect.EffectType property" Url="html/P-DungeonMaster.Data.Effect.EffectType.htm" />
+  <HelpKINode Title="Effect.Name property" Url="html/P-DungeonMaster.Data.Effect.Name.htm" />
+  <HelpKINode Title="EffectType property" Url="html/P-DungeonMaster.Data.Effect.EffectType.htm" />
+  <HelpKINode Title="EffectTypes enumeration" Url="html/T-DungeonMaster.Data.EffectTypes.htm" />
+  <HelpKINode Title="EffectTypes.Bludgeoning field" Url="html/F-DungeonMaster.Data.EffectTypes.Bludgeoning.htm" />
+  <HelpKINode Title="EffectTypes.Frost field" Url="html/F-DungeonMaster.Data.EffectTypes.Frost.htm" />
+  <HelpKINode Title="EffectTypes.Piercing field" Url="html/F-DungeonMaster.Data.EffectTypes.Piercing.htm" />
+  <HelpKINode Title="EffectTypes.Poisoning field" Url="html/F-DungeonMaster.Data.EffectTypes.Poisoning.htm" />
+  <HelpKINode Title="EffectTypes.Slashing field" Url="html/F-DungeonMaster.Data.EffectTypes.Slashing.htm" />
+  <HelpKINode Title="ErrorModel class" Url="html/AllMembers.T-DungeonMaster.Pages.ErrorModel.htm" />
+  <HelpKINode Title="ErrorModel class" Url="html/T-DungeonMaster.Pages.ErrorModel.htm" />
+  <HelpKINode Title="ErrorModel class">
+    <HelpKINode Title="about ErrorModel class" Url="html/T-DungeonMaster.Pages.ErrorModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Pages.ErrorModel.htm" />
+    <HelpKINode Title="constructor" Url="html/M-DungeonMaster.Pages.ErrorModel.-ctor.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-DungeonMaster.Pages.ErrorModel.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Pages.ErrorModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Pages.ErrorModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ErrorModel.ErrorModel constructor" Url="html/M-DungeonMaster.Pages.ErrorModel.-ctor.htm" />
+  <HelpKINode Title="ErrorModel.OnGet method" Url="html/M-DungeonMaster.Pages.ErrorModel.OnGet.htm" />
+  <HelpKINode Title="ErrorModel.RequestId property" Url="html/P-DungeonMaster.Pages.ErrorModel.RequestId.htm" />
+  <HelpKINode Title="ErrorModel.ShowRequestId property" Url="html/P-DungeonMaster.Pages.ErrorModel.ShowRequestId.htm" />
+  <HelpKINode Title="ErrorModel._logger field" Url="html/F-DungeonMaster.Pages.ErrorModel._logger.htm" />
+  <HelpKINode Title="ErrorString property" Url="html/P-DungeonMaster.Data.MoveReport.ErrorString.htm" />
+  <HelpKINode Title="ErrorString property" Url="html/P-DungeonMaster.Data.PushReport.ErrorString.htm" />
+  <HelpKINode Title="Fire enumeration member" Url="html/T-DungeonMaster.Data.SpellTypes.htm" />
+  <HelpKINode Title="Fire field" Url="html/F-DungeonMaster.Data.SpellTypes.Fire.htm" />
+  <HelpKINode Title="Frost enumeration member" Url="html/T-DungeonMaster.Data.EffectTypes.htm" />
+  <HelpKINode Title="Frost enumeration member" Url="html/T-DungeonMaster.Data.SpellTypes.htm" />
+  <HelpKINode Title="Frost field" Url="html/F-DungeonMaster.Data.EffectTypes.Frost.htm" />
+  <HelpKINode Title="Frost field" Url="html/F-DungeonMaster.Data.SpellTypes.Frost.htm" />
+  <HelpKINode Title="Game class" Url="html/AllMembers.T-DungeonMaster.Data.Game.htm" />
+  <HelpKINode Title="Game class" Url="html/T-DungeonMaster.Data.Game.htm" />
+  <HelpKINode Title="Game class">
+    <HelpKINode Title="about Game class" Url="html/T-DungeonMaster.Data.Game.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.Game.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload-DungeonMaster.Data.Game.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.Game.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.Game.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Game property" Url="html/P-DungeonMaster.Data.Turn.Game.htm" />
+  <HelpKINode Title="Game.AddCharacter method" Url="html/M-DungeonMaster.Data.Game.AddCharacter.htm" />
+  <HelpKINode Title="Game.AddDrawable method" Url="html/M-DungeonMaster.Data.Game.AddDrawable.htm" />
+  <HelpKINode Title="Game.CharacterList property" Url="html/P-DungeonMaster.Data.Game.CharacterList.htm" />
+  <HelpKINode Title="Game.CharacterMove method" Url="html/M-DungeonMaster.Data.Game.CharacterMove.htm" />
+  <HelpKINode Title="Game.CurrentTurn property" Url="html/P-DungeonMaster.Data.Game.CurrentTurn.htm" />
+  <HelpKINode Title="Game.Game constructor" Url="html/Overload-DungeonMaster.Data.Game.-ctor.htm" />
+  <HelpKINode Title="Game.Gameboard property" Url="html/P-DungeonMaster.Data.Game.Gameboard.htm" />
+  <HelpKINode Title="Game.GameName property" Url="html/P-DungeonMaster.Data.Game.GameName.htm" />
+  <HelpKINode Title="Game.GetFormattedCharacterList method" Url="html/M-DungeonMaster.Data.Game.GetFormattedCharacterList.htm" />
+  <HelpKINode Title="Game.MeleeAttackAttempt method" Url="html/M-DungeonMaster.Data.Game.MeleeAttackAttempt.htm" />
+  <HelpKINode Title="Game.PushObject method" Url="html/M-DungeonMaster.Data.Game.PushObject.htm" />
+  <HelpKINode Title="Game.RangedAttackAttempt method" Url="html/M-DungeonMaster.Data.Game.RangedAttackAttempt.htm" />
+  <HelpKINode Title="Game.SpellAttackAttempt method" Url="html/M-DungeonMaster.Data.Game.SpellAttackAttempt.htm" />
+  <HelpKINode Title="Game.SpellHealAttempt method" Url="html/M-DungeonMaster.Data.Game.SpellHealAttempt.htm" />
+  <HelpKINode Title="Gameboard class" Url="html/AllMembers.T-DungeonMaster.Data.Gameboard.htm" />
+  <HelpKINode Title="Gameboard class" Url="html/T-DungeonMaster.Data.Gameboard.htm" />
+  <HelpKINode Title="Gameboard class">
+    <HelpKINode Title="about Gameboard class" Url="html/T-DungeonMaster.Data.Gameboard.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.Gameboard.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload-DungeonMaster.Data.Gameboard.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.Gameboard.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.Gameboard.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Gameboard property" Url="html/P-DungeonMaster.Data.Game.Gameboard.htm" />
+  <HelpKINode Title="Gameboard.AddDrawable method" Url="html/M-DungeonMaster.Data.Gameboard.AddDrawable.htm" />
+  <HelpKINode Title="Gameboard.Columns property" Url="html/P-DungeonMaster.Data.Gameboard.Columns.htm" />
+  <HelpKINode Title="Gameboard.Drawables property" Url="html/P-DungeonMaster.Data.Gameboard.Drawables.htm" />
+  <HelpKINode Title="Gameboard.Gameboard constructor" Url="html/Overload-DungeonMaster.Data.Gameboard.-ctor.htm" />
+  <HelpKINode Title="Gameboard.GetCoordinate method" Url="html/M-DungeonMaster.Data.Gameboard.GetCoordinate.htm" />
+  <HelpKINode Title="Gameboard.GetCoordinateAfterPush method" Url="html/M-DungeonMaster.Data.Gameboard.GetCoordinateAfterPush.htm" />
+  <HelpKINode Title="Gameboard.GetDistance method" Url="html/M-DungeonMaster.Data.Gameboard.GetDistance.htm" />
+  <HelpKINode Title="Gameboard.GetNewCoordinate method" Url="html/M-DungeonMaster.Data.Gameboard.GetNewCoordinate.htm" />
+  <HelpKINode Title="Gameboard.ImageLocation property" Url="html/P-DungeonMaster.Data.Gameboard.ImageLocation.htm" />
+  <HelpKINode Title="Gameboard.IsOccupied method" Url="html/M-DungeonMaster.Data.Gameboard.IsOccupied.htm" />
+  <HelpKINode Title="Gameboard.MeleeRangeCheck method" Url="html/M-DungeonMaster.Data.Gameboard.MeleeRangeCheck.htm" />
+  <HelpKINode Title="Gameboard.Move method" Url="html/M-DungeonMaster.Data.Gameboard.Move.htm" />
+  <HelpKINode Title="Gameboard.PushableItemsNearby method" Url="html/M-DungeonMaster.Data.Gameboard.PushableItemsNearby.htm" />
+  <HelpKINode Title="Gameboard.RangedRangeCheck method" Url="html/M-DungeonMaster.Data.Gameboard.RangedRangeCheck.htm" />
+  <HelpKINode Title="Gameboard.Rows property" Url="html/P-DungeonMaster.Data.Gameboard.Rows.htm" />
+  <HelpKINode Title="Gameboard.SpellRangeCheck method" Url="html/M-DungeonMaster.Data.Gameboard.SpellRangeCheck.htm" />
+  <HelpKINode Title="GameName property" Url="html/P-DungeonMaster.Data.Game.GameName.htm" />
+  <HelpKINode Title="GetAttackReport method" Url="html/M-DungeonMaster.Data.AttackReport.GetAttackReport.htm" />
+  <HelpKINode Title="GetCoordinate method" Url="html/M-DungeonMaster.Data.Gameboard.GetCoordinate.htm" />
+  <HelpKINode Title="GetCoordinateAfterPush method" Url="html/M-DungeonMaster.Data.Gameboard.GetCoordinateAfterPush.htm" />
+  <HelpKINode Title="GetDamage method" Url="html/M-DungeonMaster.Data.Weapon.GetDamage.htm" />
+  <HelpKINode Title="GetDexterityModifier method" Url="html/M-DungeonMaster.Data.CharacterStats.GetDexterityModifier.htm" />
+  <HelpKINode Title="GetDiceReport method" Url="html/M-DungeonMaster.Data.AdvantageRollReport.GetDiceReport.htm" />
+  <HelpKINode Title="GetDiceReport method" Url="html/M-DungeonMaster.Data.DiceRollReport.GetDiceReport.htm" />
+  <HelpKINode Title="GetDiceReport method" Url="html/M-DungeonMaster.Data.DisadvantageRollReport.GetDiceReport.htm" />
+  <HelpKINode Title="GetDiceReport method" Url="html/M-DungeonMaster.Data.MultipleDiceRollReport.GetDiceReport.htm" />
+  <HelpKINode Title="GetDiceTotal method" Url="html/M-DungeonMaster.Data.AdvantageRollReport.GetDiceTotal.htm" />
+  <HelpKINode Title="GetDiceTotal method" Url="html/M-DungeonMaster.Data.DiceRollReport.GetDiceTotal.htm" />
+  <HelpKINode Title="GetDiceTotal method" Url="html/M-DungeonMaster.Data.DisadvantageRollReport.GetDiceTotal.htm" />
+  <HelpKINode Title="GetDiceTotal method" Url="html/M-DungeonMaster.Data.MultipleDiceRollReport.GetDiceTotal.htm" />
+  <HelpKINode Title="GetDistance method" Url="html/M-DungeonMaster.Data.Gameboard.GetDistance.htm" />
+  <HelpKINode Title="GetFormattedCharacterList method" Url="html/M-DungeonMaster.Data.Game.GetFormattedCharacterList.htm" />
+  <HelpKINode Title="GetHealingReport method" Url="html/M-DungeonMaster.Data.AttackReport.GetHealingReport.htm" />
+  <HelpKINode Title="GetHealingSpellPower method" Url="html/M-DungeonMaster.Data.Spell.GetHealingSpellPower.htm" />
+  <HelpKINode Title="GetIntelligenceModifier method" Url="html/M-DungeonMaster.Data.CharacterStats.GetIntelligenceModifier.htm" />
+  <HelpKINode Title="GetMoveResult method" Url="html/M-DungeonMaster.Data.MoveReport.GetMoveResult.htm" />
+  <HelpKINode Title="GetNewCoordinate method" Url="html/M-DungeonMaster.Data.Gameboard.GetNewCoordinate.htm" />
+  <HelpKINode Title="GetPath method" Url="html/M-DungeonMaster.Data.CharacterFile.GetPath.htm" />
+  <HelpKINode Title="GetPushResult method" Url="html/M-DungeonMaster.Data.PushReport.GetPushResult.htm" />
+  <HelpKINode Title="GetSpellAttackReport method" Url="html/M-DungeonMaster.Data.AttackReport.GetSpellAttackReport.htm" />
+  <HelpKINode Title="GetSpellDamage method" Url="html/M-DungeonMaster.Data.Spell.GetSpellDamage.htm" />
+  <HelpKINode Title="GetStrengthModifier method" Url="html/M-DungeonMaster.Data.CharacterStats.GetStrengthModifier.htm" />
+  <HelpKINode Title="global namespace" Url="html/N-global.htm" />
+  <HelpKINode Title="global.Status enumeration" Url="html/T-global.Status.htm" />
+  <HelpKINode Title="Heal class" Url="html/AllMembers.T-DungeonMaster.Data.Heal.htm" />
+  <HelpKINode Title="Heal class" Url="html/T-DungeonMaster.Data.Heal.htm" />
+  <HelpKINode Title="Heal class">
+    <HelpKINode Title="about Heal class" Url="html/T-DungeonMaster.Data.Heal.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.Heal.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.Heal.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Heal.HealCharacter method" Url="html/M-DungeonMaster.Data.Heal.HealCharacter.htm" />
+  <HelpKINode Title="Heal.HealSelf method" Url="html/M-DungeonMaster.Data.Heal.HealSelf.htm" />
+  <HelpKINode Title="HealCharacter method" Url="html/M-DungeonMaster.Data.Heal.HealCharacter.htm" />
+  <HelpKINode Title="Healing enumeration member" Url="html/T-DungeonMaster.Data.SpellTypes.htm" />
+  <HelpKINode Title="Healing field" Url="html/F-DungeonMaster.Data.SpellTypes.Healing.htm" />
+  <HelpKINode Title="HealingFactor property" Url="html/P-DungeonMaster.Data.HealingSpell.HealingFactor.htm" />
+  <HelpKINode Title="HealingSpell class" Url="html/AllMembers.T-DungeonMaster.Data.HealingSpell.htm" />
+  <HelpKINode Title="HealingSpell class" Url="html/T-DungeonMaster.Data.HealingSpell.htm" />
+  <HelpKINode Title="HealingSpell class">
+    <HelpKINode Title="about HealingSpell class" Url="html/T-DungeonMaster.Data.HealingSpell.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.HealingSpell.htm" />
+    <HelpKINode Title="constructor" Url="html/M-DungeonMaster.Data.HealingSpell.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.HealingSpell.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.HealingSpell.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HealingSpell.HealingFactor property" Url="html/P-DungeonMaster.Data.HealingSpell.HealingFactor.htm" />
+  <HelpKINode Title="HealingSpell.HealingSpell constructor" Url="html/M-DungeonMaster.Data.HealingSpell.-ctor.htm" />
+  <HelpKINode Title="HealPlayer method" Url="html/M-DungeonMaster.Data.Character.HealPlayer.htm" />
+  <HelpKINode Title="HealSelf method" Url="html/M-DungeonMaster.Data.Heal.HealSelf.htm" />
+  <HelpKINode Title="Health property" Url="html/P-DungeonMaster.Data.Character.Health.htm" />
+  <HelpKINode Title="HitCheck property" Url="html/P-DungeonMaster.Data.AttackReport.HitCheck.htm" />
+  <HelpKINode Title="ImageLocation property" Url="html/P-DungeonMaster.Data.Drawable.ImageLocation.htm" />
+  <HelpKINode Title="ImageLocation property" Url="html/P-DungeonMaster.Data.Gameboard.ImageLocation.htm" />
+  <HelpKINode Title="Incapacitated enumeration member" Url="html/T-global.Status.htm" />
+  <HelpKINode Title="Incapacitated field" Url="html/F-global.Status.Incapacitated.htm" />
+  <HelpKINode Title="Intelligence property" Url="html/P-DungeonMaster.Data.CharacterStats.Intelligence.htm" />
+  <HelpKINode Title="InteractionPossible property" Url="html/P-DungeonMaster.Data.Turn.InteractionPossible.htm" />
+  <HelpKINode Title="Inventory class" Url="html/AllMembers.T-DungeonMaster.Data.Inventory.htm" />
+  <HelpKINode Title="Inventory class" Url="html/T-DungeonMaster.Data.Inventory.htm" />
+  <HelpKINode Title="Inventory class">
+    <HelpKINode Title="about Inventory class" Url="html/T-DungeonMaster.Data.Inventory.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.Inventory.htm" />
+    <HelpKINode Title="constructor" Url="html/M-DungeonMaster.Data.Inventory.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.Inventory.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.Inventory.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Inventory.Inventory constructor" Url="html/M-DungeonMaster.Data.Inventory.-ctor.htm" />
+  <HelpKINode Title="Inventory.Spells property" Url="html/P-DungeonMaster.Data.Inventory.Spells.htm" />
+  <HelpKINode Title="Inventory.ToString method" Url="html/M-DungeonMaster.Data.Inventory.ToString.htm" />
+  <HelpKINode Title="Inventory.Weapons property" Url="html/P-DungeonMaster.Data.Inventory.Weapons.htm" />
+  <HelpKINode Title="IsCollidable property" Url="html/P-DungeonMaster.Data.Drawable.IsCollidable.htm" />
+  <HelpKINode Title="IsOccupied method" Url="html/M-DungeonMaster.Data.Gameboard.IsOccupied.htm" />
+  <HelpKINode Title="IsProficient method" Url="html/M-DungeonMaster.Data.Character.IsProficient.htm" />
+  <HelpKINode Title="ItemToMove property" Url="html/P-DungeonMaster.Data.MoveReport.ItemToMove.htm" />
+  <HelpKINode Title="LightOneHanded enumeration member" Url="html/T-DungeonMaster.Data.WeaponType.htm" />
+  <HelpKINode Title="LightOneHanded field" Url="html/F-DungeonMaster.Data.WeaponType.LightOneHanded.htm" />
+  <HelpKINode Title="MagicAttackPossible property" Url="html/P-DungeonMaster.Data.Turn.MagicAttackPossible.htm" />
+  <HelpKINode Title="MagicHealPossible property" Url="html/P-DungeonMaster.Data.Turn.MagicHealPossible.htm" />
+  <HelpKINode Title="Main method" Url="html/Overload-DungeonMaster.Program.Main.htm" />
+  <HelpKINode Title="MeleeAttack method" Url="html/M-DungeonMaster.Data.Attack.MeleeAttack.htm" />
+  <HelpKINode Title="MeleeAttackAttempt method" Url="html/M-DungeonMaster.Data.Game.MeleeAttackAttempt.htm" />
+  <HelpKINode Title="MeleeRangeCheck method" Url="html/M-DungeonMaster.Data.Gameboard.MeleeRangeCheck.htm" />
+  <HelpKINode Title="Modifier property" Url="html/P-DungeonMaster.Data.AttackReport.Modifier.htm" />
+  <HelpKINode Title="Move method" Url="html/M-DungeonMaster.Data.Gameboard.Move.htm" />
+  <HelpKINode Title="MovePossible property" Url="html/P-DungeonMaster.Data.Turn.MovePossible.htm" />
+  <HelpKINode Title="MoveReport class" Url="html/AllMembers.T-DungeonMaster.Data.MoveReport.htm" />
+  <HelpKINode Title="MoveReport class" Url="html/T-DungeonMaster.Data.MoveReport.htm" />
+  <HelpKINode Title="MoveReport class">
+    <HelpKINode Title="about MoveReport class" Url="html/T-DungeonMaster.Data.MoveReport.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.MoveReport.htm" />
+    <HelpKINode Title="constructor" Url="html/M-DungeonMaster.Data.MoveReport.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.MoveReport.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.MoveReport.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MoveReport.CurrentCoordinate property" Url="html/P-DungeonMaster.Data.MoveReport.CurrentCoordinate.htm" />
+  <HelpKINode Title="MoveReport.ErrorString property" Url="html/P-DungeonMaster.Data.MoveReport.ErrorString.htm" />
+  <HelpKINode Title="MoveReport.GetMoveResult method" Url="html/M-DungeonMaster.Data.MoveReport.GetMoveResult.htm" />
+  <HelpKINode Title="MoveReport.ItemToMove property" Url="html/P-DungeonMaster.Data.MoveReport.ItemToMove.htm" />
+  <HelpKINode Title="MoveReport.MoveReport constructor" Url="html/M-DungeonMaster.Data.MoveReport.-ctor.htm" />
+  <HelpKINode Title="MoveReport.MoveSuccessful property" Url="html/P-DungeonMaster.Data.MoveReport.MoveSuccessful.htm" />
+  <HelpKINode Title="MoveReport.NewCoordinate property" Url="html/P-DungeonMaster.Data.MoveReport.NewCoordinate.htm" />
+  <HelpKINode Title="MoveSuccessful property" Url="html/P-DungeonMaster.Data.MoveReport.MoveSuccessful.htm" />
+  <HelpKINode Title="MultipleDiceRollReport class" Url="html/AllMembers.T-DungeonMaster.Data.MultipleDiceRollReport.htm" />
+  <HelpKINode Title="MultipleDiceRollReport class" Url="html/T-DungeonMaster.Data.MultipleDiceRollReport.htm" />
+  <HelpKINode Title="MultipleDiceRollReport class">
+    <HelpKINode Title="about MultipleDiceRollReport class" Url="html/T-DungeonMaster.Data.MultipleDiceRollReport.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.MultipleDiceRollReport.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.MultipleDiceRollReport.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.MultipleDiceRollReport.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MultipleDiceRollReport.GetDiceReport method" Url="html/M-DungeonMaster.Data.MultipleDiceRollReport.GetDiceReport.htm" />
+  <HelpKINode Title="MultipleDiceRollReport.GetDiceTotal method" Url="html/M-DungeonMaster.Data.MultipleDiceRollReport.GetDiceTotal.htm" />
+  <HelpKINode Title="N enumeration member" Url="html/T-DungeonMaster.Data.CardinalDirection.htm" />
+  <HelpKINode Title="N field" Url="html/F-DungeonMaster.Data.CardinalDirection.N.htm" />
+  <HelpKINode Title="Name property" Url="html/P-DungeonMaster.Data.Armor.Name.htm" />
+  <HelpKINode Title="Name property" Url="html/P-DungeonMaster.Data.Drawable.Name.htm" />
+  <HelpKINode Title="Name property" Url="html/P-DungeonMaster.Data.Effect.Name.htm" />
+  <HelpKINode Title="Name property" Url="html/P-DungeonMaster.Data.Weapon.Name.htm" />
+  <HelpKINode Title="NE enumeration member" Url="html/T-DungeonMaster.Data.CardinalDirection.htm" />
+  <HelpKINode Title="NE field" Url="html/F-DungeonMaster.Data.CardinalDirection.NE.htm" />
+  <HelpKINode Title="NewCoordinate property" Url="html/P-DungeonMaster.Data.MoveReport.NewCoordinate.htm" />
+  <HelpKINode Title="NewCoordinate property" Url="html/P-DungeonMaster.Data.PushReport.NewCoordinate.htm" />
+  <HelpKINode Title="NumberOfRolls property" Url="html/P-DungeonMaster.Data.Spell.NumberOfRolls.htm" />
+  <HelpKINode Title="NW enumeration member" Url="html/T-DungeonMaster.Data.CardinalDirection.htm" />
+  <HelpKINode Title="NW field" Url="html/F-DungeonMaster.Data.CardinalDirection.NW.htm" />
+  <HelpKINode Title="OneHanded enumeration member" Url="html/T-DungeonMaster.Data.WeaponType.htm" />
+  <HelpKINode Title="OneHanded field" Url="html/F-DungeonMaster.Data.WeaponType.OneHanded.htm" />
+  <HelpKINode Title="OnGet method" Url="html/M-DungeonMaster.Pages.ErrorModel.OnGet.htm" />
+  <HelpKINode Title="OtherCharactersInOrder property" Url="html/P-DungeonMaster.Data.Turn.OtherCharactersInOrder.htm" />
+  <HelpKINode Title="PATH field" Url="html/F-DungeonMaster.Data.CharacterFile.PATH.htm" />
+  <HelpKINode Title="Piercing enumeration member" Url="html/T-DungeonMaster.Data.EffectTypes.htm" />
+  <HelpKINode Title="Piercing field" Url="html/F-DungeonMaster.Data.EffectTypes.Piercing.htm" />
+  <HelpKINode Title="PlayersInventory property" Url="html/P-DungeonMaster.Data.Character.PlayersInventory.htm" />
+  <HelpKINode Title="Poisoned enumeration member" Url="html/T-global.Status.htm" />
+  <HelpKINode Title="Poisoned field" Url="html/F-global.Status.Poisoned.htm" />
+  <HelpKINode Title="Poisoning enumeration member" Url="html/T-DungeonMaster.Data.EffectTypes.htm" />
+  <HelpKINode Title="Poisoning field" Url="html/F-DungeonMaster.Data.EffectTypes.Poisoning.htm" />
+  <HelpKINode Title="Proficiency property" Url="html/P-DungeonMaster.Data.Character.Proficiency.htm" />
+  <HelpKINode Title="Program class" Url="html/AllMembers.T-DungeonMaster.Program.htm" />
+  <HelpKINode Title="Program class" Url="html/T-DungeonMaster.Program.htm" />
+  <HelpKINode Title="Program class">
+    <HelpKINode Title="about Program class" Url="html/T-DungeonMaster.Program.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Program.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Program.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Program.CreateHostBuilder method" Url="html/Overload-DungeonMaster.Program.CreateHostBuilder.htm" />
+  <HelpKINode Title="Program.Main method" Url="html/Overload-DungeonMaster.Program.Main.htm" />
+  <HelpKINode Title="ProtectionPoints property" Url="html/P-DungeonMaster.Data.Armor.ProtectionPoints.htm" />
+  <HelpKINode Title="PushableItemsNearby method" Url="html/M-DungeonMaster.Data.Gameboard.PushableItemsNearby.htm" />
+  <HelpKINode Title="PushableObjects property" Url="html/P-DungeonMaster.Data.Turn.PushableObjects.htm" />
+  <HelpKINode Title="PushedItem property" Url="html/P-DungeonMaster.Data.PushReport.PushedItem.htm" />
+  <HelpKINode Title="Pusher property" Url="html/P-DungeonMaster.Data.PushReport.Pusher.htm" />
+  <HelpKINode Title="PushObject method" Url="html/M-DungeonMaster.Data.Game.PushObject.htm" />
+  <HelpKINode Title="PushPossible property" Url="html/P-DungeonMaster.Data.PushReport.PushPossible.htm" />
+  <HelpKINode Title="PushReport class" Url="html/AllMembers.T-DungeonMaster.Data.PushReport.htm" />
+  <HelpKINode Title="PushReport class" Url="html/T-DungeonMaster.Data.PushReport.htm" />
+  <HelpKINode Title="PushReport class">
+    <HelpKINode Title="about PushReport class" Url="html/T-DungeonMaster.Data.PushReport.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.PushReport.htm" />
+    <HelpKINode Title="constructor" Url="html/M-DungeonMaster.Data.PushReport.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.PushReport.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.PushReport.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PushReport.ErrorString property" Url="html/P-DungeonMaster.Data.PushReport.ErrorString.htm" />
+  <HelpKINode Title="PushReport.GetPushResult method" Url="html/M-DungeonMaster.Data.PushReport.GetPushResult.htm" />
+  <HelpKINode Title="PushReport.NewCoordinate property" Url="html/P-DungeonMaster.Data.PushReport.NewCoordinate.htm" />
+  <HelpKINode Title="PushReport.PushedItem property" Url="html/P-DungeonMaster.Data.PushReport.PushedItem.htm" />
+  <HelpKINode Title="PushReport.Pusher property" Url="html/P-DungeonMaster.Data.PushReport.Pusher.htm" />
+  <HelpKINode Title="PushReport.PushPossible property" Url="html/P-DungeonMaster.Data.PushReport.PushPossible.htm" />
+  <HelpKINode Title="PushReport.PushReport constructor" Url="html/M-DungeonMaster.Data.PushReport.-ctor.htm" />
+  <HelpKINode Title="Rand field" Url="html/F-DungeonMaster.Data.Die.Rand.htm" />
+  <HelpKINode Title="Range enumeration member" Url="html/T-DungeonMaster.Data.WeaponType.htm" />
+  <HelpKINode Title="Range field" Url="html/F-DungeonMaster.Data.WeaponType.Range.htm" />
+  <HelpKINode Title="Range property" Url="html/P-DungeonMaster.Data.Spell.Range.htm" />
+  <HelpKINode Title="Range property" Url="html/P-DungeonMaster.Data.Weapon.Range.htm" />
+  <HelpKINode Title="RangedAttack method" Url="html/M-DungeonMaster.Data.Attack.RangedAttack.htm" />
+  <HelpKINode Title="RangedAttackAttempt method" Url="html/M-DungeonMaster.Data.Game.RangedAttackAttempt.htm" />
+  <HelpKINode Title="RangedRangeCheck method" Url="html/M-DungeonMaster.Data.Gameboard.RangedRangeCheck.htm" />
+  <HelpKINode Title="RangedWeapon property" Url="html/P-DungeonMaster.Data.Weapon.RangedWeapon.htm" />
+  <HelpKINode Title="Read method" Url="html/M-DungeonMaster.Data.CharacterFile.Read.htm" />
+  <HelpKINode Title="RequestId property" Url="html/P-DungeonMaster.Pages.ErrorModel.RequestId.htm" />
+  <HelpKINode Title="Roll method" Url="html/M-DungeonMaster.Data.Die.Roll.htm" />
+  <HelpKINode Title="RollD20 method" Url="html/M-DungeonMaster.Data.Die.RollD20.htm" />
+  <HelpKINode Title="RollD20Advantage method" Url="html/M-DungeonMaster.Data.Die.RollD20Advantage.htm" />
+  <HelpKINode Title="RollD20Disadvantage method" Url="html/M-DungeonMaster.Data.Die.RollD20Disadvantage.htm" />
+  <HelpKINode Title="Row property" Url="html/P-DungeonMaster.Data.Coordinate.Row.htm" />
+  <HelpKINode Title="Rows property" Url="html/P-DungeonMaster.Data.Gameboard.Rows.htm" />
+  <HelpKINode Title="S enumeration member" Url="html/T-DungeonMaster.Data.CardinalDirection.htm" />
+  <HelpKINode Title="S field" Url="html/F-DungeonMaster.Data.CardinalDirection.S.htm" />
+  <HelpKINode Title="SE enumeration member" Url="html/T-DungeonMaster.Data.CardinalDirection.htm" />
+  <HelpKINode Title="SE field" Url="html/F-DungeonMaster.Data.CardinalDirection.SE.htm" />
+  <HelpKINode Title="SendMessage method" Url="html/M-DungeonMaster.Hubs.DungeonMasterHub.SendMessage.htm" />
+  <HelpKINode Title="ShowRequestId property" Url="html/P-DungeonMaster.Pages.ErrorModel.ShowRequestId.htm" />
+  <HelpKINode Title="Slashing enumeration member" Url="html/T-DungeonMaster.Data.EffectTypes.htm" />
+  <HelpKINode Title="Slashing field" Url="html/F-DungeonMaster.Data.EffectTypes.Slashing.htm" />
+  <HelpKINode Title="Spell class" Url="html/AllMembers.T-DungeonMaster.Data.Spell.htm" />
+  <HelpKINode Title="Spell class" Url="html/T-DungeonMaster.Data.Spell.htm" />
+  <HelpKINode Title="Spell class">
+    <HelpKINode Title="about Spell class" Url="html/T-DungeonMaster.Data.Spell.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.Spell.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload-DungeonMaster.Data.Spell.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.Spell.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.Spell.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Spell.DiceUsed property" Url="html/P-DungeonMaster.Data.Spell.DiceUsed.htm" />
+  <HelpKINode Title="Spell.GetHealingSpellPower method" Url="html/M-DungeonMaster.Data.Spell.GetHealingSpellPower.htm" />
+  <HelpKINode Title="Spell.GetSpellDamage method" Url="html/M-DungeonMaster.Data.Spell.GetSpellDamage.htm" />
+  <HelpKINode Title="Spell.NumberOfRolls property" Url="html/P-DungeonMaster.Data.Spell.NumberOfRolls.htm" />
+  <HelpKINode Title="Spell.Range property" Url="html/P-DungeonMaster.Data.Spell.Range.htm" />
+  <HelpKINode Title="Spell.Spell constructor" Url="html/Overload-DungeonMaster.Data.Spell.-ctor.htm" />
+  <HelpKINode Title="Spell.SpellName property" Url="html/P-DungeonMaster.Data.Spell.SpellName.htm" />
+  <HelpKINode Title="Spell.SpellType property" Url="html/P-DungeonMaster.Data.Spell.SpellType.htm" />
+  <HelpKINode Title="Spell.ToString method" Url="html/M-DungeonMaster.Data.Spell.ToString.htm" />
+  <HelpKINode Title="SpellAttack method" Url="html/M-DungeonMaster.Data.Attack.SpellAttack.htm" />
+  <HelpKINode Title="SpellAttackAttempt method" Url="html/M-DungeonMaster.Data.Game.SpellAttackAttempt.htm" />
+  <HelpKINode Title="SpellHealAttempt method" Url="html/M-DungeonMaster.Data.Game.SpellHealAttempt.htm" />
+  <HelpKINode Title="SpellName property" Url="html/P-DungeonMaster.Data.AttackReport.SpellName.htm" />
+  <HelpKINode Title="SpellName property" Url="html/P-DungeonMaster.Data.Spell.SpellName.htm" />
+  <HelpKINode Title="SpellRangeCheck method" Url="html/M-DungeonMaster.Data.Gameboard.SpellRangeCheck.htm" />
+  <HelpKINode Title="Spells property" Url="html/P-DungeonMaster.Data.Inventory.Spells.htm" />
+  <HelpKINode Title="SpellType property" Url="html/P-DungeonMaster.Data.AttackReport.SpellType.htm" />
+  <HelpKINode Title="SpellType property" Url="html/P-DungeonMaster.Data.Spell.SpellType.htm" />
+  <HelpKINode Title="SpellTypes enumeration" Url="html/T-DungeonMaster.Data.SpellTypes.htm" />
+  <HelpKINode Title="SpellTypes.Disorienting field" Url="html/F-DungeonMaster.Data.SpellTypes.Disorienting.htm" />
+  <HelpKINode Title="SpellTypes.Fire field" Url="html/F-DungeonMaster.Data.SpellTypes.Fire.htm" />
+  <HelpKINode Title="SpellTypes.Frost field" Url="html/F-DungeonMaster.Data.SpellTypes.Frost.htm" />
+  <HelpKINode Title="SpellTypes.Healing field" Url="html/F-DungeonMaster.Data.SpellTypes.Healing.htm" />
+  <HelpKINode Title="Startup class" Url="html/AllMembers.T-DungeonMaster.Startup.htm" />
+  <HelpKINode Title="Startup class" Url="html/T-DungeonMaster.Startup.htm" />
+  <HelpKINode Title="Startup class">
+    <HelpKINode Title="about Startup class" Url="html/T-DungeonMaster.Startup.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Startup.htm" />
+    <HelpKINode Title="constructor" Url="html/M-DungeonMaster.Startup.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Startup.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Startup.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Startup.Configuration property" Url="html/P-DungeonMaster.Startup.Configuration.htm" />
+  <HelpKINode Title="Startup.Configure method" Url="html/M-DungeonMaster.Startup.Configure.htm" />
+  <HelpKINode Title="Startup.ConfigureServices method" Url="html/M-DungeonMaster.Startup.ConfigureServices.htm" />
+  <HelpKINode Title="Startup.Startup constructor" Url="html/M-DungeonMaster.Startup.-ctor.htm" />
+  <HelpKINode Title="Status enumeration" Url="html/T-global.Status.htm" />
+  <HelpKINode Title="Status property" Url="html/P-DungeonMaster.Data.Character.Status.htm" />
+  <HelpKINode Title="Status.Alive field" Url="html/F-global.Status.Alive.htm" />
+  <HelpKINode Title="Status.Bleeding field" Url="html/F-global.Status.Bleeding.htm" />
+  <HelpKINode Title="Status.Dead field" Url="html/F-global.Status.Dead.htm" />
+  <HelpKINode Title="Status.Disoriented field" Url="html/F-global.Status.Disoriented.htm" />
+  <HelpKINode Title="Status.Incapacitated field" Url="html/F-global.Status.Incapacitated.htm" />
+  <HelpKINode Title="Status.Poisoned field" Url="html/F-global.Status.Poisoned.htm" />
+  <HelpKINode Title="Strength property" Url="html/P-DungeonMaster.Data.CharacterStats.Strength.htm" />
+  <HelpKINode Title="SW enumeration member" Url="html/T-DungeonMaster.Data.CardinalDirection.htm" />
+  <HelpKINode Title="SW field" Url="html/F-DungeonMaster.Data.CardinalDirection.SW.htm" />
+  <HelpKINode Title="ToString method" Url="html/M-DungeonMaster.Data.Inventory.ToString.htm" />
+  <HelpKINode Title="ToString method" Url="html/M-DungeonMaster.Data.Spell.ToString.htm" />
+  <HelpKINode Title="ToString method" Url="html/M-DungeonMaster.Data.Weapon.ToString.htm" />
+  <HelpKINode Title="TotalDamageDealt property" Url="html/P-DungeonMaster.Data.AttackReport.TotalDamageDealt.htm" />
+  <HelpKINode Title="Turn class" Url="html/AllMembers.T-DungeonMaster.Data.Turn.htm" />
+  <HelpKINode Title="Turn class" Url="html/T-DungeonMaster.Data.Turn.htm" />
+  <HelpKINode Title="Turn class">
+    <HelpKINode Title="about Turn class" Url="html/T-DungeonMaster.Data.Turn.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.Turn.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload-DungeonMaster.Data.Turn.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.Turn.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.Turn.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Turn.CurrentCharacter property" Url="html/P-DungeonMaster.Data.Turn.CurrentCharacter.htm" />
+  <HelpKINode Title="Turn.Game property" Url="html/P-DungeonMaster.Data.Turn.Game.htm" />
+  <HelpKINode Title="Turn.InteractionPossible property" Url="html/P-DungeonMaster.Data.Turn.InteractionPossible.htm" />
+  <HelpKINode Title="Turn.MagicAttackPossible property" Url="html/P-DungeonMaster.Data.Turn.MagicAttackPossible.htm" />
+  <HelpKINode Title="Turn.MagicHealPossible property" Url="html/P-DungeonMaster.Data.Turn.MagicHealPossible.htm" />
+  <HelpKINode Title="Turn.MovePossible property" Url="html/P-DungeonMaster.Data.Turn.MovePossible.htm" />
+  <HelpKINode Title="Turn.OtherCharactersInOrder property" Url="html/P-DungeonMaster.Data.Turn.OtherCharactersInOrder.htm" />
+  <HelpKINode Title="Turn.PushableObjects property" Url="html/P-DungeonMaster.Data.Turn.PushableObjects.htm" />
+  <HelpKINode Title="Turn.Turn constructor" Url="html/Overload-DungeonMaster.Data.Turn.-ctor.htm" />
+  <HelpKINode Title="Turn.UpdateInteractionPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateInteractionPossibilities.htm" />
+  <HelpKINode Title="Turn.UpdateMagicAttackPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateMagicAttackPossibilities.htm" />
+  <HelpKINode Title="Turn.UpdateMagicHealPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateMagicHealPossibilities.htm" />
+  <HelpKINode Title="Turn.UpdateMovementPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateMovementPossibilities.htm" />
+  <HelpKINode Title="Turn.UpdatePossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdatePossibilities.htm" />
+  <HelpKINode Title="Turn.UpdateTurn method" Url="html/M-DungeonMaster.Data.Turn.UpdateTurn.htm" />
+  <HelpKINode Title="Turn.UpdateWeaponPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateWeaponPossibilities.htm" />
+  <HelpKINode Title="Turn.WeaponAttackPossible property" Url="html/P-DungeonMaster.Data.Turn.WeaponAttackPossible.htm" />
+  <HelpKINode Title="TwoHanded enumeration member" Url="html/T-DungeonMaster.Data.WeaponType.htm" />
+  <HelpKINode Title="TwoHanded field" Url="html/F-DungeonMaster.Data.WeaponType.TwoHanded.htm" />
+  <HelpKINode Title="UpdateInteractionPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateInteractionPossibilities.htm" />
+  <HelpKINode Title="UpdateMagicAttackPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateMagicAttackPossibilities.htm" />
+  <HelpKINode Title="UpdateMagicHealPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateMagicHealPossibilities.htm" />
+  <HelpKINode Title="UpdateMovementPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateMovementPossibilities.htm" />
+  <HelpKINode Title="UpdatePossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdatePossibilities.htm" />
+  <HelpKINode Title="UpdateTurn method" Url="html/M-DungeonMaster.Data.Turn.UpdateTurn.htm" />
+  <HelpKINode Title="UpdateWeaponPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateWeaponPossibilities.htm" />
+  <HelpKINode Title="W enumeration member" Url="html/T-DungeonMaster.Data.CardinalDirection.htm" />
+  <HelpKINode Title="W field" Url="html/F-DungeonMaster.Data.CardinalDirection.W.htm" />
+  <HelpKINode Title="Weapon class" Url="html/AllMembers.T-DungeonMaster.Data.Weapon.htm" />
+  <HelpKINode Title="Weapon class" Url="html/T-DungeonMaster.Data.Weapon.htm" />
+  <HelpKINode Title="Weapon class">
+    <HelpKINode Title="about Weapon class" Url="html/T-DungeonMaster.Data.Weapon.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Data.Weapon.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload-DungeonMaster.Data.Weapon.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.Weapon.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.Weapon.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Weapon.DamageType property" Url="html/P-DungeonMaster.Data.Weapon.DamageType.htm" />
+  <HelpKINode Title="Weapon.DiceUsed property" Url="html/P-DungeonMaster.Data.Weapon.DiceUsed.htm" />
+  <HelpKINode Title="Weapon.GetDamage method" Url="html/M-DungeonMaster.Data.Weapon.GetDamage.htm" />
+  <HelpKINode Title="Weapon.Name property" Url="html/P-DungeonMaster.Data.Weapon.Name.htm" />
+  <HelpKINode Title="Weapon.Range property" Url="html/P-DungeonMaster.Data.Weapon.Range.htm" />
+  <HelpKINode Title="Weapon.RangedWeapon property" Url="html/P-DungeonMaster.Data.Weapon.RangedWeapon.htm" />
+  <HelpKINode Title="Weapon.ToString method" Url="html/M-DungeonMaster.Data.Weapon.ToString.htm" />
+  <HelpKINode Title="Weapon.Weapon constructor" Url="html/Overload-DungeonMaster.Data.Weapon.-ctor.htm" />
+  <HelpKINode Title="Weapon.WeaponType property" Url="html/P-DungeonMaster.Data.Weapon.WeaponType.htm" />
+  <HelpKINode Title="WeaponAttackPossible property" Url="html/P-DungeonMaster.Data.Turn.WeaponAttackPossible.htm" />
+  <HelpKINode Title="Weapons property" Url="html/P-DungeonMaster.Data.Inventory.Weapons.htm" />
+  <HelpKINode Title="WeaponType enumeration" Url="html/T-DungeonMaster.Data.WeaponType.htm" />
+  <HelpKINode Title="WeaponType property" Url="html/P-DungeonMaster.Data.Weapon.WeaponType.htm" />
+  <HelpKINode Title="WeaponType.LightOneHanded field" Url="html/F-DungeonMaster.Data.WeaponType.LightOneHanded.htm" />
+  <HelpKINode Title="WeaponType.OneHanded field" Url="html/F-DungeonMaster.Data.WeaponType.OneHanded.htm" />
+  <HelpKINode Title="WeaponType.Range field" Url="html/F-DungeonMaster.Data.WeaponType.Range.htm" />
+  <HelpKINode Title="WeaponType.TwoHanded field" Url="html/F-DungeonMaster.Data.WeaponType.TwoHanded.htm" />
+  <HelpKINode Title="Wisdom property" Url="html/P-DungeonMaster.Data.CharacterStats.Wisdom.htm" />
+  <HelpKINode Title="Write method" Url="html/M-DungeonMaster.Data.CharacterFile.Write.htm" />
+  <HelpKINode Title="_logger field" Url="html/F-DungeonMaster.Pages.ErrorModel._logger.htm" />
+</HelpKI>
