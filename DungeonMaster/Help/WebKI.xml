@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HelpKI>
 
-  <HelpKINode Title=". constructor" Url="html/M-global.$Program.-ctor.htm" />
   <HelpKINode Title="ActionPoints property" Url="html/P-DungeonMaster.Data.Character.ActionPoints.htm" />
   <HelpKINode Title="ActiveSpell property" Url="html/P-DungeonMaster.Data.Character.ActiveSpell.htm" />
   <HelpKINode Title="ActiveWeapon property" Url="html/P-DungeonMaster.Data.Character.ActiveWeapon.htm" />
@@ -20,8 +19,8 @@
   </HelpKINode>
   <HelpKINode Title="AdvantageRollReport.GetDiceReport method" Url="html/M-DungeonMaster.Data.AdvantageRollReport.GetDiceReport.htm" />
   <HelpKINode Title="AdvantageRollReport.GetDiceTotal method" Url="html/M-DungeonMaster.Data.AdvantageRollReport.GetDiceTotal.htm" />
-  <HelpKINode Title="Alive enumeration member" Url="html/T-global.Status.htm" />
-  <HelpKINode Title="Alive field" Url="html/F-global.Status.Alive.htm" />
+  <HelpKINode Title="Alive enumeration member" Url="html/T-DungeonMaster.Data.Status.htm" />
+  <HelpKINode Title="Alive field" Url="html/F-DungeonMaster.Data.Status.Alive.htm" />
   <HelpKINode Title="Armor class" Url="html/AllMembers.T-DungeonMaster.Data.Armor.htm" />
   <HelpKINode Title="Armor class" Url="html/T-DungeonMaster.Data.Armor.htm" />
   <HelpKINode Title="Armor class">
@@ -71,8 +70,8 @@
   <HelpKINode Title="AttackReport.TotalDamageDealt property" Url="html/P-DungeonMaster.Data.AttackReport.TotalDamageDealt.htm" />
   <HelpKINode Title="AttackRoll property" Url="html/P-DungeonMaster.Data.AttackReport.AttackRoll.htm" />
   <HelpKINode Title="BackupColorCode property" Url="html/P-DungeonMaster.Data.Drawable.BackupColorCode.htm" />
-  <HelpKINode Title="Bleeding enumeration member" Url="html/T-global.Status.htm" />
-  <HelpKINode Title="Bleeding field" Url="html/F-global.Status.Bleeding.htm" />
+  <HelpKINode Title="Bleeding enumeration member" Url="html/T-DungeonMaster.Data.Status.htm" />
+  <HelpKINode Title="Bleeding field" Url="html/F-DungeonMaster.Data.Status.Bleeding.htm" />
   <HelpKINode Title="Bludgeoning enumeration member" Url="html/T-DungeonMaster.Data.EffectTypes.htm" />
   <HelpKINode Title="Bludgeoning field" Url="html/F-DungeonMaster.Data.EffectTypes.Bludgeoning.htm" />
   <HelpKINode Title="CardinalDirection enumeration" Url="html/T-DungeonMaster.Data.CardinalDirection.htm" />
@@ -163,7 +162,7 @@
   </HelpKINode>
   <HelpKINode Title="Coordinate.Column property" Url="html/P-DungeonMaster.Data.Coordinate.Column.htm" />
   <HelpKINode Title="Coordinate.Row property" Url="html/P-DungeonMaster.Data.Coordinate.Row.htm" />
-  <HelpKINode Title="CreateHostBuilder method" Url="html/Overload-DungeonMaster.Program.CreateHostBuilder.htm" />
+  <HelpKINode Title="CreateHostBuilder method" Url="html/M-DungeonMaster.Program.CreateHostBuilder.htm" />
   <HelpKINode Title="CurrentCharacter property" Url="html/P-DungeonMaster.Data.Turn.CurrentCharacter.htm" />
   <HelpKINode Title="CurrentCoordinate property" Url="html/P-DungeonMaster.Data.MoveReport.CurrentCoordinate.htm" />
   <HelpKINode Title="CurrentTurn property" Url="html/P-DungeonMaster.Data.Game.CurrentTurn.htm" />
@@ -199,8 +198,8 @@
   <HelpKINode Title="DamageSpell.DamageSpell constructor" Url="html/M-DungeonMaster.Data.DamageSpell.-ctor.htm" />
   <HelpKINode Title="DamageType property" Url="html/P-DungeonMaster.Data.AttackReport.DamageType.htm" />
   <HelpKINode Title="DamageType property" Url="html/P-DungeonMaster.Data.Weapon.DamageType.htm" />
-  <HelpKINode Title="Dead enumeration member" Url="html/T-global.Status.htm" />
-  <HelpKINode Title="Dead field" Url="html/F-global.Status.Dead.htm" />
+  <HelpKINode Title="Dead enumeration member" Url="html/T-DungeonMaster.Data.Status.htm" />
+  <HelpKINode Title="Dead field" Url="html/F-DungeonMaster.Data.Status.Dead.htm" />
   <HelpKINode Title="DefenderName property" Url="html/P-DungeonMaster.Data.AttackReport.DefenderName.htm" />
   <HelpKINode Title="Dexterity property" Url="html/P-DungeonMaster.Data.CharacterStats.Dexterity.htm" />
   <HelpKINode Title="Dice enumeration" Url="html/T-DungeonMaster.Data.Dice.htm" />
@@ -253,8 +252,8 @@
   </HelpKINode>
   <HelpKINode Title="DisadvantageRollReport.GetDiceReport method" Url="html/M-DungeonMaster.Data.DisadvantageRollReport.GetDiceReport.htm" />
   <HelpKINode Title="DisadvantageRollReport.GetDiceTotal method" Url="html/M-DungeonMaster.Data.DisadvantageRollReport.GetDiceTotal.htm" />
-  <HelpKINode Title="Disoriented enumeration member" Url="html/T-global.Status.htm" />
-  <HelpKINode Title="Disoriented field" Url="html/F-global.Status.Disoriented.htm" />
+  <HelpKINode Title="Disoriented enumeration member" Url="html/T-DungeonMaster.Data.Status.htm" />
+  <HelpKINode Title="Disoriented field" Url="html/F-DungeonMaster.Data.Status.Disoriented.htm" />
   <HelpKINode Title="Disorienting enumeration member" Url="html/T-DungeonMaster.Data.SpellTypes.htm" />
   <HelpKINode Title="Disorienting field" Url="html/F-DungeonMaster.Data.SpellTypes.Disorienting.htm" />
   <HelpKINode Title="Drawable class" Url="html/AllMembers.T-DungeonMaster.Data.Drawable.htm" />
@@ -325,6 +324,7 @@
   <HelpKINode Title="DungeonMaster.Data.Spell class" Url="html/AllMembers.T-DungeonMaster.Data.Spell.htm" />
   <HelpKINode Title="DungeonMaster.Data.Spell class" Url="html/T-DungeonMaster.Data.Spell.htm" />
   <HelpKINode Title="DungeonMaster.Data.SpellTypes enumeration" Url="html/T-DungeonMaster.Data.SpellTypes.htm" />
+  <HelpKINode Title="DungeonMaster.Data.Status enumeration" Url="html/T-DungeonMaster.Data.Status.htm" />
   <HelpKINode Title="DungeonMaster.Data.Turn class" Url="html/AllMembers.T-DungeonMaster.Data.Turn.htm" />
   <HelpKINode Title="DungeonMaster.Data.Turn class" Url="html/T-DungeonMaster.Data.Turn.htm" />
   <HelpKINode Title="DungeonMaster.Data.Weapon class" Url="html/AllMembers.T-DungeonMaster.Data.Weapon.htm" />
@@ -469,8 +469,6 @@
   <HelpKINode Title="GetSpellAttackReport method" Url="html/M-DungeonMaster.Data.AttackReport.GetSpellAttackReport.htm" />
   <HelpKINode Title="GetSpellDamage method" Url="html/M-DungeonMaster.Data.Spell.GetSpellDamage.htm" />
   <HelpKINode Title="GetStrengthModifier method" Url="html/M-DungeonMaster.Data.CharacterStats.GetStrengthModifier.htm" />
-  <HelpKINode Title="global namespace" Url="html/N-global.htm" />
-  <HelpKINode Title="global.Status enumeration" Url="html/T-global.Status.htm" />
   <HelpKINode Title="Heal class" Url="html/AllMembers.T-DungeonMaster.Data.Heal.htm" />
   <HelpKINode Title="Heal class" Url="html/T-DungeonMaster.Data.Heal.htm" />
   <HelpKINode Title="Heal class">
@@ -501,8 +499,8 @@
   <HelpKINode Title="HitCheck property" Url="html/P-DungeonMaster.Data.AttackReport.HitCheck.htm" />
   <HelpKINode Title="ImageLocation property" Url="html/P-DungeonMaster.Data.Drawable.ImageLocation.htm" />
   <HelpKINode Title="ImageLocation property" Url="html/P-DungeonMaster.Data.Gameboard.ImageLocation.htm" />
-  <HelpKINode Title="Incapacitated enumeration member" Url="html/T-global.Status.htm" />
-  <HelpKINode Title="Incapacitated field" Url="html/F-global.Status.Incapacitated.htm" />
+  <HelpKINode Title="Incapacitated enumeration member" Url="html/T-DungeonMaster.Data.Status.htm" />
+  <HelpKINode Title="Incapacitated field" Url="html/F-DungeonMaster.Data.Status.Incapacitated.htm" />
   <HelpKINode Title="Intelligence property" Url="html/P-DungeonMaster.Data.CharacterStats.Intelligence.htm" />
   <HelpKINode Title="InteractionPossible property" Url="html/P-DungeonMaster.Data.Turn.InteractionPossible.htm" />
   <HelpKINode Title="Inventory class" Url="html/AllMembers.T-DungeonMaster.Data.Inventory.htm" />
@@ -526,7 +524,7 @@
   <HelpKINode Title="LightOneHanded field" Url="html/F-DungeonMaster.Data.WeaponType.LightOneHanded.htm" />
   <HelpKINode Title="MagicAttackPossible property" Url="html/P-DungeonMaster.Data.Turn.MagicAttackPossible.htm" />
   <HelpKINode Title="MagicHealPossible property" Url="html/P-DungeonMaster.Data.Turn.MagicHealPossible.htm" />
-  <HelpKINode Title="Main method" Url="html/Overload-DungeonMaster.Program.Main.htm" />
+  <HelpKINode Title="Main method" Url="html/M-DungeonMaster.Program.Main.htm" />
   <HelpKINode Title="MeleeAttack method" Url="html/M-DungeonMaster.Data.Attack.MeleeAttack.htm" />
   <HelpKINode Title="MeleeAttackAttempt method" Url="html/M-DungeonMaster.Data.Game.MeleeAttackAttempt.htm" />
   <HelpKINode Title="MeleeRangeCheck method" Url="html/M-DungeonMaster.Data.Gameboard.MeleeRangeCheck.htm" />
@@ -581,8 +579,8 @@
   <HelpKINode Title="Piercing enumeration member" Url="html/T-DungeonMaster.Data.EffectTypes.htm" />
   <HelpKINode Title="Piercing field" Url="html/F-DungeonMaster.Data.EffectTypes.Piercing.htm" />
   <HelpKINode Title="PlayersInventory property" Url="html/P-DungeonMaster.Data.Character.PlayersInventory.htm" />
-  <HelpKINode Title="Poisoned enumeration member" Url="html/T-global.Status.htm" />
-  <HelpKINode Title="Poisoned field" Url="html/F-global.Status.Poisoned.htm" />
+  <HelpKINode Title="Poisoned enumeration member" Url="html/T-DungeonMaster.Data.Status.htm" />
+  <HelpKINode Title="Poisoned field" Url="html/F-DungeonMaster.Data.Status.Poisoned.htm" />
   <HelpKINode Title="Poisoning enumeration member" Url="html/T-DungeonMaster.Data.EffectTypes.htm" />
   <HelpKINode Title="Poisoning field" Url="html/F-DungeonMaster.Data.EffectTypes.Poisoning.htm" />
   <HelpKINode Title="Proficiency property" Url="html/P-DungeonMaster.Data.Character.Proficiency.htm" />
@@ -593,8 +591,8 @@
     <HelpKINode Title="all members" Url="html/AllMembers.T-DungeonMaster.Program.htm" />
     <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Program.htm" />
   </HelpKINode>
-  <HelpKINode Title="Program.CreateHostBuilder method" Url="html/Overload-DungeonMaster.Program.CreateHostBuilder.htm" />
-  <HelpKINode Title="Program.Main method" Url="html/Overload-DungeonMaster.Program.Main.htm" />
+  <HelpKINode Title="Program.CreateHostBuilder method" Url="html/M-DungeonMaster.Program.CreateHostBuilder.htm" />
+  <HelpKINode Title="Program.Main method" Url="html/M-DungeonMaster.Program.Main.htm" />
   <HelpKINode Title="ProtectionPoints property" Url="html/P-DungeonMaster.Data.Armor.ProtectionPoints.htm" />
   <HelpKINode Title="PushableItemsNearby method" Url="html/M-DungeonMaster.Data.Gameboard.PushableItemsNearby.htm" />
   <HelpKINode Title="PushableObjects property" Url="html/P-DungeonMaster.Data.Turn.PushableObjects.htm" />
@@ -688,14 +686,14 @@
   <HelpKINode Title="Startup.Configure method" Url="html/M-DungeonMaster.Startup.Configure.htm" />
   <HelpKINode Title="Startup.ConfigureServices method" Url="html/M-DungeonMaster.Startup.ConfigureServices.htm" />
   <HelpKINode Title="Startup.Startup constructor" Url="html/M-DungeonMaster.Startup.-ctor.htm" />
-  <HelpKINode Title="Status enumeration" Url="html/T-global.Status.htm" />
+  <HelpKINode Title="Status enumeration" Url="html/T-DungeonMaster.Data.Status.htm" />
   <HelpKINode Title="Status property" Url="html/P-DungeonMaster.Data.Character.Status.htm" />
-  <HelpKINode Title="Status.Alive field" Url="html/F-global.Status.Alive.htm" />
-  <HelpKINode Title="Status.Bleeding field" Url="html/F-global.Status.Bleeding.htm" />
-  <HelpKINode Title="Status.Dead field" Url="html/F-global.Status.Dead.htm" />
-  <HelpKINode Title="Status.Disoriented field" Url="html/F-global.Status.Disoriented.htm" />
-  <HelpKINode Title="Status.Incapacitated field" Url="html/F-global.Status.Incapacitated.htm" />
-  <HelpKINode Title="Status.Poisoned field" Url="html/F-global.Status.Poisoned.htm" />
+  <HelpKINode Title="Status.Alive field" Url="html/F-DungeonMaster.Data.Status.Alive.htm" />
+  <HelpKINode Title="Status.Bleeding field" Url="html/F-DungeonMaster.Data.Status.Bleeding.htm" />
+  <HelpKINode Title="Status.Dead field" Url="html/F-DungeonMaster.Data.Status.Dead.htm" />
+  <HelpKINode Title="Status.Disoriented field" Url="html/F-DungeonMaster.Data.Status.Disoriented.htm" />
+  <HelpKINode Title="Status.Incapacitated field" Url="html/F-DungeonMaster.Data.Status.Incapacitated.htm" />
+  <HelpKINode Title="Status.Poisoned field" Url="html/F-DungeonMaster.Data.Status.Poisoned.htm" />
   <HelpKINode Title="Strength property" Url="html/P-DungeonMaster.Data.CharacterStats.Strength.htm" />
   <HelpKINode Title="SW enumeration member" Url="html/T-DungeonMaster.Data.CardinalDirection.htm" />
   <HelpKINode Title="SW field" Url="html/F-DungeonMaster.Data.CardinalDirection.SW.htm" />
