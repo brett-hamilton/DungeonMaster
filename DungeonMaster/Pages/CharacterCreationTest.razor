@@ -150,7 +150,9 @@
         {
             if (!File.Exists(PATH))
             {
-                File.Create(PATH);                 // Create the File.
+
+                File.Create(PATH).Dispose(); // Create the File.
+
             }
 
             characterList = CharacterFile.Read();
@@ -182,9 +184,9 @@
         try
         {   if (newCharacter.Name != string.Empty)
             {
-
-                CharacterFile.Write(newCharacter, false);
                 characterList.Add(newCharacter);
+                CharacterFile.Write(newCharacter, false);
+                // characterList.Add(newCharacter);
             }
 
 
