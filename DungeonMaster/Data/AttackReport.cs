@@ -145,8 +145,8 @@
         /// <returns></returns>
         public string GetSpellAttackReport()
         {
-            return $"{AttackerName} rolled the attack spell {SpellName}, a {SpellType} type. The attack was {Modifier} intelligence bonus + {DiceRollReport.GetDiceTotal()} roll damage = {TotalDamageDealt}." +
-                $"This damaged {DefenderName}. The roll was {DieUsed}, with {DiceRollReport.GetDiceReport()}.";
+            return $"{AttackerName} rolled the attack spell {SpellName}. The attack was {Modifier} intelligence bonus + {DiceRollReport.GetDiceTotal()} roll damage = {TotalDamageDealt}." +
+                $"This damaged {DefenderName}. The roll was {DieUsed}, with {DiceRollReport.GetDiceReport()} {SpellType.ToString().ToLower()} damage.";
 
         }
     }
