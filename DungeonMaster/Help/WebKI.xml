@@ -112,6 +112,7 @@
   <HelpKINode Title="Character.HealPlayer method" Url="html/M-DungeonMaster.Data.Character.HealPlayer.htm" />
   <HelpKINode Title="Character.Health property" Url="html/P-DungeonMaster.Data.Character.Health.htm" />
   <HelpKINode Title="Character.IsProficient method" Url="html/M-DungeonMaster.Data.Character.IsProficient.htm" />
+  <HelpKINode Title="Character.Level property" Url="html/P-DungeonMaster.Data.Character.Level.htm" />
   <HelpKINode Title="Character.LevelUp method" Url="html/M-DungeonMaster.Data.Character.LevelUp.htm" />
   <HelpKINode Title="Character.LowerActionPoint method" Url="html/M-DungeonMaster.Data.Character.LowerActionPoint.htm" />
   <HelpKINode Title="Character.PlayersInventory property" Url="html/P-DungeonMaster.Data.Character.PlayersInventory.htm" />
@@ -529,6 +530,7 @@
   <HelpKINode Title="IsOccupied method" Url="html/M-DungeonMaster.Data.Gameboard.IsOccupied.htm" />
   <HelpKINode Title="IsProficient method" Url="html/M-DungeonMaster.Data.Character.IsProficient.htm" />
   <HelpKINode Title="ItemToMove property" Url="html/P-DungeonMaster.Data.MoveReport.ItemToMove.htm" />
+  <HelpKINode Title="Level property" Url="html/P-DungeonMaster.Data.Character.Level.htm" />
   <HelpKINode Title="LevelUp method" Url="html/M-DungeonMaster.Data.Character.LevelUp.htm" />
   <HelpKINode Title="LightOneHanded enumeration member" Url="html/T-DungeonMaster.Data.WeaponType.htm" />
   <HelpKINode Title="LightOneHanded field" Url="html/F-DungeonMaster.Data.WeaponType.LightOneHanded.htm" />
