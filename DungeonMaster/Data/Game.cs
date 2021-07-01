@@ -27,12 +27,6 @@ namespace DungeonMaster.Data
 		public List<Character> CharacterList { get; set; }
 
         /// <summary>
-        /// Gets or sets the current turn.
-        /// </summary>
-        /// <value>The current turn.</value>
-        public Turn CurrentTurn { get; set; }
-
-        /// <summary>
         /// Default constructor to build a generic game with no entities.
         /// </summary>
         public Game()
