@@ -39,34 +39,39 @@
             <hr />
 
             @* Character Controls *@
-            <div style="padding: 10px" class="row" id="primaryButtonRow">
-                @if (gameTurn.CurrentCharacter.Status != Status.Dead)
+        <div style="padding: 10px" class="row" id="primaryButtonRow">
+            @if (gameTurn.CurrentCharacter.Status != Status.Dead)
+            {
+                @if (gameTurn.WeaponAttackPossible)
                 {
-                    @if (gameTurn.WeaponAttackPossible)
+                    <button class="btn btn-primary" style="margin-right:5px; margin-bottom: 5px" @onclick="@( click => Target("weaponAttack") )">Attack With Weapon</button>
+                    @if (gameTurn.ActionPointPossible)
                     {
-                        <button class="btn btn-primary" style="margin-right:5px; margin-bottom: 5px" @onclick="@( click => Target("weaponAttack") )">Attack With Weapon</button>
+                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("actionPoint") )"> Use Action Point </button>
                     }
+                 }
 
-                    @if (gameTurn.MagicAttackPossible)
-                    {
-                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicAttack") )"> Damage Spell </button>
-                    }
+                @if (gameTurn.MagicAttackPossible)
+                {
+                    <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicAttack") )"> Damage Spell </button>
 
-                    @if (gameTurn.MovePossible)
-                    {
-                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("move") )"> Move </button>
-                    }
-
-                    @if (gameTurn.MagicHealPossible)
-                    {
-                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicHeal") )"> Healing Spell </button>
-                    }
-                    @if (gameTurn.InteractionPossible) 
-                    { 
-                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("interaction") )"> Push Item </button>
-                    }
                 }
-            </div><hr />
+
+                @if (gameTurn.MovePossible)
+                {
+                    <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("move") )"> Move </button>
+                }
+
+                @if (gameTurn.MagicHealPossible)
+                {
+                    <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicHeal") )"> Healing Spell </button>
+                }
+                @if (gameTurn.InteractionPossible)
+                {
+                    <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("interaction") )"> Push Item </button>
+                }
+            }
+        </div><hr />
             <div style="padding: 10px" id="secondaryButtonRow">
                 <div class="row" id="targetButtonsRow">
                     @if (showTargetButtons)
@@ -232,9 +237,9 @@ Render With Grid:
 </div>
 
     @code {
-        /// <summary>
-        /// Bool represented if the game has started or not.
-        /// </summary>
+            /// <summary>
+            /// Bool represented if the game has started or not.
+            /// </summary>
         private bool gameStarted = false;
 
         /// <summary>
@@ -291,6 +296,11 @@ Render With Grid:
         /// Modal that is to be displayed on the page, to roll a D20 with modifier.
         /// </summary>
         private DungeonMaster.Pages.Components.D20ModifierModal D20ModifierModal { get; set; }
+
+        /// <summary>
+        ///determines if the player wants to use an action point for their turn 
+        /// </summary>
+        bool actionPointUsed { get; set; } = false;
 
         /// <summary>
         /// Attributes used to represent the game in the canvas.
@@ -392,6 +402,12 @@ Render With Grid:
                 showMovementButtons = false;
             }
 
+            else if(action.Equals("actionPoint"))
+            {
+                actionPointUsed = true;
+            }
+
+
             else
             {
                 showTargetButtons = false;
@@ -410,16 +426,17 @@ Render With Grid:
         public void TakeAction(Character character)
         {
             string report = null;
+
             switch (actionToTake)
             {
                 case "weaponAttack":
                     if (gameTurn.CurrentCharacter.ActiveWeapon.RangedWeapon)
                     {
-                        report = gameTurn.Game.RangedAttackAttempt(gameTurn.CurrentCharacter, character);
+                        report = gameTurn.Game.RangedAttackAttempt(gameTurn.CurrentCharacter, character, actionPointUsed);
                     }
                     else
                     {
-                        report = gameTurn.Game.MeleeAttackAttempt(gameTurn.CurrentCharacter, character);
+                        report = gameTurn.Game.MeleeAttackAttempt(gameTurn.CurrentCharacter, character, actionPointUsed);
                     }
                     break;
                 case "magicAttack":
@@ -432,6 +449,8 @@ Render With Grid:
                     break;
             }
 
+            //resets action point
+            actionPointUsed = false;
             ReportOutcome(report);
         }
 
