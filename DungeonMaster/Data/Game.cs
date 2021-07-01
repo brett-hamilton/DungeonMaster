@@ -151,6 +151,7 @@ namespace DungeonMaster.Data
         /// </summary>
         /// <param name="attacker">Attacking character.</param>
         /// <param name="defender">Defending character.</param>
+        /// <param name="actionPointUsed">True if character is using action points</param>
         /// <returns>String explaining result if needed.</returns>
         public string MeleeAttackAttempt(Character attacker, Character defender, bool actionPointUsed)
         {
@@ -178,6 +179,7 @@ namespace DungeonMaster.Data
         /// </summary>
         /// <param name="attacker">Character attempting to attack the other.</param>
         /// <param name="defender">Character being attacked.</param>
+        /// <param name="actionPointUsed">True if character is using action points</param>
         /// <returns>A string containing information about the result.</returns>
         public string RangedAttackAttempt(Character attacker, Character defender, bool actionPointUsed)
         {
@@ -204,6 +206,7 @@ namespace DungeonMaster.Data
 
             return attackReport.GetAttackReport();
         }
+
         /// <summary>
         /// Method to attempt to heal another character with a spell.
         /// </summary>
