@@ -14,7 +14,10 @@ namespace DungeonMaster.Data
     /// </summary>
     public class Character : Drawable
     {
-
+        /// <summary>
+        /// increases stats of the character, as well as action points and health
+        /// </summary>
+        public int Level { get; set; }
 
         /// <summary>
         /// Melee weapon they have equipped
@@ -242,7 +245,6 @@ namespace DungeonMaster.Data
         /// <summary>
         /// Lowers the action points of the character
         /// </summary>
-        /// <param name="action"></param>
         public void LowerActionPoint()
         {
             ActionPoints--;
