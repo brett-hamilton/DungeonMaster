@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HelpKI>
 
+  <HelpKINode Title="ActionPointDiceRoll property" Url="html/P-DungeonMaster.Data.AttackReport.ActionPointDiceRoll.htm" />
+  <HelpKINode Title="ActionPointPossible property" Url="html/P-DungeonMaster.Data.Turn.ActionPointPossible.htm" />
   <HelpKINode Title="ActionPoints property" Url="html/P-DungeonMaster.Data.Character.ActionPoints.htm" />
+  <HelpKINode Title="ActionPointUsed property" Url="html/P-DungeonMaster.Data.AttackReport.ActionPointUsed.htm" />
+  <HelpKINode Title="Actions property" Url="html/P-DungeonMaster.Data.Character.Actions.htm" />
   <HelpKINode Title="ActiveSpell property" Url="html/P-DungeonMaster.Data.Character.ActiveSpell.htm" />
   <HelpKINode Title="ActiveWeapon property" Url="html/P-DungeonMaster.Data.Character.ActiveWeapon.htm" />
   <HelpKINode Title="AddCharacter method" Url="html/M-DungeonMaster.Data.Game.AddCharacter.htm" />
@@ -53,6 +57,8 @@
     <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.AttackReport.htm" />
     <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.AttackReport.htm" />
   </HelpKINode>
+  <HelpKINode Title="AttackReport.ActionPointDiceRoll property" Url="html/P-DungeonMaster.Data.AttackReport.ActionPointDiceRoll.htm" />
+  <HelpKINode Title="AttackReport.ActionPointUsed property" Url="html/P-DungeonMaster.Data.AttackReport.ActionPointUsed.htm" />
   <HelpKINode Title="AttackReport.AttackerName property" Url="html/P-DungeonMaster.Data.AttackReport.AttackerName.htm" />
   <HelpKINode Title="AttackReport.AttackRoll property" Url="html/P-DungeonMaster.Data.AttackReport.AttackRoll.htm" />
   <HelpKINode Title="AttackReport.DamageType property" Url="html/P-DungeonMaster.Data.AttackReport.DamageType.htm" />
@@ -93,6 +99,7 @@
     <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.Character.htm" />
   </HelpKINode>
   <HelpKINode Title="Character.ActionPoints property" Url="html/P-DungeonMaster.Data.Character.ActionPoints.htm" />
+  <HelpKINode Title="Character.Actions property" Url="html/P-DungeonMaster.Data.Character.Actions.htm" />
   <HelpKINode Title="Character.ActiveSpell property" Url="html/P-DungeonMaster.Data.Character.ActiveSpell.htm" />
   <HelpKINode Title="Character.ActiveWeapon property" Url="html/P-DungeonMaster.Data.Character.ActiveWeapon.htm" />
   <HelpKINode Title="Character.AddSpellInventory method" Url="html/M-DungeonMaster.Data.Character.AddSpellInventory.htm" />
@@ -105,6 +112,8 @@
   <HelpKINode Title="Character.HealPlayer method" Url="html/M-DungeonMaster.Data.Character.HealPlayer.htm" />
   <HelpKINode Title="Character.Health property" Url="html/P-DungeonMaster.Data.Character.Health.htm" />
   <HelpKINode Title="Character.IsProficient method" Url="html/M-DungeonMaster.Data.Character.IsProficient.htm" />
+  <HelpKINode Title="Character.LevelUp method" Url="html/M-DungeonMaster.Data.Character.LevelUp.htm" />
+  <HelpKINode Title="Character.LowerActionPoint method" Url="html/M-DungeonMaster.Data.Character.LowerActionPoint.htm" />
   <HelpKINode Title="Character.PlayersInventory property" Url="html/P-DungeonMaster.Data.Character.PlayersInventory.htm" />
   <HelpKINode Title="Character.Proficiency property" Url="html/P-DungeonMaster.Data.Character.Proficiency.htm" />
   <HelpKINode Title="Character.Status property" Url="html/P-DungeonMaster.Data.Character.Status.htm" />
@@ -520,8 +529,10 @@
   <HelpKINode Title="IsOccupied method" Url="html/M-DungeonMaster.Data.Gameboard.IsOccupied.htm" />
   <HelpKINode Title="IsProficient method" Url="html/M-DungeonMaster.Data.Character.IsProficient.htm" />
   <HelpKINode Title="ItemToMove property" Url="html/P-DungeonMaster.Data.MoveReport.ItemToMove.htm" />
+  <HelpKINode Title="LevelUp method" Url="html/M-DungeonMaster.Data.Character.LevelUp.htm" />
   <HelpKINode Title="LightOneHanded enumeration member" Url="html/T-DungeonMaster.Data.WeaponType.htm" />
   <HelpKINode Title="LightOneHanded field" Url="html/F-DungeonMaster.Data.WeaponType.LightOneHanded.htm" />
+  <HelpKINode Title="LowerActionPoint method" Url="html/M-DungeonMaster.Data.Character.LowerActionPoint.htm" />
   <HelpKINode Title="MagicAttackPossible property" Url="html/P-DungeonMaster.Data.Turn.MagicAttackPossible.htm" />
   <HelpKINode Title="MagicHealPossible property" Url="html/P-DungeonMaster.Data.Turn.MagicHealPossible.htm" />
   <HelpKINode Title="Main method" Url="html/M-DungeonMaster.Program.Main.htm" />
@@ -710,6 +721,7 @@
     <HelpKINode Title="methods" Url="html/Methods.T-DungeonMaster.Data.Turn.htm" />
     <HelpKINode Title="properties" Url="html/Properties.T-DungeonMaster.Data.Turn.htm" />
   </HelpKINode>
+  <HelpKINode Title="Turn.ActionPointPossible property" Url="html/P-DungeonMaster.Data.Turn.ActionPointPossible.htm" />
   <HelpKINode Title="Turn.CurrentCharacter property" Url="html/P-DungeonMaster.Data.Turn.CurrentCharacter.htm" />
   <HelpKINode Title="Turn.Game property" Url="html/P-DungeonMaster.Data.Turn.Game.htm" />
   <HelpKINode Title="Turn.InteractionPossible property" Url="html/P-DungeonMaster.Data.Turn.InteractionPossible.htm" />
@@ -719,6 +731,7 @@
   <HelpKINode Title="Turn.OtherCharactersInOrder property" Url="html/P-DungeonMaster.Data.Turn.OtherCharactersInOrder.htm" />
   <HelpKINode Title="Turn.PushableObjects property" Url="html/P-DungeonMaster.Data.Turn.PushableObjects.htm" />
   <HelpKINode Title="Turn.Turn constructor" Url="html/Overload-DungeonMaster.Data.Turn.-ctor.htm" />
+  <HelpKINode Title="Turn.UpdateActionPointsPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateActionPointsPossibilities.htm" />
   <HelpKINode Title="Turn.UpdateInteractionPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateInteractionPossibilities.htm" />
   <HelpKINode Title="Turn.UpdateMagicAttackPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateMagicAttackPossibilities.htm" />
   <HelpKINode Title="Turn.UpdateMagicHealPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateMagicHealPossibilities.htm" />
@@ -729,6 +742,7 @@
   <HelpKINode Title="Turn.WeaponAttackPossible property" Url="html/P-DungeonMaster.Data.Turn.WeaponAttackPossible.htm" />
   <HelpKINode Title="TwoHanded enumeration member" Url="html/T-DungeonMaster.Data.WeaponType.htm" />
   <HelpKINode Title="TwoHanded field" Url="html/F-DungeonMaster.Data.WeaponType.TwoHanded.htm" />
+  <HelpKINode Title="UpdateActionPointsPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateActionPointsPossibilities.htm" />
   <HelpKINode Title="UpdateInteractionPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateInteractionPossibilities.htm" />
   <HelpKINode Title="UpdateMagicAttackPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateMagicAttackPossibilities.htm" />
   <HelpKINode Title="UpdateMagicHealPossibilities method" Url="html/M-DungeonMaster.Data.Turn.UpdateMagicHealPossibilities.htm" />

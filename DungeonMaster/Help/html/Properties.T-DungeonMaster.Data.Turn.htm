@@ -244,6 +244,9 @@
 <img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Properties.T-DungeonMaster.Data.Turn.htm" target="_self">Turn Properties</a>
 <div class="Hidden">
 <div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="P-DungeonMaster.Data.Turn.ActionPointPossible.htm" target="_self">ActionPointPossible Property </a>
+</div>
+<div class="TreeItem">
 <img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="P-DungeonMaster.Data.Turn.CurrentCharacter.htm" target="_self">CurrentCharacter Property </a>
 </div>
 <div class="TreeItem">
@@ -340,6 +343,19 @@
             </th>
                       <th class="nameColumn">Name</th>
                       <th class="descriptionColumn">Description</th>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubproperty.gif" alt="Public property" title="Public property" />
+                      </td>
+                      <td>
+                        <a href="P-DungeonMaster.Data.Turn.ActionPointPossible.htm">ActionPointPossible</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   determines if a character can use an action point
+   </div>
+                      </td>
                     </tr>
                     <tr data="public;declared;notNetfw;">
                       <td>

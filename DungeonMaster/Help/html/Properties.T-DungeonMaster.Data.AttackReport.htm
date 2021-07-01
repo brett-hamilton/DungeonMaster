@@ -124,6 +124,12 @@
 <img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Properties.T-DungeonMaster.Data.AttackReport.htm" target="_self">AttackReport Properties</a>
 <div class="Hidden">
 <div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="P-DungeonMaster.Data.AttackReport.ActionPointDiceRoll.htm" target="_self">ActionPointDiceRoll Property </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="P-DungeonMaster.Data.AttackReport.ActionPointUsed.htm" target="_self">ActionPointUsed Property </a>
+</div>
+<div class="TreeItem">
 <img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="P-DungeonMaster.Data.AttackReport.AttackerName.htm" target="_self">AttackerName Property </a>
 </div>
 <div class="TreeItem">
@@ -344,6 +350,32 @@
             </th>
                       <th class="nameColumn">Name</th>
                       <th class="descriptionColumn">Description</th>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubproperty.gif" alt="Public property" title="Public property" />
+                      </td>
+                      <td>
+                        <a href="P-DungeonMaster.Data.AttackReport.ActionPointDiceRoll.htm">ActionPointDiceRoll</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   The number the die rolled for the action point
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubproperty.gif" alt="Public property" title="Public property" />
+                      </td>
+                      <td>
+                        <a href="P-DungeonMaster.Data.AttackReport.ActionPointUsed.htm">ActionPointUsed</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   if the user used an action point to enhance their attack roll, it will be true
+   </div>
+                      </td>
                     </tr>
                     <tr data="public;declared;notNetfw;">
                       <td>
