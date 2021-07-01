@@ -152,7 +152,7 @@ namespace DungeonMaster.Data
         /// <param name="attacker">Attacking character.</param>
         /// <param name="defender">Defending character.</param>
         /// <returns>String explaining result if needed.</returns>
-        public string MeleeAttackAttempt(Character attacker, Character defender)
+        public string MeleeAttackAttempt(Character attacker, Character defender, bool actionPointUsed)
         {
             if (defender.Status == Status.Dead)
             {
@@ -165,7 +165,7 @@ namespace DungeonMaster.Data
             }
 
             var attack = new Attack();
-            var attackReport = attack.MeleeAttack(attacker, defender);
+            var attackReport = attack.MeleeAttack(attacker, defender, actionPointUsed);
 
             return attackReport.GetAttackReport();
 
@@ -179,7 +179,7 @@ namespace DungeonMaster.Data
         /// <param name="attacker">Character attempting to attack the other.</param>
         /// <param name="defender">Character being attacked.</param>
         /// <returns>A string containing information about the result.</returns>
-        public string RangedAttackAttempt(Character attacker, Character defender)
+        public string RangedAttackAttempt(Character attacker, Character defender, bool actionPointUsed)
         {
             if (!attacker.ActiveWeapon.RangedWeapon)
             {
@@ -200,7 +200,7 @@ namespace DungeonMaster.Data
             var disadvantageCheck = Gameboard.MeleeRangeCheck(defender, attacker);
 
             var attack = new Attack();
-            var attackReport = attack.RangedAttack(attacker, defender, disadvantageCheck);
+            var attackReport = attack.RangedAttack(attacker, defender, disadvantageCheck, actionPointUsed);
 
             return attackReport.GetAttackReport();
         }

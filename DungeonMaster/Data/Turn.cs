@@ -54,6 +54,11 @@ namespace DungeonMaster.Data
         public Game Game { get; set; } = new Game();
 
         /// <summary>
+        /// determines if a character can use an action point
+        /// </summary>
+        public bool ActionPointPossible { get; set; }
+
+        /// <summary>
         /// Default constructor to create an empty turn.
         /// </summary>
         public Turn()
@@ -104,6 +109,7 @@ namespace DungeonMaster.Data
             UpdateMagicAttackPossibilities();
             UpdateMagicHealPossibilities();
             UpdateMovementPossibilities();
+            UpdateActionPointsPossibilities();
         }
 
         /// <summary>
@@ -185,6 +191,21 @@ namespace DungeonMaster.Data
             else
             {
                 InteractionPossible = true;
+            }
+        }
+
+        /// <summary>
+        /// Determines if the Character can use an action point
+        /// </summary>
+        public void UpdateActionPointsPossibilities()
+        {
+            if(CurrentCharacter.ActionPoints > 0)
+            {
+                ActionPointPossible = true;
+            }
+            else
+            {
+                ActionPointPossible = false;
             }
         }
     }

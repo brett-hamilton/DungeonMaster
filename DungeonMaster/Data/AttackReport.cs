@@ -68,6 +68,16 @@
         public SpellTypes SpellType { get; set; }
 
         /// <summary>
+        /// if the user used an action point to enhance their attack roll, it will be true
+        /// </summary>
+        public bool ActionPointUsed { get; set; }
+
+        /// <summary>
+        /// The number the die rolled for the action point
+        /// </summary>
+        public int ActionPointDiceRoll { get; set; }
+
+        /// <summary>
         /// Returns a string containing information about the attack attempt. This is then displayed
         /// in the game log for the players.
         /// </summary>
@@ -86,15 +96,36 @@
 
             if (DisadvantageRoll != null)
             {
-                string attackReport = $"{AttackerName} attacked {DefenderName} from within melee distance. {AttackerName} {DisadvantageRoll.GetDiceReport()} This attack hit {DefenderName}.";
-                attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {Modifier} modifier damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType.ToLower()} damage.";
-                return attackReport;
+                if(ActionPointUsed)
+                {
+                    string attackReport = $"{AttackerName} attacked {DefenderName} from within melee distance. {AttackerName} used an Action Point for a 1 D6 roll on their attack roll. " +
+                        $"Their attack roll was {DisadvantageRoll.GetDiceReport()} + {ActionPointDiceRoll} Action Point roll. This attack hit {DefenderName}.";
+                    attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {Modifier} modifier damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType.ToLower()} damage.";
+                    return attackReport;
+                }
+                else
+                {
+                    string attackReport = $"{AttackerName} attacked {DefenderName} from within melee distance. {AttackerName} {DisadvantageRoll.GetDiceReport()} This attack hit {DefenderName}.";
+                    attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {Modifier} modifier damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType.ToLower()} damage.";
+                    return attackReport;
+                }
+                
             }
             else
             {
-                string attackReport = $"{AttackerName} rolled an attack of {AttackRoll}. This attack hit {DefenderName}.";
-                attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {Modifier} modifier damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType.ToLower()} damage.";
-                return attackReport;
+                if(ActionPointUsed)
+                {
+                    string attackReport = $"{AttackerName} used an Action Point for a 1 D6 roll on their attack roll. {AttackerName} rolled an attack of {AttackRoll} + {ActionPointDiceRoll}. This attack hit {DefenderName}.";
+                    attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {Modifier} modifier damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType.ToLower()} damage.";
+                    return attackReport;
+                }
+                else
+                {
+                    string attackReport = $"{AttackerName} rolled an attack of {AttackRoll}. This attack hit {DefenderName}.";
+                    attackReport += $"\nTheir damage roll was 1 {DieUsed} {DiceRollReport.GetDiceReport()}. They dealt {Modifier} modifier damage + {DiceRollReport.GetDiceTotal()} attack roll damage = {TotalDamageDealt} total {DamageType.ToLower()} damage.";
+                    return attackReport;
+                }
+                
             }
         }
 

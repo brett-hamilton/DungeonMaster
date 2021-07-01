@@ -5,6 +5,8 @@
  * Last Modified: 6/2/21
  *************************************************/
 
+using System;
+
 namespace DungeonMaster.Data
 {
     /// <summary>
@@ -12,6 +14,7 @@ namespace DungeonMaster.Data
     /// </summary>
     public class Character : Drawable
     {
+
 
         /// <summary>
         /// Melee weapon they have equipped
@@ -29,9 +32,14 @@ namespace DungeonMaster.Data
         public Armor Armor { get; set; } = new Armor("Leather Armor", 6);
 
         /// <summary>
-        /// The number of points they have to perform an attack or action
+        /// The number of points they have to improve an attack or action
         /// </summary>
         public double ActionPoints { get; set; }
+
+        /// <summary>
+        /// Actions are used to implement attacks in-game
+        /// </summary>
+        public double Actions { get; set; }
 
         /// <summary>
         /// Represents the status of the character
@@ -229,6 +237,26 @@ namespace DungeonMaster.Data
             }
 
             return 0;
+        }
+
+        /// <summary>
+        /// Lowers the action points of the character
+        /// </summary>
+        /// <param name="action"></param>
+        public void LowerActionPoint()
+        {
+            ActionPoints--;
+        }
+
+        /// <summary>
+        /// makes all changes necessary to when a character levels up
+        /// CURRENTLY: Leveling Up feature changes the Action Points the player has.
+        /// Nothing else at the moment
+        /// </summary>
+        public void LevelUp()
+        {
+            double levelVariable = Level / 2;
+            ActionPoints = 5 + Math.Floor(levelVariable);
         }
     }
 }
