@@ -151,7 +151,7 @@
             if (!File.Exists(PATH))
             {
 
-                File.Create(PATH).Dispose(); // Create the File.
+                File.Create(PATH).Dispose(); // Create the File on startup if file not found
 
             }
 
@@ -170,22 +170,24 @@
     /// Created on: 6/9/2021
     /// Edited by Jacob R. Frazier on 06/18/2021
     /// Added the ability to add more than one character.
+    /// A user can create more than one character save. Originally, when saving all saves were overwritten
     /// </summary>
     public void CreateCharacter()
     {
 
         // Create new character and serialize it as a JSON string and trim white space
         characterName = characterName.Trim();
-
+        //Creates a new character object
         Character newCharacter = new Character(characterName, 50, 1);
+        //Assigns character stats to the character.
         newCharacter.CharacterStats = statsForCharacter;
-
+        //The following checks the name input field and if it is not empty the character is added to the JSON file and to a generic list.
         try
         {   if (newCharacter.Name != string.Empty)
             {
                 characterList.Add(newCharacter);
                 CharacterFile.Write(newCharacter, false);
-                // characterList.Add(newCharacter);
+                
             }
 
 
@@ -200,11 +202,11 @@
         {
             errorMessage = "Error: " + e.Message;
         }
-
+        //For Testing purpose: Confirms the current name of the character to be saved.
         displayName = characterName;
-        //clears TextBox
+        //clears  the Name field TextBox
         characterName = string.Empty;
-
+        //Sets fields to defaults. These operations are done upon saving to the JSON
         ResetStats();
     }
 
@@ -222,6 +224,7 @@
 
     /// <summary>
     /// Save the stats number entered in by the player to the appropriate attribute
+    /// If none are entered, default values are set
     /// </summary>
     public void SaveStat()
     {
@@ -265,7 +268,7 @@
     }
 
     /// <summary>
-    /// Delete a character from the character list and file.
+    /// Delete a character from the character list and JSON file.
     /// </summary>
     public void DeleteCharacter()
     {
@@ -286,7 +289,7 @@
             return;                 // Character was not found
         }
 
-        // Write new character list to character file
+        // Clears the JSON file so that a refreshd/updated list can be written to the file without conflict
         CharacterFile.Clear();
 
         foreach (Character character in characterList)
@@ -296,7 +299,7 @@
     }
 
     /// <summary>
-    /// Clears the characters file.
+    /// Clears the characters save file and list.
     /// </summary>
     public void DeleteAllCharacters()
     {
