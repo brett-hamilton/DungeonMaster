@@ -9,6 +9,11 @@
 @using Blazor.Extensions.Canvas.Canvas2D;
 @using Microsoft.Extensions.Hosting;
 
+@* 
+    This page was created in order to test drawing multiple canvases, as you can see on the CanvasTest page, whenever you render the images, there is a slight delay that can lead to flickering.
+    This layering and only redrawing the top layer method keeps that from happening.
+    It also removes the delay from having to re-render the canvas after every character move.    
+*@
 <img id="board" @ref="boardImg" width="1920" height="1080" style="display:none" src="@boardImage" />
 <img id="char1" @ref="character1img" width="22" height="22" style="display:none" src="@char1Image" />
 <img id="char2" @ref="character2img" width="22" height="22" style="display:none" src="@char2Image" />

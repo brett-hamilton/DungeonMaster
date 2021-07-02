@@ -9,6 +9,10 @@
 @using Blazor.Extensions.Canvas.Canvas2D;
 @using Microsoft.Extensions.Hosting;
 
+@*
+    This page was created to add in images to the initial canvas render. You can load any image in boardIMG before calling the background render to swap it.
+    To change the character images, you have to load character1img with the file you want to display, wait for it to load, then render the character.
+*@
 <img id="board" @ref="boardImg" width="1920" height="1080" style="display:none" src="@boardImage" />
 <img id="char1" @ref="character1img" width="22" height="22" style="display:none" src="@char1Image" />
 <img id="char2" @ref="character2img" width="22" height="22" style="display:none" src="@char2Image" />
