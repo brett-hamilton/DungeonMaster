@@ -193,7 +193,6 @@ Render With Grid: <input type="checkbox" @onchange="async eventArgs => { await R
     public async Task MoveDirection(CardinalDirection direction)
     {
         var result = game.CharacterMove(character1, direction);
-        Console.WriteLine(result);
         await Render();
     }
 }
