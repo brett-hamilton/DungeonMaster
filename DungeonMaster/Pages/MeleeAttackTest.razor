@@ -7,7 +7,7 @@
 <hr />
 <br />
 
-
+@* Div containing the option to load a premade character in as the attacker.*@
 <div>
     <label for="doLoadCharacter">Load Character from File: </label>
     <select @bind="doLoadCharacter" name="doLoadCharacter" id="doLoadCharacter">
@@ -19,6 +19,7 @@
 </div>
 <br />
 
+@* Button to Setup or Restart the game. It will use a default character if No is chosen above.*@
 <div class="row">
     <button class="btn btn-primary" @onclick="SetupGame">Start or Restart Game</button>
 </div>
@@ -57,11 +58,13 @@
     </div>
 </div>
 <br />
+@* Row containing the button to attack the enemy. *@
 <div class="row">
     <button class="btn btn-danger" @onclick="AttackExample">Attack the Enemy!</button>
 </div>
 <br />
 <br />
+@* Game log div. This contains a scrolling log of all messages from the game. It also includes a button to clear the log.*@
 <div class="row" style="outline: 1px solid blue; outline-offset: 8px; max-height: 200px; min-height: 200px">
     <div style="border-right: 1px solid blue" class="col-2">
         <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
@@ -136,7 +139,7 @@
             {
                 string jsonString = File.ReadAllLines(path).Skip(0).Take(1).First();
                 player1 = JsonSerializer.Deserialize<Character>(jsonString);
-               // player2= JsonSerializer.Deserialize<Character>(jsonString);
+                // player2= JsonSerializer.Deserialize<Character>(jsonString);
             }
             catch (FileNotFoundException)
             {
@@ -174,7 +177,7 @@
     /// </summary>
     public void AttackExample()
     {
-        attackResult = testGame.MeleeAttackAttempt(player1, player2, true);
+        attackResult = testGame.MeleeAttackAttempt(player1, player2, false);
         GameLog.Add(attackResult);
 
     }

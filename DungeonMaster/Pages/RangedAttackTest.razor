@@ -3,9 +3,11 @@
 
 <h3>Ranged Attack Test</h3>
 <br />
+@* Button to start or restart the test. *@
 <button class="btn btn-primary" @onclick="SetupGame">Start or Restart Game</button>
 <br />
 <br />
+@* Div containing information about the characters.*@
 <div class="row">
     <div class="col-3 card" style="margin-right: 10px">
         <div class="card-body">
@@ -45,19 +47,22 @@
     </div>
 </div>
 <br />
+@* Button to toggle the available targets. *@
 <button class="btn btn-danger" @onclick="ShowAttackOptions">Attack</button>
 <br />
 @* Got help for this implementation from: https://github.com/dotnet/aspnetcore/issues/15956 *@
+@* If toggled from above, list the buttons for the two available targets. *@
 @if (showTargets)
 {
     <div>
         <br />
-        <button class="btn btn-warning" @onclick="() => Attack(Defender1, true)">@Defender1.Name</button>
-        <button class="btn btn-warning" @onclick="() => Attack(Defender2, true)">@Defender2.Name</button>
+        <button class="btn btn-warning" @onclick="() => Attack(Defender1, false)">@Defender1.Name</button>
+        <button class="btn btn-warning" @onclick="() => Attack(Defender2, false)">@Defender2.Name</button>
     </div>
 }
 <br />
 <br />
+@* Game log div. This contains a scrolling log of all messages from the game. It also includes a button to clear the log.*@
 <div class="row" style="outline: 1px solid blue; outline-offset: 8px; max-height: 200px; min-height: 200px">
     <div style="border-right: 1px solid blue" class="col-2">
         <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>

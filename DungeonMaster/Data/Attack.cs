@@ -51,6 +51,7 @@
 
                 var attackReport = attacker.ActiveWeapon.GetDamage();
                 int damageAmount = attackReport.TotalDamageDealt + modifierDamage;
+                attackReport.TotalDamageDealt += modifierDamage;
                 attackReport.Modifier = modifierDamage;
                 defender.DamagePlayer(damageAmount);
                 attackReport.AttackRoll = attackValue;

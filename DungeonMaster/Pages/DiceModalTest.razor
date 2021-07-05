@@ -2,10 +2,9 @@
 
 @using DungeonMaster.Data
 @using DungeonMaster.Pages.Components
-@using Microsoft.AspNetCore.SignalR.Client 
+@using Microsoft.AspNetCore.SignalR.Client
 @inject NavigationManager NavigationManager;
-
-@* 
+@*
     Dice Modal Test Page
     Created by: Jordan DeBord
     SignalR Aspects based upon Microsoft Blazor SignalR Tutorial
@@ -23,6 +22,7 @@
 </div>
 <br />
 <br />
+@* Game log div. This contains a scrolling log of all dice rolls. It also includes a button to clear the log.*@
 <div class="row" style="outline: 1px solid blue; outline-offset: 8px; max-height: 200px; min-height: 200px">
     <div style="border-right: 1px solid blue" class="col-2">
         <button class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
