@@ -8,13 +8,14 @@
 @using Blazor.Extensions.Canvas
 @using Blazor.Extensions.Canvas.Canvas2D;
 @inject NavigationManager NavigationManager;
-
+@* Page Header and images representing the board and characters on the board. *@
 <h3>Attack, Map, and Dice Test</h3>
 <img id="board" @ref="boardImg" width="1920" height="1080" style="display:none" src="@boardImage" />
 <img id="char1" @ref="character1img" width="22" height="22" style="display:none" src="@char1Image" />
 
-
+@* Upper Div on the page. Holds the map, controls, and character information. *@
 <div class="row" style="margin-left: 5px; margin-top: 5px">
+    @* Inner Div containing the three canvases. Overflow is turned on, so if the canvas is too large we will scroll across it. *@
     <div class="overflow-auto" style="max-height: 50%; min-width: 50%; max-width: 50%; bottom: 5px; min-height: 50%;">
         <div style="position: relative">
             <div style="position: absolute; z-index: 0;"><BECanvas Width="@canvasWidth" Height="@canvasHeight" @ref="_backgroundCanvas"></BECanvas></div>
@@ -22,9 +23,10 @@
             <div style="position: absolute; z-index: 2;"><BECanvas Width="@canvasWidth" Height="@canvasHeight" @ref="_gridCanvas"></BECanvas></div>
         </div>
     </div>
-
+    @* If the game has started. Show the control div and character div. *@
     @if (gameStarted)
     {
+        @* Inner div containing the game controls.*@
         <div id="controls" style="padding: 15px; width: 25%; border: 3px solid blue; left:20%; max-height: 60%; min-height: 60%; margin-left: 10px">
 
             @*Dice Modal Controls *@
@@ -38,40 +40,41 @@
             </div>
             <hr />
 
-            @* Character Controls *@
-        <div style="padding: 10px" class="row" id="primaryButtonRow">
-            @if (gameTurn.CurrentCharacter.Status != Status.Dead)
-            {
-                @if (gameTurn.WeaponAttackPossible)
+            @* Character Controls. Only controls which correspond to the character are shown. *@
+            <div style="padding: 10px" class="row" id="primaryButtonRow">
+                @if (gameTurn.CurrentCharacter.Status != Status.Dead)
                 {
-                    <button class="btn btn-primary" style="margin-right:5px; margin-bottom: 5px" @onclick="@( click => Target("weaponAttack") )">Attack With Weapon</button>
-                    @if (gameTurn.ActionPointPossible)
+                    @if (gameTurn.WeaponAttackPossible)
                     {
-                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("actionPoint") )"> Use Action Point </button>
+                        <button class="btn btn-primary" style="margin-right:5px; margin-bottom: 5px" @onclick="@( click => Target("weaponAttack") )">Attack With Weapon</button>
+                        @if (gameTurn.ActionPointPossible)
+                        {
+                            <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("actionPoint") )"> Use Action Point </button>
+                        }
                     }
-                 }
 
-                @if (gameTurn.MagicAttackPossible)
-                {
-                    <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicAttack") )"> Damage Spell </button>
+                    @if (gameTurn.MagicAttackPossible)
+                    {
+                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicAttack") )"> Damage Spell </button>
 
-                }
+                    }
 
-                @if (gameTurn.MovePossible)
-                {
-                    <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("move") )"> Move </button>
-                }
+                    @if (gameTurn.MovePossible)
+                    {
+                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("move") )"> Move </button>
+                    }
 
-                @if (gameTurn.MagicHealPossible)
-                {
-                    <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicHeal") )"> Healing Spell </button>
+                    @if (gameTurn.MagicHealPossible)
+                    {
+                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("magicHeal") )"> Healing Spell </button>
+                    }
+                    @if (gameTurn.InteractionPossible)
+                    {
+                        <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("interaction") )"> Push Item </button>
+                    }
                 }
-                @if (gameTurn.InteractionPossible)
-                {
-                    <button class="btn btn-primary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => Target("interaction") )"> Push Item </button>
-                }
-            }
-        </div><hr />
+            </div><hr />
+            @* Secondary div inside the character control div. This div contains the target for actions, whether that is a direction (for movement) or character/item (for pushing, attacking, or healing).*@
             <div style="padding: 10px" id="secondaryButtonRow">
                 <div class="row" id="targetButtonsRow">
                     @if (showTargetButtons)
@@ -108,20 +111,21 @@
                         </div>
                     </div>
                 }
-            <div class="row" id="pushableItemsButtonsRow">
-                @if (showPushableItemsButtons)
-                {
-                    @foreach (var item in gameTurn.PushableObjects)
+                <div class="row" id="pushableItemsButtonsRow">
+                    @if (showPushableItemsButtons)
                     {
-                        <button class="btn btn-secondary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => PushItem(item) )">@item.Name</button>
+                        @foreach (var item in gameTurn.PushableObjects)
+                        {
+                            <button class="btn btn-secondary" style="margin-right: 5px; margin-bottom: 5px" @onclick="@( click => PushItem(item) )">@item.Name</button>
+                        }
+                        <button class="btn btn-info" style="margin-right: 5px; margin-bottom: 5px" @onclick="Cancel">Cancel</button>
                     }
-                    <button class="btn btn-info" style="margin-right: 5px; margin-bottom: 5px" @onclick="Cancel">Cancel</button>
-                }
-            </div>
+                </div>
             </div>
             <br />
             <br />
         </div>
+        @* Last inner div in the upper div of the page. This contains information for the character whose turn it is. This also has a button to end the current turn. *@
         <div id="playerInfo" style="margin-left: 10px; padding: 15px; width: 15%; border: 3px solid blue;">
             <strong>CHARACTER</strong>
             <div>
@@ -142,11 +146,11 @@
                         Equiped Weapon:@gameTurn.CurrentCharacter.ActiveWeapon
                     </div>
                 }
-                else 
-                { 
-                <div>
-                    Equiped Weapon: None
-                </div>
+                else
+                {
+                    <div>
+                        Equiped Weapon: None
+                    </div>
                 }
                 @if (gameTurn.CurrentCharacter.ActiveSpell != null)
                 {
@@ -154,8 +158,8 @@
                         Equiped Spell:@gameTurn.CurrentCharacter.ActiveSpell
                     </div>
                 }
-                else 
-                { 
+                else
+                {
                     <div>
                         Equiped Spell: None
                     </div>
@@ -168,13 +172,13 @@
                         Armor Protection:@gameTurn.CurrentCharacter.Armor.ProtectionPoints
                     </div>
                 }
-                else 
-                { 
-                <div>
-                    Armor: None
-                    <br />
-                    Armor Protection: 0
-                </div>
+                else
+                {
+                    <div>
+                        Armor: None
+                        <br />
+                        Armor Protection: 0
+                    </div>
                 }
             </div>
             <br />
@@ -201,16 +205,16 @@
 <br />
 
 
-
+@* Input control to manually redraw the map, and to draw (or remove) the grid overlay canvas. *@
 Render With Grid:
 <input title="Render With Grid" type="checkbox" @onchange="async eventArgs => { await RenderGrid((bool)eventArgs.Value); }">
 <button class="btn btn-secondary" @onclick="async eventArgs => { await Render(); }">REDRAW MAP</button>
 <div class="row">
-    
+
 
 </div>
 <br />
-
+@* Game log div. This contains a scrolling log of all messages from the game. It also includes a button to clear the log.*@
 <div id="gameLog" class="row" style="outline: 3px solid blue ">
     <div style="border-right: 3px solid blue" class="col-1">
         <button style="margin-top:5px; margin-left: 5px" class="btn btn-secondary" @onclick="ClearLog">Clear Log</button>
@@ -221,11 +225,12 @@ Render With Grid:
             @* Iterate through the list of strings in reverse order, so newest message is at top. *@
             @for (int i = (GameLog.Count - 1); i >= 0; i--)
             {
+                @* Make the newest message a primary item to differentiate it. *@
                 if (i == (GameLog.Count - 1))
                 {
                     <li class="list-group-item list-group-item-primary">@GameLog[i]</li>
                 }
-
+                @* Older messages are made secondary so they do not stand out as much as the newest message. *@
                 else
                 {
                     <li class="list-group-item list-group-item-secondary">@GameLog[i]</li>
@@ -236,496 +241,496 @@ Render With Grid:
     </div>
 </div>
 
-    @code {
-            /// <summary>
-            /// Bool represented if the game has started or not.
-            /// </summary>
-        private bool gameStarted = false;
+@code {
+    /// <summary>
+    /// Bool represented if the game has started or not.
+    /// </summary>
+    private bool gameStarted = false;
 
-        /// <summary>
-        /// Width of the canvas.
-        /// </summary>
-        private long canvasWidth = 1500;
+    /// <summary>
+    /// Width of the canvas.
+    /// </summary>
+    private long canvasWidth = 1500;
 
-        /// <summary>
-        /// Height of the canvas.
-        /// </summary>
-        private long canvasHeight = 1500;
+    /// <summary>
+    /// Height of the canvas.
+    /// </summary>
+    private long canvasHeight = 1500;
 
-        /// <summary>
-        /// String representing which action the user is requesting to take.
-        /// </summary>
-        private string actionToTake = null;
+    /// <summary>
+    /// String representing which action the user is requesting to take.
+    /// </summary>
+    private string actionToTake = null;
 
-        /// <summary>
-        /// Bool representing if the target buttons whould be shown or not.
-        /// </summary>
-        private bool showTargetButtons = false;
+    /// <summary>
+    /// Bool representing if the target buttons whould be shown or not.
+    /// </summary>
+    private bool showTargetButtons = false;
 
-        /// <summary>
-        /// Bool representing if the movement buttons should be shown or not.
-        /// </summary>
-        private bool showMovementButtons = false;
+    /// <summary>
+    /// Bool representing if the movement buttons should be shown or not.
+    /// </summary>
+    private bool showMovementButtons = false;
 
-        /// <summary>
-        /// Bool representing if the buttons for moveable items should be shown.
-        /// </summary>
-        private bool showPushableItemsButtons = false;
+    /// <summary>
+    /// Bool representing if the buttons for moveable items should be shown.
+    /// </summary>
+    private bool showPushableItemsButtons = false;
 
-        /// <summary>
-        /// List of strings of all attacks carried out.
-        /// </summary>
-        public List<string> GameLog { get; set; } = new List<string>();
+    /// <summary>
+    /// List of strings of all attacks carried out.
+    /// </summary>
+    public List<string> GameLog { get; set; } = new List<string>();
 
-        /// <summary>
-        /// Hub connection to send and receive messages.
-        /// </summary>
-        private HubConnection hubConnection;
+    /// <summary>
+    /// Hub connection to send and receive messages.
+    /// </summary>
+    private HubConnection hubConnection;
 
-        /// <summary>
-        /// Represents the current state of the game, including the turn.
-        /// </summary>
-        private Turn gameTurn;
+    /// <summary>
+    /// Represents the current state of the game, including the turn.
+    /// </summary>
+    private Turn gameTurn;
 
-        /// <summary>
-        /// Modal that is to be displayed on the page to roll multiple dice.
-        /// </summary>
-        private DungeonMaster.Pages.Components.DiceModal DiceModal { get; set; }
+    /// <summary>
+    /// Modal that is to be displayed on the page to roll multiple dice.
+    /// </summary>
+    private DungeonMaster.Pages.Components.DiceModal DiceModal { get; set; }
 
-        /// <summary>
-        /// Modal that is to be displayed on the page, to roll a D20 with modifier.
-        /// </summary>
-        private DungeonMaster.Pages.Components.D20ModifierModal D20ModifierModal { get; set; }
+    /// <summary>
+    /// Modal that is to be displayed on the page, to roll a D20 with modifier.
+    /// </summary>
+    private DungeonMaster.Pages.Components.D20ModifierModal D20ModifierModal { get; set; }
 
-        /// <summary>
-        ///determines if the player wants to use an action point for their turn 
-        /// </summary>
-        bool actionPointUsed { get; set; } = false;
+    /// <summary>
+    ///determines if the player wants to use an action point for their turn
+    /// </summary>
+    bool actionPointUsed { get; set; } = false;
 
-        /// <summary>
-        /// Attributes used to represent the game in the canvas.
-        /// </summary>
-        private Canvas2DContext _backgroundContext;
+    /// <summary>
+    /// Attributes used to represent the game in the canvas.
+    /// </summary>
+    private Canvas2DContext _backgroundContext;
 
-        /// <summary>
-        /// Blazor version of the javascript context for the drawables canvas.
-        /// </summary>
-        private Canvas2DContext _drawableContext;
+    /// <summary>
+    /// Blazor version of the javascript context for the drawables canvas.
+    /// </summary>
+    private Canvas2DContext _drawableContext;
 
-        /// <summary>
-        /// Blazor version of the javascript context for the grid canvas.
-        /// </summary>
-        private Canvas2DContext _gridContext;
+    /// <summary>
+    /// Blazor version of the javascript context for the grid canvas.
+    /// </summary>
+    private Canvas2DContext _gridContext;
 
-        /// <summary>
-        /// Blazor Canvas Reference for the background.
-        /// </summary>
-        protected BECanvasComponent _backgroundCanvas;
+    /// <summary>
+    /// Blazor Canvas Reference for the background.
+    /// </summary>
+    protected BECanvasComponent _backgroundCanvas;
 
-        /// <summary>
-        /// Blazor Canvas Reference for the drawables.
-        /// </summary>
-        protected BECanvasComponent _drawableCanvas;
+    /// <summary>
+    /// Blazor Canvas Reference for the drawables.
+    /// </summary>
+    protected BECanvasComponent _drawableCanvas;
 
-        /// <summary>
-        /// Blazor Canvas Reference for the grid.
-        /// </summary>
-        protected BECanvasComponent _gridCanvas;
+    /// <summary>
+    /// Blazor Canvas Reference for the grid.
+    /// </summary>
+    protected BECanvasComponent _gridCanvas;
 
-        /// <summary>
-        /// Scale factor which scales how large all drawable items aredrawn.
-        /// </summary>
-        private static long scaleFactor = 20;                       
+    /// <summary>
+    /// Scale factor which scales how large all drawable items aredrawn.
+    /// </summary>
+    private static long scaleFactor = 20;
 
-        /// <summary>
-        /// Reference to the HTML element for the board image, so we can retrieve it from the document.
-        /// </summary>
-        private ElementReference boardImg;
+    /// <summary>
+    /// Reference to the HTML element for the board image, so we can retrieve it from the document.
+    /// </summary>
+    private ElementReference boardImg;
 
-        /// <summary>
-        /// Reference to the HTML element for character1img, so we can retrieve it from the document.
-        /// </summary>
-        private ElementReference character1img;
+    /// <summary>
+    /// Reference to the HTML element for character1img, so we can retrieve it from the document.
+    /// </summary>
+    private ElementReference character1img;
 
-        /// <summary>
-        /// String representing the path to the background image.
-        /// </summary>
-        private string boardImage = string.Empty;
+    /// <summary>
+    /// String representing the path to the background image.
+    /// </summary>
+    private string boardImage = string.Empty;
 
-        /// <summary>
-        /// String representing the path to a drawable image.
-        /// </summary>
-        private string char1Image = string.Empty;
+    /// <summary>
+    /// String representing the path to a drawable image.
+    /// </summary>
+    private string char1Image = string.Empty;
 
-        /// <summary>
-        /// Background color for the gameboard (if image does not load).
-        /// </summary>
-        private string backgroundColor = "#000000";
+    /// <summary>
+    /// Background color for the gameboard (if image does not load).
+    /// </summary>
+    private string backgroundColor = "#000000";
 
-        /// <summary>
-        /// Method to initialize our hub connection used to send and receive messages.
-        /// When a message is received, it is added to the game log.
-        /// Modified from the Microsoft SignalR Blazor tutorial.
-        /// </summary>
-        protected override async Task OnInitializedAsync()
+    /// <summary>
+    /// Method to initialize our hub connection used to send and receive messages.
+    /// When a message is received, it is added to the game log.
+    /// Modified from the Microsoft SignalR Blazor tutorial.
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+                .WithUrl(NavigationManager.ToAbsoluteUri("/dungeonmasterhub"))
+                .Build();
+
+        // If the messaged received is for this page, add the new message to the game log.
+        hubConnection.On<string, string>("MessageReceived", (message, page) =>
         {
-            hubConnection = new HubConnectionBuilder()
-                    .WithUrl(NavigationManager.ToAbsoluteUri("/dungeonmasterhub"))
-                    .Build();
-
-            // If the messaged received is for this page, add the new message to the game log.
-            hubConnection.On<string, string>("MessageReceived", (message, page) =>
+            if (page == "AttackMapDiceTest")
             {
-                if (page == "AttackMapDiceTest")
+                GameLog.Add(message);
+                StateHasChanged();
+            }
+        });
+
+        await hubConnection.StartAsync();
+    }
+
+    /// <summary>
+    /// Method to clear the game log.
+    /// </summary>
+    public void ClearLog()
+    {
+        GameLog = new List<string>();
+    }
+
+    /// <summary>
+    /// Method to rehide buttons as user no longer wishes to see them.
+    /// </summary>
+    public void Cancel()
+    {
+        showMovementButtons = false;
+        showTargetButtons = false;
+        showPushableItemsButtons = false;
+        actionToTake = null;
+    }
+
+    /// <summary>
+    /// Method to end the turn for the current player.
+    /// </summary>
+    public void EndTurn()
+    {
+        Cancel();
+        gameTurn.UpdateTurn();
+        StateHasChanged();
+    }
+
+    /// <summary>
+    /// Method to set the action to use for our next set up bottons, also display the correct buttons
+    /// depending upon what the user requested.
+    /// </summary>
+    /// <param name="action">String representing the action to take.</param>
+    public void Target(string action)
+    {
+        if (action.Equals("magicAttack") || action.Equals("weaponAttack") || action.Equals("magicHeal"))
+        {
+            showTargetButtons = true;
+            showMovementButtons = false;
+            showPushableItemsButtons = false;
+        }
+
+        else if (action.Equals("move"))
+        {
+            showTargetButtons = false;
+            showMovementButtons = true;
+            showPushableItemsButtons = false;
+        }
+
+        else if (action.Equals("interaction"))
+        {
+            showPushableItemsButtons = true;
+            showTargetButtons = false;
+            showMovementButtons = false;
+        }
+
+        else if (action.Equals("actionPoint"))
+        {
+            actionPointUsed = true;
+        }
+
+
+        else
+        {
+            showTargetButtons = false;
+            showMovementButtons = false;
+            showPushableItemsButtons = false;
+        }
+
+        actionToTake = action;
+
+    }
+
+    /// <summary>
+    /// Method to take an actoin which is dependent upon what buttons the user clicked.
+    /// </summary>
+    /// <param name="character">Character being targeted (if any).</param>
+    public void TakeAction(Character character)
+    {
+        string report = null;
+
+        switch (actionToTake)
+        {
+            case "weaponAttack":
+                if (gameTurn.CurrentCharacter.ActiveWeapon.RangedWeapon)
                 {
-                    GameLog.Add(message);
-                    StateHasChanged();
+                    report = gameTurn.Game.RangedAttackAttempt(gameTurn.CurrentCharacter, character, actionPointUsed);
                 }
-            });
-
-            await hubConnection.StartAsync();
+                else
+                {
+                    report = gameTurn.Game.MeleeAttackAttempt(gameTurn.CurrentCharacter, character, actionPointUsed);
+                }
+                break;
+            case "magicAttack":
+                report = gameTurn.Game.SpellAttackAttempt(gameTurn.CurrentCharacter, character);
+                break;
+            case "magicHeal":
+                report = gameTurn.Game.SpellHealAttempt(gameTurn.CurrentCharacter, character);
+                break;
+            default:
+                break;
         }
 
-        /// <summary>
-        /// Method to clear the game log.
-        /// </summary>
-        public void ClearLog()
+        //resets action point
+        actionPointUsed = false;
+        ReportOutcome(report);
+    }
+
+
+    /// <summary>
+    /// Method to attempt to push an itme in the gameboard by the current character.
+    /// </summary>
+    /// <param name="itemToPush">Item the character is attempting to push.</param>
+    public async Task PushItem(Drawable itemToPush)
+    {
+        var report = gameTurn.Game.PushObject(gameTurn.CurrentCharacter, itemToPush);
+        StateHasChanged();
+        await Render();
+
+        ReportOutcome(report);
+    }
+
+    /// <summary>
+    /// Method to move a drawable in a cardinal direction
+    /// </summary>
+    /// <param name="drawable"> Drawable to be moved.</param>
+    /// <param name="direction"> Direction to move the drawable.</param>
+    public async Task Move(Drawable drawable, CardinalDirection direction)
+    {
+        string report = gameTurn.Game.CharacterMove(drawable, direction);
+        StateHasChanged();
+        await Render();
+
+        // We do not ReportOutcome as we do noat want to close the movement buttons.
+        if (report != null)
         {
-            GameLog = new List<string>();
+            GameLog.Add(report);
+        }
+        gameTurn.UpdatePossibilities();
+
+        StateHasChanged();
+
+    }
+
+    /// <summary>
+    /// Method to report to the user the output of the action taken.
+    /// </summary>
+    /// <param name="report">Report of the action taken to be reported to user.</param>
+    public void ReportOutcome(String report)
+    {
+        if (report != null)
+        {
+            GameLog.Add(report);
         }
 
-        /// <summary>
-        /// Method to rehide buttons as user no longer wishes to see them.
-        /// </summary>
-        public void Cancel()
+        showMovementButtons = false;
+        showTargetButtons = false;
+        showPushableItemsButtons = false;
+        actionToTake = null;
+
+        gameTurn.UpdatePossibilities();
+
+        StateHasChanged();
+    }
+
+    /// <summary>
+    /// Method to start the test game, create the characters, and load them into the game.
+    /// The game is then initialized with the first character's turn started.
+    /// </summary>
+    public void StartGame()
+    {
+        var game = new Game(35, 35)
         {
-            showMovementButtons = false;
-            showTargetButtons = false;
-            showPushableItemsButtons = false;
-            actionToTake = null;
-        }
+            GameName = "Combination Test Game"
+        };
+        var statsInventory = new CharacterStats(11, 12, 8, 15, 12, 6);
+        var healSpell = new HealingSpell("Cure Wounds", SpellTypes.Healing, 1, Dice.D4, 2, 100);
 
-        /// <summary>
-        /// Method to end the turn for the current player.
-        /// </summary>
-        public void EndTurn()
+        var character = new Character("Jordan", 100, 2, "ranger");
+        character.ImageLocation = "/images/char1.png";
+        char1Image = character.ImageLocation;
+        character.CharacterStats = statsInventory;
+        character.ActiveSpell = healSpell;
+        game.AddCharacter(character, 0, 0);
+
+        statsInventory = new CharacterStats(10, 11, 6, 12, 10, 7);
+        character = new Character("Dustin", 100, 2, "fighter");
+        character.ImageLocation = "/images/char2.png";
+        character.CharacterStats = statsInventory;
+        game.AddCharacter(character, 0, 4);
+
+        character = new Character("Gavin", 100, 2, "wizard");
+        character.ImageLocation = "/images/char2.png";
+        game.AddCharacter(character, 20, 0);
+
+        var woodblock = new Drawable("wood block", true, "/images/tempWoodTexture.png", "#FFFFFF");
+        game.AddDrawable(woodblock, 3, 2);
+
+        boardImage = game.Gameboard.ImageLocation;
+
+        gameStarted = true;
+
+        gameTurn = new Turn(game);
+
+        canvasWidth = game.Gameboard.Columns * scaleFactor;
+        canvasHeight = game.Gameboard.Rows * scaleFactor;
+    }
+
+
+    /// <summary>
+    /// OVerride. Called after the page loads. Draws the canvas off of the primary process.
+    /// </summary>
+    /// <param name="firstRender">True if this is initial render, false otherwise.</param>
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
         {
-            Cancel();
-            gameTurn.UpdateTurn();
-            StateHasChanged();
-        }
-
-        /// <summary>
-        /// Method to set the action to use for our next set up bottons, also display the correct buttons
-        /// depending upon what the user requested.
-        /// </summary>
-        /// <param name="action">String representing the action to take.</param>
-        public void Target(string action)
-        {
-            if (action.Equals("magicAttack") || action.Equals("weaponAttack") || action.Equals("magicHeal"))
-            {
-                showTargetButtons = true;
-                showMovementButtons = false;
-                showPushableItemsButtons = false;
-            }
-
-            else if (action.Equals("move"))
-            {
-                showTargetButtons = false;
-                showMovementButtons = true;
-                showPushableItemsButtons = false;
-            }
-
-            else if (action.Equals("interaction"))
-            {
-                showPushableItemsButtons = true;
-                showTargetButtons = false;
-                showMovementButtons = false;
-            }
-
-            else if(action.Equals("actionPoint"))
-            {
-                actionPointUsed = true;
-            }
-
-
-            else
-            {
-                showTargetButtons = false;
-                showMovementButtons = false;
-                showPushableItemsButtons = false;
-            }
-
-            actionToTake = action;
-
-        }
-
-        /// <summary>
-        /// Method to take an actoin which is dependent upon what buttons the user clicked.
-        /// </summary>
-        /// <param name="character">Character being targeted (if any).</param>
-        public void TakeAction(Character character)
-        {
-            string report = null;
-
-            switch (actionToTake)
-            {
-                case "weaponAttack":
-                    if (gameTurn.CurrentCharacter.ActiveWeapon.RangedWeapon)
-                    {
-                        report = gameTurn.Game.RangedAttackAttempt(gameTurn.CurrentCharacter, character, actionPointUsed);
-                    }
-                    else
-                    {
-                        report = gameTurn.Game.MeleeAttackAttempt(gameTurn.CurrentCharacter, character, actionPointUsed);
-                    }
-                    break;
-                case "magicAttack":
-                    report = gameTurn.Game.SpellAttackAttempt(gameTurn.CurrentCharacter, character);
-                    break;
-                case "magicHeal":
-                    report = gameTurn.Game.SpellHealAttempt(gameTurn.CurrentCharacter, character);
-                    break;
-                default:
-                    break;
-            }
-
-            //resets action point
-            actionPointUsed = false;
-            ReportOutcome(report);
-        }
-
-
-        /// <summary>
-        /// Method to attempt to push an itme in the gameboard by the current character.
-        /// </summary>
-        /// <param name="itemToPush">Item the character is attempting to push.</param>
-        public async Task PushItem(Drawable itemToPush)
-        {
-            var report = gameTurn.Game.PushObject(gameTurn.CurrentCharacter, itemToPush);
-            StateHasChanged();
+            StartGame();                                                      //Initialize the game prior to trying to draw it
+            this._backgroundContext = await this._backgroundCanvas.CreateCanvas2DAsync();
+            this._drawableContext = await this._drawableCanvas.CreateCanvas2DAsync();
+            this._gridContext = await this._gridCanvas.CreateCanvas2DAsync();
             await Render();
-
-            ReportOutcome(report);
-        }
-
-        /// <summary>
-        /// Method to move a drawable in a cardinal direction
-        /// </summary>
-        /// <param name="drawable"> Drawable to be moved.</param>
-        /// <param name="direction"> Direction to move the drawable.</param>
-        public async Task Move(Drawable drawable, CardinalDirection direction)
-        {
-            string report = gameTurn.Game.CharacterMove(drawable, direction);
-            StateHasChanged();
-            await Render();
-
-            // We do not ReportOutcome as we do noat want to close the movement buttons.
-            if (report != null)
-            {
-                GameLog.Add(report);
-            }
-            gameTurn.UpdatePossibilities();
-
-            StateHasChanged();
-
-        }
-
-        /// <summary>
-        /// Method to report to the user the output of the action taken.
-        /// </summary>
-        /// <param name="report">Report of the action taken to be reported to user.</param>
-        public void ReportOutcome(String report)
-        {
-            if (report != null)
-            {
-                GameLog.Add(report);
-            }
-
-            showMovementButtons = false;
-            showTargetButtons = false;
-            showPushableItemsButtons = false;
-            actionToTake = null;
-
-            gameTurn.UpdatePossibilities();
-
-            StateHasChanged();
-        }
-
-        /// <summary>
-        /// Method to start the test game, create the characters, and load them into the game.
-        /// The game is then initialized with the first character's turn started.
-        /// </summary>
-        public void StartGame()
-        {
-            var game = new Game(35, 35)
-            {
-                GameName = "Combination Test Game"
-            };
-            var statsInventory = new CharacterStats(11, 12, 8, 15, 12, 6);
-            var healSpell = new HealingSpell("Cure Wounds", SpellTypes.Healing, 1, Dice.D4, 2, 100);
-
-            var character = new Character("Jordan", 100, 2, "ranger");
-            character.ImageLocation = "/images/char1.png";
-            char1Image = character.ImageLocation;
-            character.CharacterStats = statsInventory;
-            character.ActiveSpell = healSpell;
-            game.AddCharacter(character, 0, 0);
-
-            statsInventory = new CharacterStats(10, 11, 6, 12, 10, 7);
-            character = new Character("Dustin", 100, 2, "fighter");
-            character.ImageLocation = "/images/char2.png";
-            character.CharacterStats = statsInventory;
-            game.AddCharacter(character, 0, 4);
-
-            character = new Character("Gavin", 100, 2, "wizard");
-            character.ImageLocation = "/images/char2.png";
-            game.AddCharacter(character, 20, 0);
-
-            var woodblock = new Drawable("wood block", true, "/images/tempWoodTexture.png", "#FFFFFF");
-            game.AddDrawable(woodblock, 3, 2);
-
-            boardImage = game.Gameboard.ImageLocation;
-
-            gameStarted = true;
-
-            gameTurn = new Turn(game);
-
-            canvasWidth = game.Gameboard.Columns * scaleFactor;
-            canvasHeight = game.Gameboard.Rows * scaleFactor;
-        }
-
-
-        /// <summary>
-        /// OVerride. Called after the page loads. Draws the canvas off of the primary process.
-        /// </summary>
-        /// <param name="firstRender">True if this is initial render, false otherwise.</param>
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (firstRender)
-            {
-                StartGame();                                                      //Initialize the game prior to trying to draw it
-                this._backgroundContext = await this._backgroundCanvas.CreateCanvas2DAsync();
-                this._drawableContext = await this._drawableCanvas.CreateCanvas2DAsync();
-                this._gridContext = await this._gridCanvas.CreateCanvas2DAsync();
-                await Render();
-                await RenderBackground();
-            }
-        }
-
-        // GAME BOARD METHODS
-        /// <summary>
-        /// Renders graphics.
-        /// </summary>
-        public async Task Render()
-        {
             await RenderBackground();
-            await RenderDrawables();
         }
+    }
 
-        /// <summary>
-        /// Renders the grid layer.
-        /// </summary>
-        /// <param name="showGrid">True if you want the grid to be shown.</param>
-        /// <returns></returns>
-        public async Task RenderGrid(bool showGrid)
+    // GAME BOARD METHODS
+    /// <summary>
+    /// Renders graphics.
+    /// </summary>
+    public async Task Render()
+    {
+        await RenderBackground();
+        await RenderDrawables();
+    }
+
+    /// <summary>
+    /// Renders the grid layer.
+    /// </summary>
+    /// <param name="showGrid">True if you want the grid to be shown.</param>
+    /// <returns></returns>
+    public async Task RenderGrid(bool showGrid)
+    {
+        base.StateHasChanged();
+        double scaledRows = scaleFactor * gameTurn.Game.Gameboard.Rows;                          //Scale the row count by our scale factor
+        double scaledColumns = scaleFactor * gameTurn.Game.Gameboard.Columns;                    //Scale the column count by our scale factor
+        await this._gridContext.SetStrokeStyleAsync("#777777");
+        if (!showGrid)
         {
-            base.StateHasChanged();
-            double scaledRows = scaleFactor * gameTurn.Game.Gameboard.Rows;                          //Scale the row count by our scale factor
-            double scaledColumns = scaleFactor * gameTurn.Game.Gameboard.Columns;                    //Scale the column count by our scale factor
-            await this._gridContext.SetStrokeStyleAsync("#777777");
-            if (!showGrid)
-            {
-                await this._gridContext.ClearRectAsync(0, 0, scaledColumns, scaledRows);
-                await this._gridContext.BeginPathAsync();
-            }
-            else
-            {
-                for (int i = 0; i < gameTurn.Game.Gameboard.Rows; i++)
-                {
-                    for (int j = 0; j < gameTurn.Game.Gameboard.Columns; j++)
-                    {
-                        if (((i % 2 == 0) && (j % 2 == 1)) || ((i % 2 == 1) && (j % 2 == 0)))         //If ( I is even, and J is odd) OR ( I is odd, and J is even) draw the square. This reduces our calls of stroke async to half as many.
-                        {
-                            await this._gridContext.StrokeRectAsync(j * scaleFactor, i * scaleFactor, scaleFactor, scaleFactor);
-                        }
-                    }
-                }
-            }
+            await this._gridContext.ClearRectAsync(0, 0, scaledColumns, scaledRows);
+            await this._gridContext.BeginPathAsync();
         }
-
-        /// <summary>
-        /// Draws the background image.
-        /// </summary>
-        protected async Task RenderBackground()
+        else
         {
-            double scaledRows = scaleFactor * gameTurn.Game.Gameboard.Rows;                          //Scale the row count by our scale factor
-            double scaledColumns = scaleFactor * gameTurn.Game.Gameboard.Columns;                    //Scale the column count by our scale factor
-            await this._backgroundContext.DrawImageAsync(boardImg, 0, 0, scaledColumns, scaledRows);
-        }
-
-
-        /// <summary>
-        /// Render the grid to the screen.
-        /// </summary>
-        protected async Task RenderDrawables()
-        {
-            base.StateHasChanged();
-
-            double scaledRows = scaleFactor * gameTurn.Game.Gameboard.Rows;                          //Scale the row count by our scale factor
-            double scaledColumns = scaleFactor * gameTurn.Game.Gameboard.Columns;                    //Scale the column count by our scale factor
-
-            await this._drawableContext.ClearRectAsync(0, 0, scaledColumns, scaledRows);
-
             for (int i = 0; i < gameTurn.Game.Gameboard.Rows; i++)
             {
                 for (int j = 0; j < gameTurn.Game.Gameboard.Columns; j++)
                 {
-                    double scaledRow = i * scaleFactor;
-                    double scaledColumn = j * scaleFactor;
-                    Drawable drawable = gameTurn.Game.Gameboard.Drawables[j, i];
-                    if (drawable != null)
+                    if (((i % 2 == 0) && (j % 2 == 1)) || ((i % 2 == 1) && (j % 2 == 0)))         //If ( I is even, and J is odd) OR ( I is odd, and J is even) draw the square. This reduces our calls of stroke async to half as many.
                     {
-                        char1Image = drawable.ImageLocation;
-                        await this._drawableContext.SetFillStyleAsync(drawable.BackupColorCode);
-                        base.StateHasChanged();
-                        await Task.Delay(10);
-
-                        try
-                        {
-                            await this._drawableContext.DrawImageAsync(character1img, scaledColumn, scaledRow, scaleFactor, scaleFactor);
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e);
-                            await Task.Delay(10);
-                            await this._drawableContext.FillRectAsync(scaledColumn, scaledRow, scaleFactor, scaleFactor);
-                        }
+                        await this._gridContext.StrokeRectAsync(j * scaleFactor, i * scaleFactor, scaleFactor, scaleFactor);
                     }
                 }
             }
         }
+    }
 
-        /// <summary>
-        /// Backup the rendered board.
-        /// </summary>
-        /// <param name="scaledRows">Board rows.</param>
-        /// <param name="scaledColumns">Board columns.</param>
-        protected async Task BackupRenderBoard(double scaledRows, double scaledColumns)
-        {
-            await this._backgroundContext.SetFillStyleAsync(backgroundColor);
-            await this._backgroundContext.FillRectAsync(0, 0, scaledColumns, scaledRows);
-        }
+    /// <summary>
+    /// Draws the background image.
+    /// </summary>
+    protected async Task RenderBackground()
+    {
+        double scaledRows = scaleFactor * gameTurn.Game.Gameboard.Rows;                          //Scale the row count by our scale factor
+        double scaledColumns = scaleFactor * gameTurn.Game.Gameboard.Columns;                    //Scale the column count by our scale factor
+        await this._backgroundContext.DrawImageAsync(boardImg, 0, 0, scaledColumns, scaledRows);
+    }
 
-        /// <summary>
-        /// Renders the board with images included.
-        /// </summary>
-        /// <param name="elementReference">Reference to element.</param>
-        /// <param name="scaledRows">Board rows.</param>
-        /// <param name="scaledColumns">Board columns.</param>
-        /// <param name="scaleFactor">Scale.</param>
-        protected async Task RenderBoardWithImage(ElementReference elementReference, double scaledRows, double scaledColumns, double scaleFactor)
+
+    /// <summary>
+    /// Render the grid to the screen.
+    /// </summary>
+    protected async Task RenderDrawables()
+    {
+        base.StateHasChanged();
+
+        double scaledRows = scaleFactor * gameTurn.Game.Gameboard.Rows;                          //Scale the row count by our scale factor
+        double scaledColumns = scaleFactor * gameTurn.Game.Gameboard.Columns;                    //Scale the column count by our scale factor
+
+        await this._drawableContext.ClearRectAsync(0, 0, scaledColumns, scaledRows);
+
+        for (int i = 0; i < gameTurn.Game.Gameboard.Rows; i++)
         {
-            await this._backgroundContext.DrawImageAsync(boardImg, 0, 0, scaledColumns, scaledRows);
+            for (int j = 0; j < gameTurn.Game.Gameboard.Columns; j++)
+            {
+                double scaledRow = i * scaleFactor;
+                double scaledColumn = j * scaleFactor;
+                Drawable drawable = gameTurn.Game.Gameboard.Drawables[j, i];
+                if (drawable != null)
+                {
+                    char1Image = drawable.ImageLocation;
+                    await this._drawableContext.SetFillStyleAsync(drawable.BackupColorCode);
+                    base.StateHasChanged();
+                    await Task.Delay(10);
+
+                    try
+                    {
+                        await this._drawableContext.DrawImageAsync(character1img, scaledColumn, scaledRow, scaleFactor, scaleFactor);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        await Task.Delay(10);
+                        await this._drawableContext.FillRectAsync(scaledColumn, scaledRow, scaleFactor, scaleFactor);
+                    }
+                }
+            }
         }
     }
+
+    /// <summary>
+    /// Backup the rendered board.
+    /// </summary>
+    /// <param name="scaledRows">Board rows.</param>
+    /// <param name="scaledColumns">Board columns.</param>
+    protected async Task BackupRenderBoard(double scaledRows, double scaledColumns)
+    {
+        await this._backgroundContext.SetFillStyleAsync(backgroundColor);
+        await this._backgroundContext.FillRectAsync(0, 0, scaledColumns, scaledRows);
+    }
+
+    /// <summary>
+    /// Renders the board with images included.
+    /// </summary>
+    /// <param name="elementReference">Reference to element.</param>
+    /// <param name="scaledRows">Board rows.</param>
+    /// <param name="scaledColumns">Board columns.</param>
+    /// <param name="scaleFactor">Scale.</param>
+    protected async Task RenderBoardWithImage(ElementReference elementReference, double scaledRows, double scaledColumns, double scaleFactor)
+    {
+        await this._backgroundContext.DrawImageAsync(boardImg, 0, 0, scaledColumns, scaledRows);
+    }
+}
