@@ -55,7 +55,7 @@ namespace DungeonMaster.Data
         public Inventory PlayersInventory { get; set; } = new Inventory();
 
         /// <summary>
-        /// Temporary spell attribute to create the attack method in Attack.cs for proof of concept
+        /// What spell the character currently has equipped
         /// </summary>
         public Spell ActiveSpell { get; set; }
 
