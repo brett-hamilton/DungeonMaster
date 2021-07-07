@@ -5,12 +5,37 @@
  * Last Modified: 6/9/21
  *************************************************/
 
-public enum Status
+
+namespace DungeonMaster.Data
 {
-    Alive,
-    Dead,
-    Poisoned,
-    Bleeding,
-    Disoriented,
-    Incapacitated
+    /// <summary>
+    /// Enum Status represents the current status of the character.
+    /// </summary>
+    public enum Status
+    {
+        /// <summary>
+        /// Is Alive
+        /// </summary>
+        Alive,
+        /// <summary>
+        /// Is Dead
+        /// </summary>
+        Dead,
+        /// <summary>
+        /// Is Poisoned
+        /// </summary>
+        Poisoned,
+        /// <summary>
+        /// Is Bleeding
+        /// </summary>
+        Bleeding,
+        /// <summary>
+        /// Is Disoriented
+        /// </summary>
+        Disoriented,
+        /// <summary>
+        /// Is Incapacitated
+        /// </summary>
+        Incapacitated
+    }
 }

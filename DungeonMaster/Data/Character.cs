@@ -55,7 +55,7 @@ namespace DungeonMaster.Data
         public Inventory PlayersInventory { get; set; } = new Inventory();
 
         /// <summary>
-        /// Temporary spell attribute to create the attack method in Attack.cs for proof of concept
+        /// What spell the character currently has equipped
         /// </summary>
         public Spell ActiveSpell { get; set; }
 
@@ -222,7 +222,7 @@ namespace DungeonMaster.Data
         /// Add a spell to the Player's Inventory
         /// 
         /// </summary>
-        /// <param name="weapon">A spell to be added to the list.</param>
+        /// <param name="spell">A spell to be added to the list.</param>
         public void AddSpellInventory(Spell spell)
         {
             PlayersInventory.Spells.Add(spell);
@@ -245,7 +245,6 @@ namespace DungeonMaster.Data
         /// <summary>
         /// Lowers the action points of the character
         /// </summary>
-        /// <param name="action"></param>
         public void LowerActionPoint()
         {
             ActionPoints--;

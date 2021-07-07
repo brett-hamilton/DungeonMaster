@@ -3,6 +3,9 @@ using System.Text;
 
 namespace DungeonMaster.Data
 {
+    /// <summary>
+    /// Class Inventory, 
+    /// </summary>
     public class Inventory
     {
         /// <summary>

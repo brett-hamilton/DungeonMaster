@@ -17,6 +17,7 @@
         /// </summary>
         /// <param name="attacker">The character attacking.</param>
         /// <param name="defender">The character being attacked.</param>
+        /// <param name="actionPoint">True if character is using action points</param>
         /// <returns>Attack Report detailing what happened in the attack.</returns>
         public AttackReport MeleeAttack(Character attacker, Character defender, bool actionPoint)
         {
@@ -50,6 +51,7 @@
 
                 var attackReport = attacker.ActiveWeapon.GetDamage();
                 int damageAmount = attackReport.TotalDamageDealt + modifierDamage;
+                attackReport.TotalDamageDealt += modifierDamage;
                 attackReport.Modifier = modifierDamage;
                 defender.DamagePlayer(damageAmount);
                 attackReport.AttackRoll = attackValue;
@@ -81,6 +83,7 @@
         /// <param name="attacker">Character attacking the other.</param>
         /// <param name="defender">Character defending against the attack.</param>
         /// <param name="disadvantage">If the defending character is in melee range.</param>
+        /// <param name="actionPoint">True if character is using action points</param>
         /// <returns>An attack report containing information about the attack.</returns>
         public AttackReport RangedAttack(Character attacker, Character defender, bool disadvantage, bool actionPoint)
         {

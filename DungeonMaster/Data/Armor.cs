@@ -6,8 +6,12 @@
  *************************************************/
 
 namespace DungeonMaster.Data
-{
 
+{
+    /// <summary>
+    /// Class representing armor that the charactor has on. Used when determining if
+    /// an attack is successful or not.
+    /// </summary>
     public class Armor
     {
         /// <summary>

@@ -7,14 +7,31 @@
 
 namespace DungeonMaster.Data
 {
+    /// <summary>
+    /// Enum representing potential Effect Types for weapons.
+    /// </summary>
     public enum EffectTypes
     {
+        /// <summary>
+        /// Frost effect for weapon
+        /// </summary>
         Frost,
-        Flood,
+        /// <summary>
+        /// Piercing weapon
+        /// </summary>
         Piercing,
+        /// <summary>
+        /// Bludgeoning weapon
+        /// </summary>
         Bludgeoning,
-        Poisoning
-
+        /// <summary>
+        /// Poisoning effect for weapon
+        /// </summary>
+        Poisoning,
+        /// <summary>
+        /// Slashing weapon
+        /// </summary>
+        Slashing
     }
 }
 

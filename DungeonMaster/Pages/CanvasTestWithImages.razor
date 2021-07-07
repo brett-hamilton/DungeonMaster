@@ -9,22 +9,26 @@
 @using Blazor.Extensions.Canvas.Canvas2D;
 @using Microsoft.Extensions.Hosting;
 
+@*
+    This page was created to add in images to the initial canvas render. You can load any image in boardIMG before calling the background render to swap it.
+    To change the character images, you have to load character1img with the file you want to display, wait for it to load, then render the character.
+*@
 <img id="board" @ref="boardImg" width="1920" height="1080" style="display:none" src="@boardImage" />
 <img id="char1" @ref="character1img" width="22" height="22" style="display:none" src="@char1Image" />
 <img id="char2" @ref="character2img" width="22" height="22" style="display:none" src="@char2Image" />
 
 
 
-Render With Grid: <input type="checkbox" @onchange="eventArgs => { Render((bool)eventArgs.Value); }">
-<button @onclick="eventArgs => { Render(); }">REDRAW</button>
-<button @onclick="eventArgs => { MoveDirection(CardinalDirection.S); }">MoveChar1South</button>
-<button @onclick="eventArgs => { MoveDirection(CardinalDirection.N); }">MoveChar1North</button>
-<button @onclick="eventArgs => { MoveDirection(CardinalDirection.W); }">MoveChar1West</button>
-<button @onclick="eventArgs => { MoveDirection(CardinalDirection.E); }">MoveChar1East</button>
-<button @onclick="eventArgs => { MoveDirection(CardinalDirection.NE); }">MoveChar1NORTHEAST</button>
-<button @onclick="eventArgs => { MoveDirection(CardinalDirection.SE); }">MoveChar1SOUTHEAST</button>
-<button @onclick="eventArgs => { MoveDirection(CardinalDirection.NW); }">MoveChar1NORTHWEST</button>
-<button @onclick="eventArgs => { MoveDirection(CardinalDirection.SW); }">MoveChar1SOUTHWEST</button>
+Render With Grid: <input type="checkbox" @onchange="async eventArgs => { await Render((bool)eventArgs.Value); }">
+<button @onclick="async eventArgs => { await Render(); }">REDRAW</button>
+<button @onclick="async eventArgs => { await MoveDirection(CardinalDirection.S); }">MoveChar1South</button>
+<button @onclick="async eventArgs => { await MoveDirection(CardinalDirection.N); }">MoveChar1North</button>
+<button @onclick="async eventArgs => { await MoveDirection(CardinalDirection.W); }">MoveChar1West</button>
+<button @onclick="async eventArgs => { await MoveDirection(CardinalDirection.E); }">MoveChar1East</button>
+<button @onclick="async eventArgs => { await MoveDirection(CardinalDirection.NE); }">MoveChar1NORTHEAST</button>
+<button @onclick="async eventArgs => { await MoveDirection(CardinalDirection.SE); }">MoveChar1SOUTHEAST</button>
+<button @onclick="async eventArgs => { await MoveDirection(CardinalDirection.NW); }">MoveChar1NORTHWEST</button>
+<button @onclick="async eventArgs => { await MoveDirection(CardinalDirection.SW); }">MoveChar1SOUTHWEST</button>
 
 
 
@@ -187,10 +191,12 @@ Render With Grid: <input type="checkbox" @onchange="eventArgs => { Render((bool)
         }
     }
 
-    public void MoveDirection(CardinalDirection direction)
+    /// <summary>
+    /// Method to move our primary charracter in the chosen direction.
+    /// </summary>
+    public async Task MoveDirection(CardinalDirection direction)
     {
         var result = game.CharacterMove(character1, direction);
-        Console.WriteLine(result);
-        Render();
+        await Render();
     }
 }

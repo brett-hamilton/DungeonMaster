@@ -2,6 +2,9 @@
 
 namespace DungeonMaster.Data
 {
+    /// <summary>
+    /// Class Game, Stores basic information about the game and specifically the entities within it.
+    /// </summary>
     public class Game
     {
         /// <summary>
@@ -22,8 +25,6 @@ namespace DungeonMaster.Data
         /// The character list of characters in the game.
         /// </value>
 		public List<Character> CharacterList { get; set; }
-
-        public Turn CurrentTurn { get; set; }
 
         /// <summary>
         /// Default constructor to build a generic game with no entities.
@@ -105,7 +106,7 @@ namespace DungeonMaster.Data
         /// </summary>
         /// <param name="character">Character to be placed in the gameboard.</param>
         /// <param name="row">Row to place character in.</param>
-        /// <param name="col">Column to place character in.</param>
+        /// <param name="column">Column to place character in.</param>
         /// <returns>Boolean representing if character was placed into the gameboard.</returns>
         public bool AddCharacter(Character character, int column, int row)
         {
@@ -144,6 +145,7 @@ namespace DungeonMaster.Data
         /// </summary>
         /// <param name="attacker">Attacking character.</param>
         /// <param name="defender">Defending character.</param>
+        /// <param name="actionPointUsed">True if character is using action points</param>
         /// <returns>String explaining result if needed.</returns>
         public string MeleeAttackAttempt(Character attacker, Character defender, bool actionPointUsed)
         {
@@ -171,6 +173,7 @@ namespace DungeonMaster.Data
         /// </summary>
         /// <param name="attacker">Character attempting to attack the other.</param>
         /// <param name="defender">Character being attacked.</param>
+        /// <param name="actionPointUsed">True if character is using action points</param>
         /// <returns>A string containing information about the result.</returns>
         public string RangedAttackAttempt(Character attacker, Character defender, bool actionPointUsed)
         {
@@ -197,6 +200,7 @@ namespace DungeonMaster.Data
 
             return attackReport.GetAttackReport();
         }
+
         /// <summary>
         /// Method to attempt to heal another character with a spell.
         /// </summary>
